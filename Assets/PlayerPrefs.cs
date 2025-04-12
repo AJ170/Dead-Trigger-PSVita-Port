@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using SimpleJSON;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
-public static class PlayerPrefs
+public class PlayerPrefs : MonoBehaviour
 {
     static string savePath
     {
@@ -16,6 +20,19 @@ public static class PlayerPrefs
     public static Dictionary<string, string> strings = new Dictionary<string, string>();
     public static Dictionary<string, int> ints = new Dictionary<string, int>();
     public static Dictionary<string, float> floats = new Dictionary<string, float>();
+
+    [RuntimeInitializeOnLoadMethod]
+    public static void OnGameStart()
+    {
+        DontDestroyOnLoad(new GameObject("Player Prefs", typeof(PlayerPrefs)));
+
+        Load();
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveReal();
+    }
 
     public static void SetString(string key, string value)
     {
@@ -59,8 +76,18 @@ public static class PlayerPrefs
         return defaultValue;
     }
 
-    public static void Save()
+    public static void Save() { }
+
+    public static void SaveReal()
     {
+        SavePath(savePath);
+    }
+
+    public static void SavePath(string path)
+    {
+#if UNITY_EDITOR
+        if (PlayerPrefsEditor.lockFile) return;
+#endif
         JSONObject jsonStrings = new JSONObject();
         JSONObject jsonInts = new JSONObject();
         JSONObject jsonFloats = new JSONObject();
@@ -75,10 +102,9 @@ public static class PlayerPrefs
         output["ints"] = jsonInts;
         output["floats"] = jsonFloats;
 
-        File.WriteAllText(savePath, output.ToString(1));
+        File.WriteAllText(path, output.ToString(1));
     }
 
-    [RuntimeInitializeOnLoadMethod]
     public static void Load()
     {
         if (!File.Exists(savePath)) return;
@@ -108,3 +134,48 @@ public static class PlayerPrefs
         return strings.ContainsKey(key) || ints.ContainsKey(key) || floats.ContainsKey(key);
     }
 }
+
+#if UNITY_EDITOR
+public class PlayerPrefsEditor : EditorWindow
+{
+    public static bool lockFile
+    {
+        get
+        {
+            return EditorPrefs.GetBool("PlayerPrefsEditor.lockFile", false);
+        }
+        private set
+        {
+            EditorPrefs.SetBool("PlayerPrefsEditor.lockFile", value);
+        }
+    }
+
+    [MenuItem("Tools/Player Prefs")]
+    static void GetMe()
+    {
+        EditorWindow.GetWindow<PlayerPrefsEditor>();
+    }
+
+    void OnGUI()
+    {
+        lockFile = EditorGUILayout.ToggleLeft("Lock file from saving", lockFile);
+
+        if (!EditorApplication.isPlaying) return;
+
+        if (GUILayout.Button("Force Load")) PlayerPrefs.Load();
+
+        if (lockFile) return;
+
+        if (GUILayout.Button("Save to file")) PlayerPrefs.SaveReal();
+
+        GUILayout.FlexibleSpace();
+
+        if (GUILayout.Button("Save Snapshot"))
+        {
+            string path = "PlayerPrefs_Snapshot_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".json";
+
+            PlayerPrefs.SavePath(Path.Combine(Application.persistentDataPath, path));
+        }
+    }
+}
+#endif
