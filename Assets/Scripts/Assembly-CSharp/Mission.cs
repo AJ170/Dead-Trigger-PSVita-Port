@@ -533,9 +533,12 @@ public class Mission : MonoBehaviour
 	private void OnApplicationFocus(bool focus)
 	{
 		if (!m_EndOfMissionActive && !DisablePause && Game.Instance.GameState != E_GameState.IngameMenu)
-		{
-			GuiIngameMenu.Instance.DisableRestartButton(true);
-			GuiHUD.Instance.SwitchToIngameMenu();
+        {
+            if (GuiIngameMenu.Instance != null)
+            {
+                GuiIngameMenu.Instance.DisableRestartButton(true);
+                GuiHUD.Instance.SwitchToIngameMenu();
+            }
 		}
 		AudioListener.pause = true;
 	}
@@ -544,8 +547,12 @@ public class Mission : MonoBehaviour
 	{
 		if (!m_EndOfMissionActive && !DisablePause && (bool)Game.Instance && Game.Instance.GameState != E_GameState.IngameMenu)
 		{
-			GuiIngameMenu.Instance.DisableRestartButton(true);
-			GuiHUD.Instance.SwitchToIngameMenu();
+			// dont throw the error every fucking time i test the level
+			if (GuiIngameMenu.Instance != null)
+			{
+                GuiIngameMenu.Instance.DisableRestartButton(true);
+                GuiHUD.Instance.SwitchToIngameMenu();
+            }
 		}
 		AudioListener.pause = true;
 	}
