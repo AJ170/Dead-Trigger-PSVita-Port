@@ -58,6 +58,16 @@ public class HudTutorial : HudComponent
 
 	public void ShowTutorial(int index, bool show)
 	{
+#if UNITY_STANDALONE
+		switch (index)
+		{
+			case 0: return;
+			case 1: return;
+			case 2: return;
+			case 3: return;
+		}
+#endif
+
 		if (!Game.Instance.IsXperiaPlay || !Game.Instance.KeypadSlided)
 		{
 			Tutorials[index].m_Activated = show;
