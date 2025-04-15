@@ -5,7 +5,6 @@ Keep in mind that this project is still very early.
 ## Known Issues
 1. NavMesh's are inaccurate and/or non-existent.
 2. A few broken shaders.
-3. Button UI is visible on non-mobile platforms.
 
 ## Contents
 1. [Setup](#setup)
