@@ -124,7 +124,7 @@ Shader "MADFINGER/Transparent/Blinking GodRays - slope fadeout" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 tmpvar_1;
                 tmpvar_1 = (tex2D (_MainTex, i.uv) * i.uv1);

@@ -972,6 +972,10 @@ public class Game : MonoBehaviour
 
 	private void InitMogaController()
 	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return;
+		}
 		AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 		if (androidJavaClass == null)
 		{

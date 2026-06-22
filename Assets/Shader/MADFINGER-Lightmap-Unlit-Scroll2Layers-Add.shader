@@ -65,7 +65,7 @@ Shader "MADFINGER/Environment/Scroll 2 Layers Additive (Supports Lightmap)" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 tmpvar_1;
                 tmpvar_1 = ((tex2D (_MainTex, i.uv) + tex2D (_DetailTex, i.uv1)) * i.uv2);

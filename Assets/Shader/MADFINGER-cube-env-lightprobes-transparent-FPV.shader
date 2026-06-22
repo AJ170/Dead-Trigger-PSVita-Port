@@ -39,7 +39,6 @@ Shader "MADFINGER/Environment/Cube env map transparent (Supports LightProbes) FP
                 float2 uv : TEXCOORD0;
                 float4 uv1 : TEXCOORD1;
                 float4 color : COLOR;
-                float4 color2 : COLOR2;
             };
 
             v2f vert(appdata_t v)
@@ -50,7 +49,6 @@ Shader "MADFINGER/Environment/Cube env map transparent (Supports LightProbes) FP
                 float4 tmpvar_2;
                 float4 tmpvar_3;
                 float4 tmpvar_4;
-                float4 tmpvar_5 = float4(0, 0, 0, 0);
                 projTM_1 = UNITY_MATRIX_P;
                 projTM_1[0] = UNITY_MATRIX_P[0]; projTM_1[0].x = (UNITY_MATRIX_P[0].x * _ProjParams.x);
                 projTM_1[1] = projTM_1[1]; projTM_1[1].y = (projTM_1[1].y * _ProjParams.y);
@@ -137,11 +135,10 @@ Shader "MADFINGER/Environment/Cube env map transparent (Supports LightProbes) FP
                 o.uv = tmpvar_8;
                 o.uv1 = tmpvar_3;
                 o.color = tmpvar_4;
-                o.color2 = tmpvar_5;
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 c_1;
                 float4 tmpvar_2;

@@ -320,7 +320,7 @@ namespace ULegacyRipper
                                 }
                                 writer.EndBraces();
 
-                                writer.WriteLine("float4 frag(v2f i) : SV_TARGET");
+                                writer.WriteLine("float4 frag(v2f i) : COLOR");
 
                                 writer.BeginBraces();
                                 {

@@ -50,9 +50,9 @@ Shader "MADFINGER/Characters/BRDFLit FX (Supports Backlight)" {
                 float4 uv : TEXCOORD0;
                 float3 uv1 : TEXCOORD1;
                 float2 uv2 : TEXCOORD2;
-                float2 uv3 : TEXCOORD3;
+                float3 uv3 : TEXCOORD3;
                 float3 uv4 : TEXCOORD4;
-                float2 uv5 : TEXCOORD5;
+                float3 uv5 : TEXCOORD5;
             };
 
             v2f vert(appdata_t v)
@@ -163,7 +163,7 @@ Shader "MADFINGER/Characters/BRDFLit FX (Supports Backlight)" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 c_1;
                 float3 tmpvar_2;

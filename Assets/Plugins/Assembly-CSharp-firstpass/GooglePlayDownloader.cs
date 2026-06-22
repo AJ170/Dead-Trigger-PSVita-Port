@@ -16,10 +16,10 @@ public class GooglePlayDownloader
 
 	static GooglePlayDownloader()
 	{
-		/*if (!RunningOnAndroid())
+		if (Application.platform != RuntimePlatform.Android)
 		{
 			return;
-		}*/
+		}
 		Environment = new AndroidJavaClass("android.os.Environment");
 		using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.plugin.downloader.UnityDownloaderService"))
 		{
@@ -44,6 +44,10 @@ public class GooglePlayDownloader
 
 	public static string GetExpansionFilePath()
 	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return null;
+		}
 		populateOBBData();
 		if (Environment.CallStatic<string>("getExternalStorageState", new object[0]) != "mounted")
 		{
@@ -88,6 +92,10 @@ public class GooglePlayDownloader
 
 	public static void FetchOBB()
 	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return;
+		}
 		using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
 		{
 			AndroidJavaObject @static = androidJavaClass.GetStatic<AndroidJavaObject>("currentActivity");
@@ -111,6 +119,10 @@ public class GooglePlayDownloader
 
 	private static void populateOBBData()
 	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return;
+		}
 		if (obb_version != 0)
 		{
 			return;

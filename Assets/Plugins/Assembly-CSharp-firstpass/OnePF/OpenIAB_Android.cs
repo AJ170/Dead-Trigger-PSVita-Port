@@ -244,16 +244,28 @@ namespace OnePF
 
 		public bool isDebugLog()
 		{
+			if (!IsDevice())
+			{
+				return false;
+			}
 			return _plugin.Call<bool>("isDebugLog", new object[0]);
 		}
 
 		public void enableDebugLogging(bool enabled)
 		{
+			if (!IsDevice())
+			{
+				return;
+			}
 			_plugin.Call("enableDebugLogging", enabled);
 		}
 
 		public void enableDebugLogging(bool enabled, string tag)
 		{
+			if (!IsDevice())
+			{
+				return;
+			}
 			_plugin.Call("enableDebugLogging", enabled, tag);
 		}
 	}

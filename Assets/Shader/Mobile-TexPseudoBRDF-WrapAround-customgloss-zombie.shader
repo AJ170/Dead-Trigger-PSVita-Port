@@ -40,8 +40,8 @@ Shader "MADFINGER/Characters/BRDFLit (Supports Backlight) - custom glossingess m
             {
                 float4 pos : SV_POSITION;
                 float2 uv : TEXCOORD0;
-                float2 uv1 : TEXCOORD1;
-                float2 uv2 : TEXCOORD2;
+                float3 uv1 : TEXCOORD1;
+                float3 uv2 : TEXCOORD2;
                 float4 color : COLOR;
             };
 
@@ -174,7 +174,7 @@ Shader "MADFINGER/Characters/BRDFLit (Supports Backlight) - custom glossingess m
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float gloss_1;
                 float4 c_2;

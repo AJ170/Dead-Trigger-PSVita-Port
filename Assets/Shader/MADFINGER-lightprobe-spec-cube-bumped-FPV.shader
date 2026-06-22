@@ -91,7 +91,7 @@
                 return o;
             }
 
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 tex = tex2D(_MainTex, i.uv);
                 return float4(tex.rgb * i.color, tex.a);

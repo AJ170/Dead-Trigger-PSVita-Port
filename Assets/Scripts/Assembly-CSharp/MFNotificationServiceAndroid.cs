@@ -11,12 +11,20 @@ internal class MFNotificationServiceAndroid : MFNotificationService
 
 	protected override void NotifyInternal(int id, MFNotification notification, DateTime when, TimeSpan period)
 	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return;
+		}
 		string text = JsonMapper.ToJson(notification);
 		m_Plugin.CallStatic("notify", id, (long)(when.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds, (long)period.Milliseconds, text);
 	}
 
 	protected override void CancelNotificationInternal(int id)
 	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return;
+		}
 		m_Plugin.CallStatic("cancelNotification", id);
 	}
 
@@ -27,6 +35,10 @@ internal class MFNotificationServiceAndroid : MFNotificationService
 
 	protected override List<MFNotification> ReceivedNotificationsInternal()
 	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return new List<MFNotification>();
+		}
 		AndroidJNI.AttachCurrentThread();
 		List<MFNotification> list = new List<MFNotification>();
 		//AndroidJavaObject[] array = m_Plugin.CallStatic<AndroidJavaObject[]>("receivedNotifications", new object[0]);

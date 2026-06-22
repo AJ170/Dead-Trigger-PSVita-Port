@@ -41,7 +41,7 @@ Shader "MADFINGER/Environment/Unlit (Supports Lightmap) Transparent" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 tmpvar_1;
                 float4 c_2;

@@ -153,7 +153,7 @@ Shader "MADFINGER/FX/Lightning bolt FX" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float c_1;
                 float tmpvar_2;

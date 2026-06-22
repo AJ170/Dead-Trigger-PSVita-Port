@@ -85,7 +85,7 @@ Shader "MADFINGER/Characters/Character shadow plane - sphere AO" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 return i.color;
             }

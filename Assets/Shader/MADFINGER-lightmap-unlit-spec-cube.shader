@@ -47,7 +47,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 c_1;
                 float4 tmpvar_2;

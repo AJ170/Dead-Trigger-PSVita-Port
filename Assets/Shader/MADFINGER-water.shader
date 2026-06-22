@@ -83,7 +83,7 @@ Shader "MADFINGER/FX/Water" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float3 refl_1;
                 float4 res_2;

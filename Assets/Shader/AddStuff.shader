@@ -42,7 +42,7 @@ Shader "Hidden/AddStuff" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 float4 tmpvar_1;
                 float4 tmpvar_2;

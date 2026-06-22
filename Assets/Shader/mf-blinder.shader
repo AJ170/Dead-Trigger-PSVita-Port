@@ -27,7 +27,7 @@ Shader "MADFINGER/Utils/Blinder" {
 
                 return o;
             }
-            half4 frag(v2f i) : SV_TARGET
+            half4 frag(v2f i) : COLOR
             {
                 return float4(0.0, 0.0, 0.0, 0.0);
             }
