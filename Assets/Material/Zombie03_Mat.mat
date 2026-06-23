@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Zombie03_Mat
-  m_Shader: {fileID: 4800000, guid: 4718b2e83a9de0347bab99eeb4a31082, type: 3}
+  m_Shader: {fileID: 4800000, guid: bd7f8a7f692dfc14e8d6ab79cd3048c6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -30,9 +30,17 @@ Material:
         m_Texture: {fileID: 2800000, guid: fa4cdebde44da6841837bc0382084f2a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: d10d0ff8b76c0e84e9b5ea4fe14de405, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _BumpScale: 1
     - _LightProbesLightingAmount: 0
+    - _Roughness: 0.5
+    - _SpecularIntensity: 1
     m_Colors:
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
     - _Params: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularStrength: {r: 0, g: 0, b: 0, a: 1}

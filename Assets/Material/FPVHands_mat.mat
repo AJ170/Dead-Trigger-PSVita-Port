@@ -2,61 +2,60 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: FPVHands_mat
-  m_Shader: {fileID: 4800000, guid: 4d0dc934c4e4ada4c9b2d035827219d6, type: 3}
-  m_ShaderKeywords: []
+  m_Shader: {fileID: 4800000, guid: bc6a2f21881916b46b5b466e13a4890c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 2800000, guid: 9a4c2ba2b778428439a52c6a71ce94ef, type: 3}
+    - _BRDFTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _SpecCubeTex
-      second:
-        m_Texture: {fileID: 8900000, guid: dbf236a49e38d3b4c8a6f5d66592c9b8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _NormalsTex
-      second:
+    - _BumpMap:
         m_Texture: {fileID: 2800000, guid: f24028c9a5b297c418ce1a1077c42572, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9a4c2ba2b778428439a52c6a71ce94ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalsTex:
+        m_Texture: {fileID: 2800000, guid: f24028c9a5b297c418ce1a1077c42572, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: d10d0ff8b76c0e84e9b5ea4fe14de405, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _SpecularStrength
-      second: 1
-    - first:
-        name: _SHLightingScale
-      second: 1
-    - first:
-        name: _TimeOffs
-      second: 0
-    - first:
-        name: _LightProbesLightingAmount
-      second: 0.80597013
-    - first:
-        name: _Duration
-      second: 2
-    - first:
-        name: _Invert
-      second: 0
+    - _BumpScale: 2
+    - _Duration: 2
+    - _Invert: 0
+    - _LightProbesLightingAmount: 0.80597013
+    - _Roughness: 0.5
+    - _SHLightingScale: 1
+    - _Shininess: 0.078125
+    - _SpecularIntensity: 1
+    - _SpecularStrength: 1
+    - _TimeOffs: 0
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.694118, g: 0.105882, b: 0.345098, a: 1}
-    - first:
-        name: _Params
-      second: {r: 1, g: 3, b: 2, a: 0}
-    - first:
-        name: _FXColor
-      second: {r: 0, g: 0.97, b: 0.89, a: 1}
+    - _Color: {r: 0.694118, g: 0.105882, b: 0.345098, a: 1}
+    - _FXColor: {r: 0, g: 0.97, b: 0.89, a: 1}
+    - _Params: {r: 1, g: 3, b: 2, a: 0}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularStrength: {r: 0, g: 0, b: 0, a: 1}
