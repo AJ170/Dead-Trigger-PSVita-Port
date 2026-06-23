@@ -36,7 +36,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _LightProbesLightingAmount: 0
+    - _LightProbesLightingAmount: 0.6
     - _Roughness: 0.5
     - _SpecularIntensity: 1
     m_Colors:

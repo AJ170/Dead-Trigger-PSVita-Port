@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: FPVHands_mat
-  m_Shader: {fileID: 4800000, guid: bc6a2f21881916b46b5b466e13a4890c, type: 3}
+  m_Shader: {fileID: 4800000, guid: bd7f8a7f692dfc14e8d6ab79cd3048c6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -43,10 +43,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BumpScale: 2
+    - _BumpScale: 1
     - _Duration: 2
     - _Invert: 0
-    - _LightProbesLightingAmount: 0.80597013
+    - _LightProbesLightingAmount: 0.6
     - _Roughness: 0.5
     - _SHLightingScale: 1
     - _Shininess: 0.078125

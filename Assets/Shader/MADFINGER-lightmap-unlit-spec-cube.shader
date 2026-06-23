@@ -100,7 +100,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // Fresnel effect (stronger reflections at glancing angles)
                     half NdotV = saturate(dot(worldNormal, worldViewDir));
-                    half fresnel = pow(1.0 - NdotV, 3.0);
+                    half fresnel = pow(1.0 - NdotV, 2.0);
                     reflectionAmount *= fresnel;
 
                     // Blend reflection with base color
