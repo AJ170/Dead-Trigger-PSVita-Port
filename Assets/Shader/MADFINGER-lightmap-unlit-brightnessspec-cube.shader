@@ -1,10 +1,10 @@
-Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
+Shader "MADFINGER/Environment/Cubemap specular on brightness + Lightmap" {
     Properties{
         _MainTex("Base (RGB) Gloss (A)", 2D) = "white" {}
         _SpecCubeTex("SpecCube", CUBE) = "black" {}
         _SpecularStrength("Specular Strength", Range(0, 2)) = 1.0
-        _Roughness("Roughness", Range(0, 1)) = 0.5
-        _ScrollingSpeed("Scrolling speed", Vector) = (0,0,0,0)
+        _Roughness("Roughness", Range(0, 1)) = 0.1
+        _ScrollingSpeed("Scrolling speed", Vector) = (0,0,0,0) //for making the specular shine scroll. I assume for some reason or another
     }
         SubShader{
             LOD 100
@@ -95,8 +95,8 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                     half4 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
 
                     // Use alpha channel (gloss) as reflection strength
-                    // Combine with _SpecularStrength property
-                    half reflectionAmount = baseColor.a * _SpecularStrength;
+                    // Combine with _SpecularStrength property, and multiply by texture color channels to pickup only where brightest (this isn't technically correct)
+                    half reflectionAmount = baseColor.a * _SpecularStrength * (0.2126 * baseColor.r + 0.7152 * baseColor.g + 0.0722 * baseColor.b);
 
                     // Fresnel effect (stronger reflections at glancing angles)
                     half NdotV = saturate(dot(worldNormal, worldViewDir));
