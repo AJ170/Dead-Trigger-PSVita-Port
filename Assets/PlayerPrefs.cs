@@ -13,7 +13,11 @@ public class PlayerPrefs : MonoBehaviour
     {
         get
         {
+#if UNITY_EDITOR || !UNITY_PS2P
             return Path.Combine(Application.persistentDataPath, "PlayerPrefs.json");
+#else //Handle our Vita save paths :)
+            return "ux0:data/DeadTrigger/PlayerPrefs.json";
+#endif
         }
     }
 
@@ -173,7 +177,7 @@ public class PlayerPrefsEditor : EditorWindow
         if (GUILayout.Button("Save Snapshot"))
         {
             string path = "PlayerPrefs_Snapshot_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".json";
-
+            //PROBLEM: Haven't set this up to save screenshots
             PlayerPrefs.SavePath(Path.Combine(Application.persistentDataPath, path));
         }
     }
