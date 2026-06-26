@@ -1,0 +1,1250 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 400000}
+  - component: {fileID: 11400000}
+  m_Layer: 18
+  m_Name: SpaceSun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b6679336c128b459f37ee207e8c880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Atlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+  FlareBatches:
+  - {fileID: 0}
+  EditingAtlas: 0
+  isVisible: 1
+  Elements:
+  - Editing: 0
+    Visible: 1
+    elementTextureID: 9
+    SpriteName: Glow_Chroma
+    flare: {fileID: 11400000}
+    flareAtlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+    Brightness: 1
+    Scale: 0.51
+    ScaleRandom: 0
+    ScaleFinal: 0.93333334
+    RandomColorAmount: {x: 0, y: 0, z: 0, w: 0}
+    position: -1
+    useRangeOffset: 0
+    SubElementPositionRange_Min: -1
+    SubElementPositionRange_Max: 1
+    SubElementAngleRange_Min: -180
+    SubElementAngleRange_Max: 180
+    OffsetPosition: {x: -0.919719, y: -0.17320508, z: 0}
+    Anamorphic: {x: 0, y: 0, z: 0}
+    OffsetPostion: {x: 0, y: 0, z: 0}
+    angle: 0
+    FinalAngle: 0
+    useRandomAngle: 0
+    useStarRotation: 0
+    AngleRandom_Min: 0
+    AngleRandom_Max: 0
+    OrientToSource: 0
+    rotateToFlare: 0
+    rotationSpeed: 0
+    rotationOverTime: 0
+    useColorRange: 0
+    ElementFinalColor: {r: 1, g: 1, b: 1, a: 0.21812916}
+    ElementTint: {r: 1, g: 1, b: 1, a: 0.36862746}
+    SubElementColor_Start: {r: 1, g: 1, b: 1, a: 1}
+    SubElementColor_End: {r: 1, g: 1, b: 1, a: 1}
+    useScaleCurve: 0
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    OverrideDynamicEdgeBoost: 0
+    DynamicEdgeBoostOverride: 1
+    OverrideDynamicCenterBoost: 0
+    DynamicCenterBoostOverride: 1
+    OverrideDynamicEdgeBrightness: 0
+    DynamicEdgeBrightnessOverride: 0.4
+    OverrideDynamicCenterBrightness: 0
+    DynamicCenterBrightnessOverride: 0.4
+    subElements: []
+    size: {x: 1, y: 1}
+    EditDynamicTriggering: 0
+    EditOcclusion: 0
+    ElementSetting: 0
+    OffsetSetting: 0
+    ColorSetting: 0
+    ScaleSetting: 0
+    RotationSetting: 0
+    OverrideSetting: 0
+    colorTexture: {fileID: 0}
+    colorTextureDirty: 1
+    type: 0
+  - Editing: 0
+    Visible: 1
+    elementTextureID: 42
+    SpriteName: Streak_LongWhite
+    flare: {fileID: 11400000}
+    flareAtlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+    Brightness: 1
+    Scale: 1.12
+    ScaleRandom: 1
+    ScaleFinal: 0.93333334
+    RandomColorAmount: {x: 0, y: 0, z: 0, w: 0}
+    position: -1
+    useRangeOffset: 0
+    SubElementPositionRange_Min: -1
+    SubElementPositionRange_Max: 1
+    SubElementAngleRange_Min: -180
+    SubElementAngleRange_Max: 133.11627
+    OffsetPosition: {x: -0.17209692, y: 0.05852747, z: 0}
+    Anamorphic: {x: 0, y: 0, z: 0}
+    OffsetPostion: {x: 0, y: 0, z: 0}
+    angle: 46.51
+    FinalAngle: 46.51
+    useRandomAngle: 1
+    useStarRotation: 1
+    AngleRandom_Min: 0
+    AngleRandom_Max: 0
+    OrientToSource: 0
+    rotateToFlare: 0
+    rotationSpeed: 0
+    rotationOverTime: 0
+    useColorRange: 0
+    ElementFinalColor: {r: 1, g: 1, b: 1, a: 0.30980393}
+    ElementTint: {r: 1, g: 1, b: 1, a: 0.19607843}
+    SubElementColor_Start: {r: 1, g: 1, b: 1, a: 1}
+    SubElementColor_End: {r: 1, g: 1, b: 1, a: 1}
+    useScaleCurve: 0
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    OverrideDynamicEdgeBoost: 0
+    DynamicEdgeBoostOverride: 1
+    OverrideDynamicCenterBoost: 0
+    DynamicCenterBoostOverride: 1
+    OverrideDynamicEdgeBrightness: 0
+    DynamicEdgeBrightnessOverride: 0.4
+    OverrideDynamicCenterBrightness: 0
+    DynamicCenterBrightnessOverride: 0.4
+    subElements:
+    - color: {r: 1, g: 1, b: 1, a: 0.19607843}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.11602615}
+      position: -0.79306364
+      offset: {x: -0.919719, y: -0.17320508, z: 0}
+      angle: 136.06473
+      scale: 1.4888735
+      random: 0.10346818
+      random2: 0.9371114
+      RandomScaleSeed: 0.48887345
+      RandomColorSeedR: -0.8941207
+      RandomColorSeedG: 0.22715032
+      RandomColorSeedB: 0.5482235
+      RandomColorSeedA: -0.081760764
+    - color: {r: 1, g: 1, b: 1, a: 0.19607843}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.11602615}
+      position: -0.9691348
+      offset: {x: -0.919719, y: -0.17320508, z: 0}
+      angle: 178.52419
+      scale: 1.9537175
+      random: 0.015432596
+      random2: 0.9912994
+      RandomScaleSeed: 0.95371747
+      RandomColorSeedR: -0.23092496
+      RandomColorSeedG: 0.89227986
+      RandomColorSeedB: -0.7383435
+      RandomColorSeedA: 0.7373781
+    - color: {r: 1, g: 1, b: 1, a: 0.19607843}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.11602615}
+      position: 0.5275631
+      offset: {x: -0.919719, y: -0.17320508, z: 0}
+      angle: 223.62967
+      scale: 1.6659696
+      random: 0.76378155
+      random2: 0.98904943
+      RandomScaleSeed: 0.6659696
+      RandomColorSeedR: 0.1997906
+      RandomColorSeedG: 0.9579041
+      RandomColorSeedB: 0.033256173
+      RandomColorSeedA: -0.83948517
+    - color: {r: 1, g: 1, b: 1, a: 0.19607843}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.11602615}
+      position: -0.40768397
+      offset: {x: -0.919719, y: -0.17320508, z: 0}
+      angle: 290.34662
+      scale: 0.46488976
+      random: 0.29615802
+      random2: 0.5258408
+      RandomScaleSeed: -0.53511024
+      RandomColorSeedR: -0.08245075
+      RandomColorSeedG: -0.79484534
+      RandomColorSeedB: -0.21331179
+      RandomColorSeedA: 0.21145666
+    size: {x: 1, y: 0.07}
+    EditDynamicTriggering: 0
+    EditOcclusion: 0
+    ElementSetting: 1
+    OffsetSetting: 0
+    ColorSetting: 0
+    ScaleSetting: 0
+    RotationSetting: 0
+    OverrideSetting: 0
+    colorTexture: {fileID: 0}
+    colorTextureDirty: 1
+    type: 1
+  - Editing: 0
+    Visible: 1
+    elementTextureID: 7
+    SpriteName: Glint_01
+    flare: {fileID: 11400000}
+    flareAtlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+    Brightness: 1
+    Scale: 1.5
+    ScaleRandom: 0
+    ScaleFinal: 0.93333334
+    RandomColorAmount: {x: 0, y: 0, z: 0, w: 0}
+    position: -1
+    useRangeOffset: 1
+    SubElementPositionRange_Min: -1
+    SubElementPositionRange_Max: 1
+    SubElementAngleRange_Min: -180
+    SubElementAngleRange_Max: 180
+    OffsetPosition: {x: -0.919719, y: -0.17320508, z: 0}
+    Anamorphic: {x: 0, y: 0, z: 0}
+    OffsetPostion: {x: 0, y: 0, z: 0}
+    angle: 0
+    FinalAngle: -32.088253
+    useRandomAngle: 0
+    useStarRotation: 0
+    AngleRandom_Min: 0
+    AngleRandom_Max: 0
+    OrientToSource: 0
+    rotateToFlare: 0
+    rotationSpeed: 29.36
+    rotationOverTime: -1.02
+    useColorRange: 0
+    ElementFinalColor: {r: 1, g: 1, b: 1, a: 0.19724445}
+    ElementTint: {r: 1, g: 1, b: 1, a: 0.33333334}
+    SubElementColor_Start: {r: 1, g: 1, b: 1, a: 1}
+    SubElementColor_End: {r: 1, g: 1, b: 1, a: 1}
+    useScaleCurve: 0
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    OverrideDynamicEdgeBoost: 0
+    DynamicEdgeBoostOverride: 1
+    OverrideDynamicCenterBoost: 0
+    DynamicCenterBoostOverride: 1
+    OverrideDynamicEdgeBrightness: 0
+    DynamicEdgeBrightnessOverride: 0.4
+    OverrideDynamicCenterBrightness: 0
+    DynamicCenterBrightnessOverride: 0.4
+    subElements:
+    - color: {r: 1, g: 1, b: 1, a: 1}
+      colorFinal: {r: 1, g: 1, b: 1, a: 1}
+      position: -0.99783325
+      offset: {x: -0.09686205, y: 0.18061934, z: 0}
+      angle: 0
+      scale: 1
+      random: 0.001083374
+      random2: 0.034788966
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: 0.83853245
+      RandomColorSeedG: 0.44860837
+      RandomColorSeedB: 0.88361
+      RandomColorSeedA: 0.5
+    - color: {r: 1, g: 1, b: 1, a: 1}
+      colorFinal: {r: 1, g: 1, b: 1, a: 1}
+      position: 0.14535248
+      offset: {x: 0.014109711, y: -0.02631048, z: 0}
+      angle: 0
+      scale: 1
+      random: 0.57267624
+      random2: 0.5608935
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: -0.32098234
+      RandomColorSeedG: -0.032529473
+      RandomColorSeedB: -0.03569019
+      RandomColorSeedA: 0.5
+    - color: {r: 1, g: 1, b: 1, a: 1}
+      colorFinal: {r: 1, g: 1, b: 1, a: 1}
+      position: 0.40127778
+      offset: {x: 0.038952988, y: -0.07263592, z: 0}
+      angle: 0
+      scale: 1
+      random: 0.7006389
+      random2: 0.70216274
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: -0.78527427
+      RandomColorSeedG: -0.5703125
+      RandomColorSeedB: 0.9823997
+      RandomColorSeedA: 0.5
+    - color: {r: 1, g: 1, b: 1, a: 1}
+      colorFinal: {r: 1, g: 1, b: 1, a: 1}
+      position: 0.71535254
+      offset: {x: 0.06944097, y: -0.12948708, z: 0}
+      angle: 0
+      scale: 1
+      random: 0.85767627
+      random2: 0.57860094
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: -0.32008588
+      RandomColorSeedG: -0.24565661
+      RandomColorSeedB: 0.3449702
+      RandomColorSeedA: 0.5
+    size: {x: 1, y: 1}
+    EditDynamicTriggering: 0
+    EditOcclusion: 0
+    ElementSetting: 0
+    OffsetSetting: 0
+    ColorSetting: 0
+    ScaleSetting: 0
+    RotationSetting: 0
+    OverrideSetting: 0
+    colorTexture: {fileID: 0}
+    colorTextureDirty: 1
+    type: 0
+  - Editing: 0
+    Visible: 1
+    elementTextureID: 41
+    SpriteName: Streak_LongBlue
+    flare: {fileID: 11400000}
+    flareAtlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+    Brightness: 1
+    Scale: 0.85
+    ScaleRandom: 0
+    ScaleFinal: 0.93333334
+    RandomColorAmount: {x: 0, y: 0, z: 0, w: 0}
+    position: -1
+    useRangeOffset: 0
+    SubElementPositionRange_Min: -1
+    SubElementPositionRange_Max: 1
+    SubElementAngleRange_Min: -180
+    SubElementAngleRange_Max: 180
+    OffsetPosition: {x: -0.919719, y: -0.17320508, z: 0}
+    Anamorphic: {x: 0, y: 0, z: 0}
+    OffsetPostion: {x: 0, y: 0, z: 0}
+    angle: 0
+    FinalAngle: 0
+    useRandomAngle: 0
+    useStarRotation: 0
+    AngleRandom_Min: 0
+    AngleRandom_Max: 0
+    OrientToSource: 0
+    rotateToFlare: 0
+    rotationSpeed: 0
+    rotationOverTime: 0
+    useColorRange: 0
+    ElementFinalColor: {r: 1, g: 1, b: 1, a: 0.19724445}
+    ElementTint: {r: 1, g: 1, b: 1, a: 0.33333334}
+    SubElementColor_Start: {r: 1, g: 1, b: 1, a: 1}
+    SubElementColor_End: {r: 1, g: 1, b: 1, a: 1}
+    useScaleCurve: 0
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    OverrideDynamicEdgeBoost: 0
+    DynamicEdgeBoostOverride: 1
+    OverrideDynamicCenterBoost: 0
+    DynamicCenterBoostOverride: 1
+    OverrideDynamicEdgeBrightness: 0
+    DynamicEdgeBrightnessOverride: 0.4
+    OverrideDynamicCenterBrightness: 0
+    DynamicCenterBrightnessOverride: 0.4
+    subElements: []
+    size: {x: 4.89, y: 0.25}
+    EditDynamicTriggering: 0
+    EditOcclusion: 0
+    ElementSetting: 0
+    OffsetSetting: 0
+    ColorSetting: 0
+    ScaleSetting: 0
+    RotationSetting: 0
+    OverrideSetting: 0
+    colorTexture: {fileID: 0}
+    colorTextureDirty: 1
+    type: 0
+  - Editing: 0
+    Visible: 1
+    elementTextureID: 30
+    SpriteName: Misc_Square_SoftSuper
+    flare: {fileID: 11400000}
+    flareAtlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+    Brightness: 1
+    Scale: 0.02
+    ScaleRandom: 0.14
+    ScaleFinal: 0.93333334
+    RandomColorAmount: {x: 1, y: 0.301, z: 0, w: 0}
+    position: -1
+    useRangeOffset: 1
+    SubElementPositionRange_Min: -0.64237285
+    SubElementPositionRange_Max: 1.876271
+    SubElementAngleRange_Min: -180
+    SubElementAngleRange_Max: 180
+    OffsetPosition: {x: -0.13512236, y: 0.20437491, z: 0}
+    Anamorphic: {x: 0, y: 1, z: 0}
+    OffsetPostion: {x: 0, y: -0.03, z: 0}
+    angle: 0
+    FinalAngle: 0
+    useRandomAngle: 0
+    useStarRotation: 0
+    AngleRandom_Min: 0
+    AngleRandom_Max: 0
+    OrientToSource: 0
+    rotateToFlare: 0
+    rotationSpeed: 0
+    rotationOverTime: 0
+    useColorRange: 0
+    ElementFinalColor: {r: 1, g: 1, b: 1, a: 0.30980393}
+    ElementTint: {r: 1, g: 1, b: 1, a: 0.12941177}
+    SubElementColor_Start: {r: 1, g: 1, b: 1, a: 1}
+    SubElementColor_End: {r: 1, g: 1, b: 1, a: 1}
+    useScaleCurve: 0
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    OverrideDynamicEdgeBoost: 0
+    DynamicEdgeBoostOverride: 1
+    OverrideDynamicCenterBoost: 1
+    DynamicCenterBoostOverride: 1
+    OverrideDynamicEdgeBrightness: 0
+    DynamicEdgeBrightnessOverride: 0.4
+    OverrideDynamicCenterBrightness: 1
+    DynamicCenterBrightnessOverride: -0.3
+    subElements:
+    - color: {r: 0.24583697, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.24583697, g: 1, b: 1, a: 0.07657725}
+      position: 1.0694593
+      offset: {x: 0.98360205, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.07
+      random: 0.67966425
+      random2: 0.9522592
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: -0.754163
+      RandomColorSeedG: 0.18496907
+      RandomColorSeedB: -0.00044500828
+      RandomColorSeedA: 0.5
+    - color: {r: 0.6973256, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.6973256, g: 1, b: 1, a: 0.07657725}
+      position: 1.3740941
+      offset: {x: 1.2637805, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.07
+      random: 0.80061615
+      random2: 0.47932118
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: -0.3026744
+      RandomColorSeedG: 0.032492757
+      RandomColorSeedB: -0.6571734
+      RandomColorSeedA: 0.5
+    - color: {r: 1, g: 0.81481826, b: 1, a: 0.12941177}
+      colorFinal: {r: 1, g: 0.81481826, b: 1, a: 0.07657725}
+      position: 0.88233674
+      offset: {x: 0.81150186, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.07
+      random: 0.60536927
+      random2: 0.38407904
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: 0.6202073
+      RandomColorSeedG: -0.61522174
+      RandomColorSeedB: -0.28057277
+      RandomColorSeedA: 0.5
+    - color: {r: 0.40297842, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.40297842, g: 1, b: 1, a: 0.07657725}
+      position: 1.7357187
+      offset: {x: 1.5963734, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.07
+      random: 0.9441953
+      random2: 0.4829039
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: -0.5970216
+      RandomColorSeedG: 0.9055524
+      RandomColorSeedB: 0.27379462
+      RandomColorSeedA: 0.5
+    - color: {r: 0.38784838, g: 0.92216206, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.38784838, g: 0.92216206, b: 1, a: 0.07657725}
+      position: -0.15528537
+      offset: {x: -0.1428189, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.07
+      random: 0.19339275
+      random2: 0.54249007
+      RandomScaleSeed: 0.5
+      RandomColorSeedR: -0.6121516
+      RandomColorSeedG: -0.25859773
+      RandomColorSeedB: -0.12646258
+      RandomColorSeedA: 0.5
+    - color: {r: 0.43847942, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.43847942, g: 1, b: 1, a: 0.07657725}
+      position: -0.59652174
+      offset: {x: -0.5486324, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.0303215
+      random: 0.018204689
+      random2: 0.13719928
+      RandomScaleSeed: 0.21658218
+      RandomColorSeedR: -0.5615206
+      RandomColorSeedG: 0.050629735
+      RandomColorSeedB: 0.36269853
+      RandomColorSeedA: -0.8591802
+    - color: {r: 1, g: 0.7533503, b: 1, a: 0.12941177}
+      colorFinal: {r: 1, g: 0.7533503, b: 1, a: 0.07657725}
+      position: 0.88247067
+      offset: {x: 0.811625, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.0668315
+      random: 0.60542244
+      random2: 0.4552856
+      RandomScaleSeed: 0.47736785
+      RandomColorSeedR: 0.2426585
+      RandomColorSeedG: -0.81943417
+      RandomColorSeedB: -0.55207634
+      RandomColorSeedA: -0.65491676
+    - color: {r: 1, g: 0.9670114, b: 1, a: 0.12941177}
+      colorFinal: {r: 1, g: 0.9670114, b: 1, a: 0.07657725}
+      position: 0.93691677
+      offset: {x: 0.8617001, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.0003583
+      random: 0.6270397
+      random2: 0.5510276
+      RandomScaleSeed: 0.0025595427
+      RandomColorSeedR: 0.44218394
+      RandomColorSeedG: -0.10959661
+      RandomColorSeedB: 0.06902039
+      RandomColorSeedA: 0.13498819
+    - color: {r: 0.22643852, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.22643852, g: 1, b: 1, a: 0.07657725}
+      position: 0.4147283
+      offset: {x: 0.38143352, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.0781962
+      random: 0.41971046
+      random2: 0.3471796
+      RandomScaleSeed: 0.5585437
+      RandomColorSeedR: -0.7735615
+      RandomColorSeedG: 0.61927176
+      RandomColorSeedB: 0.28005025
+      RandomColorSeedA: 0.7692797
+    - color: {r: 0.45946646, g: 0.792282, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.45946646, g: 0.792282, b: 1, a: 0.07657725}
+      position: 1.8069927
+      offset: {x: 1.6619254, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 0.90135556
+      random: 0.97249377
+      random2: 0.472856
+      RandomScaleSeed: -0.7046032
+      RandomColorSeedR: -0.54053354
+      RandomColorSeedG: -0.69009304
+      RandomColorSeedB: -0.7964506
+      RandomColorSeedA: 0.39126536
+    - color: {r: 1, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.07657725}
+      position: 1.2250215
+      offset: {x: 1.1266755, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 0.9896092
+      random: 0.7414285
+      random2: 0.17727816
+      RandomScaleSeed: -0.07422006
+      RandomColorSeedR: 0.98188543
+      RandomColorSeedG: 0.20009482
+      RandomColorSeedB: -0.21029651
+      RandomColorSeedA: 0.7069447
+    - color: {r: 1, g: 0.81632006, b: 1, a: 0.12941177}
+      colorFinal: {r: 1, g: 0.81632006, b: 1, a: 0.07657725}
+      position: 0.9633477
+      offset: {x: 0.88600916, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 0.9196193
+      random: 0.6375338
+      random2: 0.63848853
+      RandomScaleSeed: -0.5741477
+      RandomColorSeedR: 0.12935746
+      RandomColorSeedG: -0.61023235
+      RandomColorSeedB: 0.7146523
+      RandomColorSeedA: 0.7441478
+    - color: {r: 0.9697503, g: 0.9414933, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.9697503, g: 0.9414933, b: 1, a: 0.07657725}
+      position: 1.2104764
+      offset: {x: 1.1132982, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 0.86815774
+      random: 0.7356535
+      random2: 0.7102964
+      RandomScaleSeed: -0.94173026
+      RandomColorSeedR: -0.030249715
+      RandomColorSeedG: -0.19437444
+      RandomColorSeedB: -0.63251495
+      RandomColorSeedA: 0.7559221
+    - color: {r: 0.79591787, g: 0.73077416, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.79591787, g: 0.73077416, b: 1, a: 0.07657725}
+      position: 0.68114054
+      offset: {x: 0.62645787, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 0.97332835
+      random: 0.5254865
+      random2: 0.9092878
+      RandomScaleSeed: -0.19051182
+      RandomColorSeedR: -0.20408213
+      RandomColorSeedG: -0.894438
+      RandomColorSeedB: 0.11910474
+      RandomColorSeedA: 0.5351162
+    - color: {r: 1, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.07657725}
+      position: 0.6461106
+      offset: {x: 0.5942402, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.044777
+      random: 0.51157826
+      random2: 0.17988253
+      RandomScaleSeed: 0.31983563
+      RandomColorSeedR: 0.96862483
+      RandomColorSeedG: 0.49566576
+      RandomColorSeedB: -0.3104509
+      RandomColorSeedA: -0.83267236
+    - color: {r: 0.69405735, g: 0.7985147, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.69405735, g: 0.7985147, b: 1, a: 0.07657725}
+      position: 1.066849
+      offset: {x: 0.9812013, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 0.94217056
+      random: 0.67862785
+      random2: 0.32823366
+      RandomScaleSeed: -0.41306722
+      RandomColorSeedR: -0.30594265
+      RandomColorSeedG: -0.6693864
+      RandomColorSeedB: -0.43117726
+      RandomColorSeedA: 0.37026474
+    - color: {r: 0.6633524, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.6633524, g: 1, b: 1, a: 0.07657725}
+      position: -0.25261694
+      offset: {x: -0.2323366, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.0476965
+      random: 0.15474832
+      random2: 0.47349936
+      RandomScaleSeed: 0.3406889
+      RandomColorSeedR: -0.33664763
+      RandomColorSeedG: 0.56344295
+      RandomColorSeedB: -0.36082017
+      RandomColorSeedA: -0.90880466
+    - color: {r: 1, g: 1, b: 1, a: 0.12941177}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.07657725}
+      position: 1.1943877
+      offset: {x: 1.098501, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.0750183
+      random: 0.7292657
+      random2: 0.58081275
+      RandomScaleSeed: 0.53584456
+      RandomColorSeedR: 0.681196
+      RandomColorSeedG: 0.4355125
+      RandomColorSeedB: 0.12536848
+      RandomColorSeedA: 0.6766193
+    - color: {r: 0.7805184, g: 0.7175527, b: 1, a: 0.12941177}
+      colorFinal: {r: 0.7805184, g: 0.7175527, b: 1, a: 0.07657725}
+      position: 0.25790757
+      offset: {x: 0.23720248, y: -0.20320508, z: 0}
+      angle: 0
+      scale: 1.1102743
+      random: 0.3574465
+      random2: 0.6113878
+      RandomScaleSeed: 0.7876735
+      RandomColorSeedR: -0.21948159
+      RandomColorSeedG: -0.9383631
+      RandomColorSeedB: -0.93186617
+      RandomColorSeedA: 0.44358584
+    size: {x: 0.58, y: 1.13}
+    EditDynamicTriggering: 0
+    EditOcclusion: 0
+    ElementSetting: 0
+    OffsetSetting: 1
+    ColorSetting: 1
+    ScaleSetting: 1
+    RotationSetting: 1
+    OverrideSetting: 0
+    colorTexture: {fileID: 0}
+    colorTextureDirty: 1
+    type: 1
+  - Editing: 0
+    Visible: 1
+    elementTextureID: 30
+    SpriteName: Misc_Square_SoftSuper
+    flare: {fileID: 11400000}
+    flareAtlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+    Brightness: 1
+    Scale: 0.43
+    ScaleRandom: 0.456
+    ScaleFinal: 0.93333334
+    RandomColorAmount: {x: 0.812, y: 0.529, z: 0, w: 0}
+    position: -1
+    useRangeOffset: 1
+    SubElementPositionRange_Min: -0.39830503
+    SubElementPositionRange_Max: 1.4491524
+    SubElementAngleRange_Min: -180
+    SubElementAngleRange_Max: 180
+    OffsetPosition: {x: -0.13512236, y: 0.20437491, z: 0}
+    Anamorphic: {x: 0, y: 1, z: 0}
+    OffsetPostion: {x: 0, y: 0, z: 0}
+    angle: 0
+    FinalAngle: 0
+    useRandomAngle: 0
+    useStarRotation: 0
+    AngleRandom_Min: 0
+    AngleRandom_Max: 0
+    OrientToSource: 0
+    rotateToFlare: 0
+    rotationSpeed: 0
+    rotationOverTime: 0
+    useColorRange: 0
+    ElementFinalColor: {r: 1, g: 1, b: 1, a: 0.30980393}
+    ElementTint: {r: 1, g: 1, b: 1, a: 0.0627451}
+    SubElementColor_Start: {r: 1, g: 1, b: 1, a: 1}
+    SubElementColor_End: {r: 1, g: 1, b: 1, a: 1}
+    useScaleCurve: 1
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    OverrideDynamicEdgeBoost: 1
+    DynamicEdgeBoostOverride: 0
+    OverrideDynamicCenterBoost: 1
+    DynamicCenterBoostOverride: 1
+    OverrideDynamicEdgeBrightness: 0
+    DynamicEdgeBrightnessOverride: 0.4
+    OverrideDynamicCenterBrightness: 1
+    DynamicCenterBrightnessOverride: -0.07
+    subElements:
+    - color: {r: 1, g: 0.5638516, b: 1, a: 0.0627451}
+      colorFinal: {r: 1, g: 0.5638516, b: 1, a: 0.037128367}
+      position: 1.3205724
+      offset: {x: 1.2145555, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.18879506
+      random: 0.9304017
+      random2: 0.5748847
+      RandomScaleSeed: 0.6147268
+      RandomColorSeedR: 0.19218719
+      RandomColorSeedG: -0.8244772
+      RandomColorSeedB: -0.4948641
+      RandomColorSeedA: -0.8712733
+    - color: {r: 0.48070094, g: 1, b: 1, a: 0.0627451}
+      colorFinal: {r: 0.48070094, g: 1, b: 1, a: 0.037128367}
+      position: 1.0175761
+      offset: {x: 0.93588406, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.3966231
+      random: 0.7663945
+      random2: 0.5567935
+      RandomScaleSeed: -0.47334945
+      RandomColorSeedR: -0.6395309
+      RandomColorSeedG: 0.92344093
+      RandomColorSeedB: -0.84949684
+      RandomColorSeedA: 0.00979197
+    - color: {r: 0.29775748, g: 0.8172299, b: 1, a: 0.0627451}
+      colorFinal: {r: 0.29775748, g: 0.8172299, b: 1, a: 0.037128367}
+      position: 1.3161992
+      offset: {x: 1.2105334, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.16690087
+      random: 0.92803454
+      random2: 0.5728677
+      RandomScaleSeed: 0.23790681
+      RandomColorSeedR: -0.86483073
+      RandomColorSeedG: -0.34550107
+      RandomColorSeedB: -0.7317381
+      RandomColorSeedA: 0.23400438
+    - color: {r: 0.9424634, g: 1, b: 1, a: 0.0627451}
+      colorFinal: {r: 0.9424634, g: 1, b: 1, a: 0.037128367}
+      position: -0.101397775
+      offset: {x: -0.09325746, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.33160716
+      random: 0.16071129
+      random2: 0.6420634
+      RandomScaleSeed: 0.08544624
+      RandomColorSeedR: -0.07085788
+      RandomColorSeedG: 0.82808375
+      RandomColorSeedB: 0.34310862
+      RandomColorSeedA: 0.0072699785
+    - color: {r: 0.97981423, g: 0.95188665, b: 1, a: 0.0627451}
+      colorFinal: {r: 0.97981423, g: 0.95188665, b: 1, a: 0.037128367}
+      position: 0.10829073
+      offset: {x: 0.099597044, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.69217926
+      random: 0.27421242
+      random2: 0.96871316
+      RandomScaleSeed: 0.2745292
+      RandomColorSeedR: -0.02485931
+      RandomColorSeedG: -0.09095156
+      RandomColorSeedB: 0.15668428
+      RandomColorSeedA: 0.73232293
+    - color: {r: 0.9494567, g: 0.991675, b: 1, a: 0.0627451}
+      colorFinal: {r: 0.9494567, g: 0.991675, b: 1, a: 0.037128367}
+      position: -0.28349656
+      offset: {x: -0.26073718, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.16713859
+      random: 0.06214404
+      random2: 0.119580865
+      RandomScaleSeed: 0.4581971
+      RandomColorSeedR: -0.06224549
+      RandomColorSeedG: -0.015737176
+      RandomColorSeedB: 0.94797206
+      RandomColorSeedA: -0.1261462
+    - color: {r: 1, g: 1, b: 1, a: 0.0627451}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.037128367}
+      position: 0.78734696
+      offset: {x: 0.72413796, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.5527701
+      random: 0.641775
+      random2: 0.6702534
+      RandomScaleSeed: -0.7217655
+      RandomColorSeedR: 0.99603105
+      RandomColorSeedG: 0.60262966
+      RandomColorSeedB: 0.82233596
+      RandomColorSeedA: 0.06647718
+    - color: {r: 1, g: 0.5740899, b: 1, a: 0.0627451}
+      colorFinal: {r: 1, g: 0.5740899, b: 1, a: 0.037128367}
+      position: 0.9037614
+      offset: {x: 0.8312065, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.723184
+      random: 0.7047883
+      random2: 0.113811255
+      RandomScaleSeed: 0.1714629
+      RandomColorSeedR: 0.6991544
+      RandomColorSeedG: -0.8051231
+      RandomColorSeedB: -0.5935888
+      RandomColorSeedA: -0.7257352
+    - color: {r: 1, g: 1, b: 1, a: 0.0627451}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.037128367}
+      position: 0.9257416
+      offset: {x: 0.85142213, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.63601035
+      random: 0.7166859
+      random2: 0.56982964
+      RandomScaleSeed: -0.011679292
+      RandomColorSeedR: 0.7238023
+      RandomColorSeedG: 0.92482686
+      RandomColorSeedB: 0.4601979
+      RandomColorSeedA: 0.21477139
+    - color: {r: 0.57788044, g: 0.6447779, b: 1, a: 0.0627451}
+      colorFinal: {r: 0.57788044, g: 0.6447779, b: 1, a: 0.037128367}
+      position: 0.46311206
+      offset: {x: 0.42593294, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 1.1973065
+      random: 0.4662717
+      random2: 0.59070283
+      RandomScaleSeed: 0.46386406
+      RandomColorSeedR: -0.5198517
+      RandomColorSeedG: -0.67149734
+      RandomColorSeedB: 0.7670708
+      RandomColorSeedA: 0.88310146
+    - color: {r: 1, g: 1, b: 1, a: 0.0627451}
+      colorFinal: {r: 1, g: 1, b: 1, a: 0.037128367}
+      position: 1.3903749
+      offset: {x: 1.2787542, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.15923691
+      random: 0.9681847
+      random2: 0.12393272
+      RandomScaleSeed: 0.9681401
+      RandomColorSeedR: 0.8980062
+      RandomColorSeedG: 0.5054691
+      RandomColorSeedB: 0.99013615
+      RandomColorSeedA: 0.5854199
+    - color: {r: 1, g: 0.66166055, b: 1, a: 0.0627451}
+      colorFinal: {r: 1, g: 0.66166055, b: 1, a: 0.037128367}
+      position: 0.16411985
+      offset: {x: 0.15094414, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.5880295
+      random: 0.30443186
+      random2: 0.04201305
+      RandomScaleSeed: -0.33657968
+      RandomColorSeedR: 0.10980165
+      RandomColorSeedG: -0.6395831
+      RandomColorSeedB: -0.95980835
+      RandomColorSeedA: -0.26954067
+    - color: {r: 0.20834753, g: 0.9682921, b: 1, a: 0.0627451}
+      colorFinal: {r: 0.20834753, g: 0.9682921, b: 1, a: 0.037128367}
+      position: 0.37646645
+      offset: {x: 0.34624335, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.5475666
+      random: 0.41937178
+      random2: 0.09088838
+      RandomScaleSeed: -0.9119036
+      RandomColorSeedR: -0.9749415
+      RandomColorSeedG: -0.059939265
+      RandomColorSeedB: -0.7367122
+      RandomColorSeedA: 0.2673008
+    - color: {r: 1, g: 0.79698473, b: 1, a: 0.0627451}
+      colorFinal: {r: 1, g: 0.79698473, b: 1, a: 0.037128367}
+      position: 0.28191975
+      offset: {x: 0.25928694, y: -0.17320508, z: 0}
+      angle: 0
+      scale: 0.94406116
+      random: 0.36819512
+      random2: 0.98251486
+      RandomScaleSeed: 0.25607488
+      RandomColorSeedR: 0.91895056
+      RandomColorSeedG: -0.38377178
+      RandomColorSeedB: -0.77295804
+      RandomColorSeedA: -0.7021177
+    size: {x: 1, y: 1}
+    EditDynamicTriggering: 0
+    EditOcclusion: 0
+    ElementSetting: 0
+    OffsetSetting: 1
+    ColorSetting: 0
+    ScaleSetting: 0
+    RotationSetting: 1
+    OverrideSetting: 1
+    colorTexture: {fileID: 0}
+    colorTextureDirty: 1
+    type: 1
+  - Editing: 1
+    Visible: 1
+    elementTextureID: 35
+    SpriteName: Spectrum_Thick_wide
+    flare: {fileID: 11400000}
+    flareAtlas: {fileID: 11400000, guid: cb9d833d9a9304870b9f6bad04ea93e3, type: 2}
+    Brightness: 1
+    Scale: 0.98
+    ScaleRandom: 0
+    ScaleFinal: 0.93333334
+    RandomColorAmount: {x: 0, y: 0, z: 0, w: 0}
+    position: 0.965
+    useRangeOffset: 0
+    SubElementPositionRange_Min: -1
+    SubElementPositionRange_Max: 1
+    SubElementAngleRange_Min: -180
+    SubElementAngleRange_Max: 180
+    OffsetPosition: {x: 0.8875288, y: 0.1671429, z: 0}
+    Anamorphic: {x: 0, y: 0, z: 0}
+    OffsetPostion: {x: 0, y: 0, z: 0}
+    angle: -186.06
+    FinalAngle: -355.3947
+    useRandomAngle: 0
+    useStarRotation: 0
+    AngleRandom_Min: 0
+    AngleRandom_Max: 0
+    OrientToSource: 0
+    rotateToFlare: 1
+    rotationSpeed: 0
+    rotationOverTime: 0
+    useColorRange: 0
+    ElementFinalColor: {r: 1, g: 1, b: 1, a: 0.07657725}
+    ElementTint: {r: 1, g: 1, b: 1, a: 0.12941177}
+    SubElementColor_Start: {r: 1, g: 1, b: 1, a: 1}
+    SubElementColor_End: {r: 1, g: 1, b: 1, a: 1}
+    useScaleCurve: 0
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    OverrideDynamicEdgeBoost: 0
+    DynamicEdgeBoostOverride: 1
+    OverrideDynamicCenterBoost: 1
+    DynamicCenterBoostOverride: -1.02
+    OverrideDynamicEdgeBrightness: 0
+    DynamicEdgeBrightnessOverride: 0.4
+    OverrideDynamicCenterBrightness: 1
+    DynamicCenterBrightnessOverride: -0.1
+    subElements: []
+    size: {x: 1, y: 2.17}
+    EditDynamicTriggering: 0
+    EditOcclusion: 0
+    ElementSetting: 0
+    OffsetSetting: 1
+    ColorSetting: 0
+    ScaleSetting: 1
+    RotationSetting: 1
+    OverrideSetting: 1
+    colorTexture: {fileID: 0}
+    colorTextureDirty: 1
+    type: 0
+  thisTransform: {fileID: 400000}
+  thisGameObject: {fileID: 0}
+  LensPosition: {x: 0.24132904, y: 0.41339746, z: 10}
+  EditGlobals: 1
+  GlobalScale: 64
+  MultiplyScaleByTransformScale: 0
+  GlobalBrightness: 0.634
+  GlobalTintColor: {r: 1, g: 1, b: 1, a: 0.634}
+  useMaxDistance: 1
+  useDistanceScale: 1
+  useDistanceFade: 1
+  GlobalMaxDistance: 150
+  UseAngleLimit: 0
+  maxAngle: 90
+  UseAngleScale: 0
+  UseAngleBrightness: 1
+  UseAngleCurve: 0
+  AngleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  mask:
+    serializedVersion: 2
+    m_Bits: 1
+  RaycastPhysics: 0
+  Occluded: 0
+  OccludeScale: 1
+  pixelBasedOcclusion: 0
+  pixelLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
+  occlusionScaleSpeed: 4
+  occlusionBrightnessSpeed: 32
+  OccludingObject: {fileID: 0}
+  EditDynamicTriggering: 0
+  EditOcclusion: 0
+  IoSetting: 0
+  OffScreenFadeDist: 0.2
+  useDynamicEdgeBoost: 1
+  DynamicEdgeBoost: 1.2
+  DynamicEdgeBrightness: 0.1
+  DynamicEdgeRange: 0.3
+  DynamicEdgeBias: -0.1
+  DynamicEdgeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useDynamicCenterBoost: 1
+  DynamicCenterBoost: 0.1
+  DynamicCenterBrightness: 0
+  DynamicCenterRange: 0.2
+  DynamicCenterBias: 0
+  neverCull: 0
+  sunMode: 0
+  sunModeTransformA: {fileID: 0}
+  sunModeTransformB: {fileID: 0}
+  DisabledPlayMode: 1
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1

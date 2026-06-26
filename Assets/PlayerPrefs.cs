@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class PlayerPrefs : MonoBehaviour
 {
+    static string path = "ux0:data/DeadTrigger";
+
     static string savePath
     {
         get
@@ -31,6 +33,18 @@ public class PlayerPrefs : MonoBehaviour
         DontDestroyOnLoad(new GameObject("Player Prefs", typeof(PlayerPrefs)));
 
         Load();
+
+#if UNITY_PSP2 && !UNITY_EDITOR
+        if (!Directory.Exists(path))    //Ensure we are able to save
+        {
+            Directory.CreateDirectory(path);
+            Debug.Log("Creating path for save: " + path);
+        }
+        else
+        {
+            Debug.Log("Found path for save: " + path);
+        }
+#endif
     }
 
     void OnApplicationQuit()

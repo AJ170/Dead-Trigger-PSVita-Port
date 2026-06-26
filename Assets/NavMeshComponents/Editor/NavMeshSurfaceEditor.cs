@@ -316,6 +316,56 @@ namespace UnityEditor.AI
                     }
                 }
 
+                if (GUILayout.Button("Use Existing"))
+                {
+                    foreach (NavMeshSurface surf in targets)
+                    {
+                        Undo.RecordObject(surf, "Use Existing NavMesh");
+
+                        // Sample the existing world navmesh data at the surface's position
+                        NavMeshHit hit;
+                        if (!NavMesh.SamplePosition(surf.transform.position, out hit, float.MaxValue, NavMesh.AllAreas))
+                        {
+                            Debug.LogWarning("Use Existing: Could not sample any NavMesh data near " + surf.name);
+                            continue;
+                        }
+
+                        // Build NavMeshData from the currently registered world mesh
+                        // using empty sources so we capture what's already there
+                        // rather than recalculating from geometry
+                        var buildSettings = surf.GetBuildSettings();
+                        var sources = new List<NavMeshBuildSource>();
+                        var bounds = new Bounds(surf.transform.position, surf.size);
+
+                        var newData = UnityEngine.AI.NavMeshBuilder.BuildNavMeshData(
+                            buildSettings,
+                            sources,
+                            bounds,
+                            surf.transform.position,
+                            surf.transform.rotation);
+
+                        if (newData == null)
+                        {
+                            Debug.LogWarning("Use Existing: Failed to capture NavMesh data on " + surf.name);
+                            continue;
+                        }
+
+                        surf.RemoveData();
+                        surf.navMeshData = newData;
+
+                        if (surf.isActiveAndEnabled)
+                        {
+                            surf.AddData();
+                            Debug.LogWarning("Added existing demo surface to Navmesh surface");
+                        }
+
+                        CreateNavMeshAsset(surf);
+                        EditorUtility.SetDirty(surf);
+                        EditorSceneManager.MarkSceneDirty(surf.gameObject.scene);
+                    }
+                    SceneView.RepaintAll();
+                }
+
                 GUILayout.EndHorizontal();
             }
 
