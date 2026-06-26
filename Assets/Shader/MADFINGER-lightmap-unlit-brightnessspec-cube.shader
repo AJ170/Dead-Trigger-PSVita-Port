@@ -1,19 +1,21 @@
-Shader "MADFINGER/Environment/Cubemap specular on brightness + Lightmap" {
+Shader "Vita/Environment/Cubemap Specular Optimized" {
     Properties{
         _MainTex("Base (RGB) Gloss (A)", 2D) = "white" {}
         _SpecCubeTex("SpecCube", CUBE) = "black" {}
         _SpecularStrength("Specular Strength", Range(0, 2)) = 1.0
         _Roughness("Roughness", Range(0, 1)) = 0.1
-        _ScrollingSpeed("Scrolling speed", Vector) = (0,0,0,0) //for making the specular shine scroll. I assume for some reason or another
+        _ScrollingSpeed("Scrolling speed", Vector) = (0, 0, 0, 0)
     }
+
         SubShader{
             LOD 100
             Tags { "LIGHTMODE" = "ForwardBase" "RenderType" = "Opaque" }
+
             Pass {
-                Tags { "LIGHTMODE" = "ForwardBase" "RenderType" = "Opaque" }
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
+                #pragma target 2.0
 
                 #include "UnityCG.cginc"
 
@@ -48,7 +50,7 @@ Shader "MADFINGER/Environment/Cubemap specular on brightness + Lightmap" {
 
                     o.pos = UnityObjectToClipPos(v.vertex);
 
-                    // Scrolling UVs for main texture
+                    // Scrolling UVs
                     o.uv = (v.uv.xy * _MainTex_ST.xy) + _MainTex_ST.zw;
                     o.uv += frac(_ScrollingSpeed.xy * _Time.y);
 
@@ -58,10 +60,10 @@ Shader "MADFINGER/Environment/Cubemap specular on brightness + Lightmap" {
                     // Vertex color
                     o.color = v.color;
 
-                    // World space normal for reflection
+                    // World space normal
                     o.worldNormal = UnityObjectToWorldNormal(v.normal);
 
-                    // World space view direction for reflection
+                    // World space view direction
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
                     o.worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
 
@@ -69,42 +71,38 @@ Shader "MADFINGER/Environment/Cubemap specular on brightness + Lightmap" {
                 }
 
                 half4 frag(v2f i) : SV_Target {
-                    // Sample base texture
+                    // Sample base texture (1 sample)
                     half4 baseColor = tex2D(_MainTex, i.uv);
 
-                    // Decode lightmap
+                    // Sample lightmap (1 sample)
                     half3 lightmap = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv1));
 
-                    // Apply lightmap to base color
-                    half3 color = baseColor.rgb* (2.0 * lightmap);
-
-                    // Apply vertex color modulation
-                    color *= i.color.rgb;
+                    // Combine base with lightmap
+                    half3 color = baseColor.rgb * (2.0 * lightmap) * i.color.rgb;
 
                     // === CUBEMAP REFLECTION ===
 
-                    // Normalize interpolated values
+                    // Normalize vectors
                     half3 worldNormal = normalize(i.worldNormal);
                     half3 worldViewDir = normalize(i.worldViewDir);
 
-                    // Calculate reflection vector
+                    // Reflection vector
                     half3 reflectionVector = reflect(-worldViewDir, worldNormal);
 
-                    // Sample cubemap with roughness LOD
+                    // Sample cubemap with roughness LOD (1 sample)
                     half roughnessLOD = _Roughness * 7.0;
-                    half4 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
+                    half3 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD)).rgb;
 
-                    // Use alpha channel (gloss) as reflection strength
-                    // Combine with _SpecularStrength property, and multiply by texture color channels to pickup only where brightest (this isn't technically correct)
-                    half reflectionAmount = baseColor.a * _SpecularStrength * (0.2126 * baseColor.r + 0.7152 * baseColor.g + 0.0722 * baseColor.b);
-
-                    // Fresnel effect (stronger reflections at glancing angles)
+                    // Calculate Fresnel (cheaper: use linear approximation)
                     half NdotV = saturate(dot(worldNormal, worldViewDir));
-                    half fresnel = pow(1.0 - NdotV, 3.0);
-                    reflectionAmount *= fresnel;
+                    half fresnel = 1.0 - NdotV;  // Linear instead of pow()
 
-                    // Blend reflection with base color
-                    color = lerp(color, color + cubeColor.rgb, reflectionAmount);
+                    // Use alpha as primary reflection strength
+                    // Multiply by Fresnel and user property
+                    half reflectionAmount = baseColor.a * fresnel * _SpecularStrength;
+
+                    // Add reflection to color (multiplicative blend is cheaper than lerp)
+                    color += cubeColor * reflectionAmount;
 
                     return half4(color, baseColor.a);
                 }

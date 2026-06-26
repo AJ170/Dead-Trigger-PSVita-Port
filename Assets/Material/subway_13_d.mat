@@ -32,12 +32,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _ReflectionStrength: 0.5
-    - _Roughness: 0.097
+    - _Roughness: 0.174
     - _SHLightingScale: 1
     - _Shininess: 0.078125
     - _SpecRange: 20
     - _SpecStrength: 2
-    - _SpecularStrength: 1.67
+    - _SpecularStrength: 0.937
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
