@@ -330,6 +330,30 @@ public class custom_inputs : MonoBehaviour
 		new JoyInput(KeyCode.None, E_JoystickAxis.Joystick_4a)
 	};
 
+	// PSVita default gamepad config. Axes are left as NONE so the analog sticks
+	// fall through to the named InputManager axes (HorizontalMove/VerticalMove for
+	// the left stick, HorizontalView/VerticalView for the right stick). Buttons use
+	// the generic "joystick button N" codes the Vita reports. Fire = R (button 5) is
+	// confirmed; the rest follow the standard XInput/Vita layout and can be retuned.
+	private static JoyInput[] PSVitaDefault = new JoyInput[15]
+	{
+		new JoyInput(KeyCode.JoystickButton5, E_JoystickAxis.NONE),  // Fire        -> R
+		new JoyInput(KeyCode.JoystickButton2, E_JoystickAxis.NONE),  // Reload      -> Square/X
+		new JoyInput(KeyCode.JoystickButton7, E_JoystickAxis.NONE),  // Pause       -> Start
+		new JoyInput(KeyCode.JoystickButton3, E_JoystickAxis.NONE),  // PrevWeapon  -> Triangle/Y
+		new JoyInput(KeyCode.JoystickButton1, E_JoystickAxis.NONE),  // NextWeapon  -> Circle/B
+		new JoyInput(KeyCode.JoystickButton4, E_JoystickAxis.NONE),  // Aim         -> L
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE),             // Item1
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE),             // Item2
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE),             // Item3
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE),             // Item4
+		new JoyInput(KeyCode.JoystickButton0, E_JoystickAxis.NONE),  // Action      -> Cross/A
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE),             // Axis_MoveRight (fallback)
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE),             // Axis_MoveUp   (fallback)
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE),             // Axis_ViewRight (fallback)
+		new JoyInput(KeyCode.None, E_JoystickAxis.NONE)              // Axis_ViewUp   (fallback)
+	};
+
 	private static string s_NvidiaShield1 = "nvidia_Corporation nvidia_joypad";
 
 	private static string s_NvidiaShield2 = "NVIDIA Corporation NVIDIA Controller v01";
@@ -418,6 +442,11 @@ public class custom_inputs : MonoBehaviour
 
 	public void LoadConfig()
 	{
+		if (Application.platform == RuntimePlatform.PSP2)
+		{
+			SetDefaults(PSVitaDefault);
+			return;
+		}
 		SetDefaults(EmptyDefaults);
 		string text = Game.CurrentJoystickName();
 		if (text == null)

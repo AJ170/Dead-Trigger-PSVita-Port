@@ -1,0 +1,21 @@
+PS Vita Control Mapper Setup
+How to Access the Tool
+Locate the Code Explode Studio Tools tab in the top Unity toolbar.
+
+Click the tab to open the dropdown menu.
+
+Select PS Vita Control Mapper to open the configuration window.
+
+Configuration Options
+Within the window, you have two primary options:
+
+Standard Control Scheme: Adds default input axes.
+
+PS Vita Scheme : Adds specific mapping for PS Vita hardware.
+
+Important Note : Clicking either option will ADD the selected input axes to your existing Input Manager. It will not overwrite your current settings unless you explicitly click the Delete All Inputs! button.
+
+Troubleshooting : Missing Event System Components
+If you notice that your EventSystem GameObject has two "Missing (Mono Script)" components (typically the Event System and Standalone Input Module), this is a common Unity import quirk rather than a package error.
+
+To Fix This : I have added an automated check and some logic to replace the event system to prevent issues.
