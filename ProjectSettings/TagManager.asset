@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - OcclusionColliders
   - Ignore Enemy
   - EnemyBox
   - Ignore Player
