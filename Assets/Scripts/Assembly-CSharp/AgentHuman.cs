@@ -52,7 +52,7 @@ public class AgentHuman : Agent
 
 	public delegate void HealthChangedDelegate(AgentHuman Human, float HealthChange);
 
-	public static float AgentUpdateTime = 0.1f;
+	static public float AgentUpdateTime = 0.1f;
 
 	private FadeoutOverrideDef FadeoutOverride = default(FadeoutOverrideDef);
 
@@ -443,6 +443,7 @@ public class AgentHuman : Agent
 		{
 			Shadow = component.ShadowPlaneGameObject;
 		}
+		//AgentUpdateTime = UnityEngine.Random.Range(0.1f, 0.2f);
 	}
 
 	private bool DestroyEnemyConfig()
@@ -630,96 +631,124 @@ public class AgentHuman : Agent
 		Reset();
 	}
 
+	private static readonly Vector3 s_RaycastOffset = new Vector3(0f, 0.1f, 0f);
+	private static readonly Vector3 s_RaycastDown = Vector3.down;
+
 	private void LateUpdate()
 	{
 		float health = BlackBoard.Health;
 		float num = health - PrevHealth;
 		if (num != 0f && this.OnHealthChanged != null)
-		{
 			this.OnHealthChanged(this, num);
-		}
 		PrevHealth = health;
+
 		if (!IsAlive)
-		{
 			return;
-		}
+
+		// Cache time values used multiple times
+		float timeSinceLevelLoad = Time.timeSinceLevelLoad;
+		float deltaTime = Time.deltaTime;
+
 		RaycastHit hitInfo;
-		if ((BlackBoard.MotionType == E_MotionType.Run || BlackBoard.MotionType == E_MotionType.Walk || BlackBoard.MotionType == E_MotionType.AnimationDrive) && StepTime < Time.timeSinceLevelLoad && Physics.Raycast(base.Position + Vector3.up * 0.1f, -Vector3.up, out hitInfo))
+		if ((BlackBoard.MotionType == E_MotionType.Run
+			|| BlackBoard.MotionType == E_MotionType.Walk
+			|| BlackBoard.MotionType == E_MotionType.AnimationDrive)
+			&& StepTime < timeSinceLevelLoad
+			&& Physics.Raycast(base.Position + s_RaycastOffset, s_RaycastDown, out hitInfo))
 		{
 			AudioClip clip;
 			switch (hitInfo.transform.gameObject.layer)
 			{
-			case 28:
-				clip = StepSound;
-				break;
-			case 29:
-				clip = StepMetalSound;
-				break;
-			default:
-				clip = StepSound;
-				break;
+				case 28:
+					clip = StepSound;
+					break;
+				case 29:
+					clip = StepMetalSound;
+					break;
+				default:
+					clip = StepSound;
+					break;
 			}
+
 			if (BlackBoard.MotionType == E_MotionType.Run)
 			{
 				SoundPlay(clip);
-				StepTime = Time.timeSinceLevelLoad + UnityEngine.Random.Range(BlackBoard.StepsSetup.RunMinDelay, BlackBoard.StepsSetup.RunMaxDelay);
+				StepTime = timeSinceLevelLoad + UnityEngine.Random.Range(
+					BlackBoard.StepsSetup.RunMinDelay,
+					BlackBoard.StepsSetup.RunMaxDelay);
 			}
 			else if (BlackBoard.MotionType == E_MotionType.Walk)
 			{
 				SoundPlay(clip);
-				StepTime = Time.timeSinceLevelLoad + UnityEngine.Random.Range(BlackBoard.StepsSetup.WalkMinDelay, BlackBoard.StepsSetup.WalkMaxDelay);
+				StepTime = timeSinceLevelLoad + UnityEngine.Random.Range(
+					BlackBoard.StepsSetup.WalkMinDelay,
+					BlackBoard.StepsSetup.WalkMaxDelay);
 			}
 			else if (BlackBoard.MotionType == E_MotionType.AnimationDrive)
 			{
 				SoundPlay(clip);
-				StepTime = Time.timeSinceLevelLoad + UnityEngine.Random.Range(BlackBoard.StepsSetup.AnimMinDelay, BlackBoard.StepsSetup.AnimMaxDelay);
+				StepTime = timeSinceLevelLoad + UnityEngine.Random.Range(
+					BlackBoard.StepsSetup.AnimMinDelay,
+					BlackBoard.StepsSetup.AnimMaxDelay);
 			}
 		}
-		BlackBoard.IdleTimer += Time.deltaTime;
-		if (TimeToUpdateAgent < Time.timeSinceLevelLoad)
+
+		BlackBoard.IdleTimer += deltaTime;
+
+		if (TimeToUpdateAgent < timeSinceLevelLoad)
 		{
 			UpdateAgent();
 			if (IsPlayer)
-			{
 				return;
-			}
-			TimeToUpdateAgent = Time.timeSinceLevelLoad + AgentUpdateTime;
+			TimeToUpdateAgent = timeSinceLevelLoad + AgentUpdateTime;
 		}
+
 		if (!IsPlayer)
 		{
-			float num2 = ((!(Time.timeScale >= 1f)) ? Mathf.Max(Time.timeScale, 0.5f) : 1f);
-			if (Time.deltaTime > float.Epsilon && base.Audio.pitch != num2)
-			{
+			float num2 = ((!(Time.timeScale >= 1f))
+				? Mathf.Max(Time.timeScale, 0.5f)
+				: 1f);
+			if (deltaTime > float.Epsilon && base.Audio.pitch != num2)
 				base.Audio.pitch = num2;
-			}
 		}
-		if (IsPlayer || !(TeleportTimer <= Time.timeSinceLevelLoad) || !(BlackBoard.VisibleTarget != null) || !(BlackBoard.DistanceToTarget > 15f) || IsActionPointOn)
-		{
+
+		if (IsPlayer
+			|| !(TeleportTimer <= timeSinceLevelLoad)
+			|| !(BlackBoard.VisibleTarget != null)
+			|| !(BlackBoard.DistanceToTarget > 15f)
+			|| IsActionPointOn)
 			return;
-		}
-		float num3 = Vector3.Angle(BlackBoard.VisibleTarget.Forward, -BlackBoard.DirToTarget);
+
+		float num3 = Vector3.Angle(
+			BlackBoard.VisibleTarget.Forward,
+			-BlackBoard.DirToTarget);
+
 		if (num3 > 90f)
 		{
 			UnityEngine.AI.NavMeshHit hit;
-			NavMeshAgent.SamplePathPosition(-1, BlackBoard.DistanceToTarget - 9f, out hit);
+			NavMeshAgent.SamplePathPosition(
+				-1,
+				BlackBoard.DistanceToTarget - 9f,
+				out hit);
+
 			Vector3 to = hit.position - BlackBoard.VisibleTarget.Position;
 			float num4 = Vector3.Angle(BlackBoard.VisibleTarget.Forward, to);
+
 			if (num4 > 90f)
 			{
 				Teleport(hit.position, base.Transform.rotation);
-				TeleportTimer = Time.timeSinceLevelLoad + 5f;
+				TeleportTimer = timeSinceLevelLoad + 5f;
 			}
 			else
 			{
-				TeleportTimer = Time.timeSinceLevelLoad + 1f;
+				TeleportTimer = timeSinceLevelLoad + 1f;
 			}
 		}
 		else
 		{
-			TeleportTimer = Time.timeSinceLevelLoad + 2f;
+			TeleportTimer = timeSinceLevelLoad + 2f;
 		}
 	}
-
 	private void UpdateAgent()
 	{
 		if (!BlackBoard.DontUpdate)

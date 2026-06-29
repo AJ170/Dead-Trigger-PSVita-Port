@@ -328,54 +328,64 @@ public class GuiHUD : MonoBehaviour
     private void LateUpdate()
     {
         if (Disabled || IsHidden || !Initialised)
-        {
             return;
-        }
-        bool flag = Last100msUpdate < 1E-05f || TimeManager.Instance.timeSinceLevelLoad - Last100msUpdate > 0.1f;
-        bool flag2 = Last100msUpdate < 1E-05f || TimeManager.Instance.timeSinceLevelLoad - Last200msUpdate > 0.2f;
-        HudComponent[] hudComponents = m_HudComponents;
-        foreach (HudComponent hudComponent in hudComponents)
+
+        bool flag = Last100msUpdate < 1E-05f
+            || TimeManager.Instance.timeSinceLevelLoad - Last100msUpdate > 0.1f;
+        bool flag2 = Last100msUpdate < 1E-05f
+            || TimeManager.Instance.timeSinceLevelLoad - Last200msUpdate > 0.2f;
+
+        // Cache TimeManager values to avoid repeated singleton lookups
+        TimeManager timeManager = TimeManager.Instance;
+        float realDeltaTime = timeManager.GetRealDeltaTime();
+        float timeSinceLevelLoad = timeManager.timeSinceLevelLoad;
+
+        // Use indexed for loop to avoid foreach enumerator allocation
+        for (int i = 0; i < m_HudComponents.Length; i++)
         {
+            HudComponent hudComponent = m_HudComponents[i];
             if (!hudComponent.IsEnabled())
-            {
                 continue;
-            }
-            hudComponent.LateUpdate(TimeManager.Instance.GetRealDeltaTime());
+
+            hudComponent.LateUpdate(realDeltaTime);
+
             if (flag)
             {
                 hudComponent.LateUpdate100ms();
-                float num = TimeManager.Instance.timeSinceLevelLoad - Last100msUpdate - 0.1f;
+                float num = timeSinceLevelLoad - Last100msUpdate - 0.1f;
                 if (num > 0.1f || num < 0f)
-                {
-                    Last100msUpdate = TimeManager.Instance.timeSinceLevelLoad;
-                }
+                    Last100msUpdate = timeSinceLevelLoad;
                 else
-                {
-                    Last100msUpdate = TimeManager.Instance.timeSinceLevelLoad - num;
-                }
+                    Last100msUpdate = timeSinceLevelLoad - num;
             }
+
             if (flag2)
             {
                 hudComponent.LateUpdate200ms();
-                float num2 = TimeManager.Instance.timeSinceLevelLoad - Last200msUpdate - 0.2f;
+                float num2 = timeSinceLevelLoad - Last200msUpdate - 0.2f;
                 if (num2 > 0.2f || num2 < 0f)
-                {
-                    Last200msUpdate = TimeManager.Instance.timeSinceLevelLoad;
-                }
+                    Last200msUpdate = timeSinceLevelLoad;
                 else
-                {
-                    Last200msUpdate = TimeManager.Instance.timeSinceLevelLoad - num2;
-                }
+                    Last200msUpdate = timeSinceLevelLoad - num2;
             }
         }
-        if (Game.Instance.KeypadSlided || (NoTouchForSec(10f) && Game.Instance.IsGamepadConnectedCached()) || Game.Instance.IsMogaConnected)
-        {
-            EnableActionControls(false);
-        }
-        else
-        {
-            EnableActionControls(true);
-        }
+
+#if !UNITY_PSP2
+    // Touch and Moga controller checks not needed on Vita
+    if (Game.Instance.KeypadSlided 
+        || (NoTouchForSec(10f) && Game.Instance.IsGamepadConnectedCached()) 
+        || Game.Instance.IsMogaConnected)
+    {
+        EnableActionControls(false);
+    }
+    else
+    {
+        EnableActionControls(true);
+    }
+#else
+        // Vita always uses gamepad controls
+        EnableActionControls(false);
+#endif
     }
 
     private bool NoTouchForSec(float inactivityTime)

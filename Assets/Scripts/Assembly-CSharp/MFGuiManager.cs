@@ -300,6 +300,7 @@ public class MFGuiManager : MonoBehaviour
 
 	private void LateUpdate()
 	{
+#if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.Keypad7))
 		{
 			Debug.Log("Input.GetKeyDown(KeyCode.Keypad7)");
@@ -318,6 +319,8 @@ public class MFGuiManager : MonoBehaviour
 			TextDatabase.instance.Reload(SystemLanguage.Korean);
 			OnLanguageChanged("Korean");
 		}
+#endif
+
 		if (m_FadeInProgress)
 		{
 			m_CurrentFade = Mathf.Lerp(m_FromFade, m_TargetFade, (m_TotalFadeTime - (m_TimeToFade - Time.realtimeSinceStartup)) / m_TotalFadeTime);
@@ -367,12 +370,22 @@ public class MFGuiManager : MonoBehaviour
 		{
 			DefragmentLayouts();
 		}
+		/*
 		foreach (KeyValuePair<ulong, MFGuiRenderer> gUIRenderer in m_GUIRenderers)
 		{
 			MFGuiRenderer value = gUIRenderer.Value;
 			if (value.IsAnySpriteActive() != value.gameObject.activeSelf)
 			{
 				value.gameObject.SetActive(value.IsAnySpriteActive());
+			}
+		}*/
+		foreach (KeyValuePair<ulong, MFGuiRenderer> gUIRenderer in m_GUIRenderers)
+		{
+			MFGuiRenderer value = gUIRenderer.Value;
+			bool isActive = value.IsAnySpriteActive();
+			if (isActive != value.gameObject.activeSelf)
+			{
+				value.gameObject.SetActive(isActive);
 			}
 		}
 	}

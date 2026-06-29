@@ -91,6 +91,9 @@ public class AnimComponent : MonoBehaviour
 		blackBoard.ActionHandler = (BlackBoard.AgentActionHandler)Delegate.Combine(blackBoard.ActionHandler, new BlackBoard.AgentActionHandler(HandleAction));
 	}
 
+	private static readonly Vector3 s_MoveUp = new Vector3(0f, 0.1f, 0f);
+	private static readonly Vector3 s_MoveDown = new Vector3(0f, -0.1f, 0f);
+
 	private void Update()
 	{
 		if (Time.timeScale == 0f)
@@ -112,8 +115,8 @@ public class AnimComponent : MonoBehaviour
 		}
 		else if ((bool)Owner.CharacterController && Owner.CharacterController.enabled)
 		{
-			Owner.CharacterController.Move(Vector3.up * 0.1f);
-			Owner.CharacterController.Move(Vector3.down * 0.1f);
+			Owner.CharacterController.Move(s_MoveUp);
+			Owner.CharacterController.Move(s_MoveDown);
 		}
 		if ((bool)Owner.CharacterController)
 		{
