@@ -76,7 +76,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                     half3 lightmap = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv1));
 
                     // Apply lightmap to base color
-                    half3 color = baseColor.rgb * (2.0 * lightmap);
+                    half3 color = baseColor.rgb * (1.0 * lightmap);
 
                     // Apply vertex color modulation
                     color *= i.color.rgb;

@@ -28,7 +28,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Roughness: 0.25
-    - _SpecularStrength: 0.47
+    - _SpecularStrength: 1.13
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}
