@@ -293,6 +293,7 @@ public class SpawnManager
 		}
 		m_Director = Data.m_Director;
 		m_Director.Init();
+		//PROBLEM: We'll want to put a clamp on this for the Vita as Skinned Mesh renderers murderlize performance - Kano!
 		m_EnemyLimit = Data.m_EnemiesLimit;
 		m_CounterSpawned = 0;
 		m_Enabled = true;

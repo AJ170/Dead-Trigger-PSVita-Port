@@ -334,10 +334,12 @@ public class ComponentEnemy : MonoBehaviour, IHitZoneOwner
 
 	private void InitContestButtons()
 	{
-		Transform transform = null;
-		while ((transform = Owner.Transform.FindChildByName("ContestHit" + ContestHit.Count)) != null)
+		int index = 0;
+		Transform t;
+		while ((t = Owner.Transform.FindChildByName("ContestHit" + index)) != null)
 		{
-			ContestHit.Add(transform.gameObject);
+			ContestHit.Add(t.gameObject);
+			index++;
 		}
 	}
 

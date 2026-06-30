@@ -17,6 +17,11 @@ public class HitDetection
 
 	private static int m_HPoolIndex;
 
+	// Shared non-allocating buffer used by both RayCast and SphereCast.
+	// Safe to share since neither method calls the other re-entrantly.
+	// Size matches the original RPoolSize assumption of max hits per cast.
+	private static RaycastHit[] m_RaycastBuffer;
+
 	static HitDetection()
 	{
 		RPoolSize = 32;
@@ -34,6 +39,7 @@ public class HitDetection
 		{
 			m_HPool.Add(new HitInfo());
 		}
+		m_RaycastBuffer = new RaycastHit[RPoolSize];
 	}
 
 	public static List<HitInfo> RayCast(Vector3 Origin, Vector3 Direction, float Distance)
@@ -45,11 +51,10 @@ public class HitDetection
 	{
 		HitInfo pooledHit = GetPooledHit();
 		List<HitInfo> pooledResult = GetPooledResult();
-		RaycastHit[] array = Physics.RaycastAll(Origin, Direction, Distance, LayersMask);
-		RaycastHit[] array2 = array;
-		for (int i = 0; i < array2.Length; i++)
+		int hitCount = Physics.RaycastNonAlloc(Origin, Direction, m_RaycastBuffer, Distance, LayersMask);
+		for (int i = 0; i < hitCount; i++)
 		{
-			RaycastHit raycastHit = (pooledHit.data = array2[i]);
+			RaycastHit raycastHit = (pooledHit.data = m_RaycastBuffer[i]);
 			pooledHit.dummyCollider = null;
 			pooledHit.dummyColliderCollection = raycastHit.collider.GetComponent<DummyColliderCollection>();
 			if (pooledHit.dummyColliderCollection != null)
@@ -82,11 +87,10 @@ public class HitDetection
 	{
 		HitInfo pooledHit = GetPooledHit();
 		List<HitInfo> pooledResult = GetPooledResult();
-		RaycastHit[] array = Physics.SphereCastAll(Origin, Radius, Direction, Distance, LayersMask);
-		RaycastHit[] array2 = array;
-		for (int i = 0; i < array2.Length; i++)
+		int hitCount = Physics.SphereCastNonAlloc(Origin, Radius, Direction, m_RaycastBuffer, Distance, LayersMask);
+		for (int i = 0; i < hitCount; i++)
 		{
-			RaycastHit raycastHit = (pooledHit.data = array2[i]);
+			RaycastHit raycastHit = (pooledHit.data = m_RaycastBuffer[i]);
 			pooledHit.dummyCollider = null;
 			pooledHit.dummyColliderCollection = raycastHit.collider.GetComponent<DummyColliderCollection>();
 			if (pooledHit.dummyColliderCollection != null)

@@ -183,6 +183,9 @@ public class HudMessages : HudComponent
 
 		private float FadeOut = 0.5f;
 
+		// Add as a field
+		private GUIBase_Widget m_LabelWidget = null;
+
 		public FadeText(GUIBase_Label label, GUIBase_Sprite background, float fadeIn, float fadeOut, float alphaWeight, Color textColor)
 		{
 			m_Label = label;
@@ -247,35 +250,43 @@ public class HudMessages : HudComponent
 
 		public void Update(float time)
 		{
+			if (m_LabelWidget == null)
+            {
+				m_LabelWidget = m_Label.GetComponent<GUIBase_Widget>();
+			}
+
 			if (m_DelayTimer > 0f)
-			{
 				m_DelayTimer -= time;
-			}
+
 			if (!(m_DelayTimer <= 0f) || !(m_Timer >= 0f))
-			{
 				return;
-			}
+
 			m_Timer += time;
-			GUIBase_Widget component = m_Label.GetComponent<GUIBase_Widget>();
-			float num = ((m_Timer > FadeIn + m_Hold && m_Hold > 0f) ? Mathf.Clamp(1f - (m_Timer - FadeIn - m_Hold) / FadeOut, 0f, 1f) : ((Mathf.Approximately(m_Alpha, 1f) || (!(m_Hold > 0f) && !(m_Timer <= FadeIn))) ? (-1f) : Mathf.Clamp(m_Timer / FadeIn, 0f, 1f)));
+
+			float num = ((m_Timer > FadeIn + m_Hold && m_Hold > 0f)
+				? Mathf.Clamp(1f - (m_Timer - FadeIn - m_Hold) / FadeOut, 0f, 1f)
+				: ((Mathf.Approximately(m_Alpha, 1f) || (!(m_Hold > 0f)
+					&& !(m_Timer <= FadeIn)))
+					? (-1f)
+					: Mathf.Clamp(m_Timer / FadeIn, 0f, 1f)));
+
 			if (num >= 0f)
 			{
 				m_Alpha = num;
 				SetAlpha();
 			}
+
 			if (m_Timer > FadeIn + m_Hold + FadeOut && m_Hold > 0f)
 			{
 				Reset();
 				return;
 			}
-			if (!component.IsVisible())
-			{
-				component.Show(true, true);
-			}
+
+			if (!m_LabelWidget.IsVisible())
+				m_LabelWidget.Show(true, true);
+
 			if ((bool)m_Background && !m_Background.Widget.IsVisible())
-			{
 				m_Background.Widget.Show(true, true);
-			}
 		}
 
 		private void Reset()
@@ -378,16 +389,12 @@ public class HudMessages : HudComponent
 			m_Objective.Update(deltaTime);
 			m_Objective2.Update(deltaTime);
 			m_ObjectiveSmall.Update(deltaTime);
-			FadeText[] consoleRows = m_ConsoleRows;
-			foreach (FadeText fadeText in consoleRows)
-			{
-				fadeText.Update(deltaTime);
-			}
-			MessageEffect[] messageEffects = m_MessageEffects;
-			foreach (MessageEffect messageEffect in messageEffects)
-			{
-				messageEffect.Update(deltaTime);
-			}
+
+			for (int i = 0; i < m_ConsoleRows.Length; i++)
+				m_ConsoleRows[i].Update(deltaTime);
+
+			for (int i = 0; i < m_MessageEffects.Length; i++)
+				m_MessageEffects[i].Update(deltaTime);
 		}
 	}
 

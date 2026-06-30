@@ -208,31 +208,36 @@ public class HudContest : HudComponent
             }
         }
     }
-
     public override void LateUpdate(float deltaTime)
     {
         base.LateUpdate(deltaTime);
         HudTimeFromStart += deltaTime;
+
         if (m_Contest.Count > 0)
-        {
             CheckContestButtonActivation();
-        }
+
         bool flag = false;
-        foreach (ContestElement item in m_Contest)
+
+        for (int i = 0; i < m_Contest.Count; i++)
         {
+            ContestElement item = m_Contest[i];
+
             if ((bool)item.Parent)
             {
-                Vector3 position = m_ContestCamera.WorldToScreenPoint(item.Parent.transform.position);
+                Vector3 position = m_ContestCamera
+                    .WorldToScreenPoint(item.Parent.transform.position);
                 position.z = 0f;
                 position.y = (float)Screen.height - position.y;
                 item.Button.Widget.transform.position = position;
             }
+
             if (item.Active)
             {
                 HandleContest(item);
                 flag = true;
             }
         }
+
         if (m_ContestState == ContestState.Terminating && !flag)
         {
             StopContestInternal();
@@ -248,7 +253,6 @@ public class HudContest : HudComponent
             StopContest();
         }
     }
-
     public void StartContest(GameObject[] objects, KeyCode[] keys, GuiHUD.ContestResultCallback callback)
     {
         m_Contest.Clear();

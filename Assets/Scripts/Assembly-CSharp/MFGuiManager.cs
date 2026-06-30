@@ -297,7 +297,6 @@ public class MFGuiManager : MonoBehaviour
 		}
 		return null;
 	}
-
 	private void LateUpdate()
 	{
 #if UNITY_EDITOR
@@ -320,7 +319,6 @@ public class MFGuiManager : MonoBehaviour
 			OnLanguageChanged("Korean");
 		}
 #endif
-
 		if (m_FadeInProgress)
 		{
 			m_CurrentFade = Mathf.Lerp(m_FromFade, m_TargetFade, (m_TotalFadeTime - (m_TimeToFade - Time.realtimeSinceStartup)) / m_TotalFadeTime);
@@ -339,13 +337,14 @@ public class MFGuiManager : MonoBehaviour
 			for (int i = 0; i < m_ObjectsToChangeVisibility.Count; i++)
 			{
 				S_ObjectToChangeVisibility s_ObjectToChangeVisibility = (S_ObjectToChangeVisibility)m_ObjectsToChangeVisibility[i];
-				GUIBase_Layout component = s_ObjectToChangeVisibility.m_GObj.GetComponent<GUIBase_Layout>();
+				GameObject targetObj = s_ObjectToChangeVisibility.m_GObj;
+				GUIBase_Layout component = targetObj.GetComponent<GUIBase_Layout>();
 				if ((bool)component)
 				{
 					component.ShowImmediate(s_ObjectToChangeVisibility.m_Visible);
 					continue;
 				}
-				GUIBase_Widget component2 = s_ObjectToChangeVisibility.m_GObj.GetComponent<GUIBase_Widget>();
+				GUIBase_Widget component2 = targetObj.GetComponent<GUIBase_Widget>();
 				if ((bool)component2)
 				{
 					component2.ShowImmediate(s_ObjectToChangeVisibility.m_Visible, s_ObjectToChangeVisibility.m_Recursive);
@@ -370,15 +369,6 @@ public class MFGuiManager : MonoBehaviour
 		{
 			DefragmentLayouts();
 		}
-		/*
-		foreach (KeyValuePair<ulong, MFGuiRenderer> gUIRenderer in m_GUIRenderers)
-		{
-			MFGuiRenderer value = gUIRenderer.Value;
-			if (value.IsAnySpriteActive() != value.gameObject.activeSelf)
-			{
-				value.gameObject.SetActive(value.IsAnySpriteActive());
-			}
-		}*/
 		foreach (KeyValuePair<ulong, MFGuiRenderer> gUIRenderer in m_GUIRenderers)
 		{
 			MFGuiRenderer value = gUIRenderer.Value;
@@ -389,7 +379,6 @@ public class MFGuiManager : MonoBehaviour
 			}
 		}
 	}
-
 	private void DefragmentLayouts()
 	{
 		for (int i = 0; i < m_LastLayoutIdx; i++)
