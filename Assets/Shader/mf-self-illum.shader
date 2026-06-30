@@ -17,6 +17,7 @@ Shader "MADFINGER/Self-Illumin/Diffuse" {
 
             float4 _Color;
             float _ColorMult;
+            half _EmissionLM;
 
             sampler2D _MainTex;
 
@@ -50,7 +51,7 @@ Shader "MADFINGER/Self-Illumin/Diffuse" {
             half4 frag(v2f i) : COLOR
             {
                 float4 tmpvar_1;
-                tmpvar_1 = (tex2D (_MainTex, i.uv) * i.uv1);
+                tmpvar_1 = (tex2D (_MainTex, i.uv) * i.uv1) * _EmissionLM;
                 return tmpvar_1;
             }
             ENDCG

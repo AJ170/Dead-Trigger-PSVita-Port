@@ -78,7 +78,7 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
                     half3 lightmap = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv1));
 
                     // Combine base with lightmap
-                    half3 color = baseColor.rgb * (2.0 * lightmap) * i.color.rgb;
+                    half3 color = baseColor.rgb * (1.0 * lightmap) * i.color.rgb;
 
                     // === CUBEMAP REFLECTION ===
 
