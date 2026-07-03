@@ -15,10 +15,10 @@ public class PlayerPrefs : MonoBehaviour
     {
         get
         {
-#if UNITY_EDITOR || !UNITY_PS2P
+#if UNITY_EDITOR || !UNITY_PSP2
             return Path.Combine(Application.persistentDataPath, "PlayerPrefs.json");
 #else //Handle our Vita save paths :)
-            return "ux0:data/DeadTrigger/PlayerPrefs.json";
+            return "ux0:/data/DeadTrigger/PlayerPrefs.json";
 #endif
         }
     }
@@ -50,6 +50,14 @@ public class PlayerPrefs : MonoBehaviour
     void OnApplicationQuit()
     {
         SaveReal();
+    }
+    
+    void OnApplicationPause(bool paused)
+    {
+        if (paused)
+        {
+            SaveReal();
+        }
     }
 
     public static void SetString(string key, string value)
@@ -94,7 +102,10 @@ public class PlayerPrefs : MonoBehaviour
         return defaultValue;
     }
 
-    public static void Save() { }
+    public static void Save()
+    {
+        SaveReal();
+    }
 
     public static void SaveReal()
     {
