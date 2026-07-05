@@ -54,7 +54,7 @@ public class HudActions : HudComponent
 	public override void LateUpdate(float deltaTime)
 	{
 		base.LateUpdate(deltaTime);
-#if !UNITY_PSP2
+#if !UNITY_PSP2 || UNITY_EDITOR
 		if (!(Player.Instance == null) && !(Player.Instance.Owner == null) && !(Player.Instance.Owner.WeaponComponent == null) && Player.Instance.Owner.WeaponComponent.CurrentWeapon != 0)
 		{
 			WeaponBase weapon = Player.Instance.Owner.WeaponComponent.GetWeapon(Player.Instance.Owner.WeaponComponent.CurrentWeapon);

@@ -190,14 +190,16 @@ public class Item
 					Game.Instance.PlayerPersistentInfo.AddItemUse(Settings.ID);
 					Count--;
 					Timer = 0f;
+
+					break;
 				}
-				break;
 			}
 		}
 	}
 
 	private bool IsValidForPlacement(RaycastHit hit)
 	{
+
 		if (hit.rigidbody != null)
 		{
 			return false;
@@ -212,10 +214,16 @@ public class Item
 		{
 			return false;
 		}
-		if (parent.GetComponent<DestructibleObject>() != null)
+		if (parent != null)
 		{
-			return false;
-		}
+			if (parent.GetComponent<DestructibleObject>() != null)
+			{
+				return false;
+			}
+		} else
+        {
+			return false; //We have no parent object
+        }
 		return true;
 	}
 

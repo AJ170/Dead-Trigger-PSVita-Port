@@ -370,7 +370,7 @@ public class GuiHUD : MonoBehaviour
             }
         }
 
-#if !UNITY_PSP2
+#if !UNITY_PSP2 || UNITY_EDITOR
     // Touch and Moga controller checks not needed on Vita
     if (Game.Instance.KeypadSlided 
         || (NoTouchForSec(10f) && Game.Instance.IsGamepadConnectedCached()) 

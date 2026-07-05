@@ -95,7 +95,8 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
 
                     // Calculate Fresnel (cheaper: use linear approximation)
                     half NdotV = saturate(dot(worldNormal, worldViewDir));
-                    half fresnel = 1.0 - NdotV;  // Linear instead of pow()
+                    half fresnel = 1.0 - NdotV;  // Cheap fresnel calculation
+                    fresnel = fresnel * fresnel; //Attempt to make this closer to being realistic, although most surfaces vary significantly
 
                     // Use alpha as primary reflection strength
                     // Multiply by Fresnel and user property
