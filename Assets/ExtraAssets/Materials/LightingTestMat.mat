@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: LightingTestMat
-  m_Shader: {fileID: 4800000, guid: f4f2977664b42ed44b5415d860d90be2, type: 3}
+  m_Shader: {fileID: 4800000, guid: c3d4be154ad6e9847aa53f18150235e9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -73,5 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _Ambient: {r: 0.33, g: 0.33, b: 0.33, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
