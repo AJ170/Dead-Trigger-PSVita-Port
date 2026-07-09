@@ -1,5 +1,4 @@
-﻿// LightProbeSamplerDT.cs
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -9,8 +8,19 @@ public class LightProbeSamplerDT : MonoBehaviour
     public bool populateChildRenderers = false;
     public List<Renderer> renderers = new List<Renderer>();
 
-    [Header("Settings")]
+    [Header("Update Settings")]
+    [Tooltip("How far the object must move before resampling probes")]
     public float updateDistance = 0.125f;
+
+    [Tooltip("Speed at which SH lighting lerps to new values after "
+        + "a probe resample. Higher = snappier, lower = smoother.")]
+    public float lerpSpeed = 5.0f;
+
+    [Tooltip("How close the lerp needs to be before we stop "
+        + "updating the property block each frame")]
+    [Range(0.0001f, 0.01f)]
+    public float lerpThreshold = 0.001f;
+
     public bool useCustomSamplePosition = false;
     public Transform customSamplePosition;
 
@@ -24,12 +34,27 @@ public class LightProbeSamplerDT : MonoBehaviour
     private static readonly int SHC_ID = Shader.PropertyToID("_SHC");
 
     private MaterialPropertyBlock m_PropertyBlock;
-    private Vector4[] m_SHArray = new Vector4[7];
-    private Vector3 m_LastUpdatePosition = Vector3.zero;
+
+    // Current SH values being applied to renderers this frame
+    private Vector4[] m_CurrentSH = new Vector4[7];
+
+    // Target SH values from the most recent probe sample
+    private Vector4[] m_TargetSH = new Vector4[7];
+
+    // Reusable coefficient buffer — avoids per-update allocation
+    private float[] m_Coefficients = new float[27];
+
+    private Vector3 m_LastSamplePosition = Vector3.zero;
     private float m_SquareUpdateDistance;
 
-    // Reusable coefficient array to avoid per-update allocation
-    private float[] m_Coefficients = new float[27];
+    // True when current SH differs from target and needs lerping
+    private bool m_LerpInProgress = false;
+
+    // True when the property block needs pushing to renderers
+    private bool m_Dirty = false;
+
+    // True once we have at least one valid sample
+    private bool m_Initialised = false;
 
     void Start()
     {
@@ -42,13 +67,24 @@ public class LightProbeSamplerDT : MonoBehaviour
             if (r != null) renderers.Add(r);
         }
 
-        UpdateLighting();
+        // Force an immediate sample and apply on start
+        // bypassing the lerp so there's no fade-in from black
+        if (ForceSample())
+        {
+            CopyTargetToCurrent();
+            PushToRenderers();
+            m_Initialised = true;
+        }
     }
 
     void OnEnable()
     {
         if (!Application.isPlaying)
-            UpdateLighting();
+        {
+            ForceSample();
+            CopyTargetToCurrent();
+            PushToRenderers();
+        }
     }
 
     void Update()
@@ -60,34 +96,116 @@ public class LightProbeSamplerDT : MonoBehaviour
         }
 
         Vector3 samplePos = GetSamplePosition();
-        float distSq = (m_LastUpdatePosition - samplePos).sqrMagnitude;
+        float distSq = (m_LastSamplePosition - samplePos).sqrMagnitude;
 
-        if (distSq > m_SquareUpdateDistance
-            && renderers.Count > 0)
+        // Resample probes if we've moved past the threshold
+        if (distSq > m_SquareUpdateDistance && renderers.Count > 0)
         {
-            UpdateLighting();
-            m_LastUpdatePosition = samplePos;
+            if (ForceSample())
+            {
+                m_LastSamplePosition = samplePos;
+
+                if (!m_Initialised)
+                {
+                    // First sample — snap directly, no lerp
+                    CopyTargetToCurrent();
+                    PushToRenderers();
+                    m_Initialised = true;
+                }
+                else
+                {
+                    // Subsequent samples — start lerping
+                    m_LerpInProgress = true;
+                }
+            }
+        }
+
+        // Lerp current SH toward target if needed
+        if (m_LerpInProgress)
+        {
+            float t = lerpSpeed * Time.deltaTime;
+            bool stillLerping = false;
+
+            for (int i = 0; i < 7; i++)
+            {
+                m_CurrentSH[i] = Vector4.Lerp(
+                    m_CurrentSH[i], m_TargetSH[i], t);
+
+                // Check if any channel is still meaningfully different
+                if (!stillLerping)
+                {
+                    Vector4 diff = m_CurrentSH[i] - m_TargetSH[i];
+                    if (Mathf.Abs(diff.x) > lerpThreshold
+                        || Mathf.Abs(diff.y) > lerpThreshold
+                        || Mathf.Abs(diff.z) > lerpThreshold
+                        || Mathf.Abs(diff.w) > lerpThreshold)
+                    {
+                        stillLerping = true;
+                    }
+                }
+            }
+
+            if (!stillLerping)
+            {
+                // Close enough — snap to target and stop lerping
+                CopyTargetToCurrent();
+                m_LerpInProgress = false;
+            }
+
+            m_Dirty = true;
+        }
+
+        // Only push to renderers when something has changed
+        if (m_Dirty)
+        {
+            PushToRenderers();
+            m_Dirty = false;
         }
     }
 
-    void UpdateLighting()
+    // Sample the LightProbeManager and update m_TargetSH
+    // Returns true if a valid sample was obtained
+    bool ForceSample()
     {
-        // Find manager in scene — no direct reference needed
         LightProbeManager manager = LightProbeManager.Instance;
 
         if (manager == null || !manager.IsReady)
-        {
-            // Fallback to Unity's built in system if available
-            // otherwise leave as default
-            return;
-        }
+            return false;
 
         Vector3 samplePos = GetSamplePosition();
 
-        if (manager.GetInterpolatedSH(samplePos, out m_Coefficients))
+        if (!manager.GetInterpolatedSH(samplePos, out m_Coefficients))
+            return false;
+
+        PackSHCoefficients(m_Coefficients, m_TargetSH);
+        return true;
+    }
+
+    // Copy target directly to current — used for snapping without lerp
+    void CopyTargetToCurrent()
+    {
+        for (int i = 0; i < 7; i++)
+            m_CurrentSH[i] = m_TargetSH[i];
+    }
+
+    // Push current SH values to all renderers via property block
+    void PushToRenderers()
+    {
+        if (m_PropertyBlock == null)
+            m_PropertyBlock = new MaterialPropertyBlock();
+
+        m_PropertyBlock.SetVector(SHAr_ID, m_CurrentSH[0]);
+        m_PropertyBlock.SetVector(SHAg_ID, m_CurrentSH[1]);
+        m_PropertyBlock.SetVector(SHAb_ID, m_CurrentSH[2]);
+        m_PropertyBlock.SetVector(SHBr_ID, m_CurrentSH[3]);
+        m_PropertyBlock.SetVector(SHBg_ID, m_CurrentSH[4]);
+        m_PropertyBlock.SetVector(SHBb_ID, m_CurrentSH[5]);
+        m_PropertyBlock.SetVector(SHC_ID, m_CurrentSH[6]);
+
+        for (int i = 0; i < renderers.Count; i++)
         {
-            PackSHCoefficients(m_Coefficients, m_SHArray);
-            ApplyToRenderers();
+            if (renderers[i] != null)
+                renderers[i].SetPropertyBlock(m_PropertyBlock);
         }
     }
 
@@ -95,7 +213,7 @@ public class LightProbeSamplerDT : MonoBehaviour
     {
         if (sh == null || sh.Length < 27) return;
 
-        // YAML SH layout is interleaved: direction-major, channel-minor
+        // YAML SH layout: direction-major, channel-minor
         // sh[0]  = L0.r    sh[1]  = L0.g    sh[2]  = L0.b
         // sh[3]  = L1x.r   sh[4]  = L1x.g   sh[5]  = L1x.b
         // sh[6]  = L1y.r   sh[7]  = L1y.g   sh[8]  = L1y.b
@@ -105,15 +223,6 @@ public class LightProbeSamplerDT : MonoBehaviour
         // sh[18] = L2_2.r  sh[19] = L2_2.g  sh[20] = L2_2.b
         // sh[21] = L2_3.r  sh[22] = L2_3.g  sh[23] = L2_3.b
         // sh[24] = L2_4.r  sh[25] = L2_4.g  sh[26] = L2_4.b
-
-        // Remapping to match Unity's ShadeSH9 shader function:
-        // SHAr = (L1x.r, L1y.r, L1z.r, L0.r - L2_2.r)
-        // SHAg = (L1x.g, L1y.g, L1z.g, L0.g - L2_2.g)
-        // SHAb = (L1x.b, L1y.b, L1z.b, L0.b - L2_2.b)
-        // SHBr = (L2_0.r, L2_2.r, L2_1.r*3, L2_3.r)
-        // SHBg = (L2_0.g, L2_2.g, L2_1.g*3, L2_3.g)
-        // SHBb = (L2_0.b, L2_2.b, L2_1.b*3, L2_3.b)
-        // SHC  = (L2_4.r, L2_4.g, L2_4.b, 1)
 
         shArray[0] = new Vector4(
             sh[3], sh[6], sh[9], sh[0] - sh[18]); // SHAr
@@ -131,26 +240,6 @@ public class LightProbeSamplerDT : MonoBehaviour
 
         shArray[6] = new Vector4(
             sh[24], sh[25], sh[26], 1.0f);             // SHC
-    }
-
-    void ApplyToRenderers()
-    {
-        if (m_PropertyBlock == null)
-            m_PropertyBlock = new MaterialPropertyBlock();
-
-        m_PropertyBlock.SetVector(SHAr_ID, m_SHArray[0]);
-        m_PropertyBlock.SetVector(SHAg_ID, m_SHArray[1]);
-        m_PropertyBlock.SetVector(SHAb_ID, m_SHArray[2]);
-        m_PropertyBlock.SetVector(SHBr_ID, m_SHArray[3]);
-        m_PropertyBlock.SetVector(SHBg_ID, m_SHArray[4]);
-        m_PropertyBlock.SetVector(SHBb_ID, m_SHArray[5]);
-        m_PropertyBlock.SetVector(SHC_ID, m_SHArray[6]);
-
-        for (int i = 0; i < renderers.Count; i++)
-        {
-            if (renderers[i] != null)
-                renderers[i].SetPropertyBlock(m_PropertyBlock);
-        }
     }
 
     Vector3 GetSamplePosition()
