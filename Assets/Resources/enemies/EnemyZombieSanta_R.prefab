@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114959571062397399}
   - component: {fileID: 205283715605157647}
   - component: {fileID: 195264960932244966}
+  - component: {fileID: 114108245792897354}
   m_Layer: 10
   m_Name: EnemyZombieSanta_R
   m_TagString: Enemy
@@ -1563,6 +1564,22 @@ MonoBehaviour:
   debugAnims: 0
   debugMemory: 0
   debugAI: 0
+--- !u!114 &114108245792897354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1110537437490257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 1
+  renderers: []
+  updateDistance: 0.125
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
 --- !u!114 &114128814148266425
 MonoBehaviour:
   m_ObjectHideFlags: 0

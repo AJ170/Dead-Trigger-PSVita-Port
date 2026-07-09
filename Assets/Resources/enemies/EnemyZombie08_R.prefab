@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 114586816050501183}
   - component: {fileID: 205828745826382219}
   - component: {fileID: 195083938040650403}
+  - component: {fileID: 114222173476283204}
   m_Layer: 10
   m_Name: EnemyZombie08_R
   m_TagString: Enemy
@@ -1647,6 +1648,22 @@ MonoBehaviour:
   DestroyBashPercentage: 0.3
   DestroyParticle: {fileID: 198484337106963107, guid: 76f96e3a23795e844973784ed32b2997,
     type: 2}
+--- !u!114 &114222173476283204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367223950503702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 1
+  renderers: []
+  updateDistance: 0.125
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
 --- !u!114 &114251195284250292
 MonoBehaviour:
   m_ObjectHideFlags: 0

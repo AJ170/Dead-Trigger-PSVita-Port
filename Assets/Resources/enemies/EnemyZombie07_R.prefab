@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 114745386924008956}
   - component: {fileID: 205302341380632086}
   - component: {fileID: 195206303853964326}
+  - component: {fileID: 114939947530479130}
   m_Layer: 10
   m_Name: EnemyZombie07_R
   m_TagString: Enemy
@@ -1950,6 +1951,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightHand: {fileID: 0}
   LeftHand: {fileID: 0}
+--- !u!114 &114939947530479130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669395826537312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 1
+  renderers: []
+  updateDistance: 0.125
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
 --- !u!114 &114965754100325624
 MonoBehaviour:
   m_ObjectHideFlags: 0

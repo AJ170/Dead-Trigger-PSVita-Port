@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4409476300305560}
   - component: {fileID: 111030032107431796}
   - component: {fileID: 205551345075609251}
+  - component: {fileID: 114445014449655930}
   m_Layer: 0
   m_Name: Zombie_02
   m_TagString: Untagged
@@ -965,6 +966,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114445014449655930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066835287678106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 1
+  renderers: []
+  updateDistance: 0.125
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
 --- !u!114 &114490823751707751
 MonoBehaviour:
   m_ObjectHideFlags: 0

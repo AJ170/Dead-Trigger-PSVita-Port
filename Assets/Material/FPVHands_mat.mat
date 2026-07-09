@@ -43,19 +43,28 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BumpScale: 1
+    - _BumpScale: 2
     - _Duration: 2
     - _Invert: 0
     - _LightProbesLightingAmount: 0.6
     - _Roughness: 0.5
+    - _SHIntensity: 0.3
     - _SHLightingScale: 1
     - _Shininess: 0.078125
     - _SpecularIntensity: 1
     - _SpecularStrength: 1
     - _TimeOffs: 0
     m_Colors:
+    - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
     - _Color: {r: 0.694118, g: 0.105882, b: 0.345098, a: 1}
     - _FXColor: {r: 0, g: 0.97, b: 0.89, a: 1}
     - _Params: {r: 1, g: 3, b: 2, a: 0}
+    - _SHAb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHC: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularStrength: {r: 0, g: 0, b: 0, a: 1}

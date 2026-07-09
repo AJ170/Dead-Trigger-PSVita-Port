@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 114916718413963729}
   - component: {fileID: 205317651687884632}
   - component: {fileID: 195372783765082734}
+  - component: {fileID: 114052234013530780}
   m_Layer: 10
   m_Name: EnemyZombie06small_R
   m_TagString: Enemy
@@ -1386,6 +1387,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114052234013530780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1708961718129543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 1
+  renderers: []
+  updateDistance: 0.125
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
 --- !u!114 &114123752575162322
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -574,6 +574,7 @@ GameObject:
   - component: {fileID: 114341167073159061}
   - component: {fileID: 205980655034367938}
   - component: {fileID: 195493848056804465}
+  - component: {fileID: 114870368787700220}
   m_Layer: 10
   m_Name: EnemyZombie01_R
   m_TagString: Enemy
@@ -1938,6 +1939,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d35e0e9f3e70ddb145efe933e10cdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114870368787700220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975410643430444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 1
+  renderers: []
+  updateDistance: 0.125
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
 --- !u!114 &114875092984545640
 MonoBehaviour:
   m_ObjectHideFlags: 0

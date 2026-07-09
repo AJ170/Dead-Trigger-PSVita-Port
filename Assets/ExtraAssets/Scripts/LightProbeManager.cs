@@ -7,10 +7,11 @@ using System.Globalization;
 public class LightProbeManager : MonoBehaviour
 {
     public static LightProbeManager Instance { get; private set; }
-
+    /*
     [Header("Data Source")]
     [Tooltip("Assign the LightProbeData ScriptableObject for this level")]
     public LightProbeData probeData;
+    */
 
     [Tooltip("Alternatively load directly from a text file at runtime")]
     public TextAsset probeDataTextAsset;
@@ -33,14 +34,15 @@ public class LightProbeManager : MonoBehaviour
 
         Instance = this;
 
+        /*
         // Load from ScriptableObject if assigned
         if (probeData != null && probeData.probes != null
             && probeData.probes.Length > 0)
         {
             LoadFromScriptableObject();
-        }
+        }*/
         // Otherwise try loading from TextAsset
-        else if (probeDataTextAsset != null)
+        if (probeDataTextAsset != null)
         {
             LoadFromTextAsset();
         }
@@ -56,7 +58,7 @@ public class LightProbeManager : MonoBehaviour
         if (Instance == this)
             Instance = null;
     }
-
+    /*
     void LoadFromScriptableObject()
     {
         int count = probeData.probes.Length;
@@ -72,7 +74,7 @@ public class LightProbeManager : MonoBehaviour
         m_DataReady = true;
         Debug.Log("LightProbeManager: Loaded " + count
             + " probes from ScriptableObject.");
-    }
+    }*/
 
     void LoadFromTextAsset()
     {

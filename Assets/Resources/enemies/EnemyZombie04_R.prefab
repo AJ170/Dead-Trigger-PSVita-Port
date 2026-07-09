@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 114525395140833035}
   - component: {fileID: 205633120886498178}
   - component: {fileID: 195900304794872190}
+  - component: {fileID: 114394067643045080}
   m_Layer: 10
   m_Name: EnemyZombie04_R
   m_TagString: Enemy
@@ -1612,6 +1613,22 @@ MonoBehaviour:
   DestroyBashPercentage: 0.15
   DestroyParticle: {fileID: 198484337106963107, guid: 76f96e3a23795e844973784ed32b2997,
     type: 2}
+--- !u!114 &114394067643045080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913444992157074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 1
+  renderers: []
+  updateDistance: 0.125
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
 --- !u!114 &114396368646226749
 MonoBehaviour:
   m_ObjectHideFlags: 0
