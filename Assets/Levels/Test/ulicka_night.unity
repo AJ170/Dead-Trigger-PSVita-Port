@@ -147,7 +147,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2087}
   - component: {fileID: 9305}
-  - component: {fileID: 7207}
   - component: {fileID: 8818}
   m_Layer: 0
   m_Name: InGameCamera
@@ -1827,7 +1826,6 @@ GameObject:
   - component: {fileID: 2186}
   - component: {fileID: 5665}
   - component: {fileID: 4218}
-  - component: {fileID: 7263}
   - component: {fileID: 7058}
   m_Layer: 0
   m_Name: car_2
@@ -3299,7 +3297,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2274}
-  - component: {fileID: 7316}
   - component: {fileID: 8869}
   m_Layer: 0
   m_Name: GarageDoor
@@ -4944,7 +4941,6 @@ GameObject:
   - component: {fileID: 2372}
   - component: {fileID: 5788}
   - component: {fileID: 4341}
-  - component: {fileID: 7370}
   - component: {fileID: 7369}
   - component: {fileID: 8895}
   m_Layer: 0
@@ -5963,7 +5959,6 @@ GameObject:
   - component: {fileID: 2432}
   - component: {fileID: 5833}
   - component: {fileID: 4386}
-  - component: {fileID: 7410}
   - component: {fileID: 7066}
   m_Layer: 0
   m_Name: car_2
@@ -6135,7 +6130,6 @@ GameObject:
   - component: {fileID: 2442}
   - component: {fileID: 5840}
   - component: {fileID: 4393}
-  - component: {fileID: 7415}
   - component: {fileID: 7067}
   m_Layer: 0
   m_Name: car_2
@@ -9434,7 +9428,6 @@ GameObject:
   - component: {fileID: 2638}
   - component: {fileID: 5976}
   - component: {fileID: 4529}
-  - component: {fileID: 7523}
   - component: {fileID: 7078}
   m_Layer: 0
   m_Name: car_1
@@ -11164,7 +11157,6 @@ GameObject:
   - component: {fileID: 2740}
   - component: {fileID: 6046}
   - component: {fileID: 4599}
-  - component: {fileID: 7581}
   - component: {fileID: 7580}
   - component: {fileID: 8990}
   m_Layer: 0
@@ -11842,7 +11834,6 @@ GameObject:
   - component: {fileID: 2780}
   - component: {fileID: 6078}
   - component: {fileID: 4631}
-  - component: {fileID: 7612}
   - component: {fileID: 7082}
   m_Layer: 0
   m_Name: car_1
@@ -14238,7 +14229,6 @@ GameObject:
   - component: {fileID: 2922}
   - component: {fileID: 6177}
   - component: {fileID: 4730}
-  - component: {fileID: 7698}
   - component: {fileID: 7697}
   - component: {fileID: 9029}
   m_Layer: 0
@@ -14919,7 +14909,6 @@ GameObject:
   - component: {fileID: 2962}
   - component: {fileID: 6209}
   - component: {fileID: 4762}
-  - component: {fileID: 7727}
   - component: {fileID: 7087}
   m_Layer: 0
   m_Name: car_2
@@ -19081,7 +19070,6 @@ GameObject:
   - component: {fileID: 3208}
   - component: {fileID: 6385}
   - component: {fileID: 4938}
-  - component: {fileID: 7881}
   - component: {fileID: 7106}
   - component: {fileID: 7049}
   - component: {fileID: 7880}
@@ -21377,7 +21365,6 @@ GameObject:
   - component: {fileID: 3344}
   - component: {fileID: 6481}
   - component: {fileID: 5034}
-  - component: {fileID: 7959}
   - component: {fileID: 7111}
   m_Layer: 0
   m_Name: ulicka_night_zataras_1
@@ -22387,7 +22374,6 @@ GameObject:
   - component: {fileID: 3404}
   - component: {fileID: 6522}
   - component: {fileID: 5075}
-  - component: {fileID: 7997}
   - component: {fileID: 7114}
   m_Layer: 0
   m_Name: car_1
@@ -22799,7 +22785,6 @@ GameObject:
   - component: {fileID: 3428}
   - component: {fileID: 6536}
   - component: {fileID: 5089}
-  - component: {fileID: 8010}
   - component: {fileID: 7115}
   m_Layer: 0
   m_Name: car_2
@@ -23056,7 +23041,6 @@ GameObject:
   - component: {fileID: 3443}
   - component: {fileID: 6547}
   - component: {fileID: 5100}
-  - component: {fileID: 8019}
   - component: {fileID: 7116}
   m_Layer: 0
   m_Name: car_2
@@ -31321,7 +31305,6 @@ GameObject:
   - component: {fileID: 3933}
   - component: {fileID: 6882}
   - component: {fileID: 5435}
-  - component: {fileID: 8299}
   - component: {fileID: 7137}
   m_Layer: 0
   m_Name: car_2
@@ -129733,20 +129716,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!111 &7207
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &7208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129785,40 +129754,12 @@ MonoBehaviour:
   fastBloomMaterial: {fileID: 2100000, guid: 340bd5e69643ca64ab84c41cdad6ee23, type: 2}
   bloomWidth: 256
   bloomHeight: 128
---- !u!111 &7263
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 112}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!111 &7265
 Animation:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 115}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7316
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 200}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 0}
@@ -129838,48 +129779,6 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 0d45615f7350a6e4c98cf09977c70dc5, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 0d45615f7350a6e4c98cf09977c70dc5, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7370
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 298}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7410
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 358}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7415
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 368}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -129904,20 +129803,6 @@ Animation:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 418}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7523
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 0}
@@ -129956,34 +129841,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!111 &7581
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 666}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7612
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 706}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!111 &7697
 Animation:
   m_ObjectHideFlags: 0
@@ -129995,20 +129852,6 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 0d45615f7350a6e4c98cf09977c70dc5, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 0d45615f7350a6e4c98cf09977c70dc5, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7698
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 848}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -130026,20 +129869,6 @@ Animation:
   - {fileID: 7400000, guid: c7bf32cced2f6e544a6a29a21bc4dc7e, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7727
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 888}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!111 &7764
@@ -130087,34 +129916,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 1
   m_CullingType: 0
---- !u!111 &7881
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1134}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7959
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1270}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!111 &7972
 Animation:
   m_ObjectHideFlags: 0
@@ -130128,20 +129929,6 @@ Animation:
   - {fileID: 7400000, guid: ff021ab77ef077f4981bfc8b29e27813, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &7997
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!111 &8001
@@ -130285,40 +130072,12 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!111 &8010
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1354}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!111 &8014
 Animation:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1358}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &8019
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1369}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 0}
@@ -130401,20 +130160,6 @@ Animation:
   - {fileID: 7400000, guid: ff021ab77ef077f4981bfc8b29e27813, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &8299
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1859}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!111 &8302
@@ -527093,7 +526838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebbb7b75f77c9949bbe701c311654ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probeData: {fileID: 0}
   probeDataTextAsset: {fileID: 4900000, guid: bfbd9e4ba9f8b7c4287e2aabbcc7b8d9, type: 3}
 --- !u!4 &1160914436
 Transform:
@@ -528173,6 +527917,8 @@ MonoBehaviour:
   renderers:
   - {fileID: 1770082753}
   updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
   useCustomSamplePosition: 0
   customSamplePosition: {fileID: 0}
 --- !u!1 &1884902726

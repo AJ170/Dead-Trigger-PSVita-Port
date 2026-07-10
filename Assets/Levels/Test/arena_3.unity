@@ -36,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 423}
   - component: {fileID: 1882}
-  - component: {fileID: 1456}
   - component: {fileID: 1779}
   m_Layer: 0
   m_Name: InGameCamera
@@ -232,7 +231,6 @@ GameObject:
   - component: {fileID: 434}
   - component: {fileID: 1138}
   - component: {fileID: 844}
-  - component: {fileID: 1457}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -267,7 +265,6 @@ GameObject:
   - component: {fileID: 436}
   - component: {fileID: 1139}
   - component: {fileID: 845}
-  - component: {fileID: 1458}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -334,7 +331,6 @@ GameObject:
   - component: {fileID: 440}
   - component: {fileID: 1140}
   - component: {fileID: 846}
-  - component: {fileID: 1459}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -382,7 +378,6 @@ GameObject:
   - component: {fileID: 443}
   - component: {fileID: 1141}
   - component: {fileID: 847}
-  - component: {fileID: 1460}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -400,7 +395,6 @@ GameObject:
   - component: {fileID: 444}
   - component: {fileID: 1142}
   - component: {fileID: 848}
-  - component: {fileID: 1461}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -418,7 +412,6 @@ GameObject:
   - component: {fileID: 445}
   - component: {fileID: 1143}
   - component: {fileID: 849}
-  - component: {fileID: 1462}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -436,7 +429,6 @@ GameObject:
   - component: {fileID: 446}
   - component: {fileID: 1144}
   - component: {fileID: 850}
-  - component: {fileID: 1463}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -454,7 +446,6 @@ GameObject:
   - component: {fileID: 447}
   - component: {fileID: 1145}
   - component: {fileID: 851}
-  - component: {fileID: 1464}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -506,7 +497,6 @@ GameObject:
   - component: {fileID: 450}
   - component: {fileID: 1146}
   - component: {fileID: 852}
-  - component: {fileID: 1465}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -539,7 +529,6 @@ GameObject:
   - component: {fileID: 452}
   - component: {fileID: 1147}
   - component: {fileID: 853}
-  - component: {fileID: 1466}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -574,7 +563,6 @@ GameObject:
   - component: {fileID: 454}
   - component: {fileID: 1148}
   - component: {fileID: 854}
-  - component: {fileID: 1467}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -592,7 +580,6 @@ GameObject:
   - component: {fileID: 455}
   - component: {fileID: 1149}
   - component: {fileID: 855}
-  - component: {fileID: 1468}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -610,7 +597,6 @@ GameObject:
   - component: {fileID: 456}
   - component: {fileID: 1150}
   - component: {fileID: 856}
-  - component: {fileID: 1469}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -644,7 +630,6 @@ GameObject:
   - component: {fileID: 458}
   - component: {fileID: 1151}
   - component: {fileID: 857}
-  - component: {fileID: 1470}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -662,7 +647,6 @@ GameObject:
   - component: {fileID: 459}
   - component: {fileID: 1152}
   - component: {fileID: 858}
-  - component: {fileID: 1471}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -680,7 +664,6 @@ GameObject:
   - component: {fileID: 460}
   - component: {fileID: 1153}
   - component: {fileID: 859}
-  - component: {fileID: 1472}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -698,7 +681,6 @@ GameObject:
   - component: {fileID: 461}
   - component: {fileID: 1154}
   - component: {fileID: 860}
-  - component: {fileID: 1473}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -716,7 +698,6 @@ GameObject:
   - component: {fileID: 462}
   - component: {fileID: 1155}
   - component: {fileID: 861}
-  - component: {fileID: 1474}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -829,7 +810,6 @@ GameObject:
   - component: {fileID: 469}
   - component: {fileID: 1156}
   - component: {fileID: 862}
-  - component: {fileID: 1475}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -864,7 +844,6 @@ GameObject:
   - component: {fileID: 471}
   - component: {fileID: 1158}
   - component: {fileID: 864}
-  - component: {fileID: 1476}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -882,7 +861,6 @@ GameObject:
   - component: {fileID: 472}
   - component: {fileID: 1159}
   - component: {fileID: 865}
-  - component: {fileID: 1477}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -918,7 +896,6 @@ GameObject:
   - component: {fileID: 474}
   - component: {fileID: 1161}
   - component: {fileID: 867}
-  - component: {fileID: 1478}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -936,7 +913,6 @@ GameObject:
   - component: {fileID: 475}
   - component: {fileID: 1162}
   - component: {fileID: 868}
-  - component: {fileID: 1479}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -954,7 +930,6 @@ GameObject:
   - component: {fileID: 476}
   - component: {fileID: 1163}
   - component: {fileID: 869}
-  - component: {fileID: 1480}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -989,7 +964,6 @@ GameObject:
   - component: {fileID: 478}
   - component: {fileID: 1164}
   - component: {fileID: 870}
-  - component: {fileID: 1481}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -1007,7 +981,6 @@ GameObject:
   - component: {fileID: 479}
   - component: {fileID: 1165}
   - component: {fileID: 871}
-  - component: {fileID: 1482}
   m_Layer: 0
   m_Name: stadium_reflektor_2
   m_TagString: Untagged
@@ -1058,7 +1031,6 @@ GameObject:
   - component: {fileID: 482}
   - component: {fileID: 1167}
   - component: {fileID: 873}
-  - component: {fileID: 1484}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -1108,7 +1080,6 @@ GameObject:
   - component: {fileID: 485}
   - component: {fileID: 1168}
   - component: {fileID: 874}
-  - component: {fileID: 1485}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -1141,7 +1112,6 @@ GameObject:
   - component: {fileID: 487}
   - component: {fileID: 1169}
   - component: {fileID: 875}
-  - component: {fileID: 1486}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -1191,7 +1161,6 @@ GameObject:
   - component: {fileID: 490}
   - component: {fileID: 1170}
   - component: {fileID: 876}
-  - component: {fileID: 1487}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -1257,7 +1226,6 @@ GameObject:
   - component: {fileID: 494}
   - component: {fileID: 1171}
   - component: {fileID: 877}
-  - component: {fileID: 1488}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -1275,7 +1243,6 @@ GameObject:
   - component: {fileID: 495}
   - component: {fileID: 1172}
   - component: {fileID: 878}
-  - component: {fileID: 1489}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -1323,7 +1290,6 @@ GameObject:
   - component: {fileID: 498}
   - component: {fileID: 1173}
   - component: {fileID: 879}
-  - component: {fileID: 1490}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -1341,7 +1307,6 @@ GameObject:
   - component: {fileID: 499}
   - component: {fileID: 1174}
   - component: {fileID: 880}
-  - component: {fileID: 1491}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -1375,7 +1340,6 @@ GameObject:
   - component: {fileID: 501}
   - component: {fileID: 1175}
   - component: {fileID: 881}
-  - component: {fileID: 1492}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -1408,7 +1372,6 @@ GameObject:
   - component: {fileID: 503}
   - component: {fileID: 1176}
   - component: {fileID: 882}
-  - component: {fileID: 1493}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -1426,7 +1389,6 @@ GameObject:
   - component: {fileID: 504}
   - component: {fileID: 1177}
   - component: {fileID: 883}
-  - component: {fileID: 1494}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -1459,7 +1421,6 @@ GameObject:
   - component: {fileID: 506}
   - component: {fileID: 1178}
   - component: {fileID: 884}
-  - component: {fileID: 1495}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -1477,7 +1438,6 @@ GameObject:
   - component: {fileID: 507}
   - component: {fileID: 1179}
   - component: {fileID: 885}
-  - component: {fileID: 1496}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -1495,7 +1455,6 @@ GameObject:
   - component: {fileID: 508}
   - component: {fileID: 1180}
   - component: {fileID: 886}
-  - component: {fileID: 1497}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -1513,7 +1472,6 @@ GameObject:
   - component: {fileID: 509}
   - component: {fileID: 1181}
   - component: {fileID: 887}
-  - component: {fileID: 1498}
   m_Layer: 0
   m_Name: stadium_paleta
   m_TagString: Untagged
@@ -1531,7 +1489,6 @@ GameObject:
   - component: {fileID: 510}
   - component: {fileID: 1182}
   - component: {fileID: 888}
-  - component: {fileID: 1499}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -1564,7 +1521,6 @@ GameObject:
   - component: {fileID: 512}
   - component: {fileID: 1183}
   - component: {fileID: 889}
-  - component: {fileID: 1500}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -1582,7 +1538,6 @@ GameObject:
   - component: {fileID: 513}
   - component: {fileID: 1184}
   - component: {fileID: 890}
-  - component: {fileID: 1501}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -1600,7 +1555,6 @@ GameObject:
   - component: {fileID: 514}
   - component: {fileID: 1185}
   - component: {fileID: 891}
-  - component: {fileID: 1502}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -1634,7 +1588,6 @@ GameObject:
   - component: {fileID: 516}
   - component: {fileID: 1186}
   - component: {fileID: 892}
-  - component: {fileID: 1503}
   m_Layer: 0
   m_Name: stadium_paleta
   m_TagString: Untagged
@@ -1652,7 +1605,6 @@ GameObject:
   - component: {fileID: 517}
   - component: {fileID: 1187}
   - component: {fileID: 893}
-  - component: {fileID: 1504}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -1717,7 +1669,6 @@ GameObject:
   - component: {fileID: 521}
   - component: {fileID: 1188}
   - component: {fileID: 894}
-  - component: {fileID: 1505}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -1735,7 +1686,6 @@ GameObject:
   - component: {fileID: 522}
   - component: {fileID: 1189}
   - component: {fileID: 895}
-  - component: {fileID: 1506}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -1753,7 +1703,6 @@ GameObject:
   - component: {fileID: 523}
   - component: {fileID: 1190}
   - component: {fileID: 896}
-  - component: {fileID: 1507}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -1771,7 +1720,6 @@ GameObject:
   - component: {fileID: 524}
   - component: {fileID: 1191}
   - component: {fileID: 897}
-  - component: {fileID: 1508}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -1805,7 +1753,6 @@ GameObject:
   - component: {fileID: 526}
   - component: {fileID: 1192}
   - component: {fileID: 898}
-  - component: {fileID: 1509}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -1823,7 +1770,6 @@ GameObject:
   - component: {fileID: 527}
   - component: {fileID: 1193}
   - component: {fileID: 899}
-  - component: {fileID: 1510}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -1841,7 +1787,6 @@ GameObject:
   - component: {fileID: 528}
   - component: {fileID: 1194}
   - component: {fileID: 900}
-  - component: {fileID: 1511}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -1859,7 +1804,6 @@ GameObject:
   - component: {fileID: 529}
   - component: {fileID: 1195}
   - component: {fileID: 901}
-  - component: {fileID: 1512}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -1877,7 +1821,6 @@ GameObject:
   - component: {fileID: 530}
   - component: {fileID: 1196}
   - component: {fileID: 902}
-  - component: {fileID: 1513}
   m_Layer: 0
   m_Name: stadium_reflektor_2
   m_TagString: Untagged
@@ -1928,7 +1871,6 @@ GameObject:
   - component: {fileID: 533}
   - component: {fileID: 1197}
   - component: {fileID: 903}
-  - component: {fileID: 1514}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -1946,7 +1888,6 @@ GameObject:
   - component: {fileID: 534}
   - component: {fileID: 1198}
   - component: {fileID: 904}
-  - component: {fileID: 1515}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -1964,7 +1905,6 @@ GameObject:
   - component: {fileID: 535}
   - component: {fileID: 1199}
   - component: {fileID: 905}
-  - component: {fileID: 1516}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -1999,7 +1939,6 @@ GameObject:
   - component: {fileID: 537}
   - component: {fileID: 1200}
   - component: {fileID: 906}
-  - component: {fileID: 1517}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -2035,7 +1974,6 @@ GameObject:
   - component: {fileID: 539}
   - component: {fileID: 1202}
   - component: {fileID: 908}
-  - component: {fileID: 1518}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -2053,7 +1991,6 @@ GameObject:
   - component: {fileID: 540}
   - component: {fileID: 1203}
   - component: {fileID: 909}
-  - component: {fileID: 1519}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -2071,7 +2008,6 @@ GameObject:
   - component: {fileID: 541}
   - component: {fileID: 1204}
   - component: {fileID: 910}
-  - component: {fileID: 1520}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -2089,7 +2025,6 @@ GameObject:
   - component: {fileID: 542}
   - component: {fileID: 1205}
   - component: {fileID: 911}
-  - component: {fileID: 1521}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -2123,7 +2058,6 @@ GameObject:
   - component: {fileID: 544}
   - component: {fileID: 1206}
   - component: {fileID: 912}
-  - component: {fileID: 1522}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -2173,7 +2107,6 @@ GameObject:
   - component: {fileID: 547}
   - component: {fileID: 1207}
   - component: {fileID: 913}
-  - component: {fileID: 1523}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -2191,7 +2124,6 @@ GameObject:
   - component: {fileID: 548}
   - component: {fileID: 1208}
   - component: {fileID: 914}
-  - component: {fileID: 1524}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -2209,7 +2141,6 @@ GameObject:
   - component: {fileID: 549}
   - component: {fileID: 1209}
   - component: {fileID: 915}
-  - component: {fileID: 1525}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -2227,7 +2158,6 @@ GameObject:
   - component: {fileID: 550}
   - component: {fileID: 1210}
   - component: {fileID: 916}
-  - component: {fileID: 1526}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -2245,7 +2175,6 @@ GameObject:
   - component: {fileID: 551}
   - component: {fileID: 1211}
   - component: {fileID: 917}
-  - component: {fileID: 1527}
   m_Layer: 0
   m_Name: stadium_HELP_us
   m_TagString: Untagged
@@ -2263,7 +2192,6 @@ GameObject:
   - component: {fileID: 552}
   - component: {fileID: 1212}
   - component: {fileID: 918}
-  - component: {fileID: 1528}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -2281,7 +2209,6 @@ GameObject:
   - component: {fileID: 553}
   - component: {fileID: 1213}
   - component: {fileID: 919}
-  - component: {fileID: 1529}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -2299,7 +2226,6 @@ GameObject:
   - component: {fileID: 554}
   - component: {fileID: 1214}
   - component: {fileID: 920}
-  - component: {fileID: 1530}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -2317,7 +2243,6 @@ GameObject:
   - component: {fileID: 555}
   - component: {fileID: 1215}
   - component: {fileID: 921}
-  - component: {fileID: 1531}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -2335,7 +2260,6 @@ GameObject:
   - component: {fileID: 556}
   - component: {fileID: 1216}
   - component: {fileID: 922}
-  - component: {fileID: 1532}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -2353,7 +2277,6 @@ GameObject:
   - component: {fileID: 557}
   - component: {fileID: 1217}
   - component: {fileID: 923}
-  - component: {fileID: 1533}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -2371,7 +2294,6 @@ GameObject:
   - component: {fileID: 558}
   - component: {fileID: 1218}
   - component: {fileID: 924}
-  - component: {fileID: 1534}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -2405,7 +2327,6 @@ GameObject:
   - component: {fileID: 560}
   - component: {fileID: 1219}
   - component: {fileID: 925}
-  - component: {fileID: 1535}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -2423,7 +2344,6 @@ GameObject:
   - component: {fileID: 561}
   - component: {fileID: 1220}
   - component: {fileID: 926}
-  - component: {fileID: 1536}
   m_Layer: 0
   m_Name: stadium_paleta
   m_TagString: Untagged
@@ -2456,7 +2376,6 @@ GameObject:
   - component: {fileID: 563}
   - component: {fileID: 1221}
   - component: {fileID: 927}
-  - component: {fileID: 1537}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -2474,7 +2393,6 @@ GameObject:
   - component: {fileID: 564}
   - component: {fileID: 1222}
   - component: {fileID: 928}
-  - component: {fileID: 1538}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -2492,7 +2410,6 @@ GameObject:
   - component: {fileID: 565}
   - component: {fileID: 1223}
   - component: {fileID: 929}
-  - component: {fileID: 1539}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -2510,7 +2427,6 @@ GameObject:
   - component: {fileID: 566}
   - component: {fileID: 1224}
   - component: {fileID: 930}
-  - component: {fileID: 1540}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -2528,7 +2444,6 @@ GameObject:
   - component: {fileID: 567}
   - component: {fileID: 1225}
   - component: {fileID: 931}
-  - component: {fileID: 1541}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -2546,7 +2461,6 @@ GameObject:
   - component: {fileID: 568}
   - component: {fileID: 1226}
   - component: {fileID: 932}
-  - component: {fileID: 1542}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -2564,7 +2478,6 @@ GameObject:
   - component: {fileID: 569}
   - component: {fileID: 1227}
   - component: {fileID: 933}
-  - component: {fileID: 1543}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -2582,7 +2495,6 @@ GameObject:
   - component: {fileID: 570}
   - component: {fileID: 1228}
   - component: {fileID: 934}
-  - component: {fileID: 1544}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -2600,7 +2512,6 @@ GameObject:
   - component: {fileID: 571}
   - component: {fileID: 1229}
   - component: {fileID: 935}
-  - component: {fileID: 1545}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -2618,7 +2529,6 @@ GameObject:
   - component: {fileID: 572}
   - component: {fileID: 1230}
   - component: {fileID: 936}
-  - component: {fileID: 1546}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -2636,7 +2546,6 @@ GameObject:
   - component: {fileID: 573}
   - component: {fileID: 1231}
   - component: {fileID: 937}
-  - component: {fileID: 1547}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -2654,7 +2563,6 @@ GameObject:
   - component: {fileID: 574}
   - component: {fileID: 1232}
   - component: {fileID: 938}
-  - component: {fileID: 1548}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -2672,7 +2580,6 @@ GameObject:
   - component: {fileID: 575}
   - component: {fileID: 1233}
   - component: {fileID: 939}
-  - component: {fileID: 1549}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -2690,7 +2597,6 @@ GameObject:
   - component: {fileID: 576}
   - component: {fileID: 1234}
   - component: {fileID: 940}
-  - component: {fileID: 1550}
   m_Layer: 0
   m_Name: hadr_01
   m_TagString: Untagged
@@ -2708,7 +2614,6 @@ GameObject:
   - component: {fileID: 577}
   - component: {fileID: 1235}
   - component: {fileID: 941}
-  - component: {fileID: 1551}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -2741,7 +2646,6 @@ GameObject:
   - component: {fileID: 579}
   - component: {fileID: 1236}
   - component: {fileID: 942}
-  - component: {fileID: 1552}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -2794,7 +2698,6 @@ GameObject:
   - component: {fileID: 582}
   - component: {fileID: 1238}
   - component: {fileID: 944}
-  - component: {fileID: 1553}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -2812,7 +2715,6 @@ GameObject:
   - component: {fileID: 583}
   - component: {fileID: 1239}
   - component: {fileID: 945}
-  - component: {fileID: 1554}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -2845,7 +2747,6 @@ GameObject:
   - component: {fileID: 585}
   - component: {fileID: 1240}
   - component: {fileID: 946}
-  - component: {fileID: 1555}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -2863,7 +2764,6 @@ GameObject:
   - component: {fileID: 586}
   - component: {fileID: 1241}
   - component: {fileID: 947}
-  - component: {fileID: 1556}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -2898,7 +2798,6 @@ GameObject:
   - component: {fileID: 588}
   - component: {fileID: 1242}
   - component: {fileID: 948}
-  - component: {fileID: 1557}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -2916,7 +2815,6 @@ GameObject:
   - component: {fileID: 589}
   - component: {fileID: 1243}
   - component: {fileID: 949}
-  - component: {fileID: 1558}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -2934,7 +2832,6 @@ GameObject:
   - component: {fileID: 590}
   - component: {fileID: 1244}
   - component: {fileID: 950}
-  - component: {fileID: 1559}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -2952,7 +2849,6 @@ GameObject:
   - component: {fileID: 591}
   - component: {fileID: 1245}
   - component: {fileID: 951}
-  - component: {fileID: 1560}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -2970,7 +2866,6 @@ GameObject:
   - component: {fileID: 592}
   - component: {fileID: 1246}
   - component: {fileID: 952}
-  - component: {fileID: 1561}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -2988,7 +2883,6 @@ GameObject:
   - component: {fileID: 593}
   - component: {fileID: 1247}
   - component: {fileID: 953}
-  - component: {fileID: 1562}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -3006,7 +2900,6 @@ GameObject:
   - component: {fileID: 594}
   - component: {fileID: 1248}
   - component: {fileID: 954}
-  - component: {fileID: 1563}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -3024,7 +2917,6 @@ GameObject:
   - component: {fileID: 595}
   - component: {fileID: 1249}
   - component: {fileID: 955}
-  - component: {fileID: 1564}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -3042,7 +2934,6 @@ GameObject:
   - component: {fileID: 596}
   - component: {fileID: 1250}
   - component: {fileID: 956}
-  - component: {fileID: 1565}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -3060,7 +2951,6 @@ GameObject:
   - component: {fileID: 597}
   - component: {fileID: 1251}
   - component: {fileID: 957}
-  - component: {fileID: 1566}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3078,7 +2968,6 @@ GameObject:
   - component: {fileID: 598}
   - component: {fileID: 1252}
   - component: {fileID: 958}
-  - component: {fileID: 1567}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -3096,7 +2985,6 @@ GameObject:
   - component: {fileID: 599}
   - component: {fileID: 1253}
   - component: {fileID: 959}
-  - component: {fileID: 1568}
   m_Layer: 0
   m_Name: draha_1
   m_TagString: Untagged
@@ -3114,7 +3002,6 @@ GameObject:
   - component: {fileID: 600}
   - component: {fileID: 1254}
   - component: {fileID: 960}
-  - component: {fileID: 1569}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3166,7 +3053,6 @@ GameObject:
   - component: {fileID: 603}
   - component: {fileID: 1256}
   - component: {fileID: 962}
-  - component: {fileID: 1570}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -3184,7 +3070,6 @@ GameObject:
   - component: {fileID: 604}
   - component: {fileID: 1257}
   - component: {fileID: 963}
-  - component: {fileID: 1571}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -3218,7 +3103,6 @@ GameObject:
   - component: {fileID: 606}
   - component: {fileID: 1258}
   - component: {fileID: 964}
-  - component: {fileID: 1572}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -3236,7 +3120,6 @@ GameObject:
   - component: {fileID: 607}
   - component: {fileID: 1259}
   - component: {fileID: 965}
-  - component: {fileID: 1573}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -3254,7 +3137,6 @@ GameObject:
   - component: {fileID: 608}
   - component: {fileID: 1260}
   - component: {fileID: 966}
-  - component: {fileID: 1574}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -3272,7 +3154,6 @@ GameObject:
   - component: {fileID: 609}
   - component: {fileID: 1261}
   - component: {fileID: 967}
-  - component: {fileID: 1575}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -3323,7 +3204,6 @@ GameObject:
   - component: {fileID: 612}
   - component: {fileID: 1263}
   - component: {fileID: 969}
-  - component: {fileID: 1576}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -3341,7 +3221,6 @@ GameObject:
   - component: {fileID: 613}
   - component: {fileID: 1264}
   - component: {fileID: 970}
-  - component: {fileID: 1577}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -3359,7 +3238,6 @@ GameObject:
   - component: {fileID: 614}
   - component: {fileID: 1265}
   - component: {fileID: 971}
-  - component: {fileID: 1578}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -3377,7 +3255,6 @@ GameObject:
   - component: {fileID: 615}
   - component: {fileID: 1266}
   - component: {fileID: 972}
-  - component: {fileID: 1579}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -3412,7 +3289,6 @@ GameObject:
   - component: {fileID: 617}
   - component: {fileID: 1267}
   - component: {fileID: 973}
-  - component: {fileID: 1580}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -3430,7 +3306,6 @@ GameObject:
   - component: {fileID: 618}
   - component: {fileID: 1268}
   - component: {fileID: 974}
-  - component: {fileID: 1581}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3448,7 +3323,6 @@ GameObject:
   - component: {fileID: 619}
   - component: {fileID: 1269}
   - component: {fileID: 975}
-  - component: {fileID: 1582}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -3466,7 +3340,6 @@ GameObject:
   - component: {fileID: 620}
   - component: {fileID: 1270}
   - component: {fileID: 976}
-  - component: {fileID: 1583}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -3484,7 +3357,6 @@ GameObject:
   - component: {fileID: 621}
   - component: {fileID: 1271}
   - component: {fileID: 977}
-  - component: {fileID: 1584}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3502,7 +3374,6 @@ GameObject:
   - component: {fileID: 622}
   - component: {fileID: 1272}
   - component: {fileID: 978}
-  - component: {fileID: 1585}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -3520,7 +3391,6 @@ GameObject:
   - component: {fileID: 623}
   - component: {fileID: 1273}
   - component: {fileID: 979}
-  - component: {fileID: 1586}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -3538,7 +3408,6 @@ GameObject:
   - component: {fileID: 624}
   - component: {fileID: 1274}
   - component: {fileID: 980}
-  - component: {fileID: 1587}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -3556,7 +3425,6 @@ GameObject:
   - component: {fileID: 625}
   - component: {fileID: 1275}
   - component: {fileID: 981}
-  - component: {fileID: 1588}
   m_Layer: 0
   m_Name: stadium_paleta
   m_TagString: Untagged
@@ -3574,7 +3442,6 @@ GameObject:
   - component: {fileID: 626}
   - component: {fileID: 1276}
   - component: {fileID: 982}
-  - component: {fileID: 1589}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -3592,7 +3459,6 @@ GameObject:
   - component: {fileID: 627}
   - component: {fileID: 1277}
   - component: {fileID: 983}
-  - component: {fileID: 1590}
   m_Layer: 0
   m_Name: draha_1_hires_LM
   m_TagString: Untagged
@@ -3610,7 +3476,6 @@ GameObject:
   - component: {fileID: 628}
   - component: {fileID: 1278}
   - component: {fileID: 984}
-  - component: {fileID: 1591}
   m_Layer: 0
   m_Name: stadium_reflektor_2
   m_TagString: Untagged
@@ -3628,7 +3493,6 @@ GameObject:
   - component: {fileID: 629}
   - component: {fileID: 1279}
   - component: {fileID: 985}
-  - component: {fileID: 1592}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -3646,7 +3510,6 @@ GameObject:
   - component: {fileID: 630}
   - component: {fileID: 1280}
   - component: {fileID: 986}
-  - component: {fileID: 1593}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3697,7 +3560,6 @@ GameObject:
   - component: {fileID: 633}
   - component: {fileID: 1281}
   - component: {fileID: 987}
-  - component: {fileID: 1594}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -3715,7 +3577,6 @@ GameObject:
   - component: {fileID: 634}
   - component: {fileID: 1282}
   - component: {fileID: 988}
-  - component: {fileID: 1595}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -3765,7 +3626,6 @@ GameObject:
   - component: {fileID: 637}
   - component: {fileID: 1283}
   - component: {fileID: 989}
-  - component: {fileID: 1596}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -3783,7 +3643,6 @@ GameObject:
   - component: {fileID: 638}
   - component: {fileID: 1284}
   - component: {fileID: 990}
-  - component: {fileID: 1597}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -3801,7 +3660,6 @@ GameObject:
   - component: {fileID: 639}
   - component: {fileID: 1285}
   - component: {fileID: 991}
-  - component: {fileID: 1598}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3834,7 +3692,6 @@ GameObject:
   - component: {fileID: 641}
   - component: {fileID: 1286}
   - component: {fileID: 992}
-  - component: {fileID: 1599}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3852,7 +3709,6 @@ GameObject:
   - component: {fileID: 642}
   - component: {fileID: 1287}
   - component: {fileID: 993}
-  - component: {fileID: 1600}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -3870,7 +3726,6 @@ GameObject:
   - component: {fileID: 643}
   - component: {fileID: 1288}
   - component: {fileID: 994}
-  - component: {fileID: 1601}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -3904,7 +3759,6 @@ GameObject:
   - component: {fileID: 645}
   - component: {fileID: 1289}
   - component: {fileID: 995}
-  - component: {fileID: 1602}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -3922,7 +3776,6 @@ GameObject:
   - component: {fileID: 646}
   - component: {fileID: 1290}
   - component: {fileID: 996}
-  - component: {fileID: 1603}
   m_Layer: 0
   m_Name: stadium_spunt
   m_TagString: Untagged
@@ -3940,7 +3793,6 @@ GameObject:
   - component: {fileID: 647}
   - component: {fileID: 1291}
   - component: {fileID: 997}
-  - component: {fileID: 1604}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -3958,7 +3810,6 @@ GameObject:
   - component: {fileID: 648}
   - component: {fileID: 1292}
   - component: {fileID: 998}
-  - component: {fileID: 1605}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -3976,7 +3827,6 @@ GameObject:
   - component: {fileID: 649}
   - component: {fileID: 1293}
   - component: {fileID: 999}
-  - component: {fileID: 1606}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -3994,7 +3844,6 @@ GameObject:
   - component: {fileID: 650}
   - component: {fileID: 1294}
   - component: {fileID: 1000}
-  - component: {fileID: 1607}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -4012,7 +3861,6 @@ GameObject:
   - component: {fileID: 651}
   - component: {fileID: 1295}
   - component: {fileID: 1001}
-  - component: {fileID: 1608}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -4080,7 +3928,6 @@ GameObject:
   - component: {fileID: 655}
   - component: {fileID: 1296}
   - component: {fileID: 1002}
-  - component: {fileID: 1609}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -4098,7 +3945,6 @@ GameObject:
   - component: {fileID: 656}
   - component: {fileID: 1297}
   - component: {fileID: 1003}
-  - component: {fileID: 1610}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -4132,7 +3978,6 @@ GameObject:
   - component: {fileID: 658}
   - component: {fileID: 1298}
   - component: {fileID: 1004}
-  - component: {fileID: 1611}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -4167,7 +4012,6 @@ GameObject:
   - component: {fileID: 660}
   - component: {fileID: 1299}
   - component: {fileID: 1005}
-  - component: {fileID: 1612}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -4185,7 +4029,6 @@ GameObject:
   - component: {fileID: 661}
   - component: {fileID: 1300}
   - component: {fileID: 1006}
-  - component: {fileID: 1613}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -4203,7 +4046,6 @@ GameObject:
   - component: {fileID: 662}
   - component: {fileID: 1301}
   - component: {fileID: 1007}
-  - component: {fileID: 1614}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -4237,7 +4079,6 @@ GameObject:
   - component: {fileID: 664}
   - component: {fileID: 1302}
   - component: {fileID: 1008}
-  - component: {fileID: 1615}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -4255,7 +4096,6 @@ GameObject:
   - component: {fileID: 665}
   - component: {fileID: 1303}
   - component: {fileID: 1009}
-  - component: {fileID: 1616}
   m_Layer: 0
   m_Name: hadr_01
   m_TagString: Untagged
@@ -4273,7 +4113,6 @@ GameObject:
   - component: {fileID: 666}
   - component: {fileID: 1304}
   - component: {fileID: 1010}
-  - component: {fileID: 1617}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -4291,7 +4130,6 @@ GameObject:
   - component: {fileID: 667}
   - component: {fileID: 1305}
   - component: {fileID: 1011}
-  - component: {fileID: 1618}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -4324,7 +4162,6 @@ GameObject:
   - component: {fileID: 669}
   - component: {fileID: 1306}
   - component: {fileID: 1012}
-  - component: {fileID: 1619}
   m_Layer: 0
   m_Name: stadium_stozar
   m_TagString: Untagged
@@ -4360,7 +4197,6 @@ GameObject:
   - component: {fileID: 671}
   - component: {fileID: 1308}
   - component: {fileID: 1014}
-  - component: {fileID: 1620}
   m_Layer: 0
   m_Name: stadium_HELP
   m_TagString: Untagged
@@ -4378,7 +4214,6 @@ GameObject:
   - component: {fileID: 672}
   - component: {fileID: 1309}
   - component: {fileID: 1015}
-  - component: {fileID: 1621}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -4396,7 +4231,6 @@ GameObject:
   - component: {fileID: 673}
   - component: {fileID: 1310}
   - component: {fileID: 1016}
-  - component: {fileID: 1622}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -4430,7 +4264,6 @@ GameObject:
   - component: {fileID: 675}
   - component: {fileID: 1311}
   - component: {fileID: 1017}
-  - component: {fileID: 1623}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -4448,7 +4281,6 @@ GameObject:
   - component: {fileID: 676}
   - component: {fileID: 1312}
   - component: {fileID: 1018}
-  - component: {fileID: 1624}
   m_Layer: 0
   m_Name: stadium_paleta
   m_TagString: Untagged
@@ -4497,7 +4329,6 @@ GameObject:
   - component: {fileID: 679}
   - component: {fileID: 1313}
   - component: {fileID: 1019}
-  - component: {fileID: 1625}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -4515,7 +4346,6 @@ GameObject:
   - component: {fileID: 680}
   - component: {fileID: 1314}
   - component: {fileID: 1020}
-  - component: {fileID: 1626}
   m_Layer: 0
   m_Name: stadium_reflektor_2
   m_TagString: Untagged
@@ -4533,7 +4363,6 @@ GameObject:
   - component: {fileID: 681}
   - component: {fileID: 1315}
   - component: {fileID: 1021}
-  - component: {fileID: 1627}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -4566,7 +4395,6 @@ GameObject:
   - component: {fileID: 683}
   - component: {fileID: 1316}
   - component: {fileID: 1022}
-  - component: {fileID: 1628}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -4599,7 +4427,6 @@ GameObject:
   - component: {fileID: 685}
   - component: {fileID: 1317}
   - component: {fileID: 1023}
-  - component: {fileID: 1629}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -4632,7 +4459,6 @@ GameObject:
   - component: {fileID: 687}
   - component: {fileID: 1318}
   - component: {fileID: 1024}
-  - component: {fileID: 1630}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -4650,7 +4476,6 @@ GameObject:
   - component: {fileID: 688}
   - component: {fileID: 1319}
   - component: {fileID: 1025}
-  - component: {fileID: 1631}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -4668,7 +4493,6 @@ GameObject:
   - component: {fileID: 689}
   - component: {fileID: 1320}
   - component: {fileID: 1026}
-  - component: {fileID: 1632}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -4686,7 +4510,6 @@ GameObject:
   - component: {fileID: 690}
   - component: {fileID: 1321}
   - component: {fileID: 1027}
-  - component: {fileID: 1633}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -4704,7 +4527,6 @@ GameObject:
   - component: {fileID: 691}
   - component: {fileID: 1322}
   - component: {fileID: 1028}
-  - component: {fileID: 1634}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -4722,7 +4544,6 @@ GameObject:
   - component: {fileID: 692}
   - component: {fileID: 1323}
   - component: {fileID: 1029}
-  - component: {fileID: 1635}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -4740,7 +4561,6 @@ GameObject:
   - component: {fileID: 693}
   - component: {fileID: 1324}
   - component: {fileID: 1030}
-  - component: {fileID: 1636}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -4758,7 +4578,6 @@ GameObject:
   - component: {fileID: 694}
   - component: {fileID: 1325}
   - component: {fileID: 1031}
-  - component: {fileID: 1637}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -4792,7 +4611,6 @@ GameObject:
   - component: {fileID: 696}
   - component: {fileID: 1326}
   - component: {fileID: 1032}
-  - component: {fileID: 1638}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -4810,7 +4628,6 @@ GameObject:
   - component: {fileID: 697}
   - component: {fileID: 1327}
   - component: {fileID: 1033}
-  - component: {fileID: 1639}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -4828,7 +4645,6 @@ GameObject:
   - component: {fileID: 698}
   - component: {fileID: 1328}
   - component: {fileID: 1034}
-  - component: {fileID: 1640}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -4846,7 +4662,6 @@ GameObject:
   - component: {fileID: 699}
   - component: {fileID: 1329}
   - component: {fileID: 1035}
-  - component: {fileID: 1641}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -4864,7 +4679,6 @@ GameObject:
   - component: {fileID: 700}
   - component: {fileID: 1330}
   - component: {fileID: 1036}
-  - component: {fileID: 1642}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -4882,7 +4696,6 @@ GameObject:
   - component: {fileID: 701}
   - component: {fileID: 1331}
   - component: {fileID: 1037}
-  - component: {fileID: 1643}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -4935,7 +4748,6 @@ GameObject:
   - component: {fileID: 704}
   - component: {fileID: 1332}
   - component: {fileID: 1038}
-  - component: {fileID: 1644}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -4953,7 +4765,6 @@ GameObject:
   - component: {fileID: 705}
   - component: {fileID: 1333}
   - component: {fileID: 1039}
-  - component: {fileID: 1645}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -4971,7 +4782,6 @@ GameObject:
   - component: {fileID: 706}
   - component: {fileID: 1334}
   - component: {fileID: 1040}
-  - component: {fileID: 1646}
   m_Layer: 0
   m_Name: hadr_01
   m_TagString: Untagged
@@ -4989,7 +4799,6 @@ GameObject:
   - component: {fileID: 707}
   - component: {fileID: 1335}
   - component: {fileID: 1041}
-  - component: {fileID: 1647}
   m_Layer: 0
   m_Name: stadium_reflektor_2
   m_TagString: Untagged
@@ -5023,7 +4832,6 @@ GameObject:
   - component: {fileID: 709}
   - component: {fileID: 1336}
   - component: {fileID: 1042}
-  - component: {fileID: 1648}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -5041,7 +4849,6 @@ GameObject:
   - component: {fileID: 710}
   - component: {fileID: 1337}
   - component: {fileID: 1043}
-  - component: {fileID: 1649}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -5059,7 +4866,6 @@ GameObject:
   - component: {fileID: 711}
   - component: {fileID: 1338}
   - component: {fileID: 1044}
-  - component: {fileID: 1650}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -5077,7 +4883,6 @@ GameObject:
   - component: {fileID: 712}
   - component: {fileID: 1339}
   - component: {fileID: 1045}
-  - component: {fileID: 1651}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -5095,7 +4900,6 @@ GameObject:
   - component: {fileID: 713}
   - component: {fileID: 1340}
   - component: {fileID: 1046}
-  - component: {fileID: 1652}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -5145,7 +4949,6 @@ GameObject:
   - component: {fileID: 716}
   - component: {fileID: 1341}
   - component: {fileID: 1047}
-  - component: {fileID: 1653}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -5193,7 +4996,6 @@ GameObject:
   - component: {fileID: 719}
   - component: {fileID: 1342}
   - component: {fileID: 1048}
-  - component: {fileID: 1654}
   m_Layer: 0
   m_Name: stadium_paleta
   m_TagString: Untagged
@@ -5227,7 +5029,6 @@ GameObject:
   - component: {fileID: 721}
   - component: {fileID: 1343}
   - component: {fileID: 1049}
-  - component: {fileID: 1655}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -5245,7 +5046,6 @@ GameObject:
   - component: {fileID: 722}
   - component: {fileID: 1344}
   - component: {fileID: 1050}
-  - component: {fileID: 1656}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -5327,7 +5127,6 @@ GameObject:
   - component: {fileID: 727}
   - component: {fileID: 1346}
   - component: {fileID: 1052}
-  - component: {fileID: 1657}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -5345,7 +5144,6 @@ GameObject:
   - component: {fileID: 728}
   - component: {fileID: 1347}
   - component: {fileID: 1053}
-  - component: {fileID: 1658}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -5380,7 +5178,6 @@ GameObject:
   - component: {fileID: 730}
   - component: {fileID: 1348}
   - component: {fileID: 1054}
-  - component: {fileID: 1659}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -5398,7 +5195,6 @@ GameObject:
   - component: {fileID: 731}
   - component: {fileID: 1349}
   - component: {fileID: 1055}
-  - component: {fileID: 1660}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -5434,7 +5230,6 @@ GameObject:
   - component: {fileID: 733}
   - component: {fileID: 1351}
   - component: {fileID: 1057}
-  - component: {fileID: 1661}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -5469,7 +5264,6 @@ GameObject:
   - component: {fileID: 735}
   - component: {fileID: 1352}
   - component: {fileID: 1058}
-  - component: {fileID: 1662}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -5536,7 +5330,6 @@ GameObject:
   - component: {fileID: 739}
   - component: {fileID: 1354}
   - component: {fileID: 1060}
-  - component: {fileID: 1663}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -5586,7 +5379,6 @@ GameObject:
   - component: {fileID: 742}
   - component: {fileID: 1355}
   - component: {fileID: 1061}
-  - component: {fileID: 1664}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -5604,7 +5396,6 @@ GameObject:
   - component: {fileID: 743}
   - component: {fileID: 1356}
   - component: {fileID: 1062}
-  - component: {fileID: 1665}
   m_Layer: 0
   m_Name: stadium_reflektor_2
   m_TagString: Untagged
@@ -5622,7 +5413,6 @@ GameObject:
   - component: {fileID: 744}
   - component: {fileID: 1357}
   - component: {fileID: 1063}
-  - component: {fileID: 1666}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -5640,7 +5430,6 @@ GameObject:
   - component: {fileID: 745}
   - component: {fileID: 1358}
   - component: {fileID: 1064}
-  - component: {fileID: 1667}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -5658,7 +5447,6 @@ GameObject:
   - component: {fileID: 746}
   - component: {fileID: 1359}
   - component: {fileID: 1065}
-  - component: {fileID: 1668}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -5676,7 +5464,6 @@ GameObject:
   - component: {fileID: 747}
   - component: {fileID: 1360}
   - component: {fileID: 1066}
-  - component: {fileID: 1669}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -5710,7 +5497,6 @@ GameObject:
   - component: {fileID: 749}
   - component: {fileID: 1361}
   - component: {fileID: 1067}
-  - component: {fileID: 1670}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -5728,7 +5514,6 @@ GameObject:
   - component: {fileID: 750}
   - component: {fileID: 1362}
   - component: {fileID: 1068}
-  - component: {fileID: 1671}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -5746,7 +5531,6 @@ GameObject:
   - component: {fileID: 751}
   - component: {fileID: 1363}
   - component: {fileID: 1069}
-  - component: {fileID: 1672}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -5764,7 +5548,6 @@ GameObject:
   - component: {fileID: 752}
   - component: {fileID: 1364}
   - component: {fileID: 1070}
-  - component: {fileID: 1673}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -5782,7 +5565,6 @@ GameObject:
   - component: {fileID: 753}
   - component: {fileID: 1365}
   - component: {fileID: 1071}
-  - component: {fileID: 1674}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -5800,7 +5582,6 @@ GameObject:
   - component: {fileID: 754}
   - component: {fileID: 1366}
   - component: {fileID: 1072}
-  - component: {fileID: 1675}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -5818,7 +5599,6 @@ GameObject:
   - component: {fileID: 755}
   - component: {fileID: 1367}
   - component: {fileID: 1073}
-  - component: {fileID: 1676}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -5836,7 +5616,6 @@ GameObject:
   - component: {fileID: 756}
   - component: {fileID: 1368}
   - component: {fileID: 1074}
-  - component: {fileID: 1677}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -5854,7 +5633,6 @@ GameObject:
   - component: {fileID: 757}
   - component: {fileID: 1369}
   - component: {fileID: 1075}
-  - component: {fileID: 1678}
   m_Layer: 0
   m_Name: stadium_reflektor_2
   m_TagString: Untagged
@@ -5872,7 +5650,6 @@ GameObject:
   - component: {fileID: 758}
   - component: {fileID: 1370}
   - component: {fileID: 1076}
-  - component: {fileID: 1679}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -5907,7 +5684,6 @@ GameObject:
   - component: {fileID: 760}
   - component: {fileID: 1371}
   - component: {fileID: 1077}
-  - component: {fileID: 1680}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -5925,7 +5701,6 @@ GameObject:
   - component: {fileID: 761}
   - component: {fileID: 1372}
   - component: {fileID: 1078}
-  - component: {fileID: 1681}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -5943,7 +5718,6 @@ GameObject:
   - component: {fileID: 762}
   - component: {fileID: 1373}
   - component: {fileID: 1079}
-  - component: {fileID: 1682}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -5961,7 +5735,6 @@ GameObject:
   - component: {fileID: 763}
   - component: {fileID: 1374}
   - component: {fileID: 1080}
-  - component: {fileID: 1683}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -5995,7 +5768,6 @@ GameObject:
   - component: {fileID: 765}
   - component: {fileID: 1375}
   - component: {fileID: 1081}
-  - component: {fileID: 1684}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -6013,7 +5785,6 @@ GameObject:
   - component: {fileID: 766}
   - component: {fileID: 1376}
   - component: {fileID: 1082}
-  - component: {fileID: 1685}
   m_Layer: 0
   m_Name: stadium_paleta
   m_TagString: Untagged
@@ -6031,7 +5802,6 @@ GameObject:
   - component: {fileID: 767}
   - component: {fileID: 1377}
   - component: {fileID: 1083}
-  - component: {fileID: 1686}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6065,7 +5835,6 @@ GameObject:
   - component: {fileID: 769}
   - component: {fileID: 1378}
   - component: {fileID: 1084}
-  - component: {fileID: 1687}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -6083,7 +5852,6 @@ GameObject:
   - component: {fileID: 770}
   - component: {fileID: 1379}
   - component: {fileID: 1085}
-  - component: {fileID: 1688}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -6101,7 +5869,6 @@ GameObject:
   - component: {fileID: 771}
   - component: {fileID: 1380}
   - component: {fileID: 1086}
-  - component: {fileID: 1689}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -6153,7 +5920,6 @@ GameObject:
   - component: {fileID: 774}
   - component: {fileID: 1382}
   - component: {fileID: 1088}
-  - component: {fileID: 1691}
   m_Layer: 0
   m_Name: stadium_HELP
   m_TagString: Untagged
@@ -6171,7 +5937,6 @@ GameObject:
   - component: {fileID: 775}
   - component: {fileID: 1383}
   - component: {fileID: 1089}
-  - component: {fileID: 1692}
   - component: {fileID: 1861}
   m_Layer: 0
   m_Name: mraky_strecha_1
@@ -6225,7 +5990,6 @@ GameObject:
   - component: {fileID: 778}
   - component: {fileID: 1384}
   - component: {fileID: 1090}
-  - component: {fileID: 1693}
   m_Layer: 0
   m_Name: stadium_prekazka
   m_TagString: Untagged
@@ -6243,7 +6007,6 @@ GameObject:
   - component: {fileID: 779}
   - component: {fileID: 1385}
   - component: {fileID: 1091}
-  - component: {fileID: 1694}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -6261,7 +6024,6 @@ GameObject:
   - component: {fileID: 780}
   - component: {fileID: 1386}
   - component: {fileID: 1092}
-  - component: {fileID: 1695}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -6279,7 +6041,6 @@ GameObject:
   - component: {fileID: 781}
   - component: {fileID: 1387}
   - component: {fileID: 1093}
-  - component: {fileID: 1696}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -6297,7 +6058,6 @@ GameObject:
   - component: {fileID: 782}
   - component: {fileID: 1388}
   - component: {fileID: 1094}
-  - component: {fileID: 1697}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -6315,7 +6075,6 @@ GameObject:
   - component: {fileID: 783}
   - component: {fileID: 1389}
   - component: {fileID: 1095}
-  - component: {fileID: 1698}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -6333,7 +6092,6 @@ GameObject:
   - component: {fileID: 784}
   - component: {fileID: 1390}
   - component: {fileID: 1096}
-  - component: {fileID: 1699}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6369,7 +6127,6 @@ GameObject:
   - component: {fileID: 786}
   - component: {fileID: 1392}
   - component: {fileID: 1098}
-  - component: {fileID: 1700}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -6403,7 +6160,6 @@ GameObject:
   - component: {fileID: 788}
   - component: {fileID: 1393}
   - component: {fileID: 1099}
-  - component: {fileID: 1701}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -6436,7 +6192,6 @@ GameObject:
   - component: {fileID: 790}
   - component: {fileID: 1394}
   - component: {fileID: 1100}
-  - component: {fileID: 1702}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -6454,7 +6209,6 @@ GameObject:
   - component: {fileID: 791}
   - component: {fileID: 1395}
   - component: {fileID: 1101}
-  - component: {fileID: 1703}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -6472,7 +6226,6 @@ GameObject:
   - component: {fileID: 792}
   - component: {fileID: 1396}
   - component: {fileID: 1102}
-  - component: {fileID: 1704}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -6506,7 +6259,6 @@ GameObject:
   - component: {fileID: 794}
   - component: {fileID: 1397}
   - component: {fileID: 1103}
-  - component: {fileID: 1705}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -6524,7 +6276,6 @@ GameObject:
   - component: {fileID: 795}
   - component: {fileID: 1398}
   - component: {fileID: 1104}
-  - component: {fileID: 1706}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -6542,7 +6293,6 @@ GameObject:
   - component: {fileID: 796}
   - component: {fileID: 1399}
   - component: {fileID: 1105}
-  - component: {fileID: 1707}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6560,7 +6310,6 @@ GameObject:
   - component: {fileID: 797}
   - component: {fileID: 1400}
   - component: {fileID: 1106}
-  - component: {fileID: 1708}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -6643,7 +6392,6 @@ GameObject:
   - component: {fileID: 802}
   - component: {fileID: 1401}
   - component: {fileID: 1107}
-  - component: {fileID: 1709}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -6678,7 +6426,6 @@ GameObject:
   - component: {fileID: 804}
   - component: {fileID: 1402}
   - component: {fileID: 1108}
-  - component: {fileID: 1710}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -6712,7 +6459,6 @@ GameObject:
   - component: {fileID: 806}
   - component: {fileID: 1403}
   - component: {fileID: 1109}
-  - component: {fileID: 1711}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -6730,7 +6476,6 @@ GameObject:
   - component: {fileID: 807}
   - component: {fileID: 1404}
   - component: {fileID: 1110}
-  - component: {fileID: 1712}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -6748,7 +6493,6 @@ GameObject:
   - component: {fileID: 808}
   - component: {fileID: 1405}
   - component: {fileID: 1111}
-  - component: {fileID: 1713}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6766,7 +6510,6 @@ GameObject:
   - component: {fileID: 809}
   - component: {fileID: 1406}
   - component: {fileID: 1112}
-  - component: {fileID: 1714}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -6800,7 +6543,6 @@ GameObject:
   - component: {fileID: 811}
   - component: {fileID: 1407}
   - component: {fileID: 1113}
-  - component: {fileID: 1715}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -6818,7 +6560,6 @@ GameObject:
   - component: {fileID: 812}
   - component: {fileID: 1408}
   - component: {fileID: 1114}
-  - component: {fileID: 1716}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -6836,7 +6577,6 @@ GameObject:
   - component: {fileID: 813}
   - component: {fileID: 1409}
   - component: {fileID: 1115}
-  - component: {fileID: 1717}
   m_Layer: 0
   m_Name: zataras_01
   m_TagString: Untagged
@@ -6854,7 +6594,6 @@ GameObject:
   - component: {fileID: 814}
   - component: {fileID: 1410}
   - component: {fileID: 1116}
-  - component: {fileID: 1718}
   m_Layer: 0
   m_Name: stadium_mantinel_2
   m_TagString: Untagged
@@ -6890,7 +6629,6 @@ GameObject:
   - component: {fileID: 816}
   - component: {fileID: 1412}
   - component: {fileID: 1118}
-  - component: {fileID: 1719}
   m_Layer: 0
   m_Name: stadium_tent
   m_TagString: Untagged
@@ -6908,7 +6646,6 @@ GameObject:
   - component: {fileID: 817}
   - component: {fileID: 1413}
   - component: {fileID: 1119}
-  - component: {fileID: 1720}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6926,7 +6663,6 @@ GameObject:
   - component: {fileID: 818}
   - component: {fileID: 1414}
   - component: {fileID: 1120}
-  - component: {fileID: 1721}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6944,7 +6680,6 @@ GameObject:
   - component: {fileID: 819}
   - component: {fileID: 1415}
   - component: {fileID: 1121}
-  - component: {fileID: 1722}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6962,7 +6697,6 @@ GameObject:
   - component: {fileID: 820}
   - component: {fileID: 1416}
   - component: {fileID: 1122}
-  - component: {fileID: 1723}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -6980,7 +6714,6 @@ GameObject:
   - component: {fileID: 821}
   - component: {fileID: 1417}
   - component: {fileID: 1123}
-  - component: {fileID: 1724}
   m_Layer: 0
   m_Name: stadium_tent_small
   m_TagString: Untagged
@@ -6998,7 +6731,6 @@ GameObject:
   - component: {fileID: 822}
   - component: {fileID: 1418}
   - component: {fileID: 1124}
-  - component: {fileID: 1725}
   m_Layer: 0
   m_Name: stadium_water_tank
   m_TagString: Untagged
@@ -7057,7 +6789,6 @@ GameObject:
   - component: {fileID: 825}
   - component: {fileID: 1419}
   - component: {fileID: 1125}
-  - component: {fileID: 1727}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -7075,7 +6806,6 @@ GameObject:
   - component: {fileID: 826}
   - component: {fileID: 1420}
   - component: {fileID: 1126}
-  - component: {fileID: 1728}
   m_Layer: 0
   m_Name: hadr_01
   m_TagString: Untagged
@@ -7093,7 +6823,6 @@ GameObject:
   - component: {fileID: 827}
   - component: {fileID: 1421}
   - component: {fileID: 1127}
-  - component: {fileID: 1729}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -7111,7 +6840,6 @@ GameObject:
   - component: {fileID: 828}
   - component: {fileID: 1422}
   - component: {fileID: 1128}
-  - component: {fileID: 1730}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -7129,7 +6857,6 @@ GameObject:
   - component: {fileID: 829}
   - component: {fileID: 1423}
   - component: {fileID: 1129}
-  - component: {fileID: 1731}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -7197,7 +6924,6 @@ GameObject:
   - component: {fileID: 833}
   - component: {fileID: 1424}
   - component: {fileID: 1130}
-  - component: {fileID: 1732}
   m_Layer: 0
   m_Name: blood_1
   m_TagString: Untagged
@@ -7215,7 +6941,6 @@ GameObject:
   - component: {fileID: 834}
   - component: {fileID: 1425}
   - component: {fileID: 1131}
-  - component: {fileID: 1733}
   m_Layer: 0
   m_Name: stadium_mantinel
   m_TagString: Untagged
@@ -7264,7 +6989,6 @@ GameObject:
   - component: {fileID: 837}
   - component: {fileID: 1426}
   - component: {fileID: 1132}
-  - component: {fileID: 1734}
   m_Layer: 0
   m_Name: stadium_zabrana
   m_TagString: Untagged
@@ -7282,7 +7006,6 @@ GameObject:
   - component: {fileID: 838}
   - component: {fileID: 1427}
   - component: {fileID: 1133}
-  - component: {fileID: 1735}
   m_Layer: 0
   m_Name: stadium_segment
   m_TagString: Untagged
@@ -7300,7 +7023,6 @@ GameObject:
   - component: {fileID: 839}
   - component: {fileID: 1428}
   - component: {fileID: 1134}
-  - component: {fileID: 1736}
   m_Layer: 0
   m_Name: plech_02
   m_TagString: Untagged
@@ -26290,3274 +26012,12 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!111 &1456
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 5}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1457
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 16}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1458
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 18}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1459
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 22}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1460
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 25}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1461
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 26}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1462
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 27}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1463
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 28}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1464
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 29}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1465
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1466
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 34}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1467
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 36}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1468
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 37}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1469
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 38}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1470
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 40}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1471
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 41}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1472
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 42}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1473
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 43}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1474
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 44}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1475
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 51}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1476
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 53}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1477
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 54}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1478
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 56}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1479
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 57}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1480
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 58}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1481
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 60}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1482
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 61}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!111 &1483
 Animation:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 62}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1484
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 64}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1485
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 67}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1486
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 69}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1487
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 72}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1488
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 76}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1489
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 77}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1490
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 80}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1491
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 81}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1492
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 83}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1493
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 85}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1494
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 86}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1495
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 88}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1496
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 89}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1497
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 90}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1498
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 91}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1499
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 92}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1500
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 94}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1501
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 95}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1502
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 96}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1503
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1504
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 99}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1505
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 103}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1506
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 104}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1507
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 105}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1508
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 106}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1509
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 108}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1510
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 109}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1511
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1512
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 111}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1513
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 112}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1514
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 115}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1515
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 116}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1516
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 117}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1517
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 119}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1518
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 121}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1519
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 122}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1520
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 123}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1521
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 124}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1522
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 126}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1523
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 129}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1524
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 130}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1525
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 131}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1526
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 132}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1527
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 133}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1528
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 134}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1529
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 135}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1530
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 136}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1531
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 137}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1532
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 138}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1533
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 139}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1534
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 140}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1535
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 142}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1536
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 143}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1537
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 145}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1538
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 146}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1539
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 147}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1540
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 148}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1541
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 149}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1542
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 150}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1543
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 151}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1544
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 152}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1545
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 153}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1546
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 154}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1547
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 155}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1548
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 156}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1549
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 157}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1550
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 158}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1551
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 159}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1552
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 161}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1553
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 164}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1554
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 165}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1555
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 167}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1556
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 168}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1557
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 170}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1558
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 171}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1559
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 172}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1560
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 173}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1561
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 174}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1562
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 175}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1563
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 176}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1564
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 177}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1565
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 178}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1566
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 179}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1567
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 180}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1568
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 181}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1569
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 182}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1570
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 185}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1571
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 186}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1572
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 188}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1573
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 189}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1574
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 190}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1575
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 191}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1576
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 194}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1577
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 195}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1578
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 196}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1579
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1580
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 199}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1581
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 200}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1582
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 201}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1583
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 202}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1584
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 203}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1585
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 204}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1586
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 205}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1587
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 206}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1588
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 207}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1589
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1590
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 209}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1591
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 210}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1592
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 211}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1593
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 212}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1594
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 215}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1595
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 216}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1596
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 219}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1597
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 220}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1598
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 221}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1599
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 223}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1600
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 224}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1601
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 225}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1602
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 227}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1603
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 228}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1604
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 229}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1605
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 230}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1606
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 231}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1607
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 232}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1608
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 233}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1609
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 237}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1610
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 238}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1611
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 240}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1612
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 242}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1613
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 243}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1614
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1615
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 246}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1616
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 247}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1617
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 248}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1618
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 249}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1619
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 251}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1620
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 253}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1621
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 254}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1622
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 255}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1623
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 257}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1624
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 258}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1625
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 261}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1626
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 262}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1627
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 263}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1628
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 265}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1629
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 267}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1630
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 269}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1631
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 270}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1632
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 271}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1633
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 272}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1634
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 273}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1635
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 274}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1636
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 275}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1637
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 276}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1638
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 278}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1639
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 279}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1640
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 280}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1641
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 281}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1642
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 282}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1643
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 283}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1644
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 286}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1645
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 287}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1646
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 288}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1647
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 289}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1648
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 291}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1649
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 292}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1650
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 293}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1651
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 294}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1652
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 295}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1653
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 298}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1654
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 301}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1655
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 303}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1656
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 304}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1657
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 309}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1658
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 310}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1659
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 312}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1660
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 313}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1661
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 315}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1662
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 317}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1663
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 321}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1664
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 324}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1665
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 325}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1666
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 326}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1667
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 327}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1668
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 328}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1669
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 329}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1670
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 331}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1671
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 332}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1672
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 333}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1673
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 334}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1674
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 335}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1675
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 336}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1676
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 337}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1677
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 338}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1678
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 339}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1679
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 340}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1680
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 342}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1681
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 343}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1682
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 344}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1683
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1684
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 347}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1685
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 348}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1686
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 349}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1687
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 351}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1688
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 352}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1689
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 353}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 0}
@@ -29580,496 +26040,6 @@ Animation:
   - {fileID: 7400000, guid: 0ef35f704027fcd4facdc93e2ce22225, type: 2}
   - {fileID: 7400000, guid: d231adacc750eda498b8c1b07b340024, type: 2}
   - {fileID: 7400000, guid: 6a30a980d0d29504ea926cab5b4e1b3c, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1691
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 356}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1692
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 357}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1693
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 360}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1694
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 361}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1695
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 362}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1696
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 363}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1697
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 364}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1698
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 365}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1699
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 366}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1700
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 368}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1701
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 370}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1702
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 372}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1703
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 373}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1704
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 374}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1705
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 376}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1706
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 377}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1707
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 378}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1708
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 379}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1709
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 384}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1710
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 386}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1711
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 388}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1712
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 389}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1713
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 390}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1714
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 391}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1715
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 393}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1716
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 394}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1717
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 395}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1718
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 396}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1719
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 398}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1720
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 399}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1721
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 400}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1722
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 401}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1723
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 402}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1724
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 403}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1725
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 404}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -30215,146 +26185,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!111 &1727
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 407}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1728
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 408}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1729
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1730
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1731
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 411}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1732
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 415}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1733
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 416}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1734
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 419}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1735
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 420}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!111 &1736
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 421}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!124 &1738
 Behaviour:
   m_ObjectHideFlags: 0
@@ -43515,6 +39345,47 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &1114913924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1114913926}
+  - component: {fileID: 1114913925}
+  m_Layer: 0
+  m_Name: LightProbeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1114913925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1114913924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebbb7b75f77c9949bbe701c311654ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probeDataTextAsset: {fileID: 4900000, guid: 733fa6ae8dc9b9a468d35979626fa14d, type: 3}
+--- !u!4 &1114913926
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1114913924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.42528, y: 1.1983857, z: 18.523771}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1246584081
 GameObject:
   m_ObjectHideFlags: 0
@@ -43644,7 +39515,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 6529d2c1f81422f408decb1c170c3a31, type: 2}
 --- !u!4 &1318679616
