@@ -38,9 +38,18 @@ Material:
     - _BumpScale: 1
     - _LightProbesLightingAmount: 0.6
     - _Roughness: 0.5
+    - _SHIntensity: 0.3
     - _SpecularIntensity: 1
     m_Colors:
+    - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
     - _Params: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHC: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularStrength: {r: 0, g: 1, b: 0, a: 0}
