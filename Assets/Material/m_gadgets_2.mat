@@ -27,8 +27,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _EnvStrength: 0.2
-    - _SHLightingScale: 1
+    - _EnvStrength: 1.2
+    - _SHLightingScale: 0.5
     - _Shininess: 0.02520514
     - _SpecRange: 50
     - _SpecularStrength: 1
