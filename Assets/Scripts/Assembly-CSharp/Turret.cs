@@ -337,36 +337,58 @@ public class Turret : MonoBehaviour
 		if (m_Audio != null)
 		{
 			float num = 0f;
-			if (m_Audio.isPlaying && m_AimPhase != E_AimPhase.InProgress)
+			if (m_Audio.isPlaying && m_AimPhase != E_AimPhase.InProgress
+				&& m_Audio.clip != null && m_Audio.clip.length > 0f)
 			{
 				num = 1f - m_Audio.time / m_Audio.clip.length;
 			}
+
 			m_Audio.Stop();
 			m_Audio.clip = null;
 			m_Audio.loop = false;
+
 			switch (NewPhase)
 			{
-			case E_AimPhase.Starting:
-				if (m_SndSettings.m_AimingStart != null)
-				{
-					m_Audio.clip = m_SndSettings.m_AimingStart;
-					m_Audio.time = num * m_Audio.clip.length;
-				}
-				break;
-			case E_AimPhase.InProgress:
-				m_Audio.clip = m_SndSettings.m_AimingLoop;
-				m_Audio.loop = true;
-				break;
-			case E_AimPhase.Stopping:
-				if (m_SndSettings.m_AimingStop != null)
-				{
-					m_Audio.clip = m_SndSettings.m_AimingStop;
-					m_Audio.time = num * m_Audio.clip.length;
-				}
-				break;
+				case E_AimPhase.Starting:
+					if (m_SndSettings.m_AimingStart != null)
+					{
+						m_Audio.clip = m_SndSettings.m_AimingStart;
+						// Clamp seek to valid range for the new clip
+						float startSeek = num * m_Audio.clip.length;
+						m_Audio.time = Mathf.Clamp(
+							startSeek, 0f,
+							m_Audio.clip.length - 0.01f);
+					}
+					break;
+
+				case E_AimPhase.InProgress:
+					m_Audio.clip = m_SndSettings.m_AimingLoop;
+					m_Audio.loop = true;
+					// Loop always starts from beginning
+					m_Audio.time = 0f;
+					break;
+
+				case E_AimPhase.Stopping:
+					if (m_SndSettings.m_AimingStop != null)
+					{
+						m_Audio.clip = m_SndSettings.m_AimingStop;
+						// Clamp seek to valid range for the new clip
+						float stopSeek = num * m_Audio.clip.length;
+						m_Audio.time = Mathf.Clamp(
+							stopSeek, 0f,
+							m_Audio.clip.length - 0.01f);
+					}
+					break;
 			}
-			m_Audio.Play();
+
+			// Only play if a valid loaded clip was assigned
+			if (m_Audio.clip != null
+				&& m_Audio.clip.loadState == AudioDataLoadState.Loaded)
+			{
+				m_Audio.Play();
+			}
 		}
+
 		m_AimPhase = NewPhase;
 	}
 

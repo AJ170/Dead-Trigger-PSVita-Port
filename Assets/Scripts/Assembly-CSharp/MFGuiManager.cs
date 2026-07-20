@@ -297,6 +297,15 @@ public class MFGuiManager : MonoBehaviour
 		}
 		return null;
 	}
+
+	private List<MFGuiRenderer> m_GUIRendererList = new List<MFGuiRenderer>();
+	private void RebuildRendererList()
+	{
+		m_GUIRendererList.Clear();
+		foreach (MFGuiRenderer r in m_GUIRenderers.Values)
+			m_GUIRendererList.Add(r);
+	}
+
 	private void LateUpdate()
 	{
 #if UNITY_EDITOR
@@ -321,62 +330,72 @@ public class MFGuiManager : MonoBehaviour
 #endif
 		if (m_FadeInProgress)
 		{
-			m_CurrentFade = Mathf.Lerp(m_FromFade, m_TargetFade, (m_TotalFadeTime - (m_TimeToFade - Time.realtimeSinceStartup)) / m_TotalFadeTime);
+			float realTime = Time.realtimeSinceStartup;
+			m_CurrentFade = Mathf.Lerp(m_FromFade, m_TargetFade,
+				(m_TotalFadeTime - (m_TimeToFade - realTime))
+				/ m_TotalFadeTime);
 			m_FadeSprite.SetAlpha(m_CurrentFade);
-			if (Time.realtimeSinceStartup >= m_TimeToFade)
+			if (realTime >= m_TimeToFade)
 			{
 				m_FadeInProgress = false;
 				if (m_CurrentFade <= s_ALPHA_LIMIT_TO_HIDE_FADE_SPRITE)
-				{
 					m_FadeGuiRenderer.HideSprite(m_FadeSprite);
-				}
 			}
 		}
-		if (m_ObjectsToChangeVisibility != null && m_ObjectsToChangeVisibility.Count > 0)
+
+		if (m_ObjectsToChangeVisibility != null
+			&& m_ObjectsToChangeVisibility.Count > 0)
 		{
 			for (int i = 0; i < m_ObjectsToChangeVisibility.Count; i++)
 			{
-				S_ObjectToChangeVisibility s_ObjectToChangeVisibility = (S_ObjectToChangeVisibility)m_ObjectsToChangeVisibility[i];
-				GameObject targetObj = s_ObjectToChangeVisibility.m_GObj;
-				GUIBase_Layout component = targetObj.GetComponent<GUIBase_Layout>();
-				if ((bool)component)
+				S_ObjectToChangeVisibility entry =
+					(S_ObjectToChangeVisibility)m_ObjectsToChangeVisibility[i];
+				GameObject targetObj = entry.m_GObj;
+
+				// Cache GetComponent results to avoid double lookup
+				GUIBase_Layout layout =
+					targetObj.GetComponent<GUIBase_Layout>();
+				if (layout != null)
 				{
-					component.ShowImmediate(s_ObjectToChangeVisibility.m_Visible);
+					layout.ShowImmediate(entry.m_Visible);
 					continue;
 				}
-				GUIBase_Widget component2 = targetObj.GetComponent<GUIBase_Widget>();
-				if ((bool)component2)
-				{
-					component2.ShowImmediate(s_ObjectToChangeVisibility.m_Visible, s_ObjectToChangeVisibility.m_Recursive);
-				}
+
+				GUIBase_Widget widget =
+					targetObj.GetComponent<GUIBase_Widget>();
+				if (widget != null)
+					widget.ShowImmediate(entry.m_Visible, entry.m_Recursive);
 			}
-			m_ObjectsToChangeVisibility.RemoveRange(0, m_ObjectsToChangeVisibility.Count);
+			m_ObjectsToChangeVisibility.Clear();
 		}
+
 		bool flag = false;
 		for (int j = 0; j < m_LastLayoutIdx; j++)
 		{
-			GUIBase_Layout gUIBase_Layout = m_Layouts[j];
-			if ((bool)gUIBase_Layout)
+			GUIBase_Layout layout = m_Layouts[j];
+			if (layout != null)
 			{
-				gUIBase_Layout.GUIUpdate(gUIBase_Layout.GetParentFadeAlpha());
+				layout.GUIUpdate(layout.GetParentFadeAlpha());
 			}
 			else
 			{
 				flag = true;
 			}
 		}
+
 		if (flag)
-		{
 			DefragmentLayouts();
-		}
-		foreach (KeyValuePair<ulong, MFGuiRenderer> gUIRenderer in m_GUIRenderers)
+
+		// Iterate cached renderer list instead of dictionary
+		// to avoid KeyValuePair enumerator allocation every frame
+		for (int k = 0; k < m_GUIRendererList.Count; k++)
 		{
-			MFGuiRenderer value = gUIRenderer.Value;
-			bool isActive = value.IsAnySpriteActive();
-			if (isActive != value.gameObject.activeSelf)
-			{
-				value.gameObject.SetActive(isActive);
-			}
+			MFGuiRenderer renderer = m_GUIRendererList[k];
+			if (renderer == null) continue;
+
+			bool isActive = renderer.IsAnySpriteActive();
+			if (isActive != renderer.gameObject.activeSelf)
+				renderer.gameObject.SetActive(isActive);
 		}
 	}
 	private void DefragmentLayouts()
