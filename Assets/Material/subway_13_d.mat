@@ -37,7 +37,7 @@ Material:
     - _Shininess: 0.078125
     - _SpecRange: 20
     - _SpecStrength: 2
-    - _SpecularStrength: 0.66
+    - _SpecularStrength: 0.8
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
