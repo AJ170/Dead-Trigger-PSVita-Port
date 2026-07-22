@@ -41,7 +41,7 @@ public class LightProbeSamplerDT : MonoBehaviour
     // Target SH values from the most recent probe sample
     private Vector4[] m_TargetSH = new Vector4[7];
 
-    // Reusable coefficient buffer — avoids per-update allocation
+    // Reusable coefficient buffer - avoids per-update allocation
     private float[] m_Coefficients = new float[27];
 
     private Vector3 m_LastSamplePosition = Vector3.zero;
@@ -56,6 +56,9 @@ public class LightProbeSamplerDT : MonoBehaviour
     // True once we have at least one valid sample
     private bool m_Initialised = false;
 
+    // Track instanced materials so we can clean them up on destroy
+    private List<Material> m_InstancedMaterials = new List<Material>();
+
     void Start()
     {
         m_SquareUpdateDistance = updateDistance * updateDistance;
@@ -66,6 +69,11 @@ public class LightProbeSamplerDT : MonoBehaviour
             Renderer r = GetComponent<Renderer>();
             if (r != null) renderers.Add(r);
         }
+
+        // Instance materials on all renderers so each object
+        // gets its own copy and SH values don't bleed across
+        // objects sharing the same material asset
+        InstanciateMaterials();
 
         // Force an immediate sample and apply on start
         // bypassing the lerp so there's no fade-in from black
@@ -87,11 +95,73 @@ public class LightProbeSamplerDT : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        // Clean up instanced materials to avoid memory leaks
+        // Only destroy in play mode - in edit mode Unity manages them
+        if (Application.isPlaying)
+        {
+            for (int i = 0; i < m_InstancedMaterials.Count; i++)
+            {
+                if (m_InstancedMaterials[i] != null)
+                    Destroy(m_InstancedMaterials[i]);
+            }
+        }
+        m_InstancedMaterials.Clear();
+    }
+
+    void InstanciateMaterials()
+    {
+        // Clean up any previously instanced materials first
+        for (int i = 0; i < m_InstancedMaterials.Count; i++)
+        {
+            if (m_InstancedMaterials[i] != null)
+                DestroyImmediate(m_InstancedMaterials[i]);
+        }
+        m_InstancedMaterials.Clear();
+
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            Renderer r = renderers[i];
+            if (r == null) continue;
+
+            // Get the shared materials array
+            Material[] sharedMats = r.sharedMaterials;
+            Material[] instancedMats = new Material[sharedMats.Length];
+
+            for (int m = 0; m < sharedMats.Length; m++)
+            {
+                if (sharedMats[m] != null)
+                {
+                    // Create a per-object instance of each material
+                    Material instance = new Material(sharedMats[m]);
+                    instance.name = sharedMats[m].name + "_Instance_"
+                        + gameObject.name;
+                    instancedMats[m] = instance;
+                    m_InstancedMaterials.Add(instance);
+                }
+                else
+                {
+                    instancedMats[m] = null;
+                }
+            }
+
+            // Assign instanced materials to the renderer
+            r.materials = instancedMats;
+        }
+
+        Debug.Log("LightProbeSamplerDT: Instanced "
+            + m_InstancedMaterials.Count
+            + " materials on " + gameObject.name);
+    }
+
     void Update()
     {
         if (populateChildRenderers)
         {
             CollectChildRenderers(transform);
+            // Re-instance materials for any newly added renderers
+            InstanciateMaterials();
             populateChildRenderers = false;
         }
 
@@ -107,14 +177,14 @@ public class LightProbeSamplerDT : MonoBehaviour
 
                 if (!m_Initialised)
                 {
-                    // First sample — snap directly, no lerp
+                    // First sample - snap directly, no lerp
                     CopyTargetToCurrent();
                     PushToRenderers();
                     m_Initialised = true;
                 }
                 else
                 {
-                    // Subsequent samples — start lerping
+                    // Subsequent samples - start lerping
                     m_LerpInProgress = true;
                 }
             }
@@ -131,7 +201,6 @@ public class LightProbeSamplerDT : MonoBehaviour
                 m_CurrentSH[i] = Vector4.Lerp(
                     m_CurrentSH[i], m_TargetSH[i], t);
 
-                // Check if any channel is still meaningfully different
                 if (!stillLerping)
                 {
                     Vector4 diff = m_CurrentSH[i] - m_TargetSH[i];
@@ -147,7 +216,6 @@ public class LightProbeSamplerDT : MonoBehaviour
 
             if (!stillLerping)
             {
-                // Close enough — snap to target and stop lerping
                 CopyTargetToCurrent();
                 m_LerpInProgress = false;
             }
@@ -155,7 +223,6 @@ public class LightProbeSamplerDT : MonoBehaviour
             m_Dirty = true;
         }
 
-        // Only push to renderers when something has changed
         if (m_Dirty)
         {
             PushToRenderers();
@@ -164,7 +231,6 @@ public class LightProbeSamplerDT : MonoBehaviour
     }
 
     // Sample the LightProbeManager and update m_TargetSH
-    // Returns true if a valid sample was obtained
     bool ForceSample()
     {
         LightProbeManager manager = LightProbeManager.Instance;
@@ -181,7 +247,6 @@ public class LightProbeSamplerDT : MonoBehaviour
         return true;
     }
 
-    // Copy target directly to current — used for snapping without lerp
     void CopyTargetToCurrent()
     {
         for (int i = 0; i < 7; i++)
@@ -189,6 +254,8 @@ public class LightProbeSamplerDT : MonoBehaviour
     }
 
     // Push current SH values to all renderers via property block
+    // MaterialPropertyBlock works correctly on instanced materials
+    // since each renderer now has its own material copy
     void PushToRenderers()
     {
         if (m_PropertyBlock == null)

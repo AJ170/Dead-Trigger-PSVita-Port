@@ -1,5 +1,4 @@
-﻿// LightProbeManager.cs
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,20 +9,37 @@ public class LightProbeManager : MonoBehaviour
     /*
     [Header("Data Source")]
     [Tooltip("Assign the LightProbeData ScriptableObject for this level")]
-    public LightProbeData probeData;
-    */
+    public LightProbeData probeData;*/
 
     [Tooltip("Alternatively load directly from a text file at runtime")]
     public TextAsset probeDataTextAsset;
 
-    // Runtime probe data if loaded from text
+    [Header("Probe Processing")]
+    [Tooltip("Overall brightness of the probe lighting")]
+    [Range(0, 2)]
+    float SHIntensity = 0.5f;
+
+    [Tooltip("How much the probe colour tints vs pure luminance. "
+        + "0 = luminance only, 1 = full colour")]
+    [Range(0, 1)]
+    float SHColorAmount = 0.4f;
+
+    [Tooltip("Bias subtracted from dark areas to increase contrast. "
+        + "Scaled by luminance so bright areas are unaffected.")]
+    [Range(0, 1)]
+    float SHBias = 0.0f;
+
+    // Runtime probe data
     private Vector3[] m_Positions;
-    private float[][] m_Coefficients;
+
+    // Pre-processed coefficients ready to pack directly into shader
+    // vectors without any per-frame math in the sampler or shader
+    private float[][] m_ProcessedCoefficients;
+
     private bool m_DataReady = false;
 
     void Awake()
     {
-        // Singleton setup
         if (Instance != null && Instance != this)
         {
             Debug.LogWarning("LightProbeManager: Duplicate instance "
@@ -33,15 +49,12 @@ public class LightProbeManager : MonoBehaviour
         }
 
         Instance = this;
-
         /*
-        // Load from ScriptableObject if assigned
         if (probeData != null && probeData.probes != null
             && probeData.probes.Length > 0)
         {
             LoadFromScriptableObject();
         }*/
-        // Otherwise try loading from TextAsset
         if (probeDataTextAsset != null)
         {
             LoadFromTextAsset();
@@ -49,7 +62,7 @@ public class LightProbeManager : MonoBehaviour
         else
         {
             Debug.LogWarning("LightProbeManager: No probe data source "
-                + "assigned. Samplers will use fallback lighting.");
+                + "assigned.");
         }
     }
 
@@ -58,22 +71,24 @@ public class LightProbeManager : MonoBehaviour
         if (Instance == this)
             Instance = null;
     }
+
     /*
     void LoadFromScriptableObject()
     {
         int count = probeData.probes.Length;
         m_Positions = new Vector3[count];
-        m_Coefficients = new float[count][];
+        m_ProcessedCoefficients = new float[count][];
 
         for (int i = 0; i < count; i++)
         {
             m_Positions[i] = probeData.probes[i].position;
-            m_Coefficients[i] = probeData.probes[i].shCoefficients;
+            m_ProcessedCoefficients[i] = ProcessCoefficients(
+                probeData.probes[i].shCoefficients);
         }
 
         m_DataReady = true;
-        Debug.Log("LightProbeManager: Loaded " + count
-            + " probes from ScriptableObject.");
+        Debug.Log("LightProbeManager: Loaded and processed "
+            + count + " probes from ScriptableObject.");
     }*/
 
     void LoadFromTextAsset()
@@ -82,7 +97,7 @@ public class LightProbeManager : MonoBehaviour
 
         string[] lines = probeDataTextAsset.text.Split('\n');
         List<Vector3> positions = new List<Vector3>();
-        List<float[]> coefficients = new List<float[]>();
+        List<float[]> rawCoefficients = new List<float[]>();
 
         bool inPositions = false;
         bool inSH = false;
@@ -100,14 +115,11 @@ public class LightProbeManager : MonoBehaviour
                 inSH = false;
                 continue;
             }
-
-            if (line.StartsWith(
-                "m_NonTetrahedralizedProbeSetIndexMap"))
+            if (line.StartsWith("m_NonTetrahedralizedProbeSetIndexMap"))
             {
                 inPositions = false;
                 continue;
             }
-
             if (line.StartsWith("m_BakedCoefficients:"))
             {
                 inSH = true;
@@ -115,11 +127,10 @@ public class LightProbeManager : MonoBehaviour
                 firstEntry = true;
                 continue;
             }
-
             if (line.StartsWith("m_BakedLightOcclusion:"))
             {
                 if (inSH && current != null && idx == 27)
-                    coefficients.Add(current);
+                    rawCoefficients.Add(current);
                 inSH = false;
                 continue;
             }
@@ -135,7 +146,7 @@ public class LightProbeManager : MonoBehaviour
                 if (line.StartsWith("- sh["))
                 {
                     if (!firstEntry && current != null && idx == 27)
-                        coefficients.Add(current);
+                        rawCoefficients.Add(current);
 
                     firstEntry = false;
                     current = new float[27];
@@ -155,24 +166,74 @@ public class LightProbeManager : MonoBehaviour
         }
 
         if (inSH && current != null && idx == 27)
-            coefficients.Add(current);
+            rawCoefficients.Add(current);
 
         if (positions.Count == 0)
         {
-            Debug.LogWarning("LightProbeManager: No positions found "
-                + "in text asset.");
+            Debug.LogWarning("LightProbeManager: No positions found.");
             return;
         }
 
         m_Positions = positions.ToArray();
-        m_Coefficients = coefficients.ToArray();
-        m_DataReady = true;
+        m_ProcessedCoefficients = new float[rawCoefficients.Count][];
 
-        Debug.Log("LightProbeManager: Loaded " + m_Positions.Length
-            + " probes from TextAsset.");
+        // Process all coefficients at load time
+        // so samplers get pre-baked values with no per-frame math
+        for (int i = 0; i < rawCoefficients.Count; i++)
+            m_ProcessedCoefficients[i] =
+                ProcessCoefficients(rawCoefficients[i]);
+
+        m_DataReady = true;
+        Debug.Log("LightProbeManager: Loaded and processed "
+            + m_Positions.Length + " probes from TextAsset.");
     }
 
-    // Main query method — finds interpolated SH for a world position
+    // Apply SHIntensity, SHColorAmount and SHBias to the raw
+    // coefficients once at load time rather than every pixel every frame
+    float[] ProcessCoefficients(float[] raw)
+    {
+        if (raw == null || raw.Length < 27)
+            return new float[27];
+
+        float[] processed = new float[27];
+
+        // Process each group of 3 (RGB per direction)
+        for (int i = 0; i < 27; i += 3)
+        {
+            float r = raw[i];
+            float g = raw[i + 1];
+            float b = raw[i + 2];
+
+            // Luminance of this direction's colour
+            float lum = r * 0.2126f + g * 0.7152f + b * 0.0722f;
+
+            // Lerp between full colour and luminance-only
+            // SHColorAmount controls how much colour tint comes through
+            float pr = Mathf.Lerp(lum, r, SHColorAmount);
+            float pg = Mathf.Lerp(lum, g, SHColorAmount);
+            float pb = Mathf.Lerp(lum, b, SHColorAmount);
+
+            // Apply intensity scale
+            pr *= SHIntensity;
+            pg *= SHIntensity;
+            pb *= SHIntensity;
+
+            // Apply bias scaled by luminance so dark probe directions
+            // drop toward black while bright directions are preserved
+            float scaledBias = SHBias * lum;
+            pr -= scaledBias;
+            pg -= scaledBias;
+            pb -= scaledBias;
+
+            processed[i] = pr;
+            processed[i + 1] = pg;
+            processed[i + 2] = pb;
+        }
+
+        return processed;
+    }
+
+    // Main query — interpolates pre-processed SH for a world position
     public bool GetInterpolatedSH(Vector3 worldPosition,
         out float[] coefficients)
     {
@@ -184,7 +245,7 @@ public class LightProbeManager : MonoBehaviour
 
         if (m_Positions.Length == 1)
         {
-            coefficients = m_Coefficients[0];
+            coefficients = m_ProcessedCoefficients[0];
             return true;
         }
 
@@ -216,7 +277,7 @@ public class LightProbeManager : MonoBehaviour
             }
         }
 
-        // Inverse distance weighting
+        // Inverse distance weighting blend
         float totalWeight = 0f;
         float[] weights = new float[nearCount];
 
@@ -226,8 +287,8 @@ public class LightProbeManager : MonoBehaviour
 
             if (dist < 0.001f)
             {
-                // Exactly on a probe — use it directly
-                coefficients = m_Coefficients[nearest[i]];
+                // Exactly on a probe — use directly
+                coefficients = m_ProcessedCoefficients[nearest[i]];
                 return true;
             }
 
@@ -235,11 +296,11 @@ public class LightProbeManager : MonoBehaviour
             totalWeight += weights[i];
         }
 
-        // Blend coefficients
+        // Blend pre-processed coefficients
         for (int i = 0; i < nearCount; i++)
         {
             float w = weights[i] / totalWeight;
-            float[] src = m_Coefficients[nearest[i]];
+            float[] src = m_ProcessedCoefficients[nearest[i]];
             if (src == null) continue;
 
             for (int c = 0; c < 27; c++)

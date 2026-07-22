@@ -1,10 +1,18 @@
-Shader "Vita/Character/BRDFLit Backlight - Per Pixel SH" {
+Shader "Vita/Character/BRDFLit Backlight - Per Pixel SH_Broken" {
     Properties{
         _MainTex("Base (RGB)", 2D) = "grey" {}
         _BumpMap("Normal Map", 2D) = "bump" {}
         _BumpScale("Normal Scale", Range(0, 2)) = 1.0
         _SHIntensity("SH Lighting Intensity", Range(0, 2)) = 1.0
+        _SHSubtract("SH Lighting Subtract", Range(0, 4)) = 4.0
         _Ambient("Ambient Floor", Color) = (0.05, 0.05, 0.05, 1)
+
+        _CubeTex("Reflection Cubemap", CUBE) = "black" {}
+        _ReflectionStrength("Reflection Strength", Range(0, 3)) = 0.4
+        _WetGloss("Wet Gloss (sharpens reflection)", Range(0, 1)) = 0.7
+        _Roughness("Roughness", Range(0, 1)) = 0.1
+        _TintColor("Tint Color", Color) = (1, 1, 1, 1)
+
 
         // SH coefficients injected by LightProbeSamplerDT
         // via MaterialPropertyBlock - not exposed in Inspector
@@ -40,7 +48,15 @@ Shader "Vita/Character/BRDFLit Backlight - Per Pixel SH" {
             float4 _BumpMap_ST;
             half _BumpScale;
             half _SHIntensity;
+            half _SHSubtract;
             half4 _Ambient;
+
+
+            samplerCUBE _CubeTex;
+            half   _ReflectionStrength;
+            half   _WetGloss;
+            half4  _TintColor;
+            half _Roughness;
 
             // Custom SH coefficients from LightProbeSamplerDT
             float4 _SHAr;
@@ -65,6 +81,7 @@ Shader "Vita/Character/BRDFLit Backlight - Per Pixel SH" {
                 half3 tSpace0   : TEXCOORD1; // TBN row 0
                 half3 tSpace1   : TEXCOORD2; // TBN row 1
                 half3 tSpace2   : TEXCOORD3; // TBN row 2
+                half3 worldViewDir : TEXCOORD5;
                 UNITY_FOG_COORDS(4)
             };
 
@@ -134,36 +151,68 @@ Shader "Vita/Character/BRDFLit Backlight - Per Pixel SH" {
 
                 UNITY_TRANSFER_FOG(o, o.pos);
 
+                float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+                o.worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
+
                 return o;
             }
 
             half4 frag(v2f i) : SV_Target
             {
-                // Sample diffuse
                 half4 diffuseAlbedo = tex2D(_MainTex, i.uv.xy);
 
-                // Sample and unpack normal map
-                half3 tangentNormal = UnpackNormal(
-                    tex2D(_BumpMap, i.uv.zw));
+                half3 tangentNormal = UnpackNormal(tex2D(_BumpMap, i.uv.zw));
                 tangentNormal.xy *= _BumpScale;
                 tangentNormal = normalize(tangentNormal);
 
-                // Transform bump normal to world space via TBN
                 half3 worldNormal;
                 worldNormal.x = dot(i.tSpace0, tangentNormal);
                 worldNormal.y = dot(i.tSpace1, tangentNormal);
                 worldNormal.z = dot(i.tSpace2, tangentNormal);
                 worldNormal = normalize(worldNormal);
 
-                // Evaluate SH per pixel using bump normal
-                // This gives surface detail response to lighting
                 half3 sh = EvaluateCustomSH(worldNormal);
+                // Contrast curve — push darks down and brights up
+                // Equivalent to a gentle power curve without calling pow()
+                half shLum = dot(sh, half3(0.2126, 0.7152, 0.0722));
+                half contrast = shLum * shLum; // Square darkens the response curve
+                sh = sh * lerp(contrast, 1.0, _SHIntensity);
 
-                // Apply intensity and ambient floor
-                half3 lighting = max(sh * _SHIntensity, _Ambient.rgb);
 
-                // Final colour
+                // Find the brightest channel to use as a normalisation reference
+                // This preserves colour ratios while allowing contrast control
+                half shMax = max(sh.r, max(sh.g, sh.b));
+
+                // Remap SH output so the brightest point maps to 1.0
+                // This maximises contrast use across the probe range
+                // rather than having everything compressed into 0.2-0.8
+                half3 shNormalised = (shMax > 0.001h)
+                    ? sh / shMax
+                    : half3(1, 1, 1);
+
+                // Lerp between normalised (full contrast) and raw (accurate colour)
+                // _SHIntensity now controls contrast rather than brightness
+                half3 shContrast = lerp(sh, shNormalised, _SHIntensity);
+
+                // Clamp with ambient floor after contrast expansion
+                // so darks don't go below minimum visibility
+                half3 lighting = max(shContrast, _Ambient.rgb);
+
+                half3 worldViewDir = normalize(i.worldViewDir);
+                half3 reflectionVector = reflect(-worldViewDir, worldNormal);
+                half roughnessLOD = _Roughness * 7.0
+                    * clamp(1.0 - diffuseAlbedo.a, 0.0, 1.0);
+                half3 cubeColor = texCUBElod(
+                    _CubeTex, half4(reflectionVector, roughnessLOD)).rgb;
+
+                half NdotV = saturate(dot(worldNormal, worldViewDir));
+                half NdotV_inv = 1.0 - NdotV;
+                half fresnel = NdotV_inv * NdotV_inv;
+
+                half reflAmount = diffuseAlbedo.a * _ReflectionStrength * fresnel;
+
                 half3 finalColor = diffuseAlbedo.rgb * lighting;
+                    //+ cubeColor * reflAmount * _TintColor.rgb;
 
                 UNITY_APPLY_FOG(i.fogCoord, finalColor);
 
