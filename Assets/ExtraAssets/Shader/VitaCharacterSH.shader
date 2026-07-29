@@ -141,7 +141,7 @@ Shader "Vita/Character/SH Diffuse Cubemap Specular" {
             half4 frag(v2f i) : SV_Target
             {
                 // Sample diffuse
-                half3 diffuse = tex2D(_MainTex, i.uv.xy).rgb;
+                half4 diffuse = tex2D(_MainTex, i.uv.xy);
 
                 // Unpack and scale bump normal
                 half3 tangentNormal = UnpackNormal(
@@ -181,7 +181,7 @@ Shader "Vita/Character/SH Diffuse Cubemap Specular" {
                 half3 reflVec  = reflect(-worldViewDir, worldNormal);
                 reflVec.x      = -reflVec.x;
 
-                half3 cubeColor = texCUBE(_CubeTex, reflVec).rgb;
+                half3 cubeColor = texCUBE(_CubeTex, worldNormal).rgb;
 
                 // Variable sharpness via lerp between NdotR and NdotR^4
                 // avoids pow() — low sharpness = broad, high = tight
@@ -190,7 +190,7 @@ Shader "Vita/Character/SH Diffuse Cubemap Specular" {
                 half spec4 = spec2 * spec2;
                 half spec  = lerp(NdotR, spec4, _SpecularSharpness / 8.0);
 
-                half3 specular = cubeColor * spec * _SpecularStrength;
+                half3 specular = cubeColor * spec * _SpecularStrength * diffuse.a;
 
                 // === FINAL ===
                 half3 finalColor = diffuse * lighting + specular;

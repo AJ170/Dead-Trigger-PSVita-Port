@@ -49,7 +49,7 @@ Material:
     - _SHSubtract: 3
     - _SpecularIntensity: 1
     - _SpecularSharpness: 2
-    - _SpecularStrength: 0.5
+    - _SpecularStrength: 0.75
     - _WetGloss: 0.5
     m_Colors:
     - _Ambient: {r: 0.022058845, g: 0.022058845, b: 0.022058845, a: 1}
