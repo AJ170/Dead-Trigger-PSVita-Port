@@ -95,15 +95,16 @@ public class ProjectileBullet : Projectile
 				base.ignoreThisHit = false;
 				continue;
 			}
-			/*FluidSurface component = data.collider.GetComponent<FluidSurface>();
+			/* "FluidSurface" doesnt exist in the project files
+			FluidSurface component = data.collider.GetComponent<FluidSurface>();
 			if (component != null)
 			{
 				component.AddDropletAtWorldPos(data.point, 0.3f, 0.15f);
-			}
-			if (!data.collider.isTrigger || component != null)
+			}*/
+			if (!data.collider.isTrigger)
 			{
 				SemanticMaterialManager.Instance.SpawnProjectileImpactEffect(base.ProjectileType, data);
-			}*/
+			}
 			if (data.collider.isTrigger)
 			{
 				continue;

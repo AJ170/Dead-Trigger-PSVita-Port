@@ -87,17 +87,15 @@ public class ProjectileCrossbow : Projectile
 				base.ignoreThisHit = false;
 				continue;
 			}
+			// FluidSurface removed during Vita port; impact-effect spawn restored below.
 			/*FluidSurface component = data.collider.GetComponent<FluidSurface>();
 			if (component != null)
 			{
 				component.AddDropletAtWorldPos(data.point, 0.3f, 0.15f);
-			}
-			if (!data.collider.isTrigger || component != null)
-			{
-				SemanticMaterialManager.Instance.SpawnProjectileImpactEffect(base.ProjectileType, data);
 			}*/
 			if (!data.collider.isTrigger)
 			{
+				SemanticMaterialManager.Instance.SpawnProjectileImpactEffect(base.ProjectileType, data);
 				position = data.point;
 				Hit = true;
 			}
