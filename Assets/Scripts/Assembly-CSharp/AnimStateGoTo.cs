@@ -186,12 +186,18 @@ public class AnimStateGoTo : AnimState
 	private bool GetActionPoint()
 	{
 		UnityEngine.AI.NavMeshAgent navMeshAgent = Owner.NavMeshAgent;
-		if (navMeshAgent == null || !navMeshAgent.isOnOffMeshLink)
+		if (navMeshAgent == null) // || !navMeshAgent.isOnOffMeshLink)
 		{
+			navMeshAgent.updatePosition = true;   // <-- see note below, this line still needs the null-guard
 			if (actionPointData.actionPoint != null)
 			{
 				actionPointData.actionPoint = null;
 			}
+			return false;
+		}
+		if (navMeshAgent.currentOffMeshLinkData.offMeshLink == null)
+		{
+			actionPointData.actionPoint = null;
 			return false;
 		}
 		actionPointData.actionPoint = navMeshAgent.currentOffMeshLinkData.offMeshLink.gameObject.GetComponent<ActionPoint>();

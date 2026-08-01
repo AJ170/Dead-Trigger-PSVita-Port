@@ -82,6 +82,8 @@ public class AnimState
 
 	protected virtual bool SetTargetLocation(Vector3 pos)
 	{
+		//Important fix to stop zombies from getting stuck after an attack
+		Owner.NavMeshAgent.isStopped = false;
 		return Owner.NavMeshAgent.SetDestination(pos);
 	}
 
