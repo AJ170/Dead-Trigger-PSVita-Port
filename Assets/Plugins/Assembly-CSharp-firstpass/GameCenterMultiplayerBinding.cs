@@ -1,3 +1,4 @@
+#if UNITY_IOS
 using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -343,3 +344,4 @@ public class GameCenterMultiplayerBinding : MonoBehaviour
 		}
 	}
 }
+#endif
