@@ -170,6 +170,10 @@ public class ComponentPlayer : MonoBehaviour
 	private void Activate(SpawnPoint spawn)
 	{
 		Player.Instance = this;
+		// The port shipped a reset physics collision matrix (all layers collide),
+		// letting the player stand on enemy hit-boxes and dead ragdolls (and walk
+		// out of the map). Re-apply the intended player collision filtering.
+		ObjectLayer.ApplyPlayerCollisionRules();
 		BlackBoard blackBoard = Player.Instance.Owner.BlackBoard;
 		blackBoard.ActionHandler = (BlackBoard.AgentActionHandler)Delegate.Combine(blackBoard.ActionHandler, new BlackBoard.AgentActionHandler(GuiHUD.Instance.HandleAction));
 		Owner.CharacterController.center = new Vector3(0f, HeightStand * 0.5f + 0.08f, 0f);
