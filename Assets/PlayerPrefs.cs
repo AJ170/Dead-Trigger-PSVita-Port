@@ -18,7 +18,7 @@ public class PlayerPrefs : MonoBehaviour
 #if UNITY_EDITOR || !UNITY_PSP2
             return Path.Combine(Application.persistentDataPath, "PlayerPrefs.json");
 #else //Handle our Vita save paths :)
-            return "ux0:/data/DeadTrigger/PlayerPrefs.json";
+            return "ux0:data/DeadTrigger/PlayerPrefs.json";
 #endif
         }
     }
@@ -32,20 +32,25 @@ public class PlayerPrefs : MonoBehaviour
     {
         DontDestroyOnLoad(new GameObject("Player Prefs", typeof(PlayerPrefs)));
 
-        Load();
-
-#if UNITY_PSP2 && !UNITY_EDITOR
-        if (!Directory.Exists(path))    //Ensure we are able to save
-        {
-            Directory.CreateDirectory(path);
-            Debug.Log("Creating path for save: " + path);
-        }
-        else
-        {
-            Debug.Log("Found path for save: " + path);
-        }
-#endif
+		Load();
     }
+
+	public static bool CheckDirectories() {
+		#if UNITY_PSP2 && !UNITY_EDITOR
+		if (!Directory.Exists(path))    //Ensure we are able to save
+		{
+			Directory.CreateDirectory(path);
+			Debug.Log("Creating path for save: " + path);
+		}
+		else
+		{
+			Debug.Log("Found path for save: " + path);
+		}
+
+		return Directory.Exists(path);
+		#endif
+		return true;
+	}
 
     void OnApplicationQuit()
     {
@@ -117,6 +122,9 @@ public class PlayerPrefs : MonoBehaviour
 #if UNITY_EDITOR
         if (PlayerPrefsEditor.lockFile) return;
 #endif
+		bool bSaveDirectories = CheckDirectories ();
+		if (!bSaveDirectories)
+			return;
         JSONObject jsonStrings = new JSONObject();
         JSONObject jsonInts = new JSONObject();
         JSONObject jsonFloats = new JSONObject();
@@ -136,6 +144,7 @@ public class PlayerPrefs : MonoBehaviour
 
     public static void Load()
     {
+		CheckDirectories();
         if (!File.Exists(savePath)) return;
 
         JSONNode index = JSON.Parse(File.ReadAllText(savePath));
