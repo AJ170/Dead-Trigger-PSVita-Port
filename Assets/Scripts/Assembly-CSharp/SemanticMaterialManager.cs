@@ -172,9 +172,19 @@ public class SemanticMaterialManager : MonoBehaviour
 	public void SpawnProjectileImpactEffect(E_ProjectileType ProjType, RaycastHit HitInfo)
 	{
 		SemanticMaterial material = GetMaterial(HitInfo);
+		// Map surfaces resolve via HitInfo.textureCoord -> m_UVTable, which has
+		// null entries (slots 8-15) and null-GFX materials (Fabric/Glass/Paper).
+		// Fall back to the Default material so map hits always get an effect.
+		if (material == null || material.m_ProjectileImpact.m_GfxCache == null)
+		{
+			material = m_Materials[0];
+		}
 		SemanticMaterial.ProjectileImpact projectileImpactData = material.GetProjectileImpactData(ProjType);
-		int index = Random.Range(0, projectileImpactData.m_Sfx.Count);
-		AudioClip sfxEffect = projectileImpactData.m_Sfx[index];
+		AudioClip sfxEffect = null;
+		if (projectileImpactData.m_Sfx != null && projectileImpactData.m_Sfx.Count > 0)
+		{
+			sfxEffect = projectileImpactData.m_Sfx[Random.Range(0, projectileImpactData.m_Sfx.Count)];
+		}
 		SpawnEffect(projectileImpactData.m_GfxCache, sfxEffect, HitInfo.point, HitInfo.normal);
 	}
 
@@ -198,6 +208,13 @@ public class SemanticMaterialManager : MonoBehaviour
 				gameObject._SetActiveRecursively(true);
 				gameObject.transform.position = Pos;
 				gameObject.transform.rotation = m_TempQuat;
+				// Don't rely on each prefab's "Play On Awake" - explicitly (re)play.
+				ParticleSystem[] particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>(true);
+				foreach (ParticleSystem ps in particleSystems)
+				{
+					ps.Clear(true);
+					ps.Play(true);
+				}
 				m_Effects.Add(new Effect(gameObject, GfxEffectCache));
 			}
 		}
