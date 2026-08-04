@@ -160081,10 +160081,10 @@ AudioSource:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 1, g: 0.76256484, b: 0.40392154, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.03
+  m_FogMode: 2
+  m_FogDensity: 0.01
   m_LinearFogStart: 15
   m_LinearFogEnd: 90
   m_AmbientSkyColor: {r: 0.062283736, g: 0.086983904, b: 0.09803922, a: 1}
