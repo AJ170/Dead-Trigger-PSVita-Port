@@ -6,75 +6,67 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 		_Color ("Color", Color) = (0,0,0,0)
 		_Params ("x = refraction strength, y = Layer 0 tiling, z = Layer 1 tiling", Vector) = (0.01,1.5,2,0)
 	}
-	SubShader { 
+	SubShader {
 		Pass {
 			ZTest Always
 			ZWrite Off
 			Cull Off
 			Fog { Mode Off }
+			// Round, soft-edged drops that blend with the scene (was opaque -> hard squares).
+			Blend SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+			#pragma vertex vert
+			#pragma fragment frag
+			#include "UnityCG.cginc"
 
-            float4 _Params;
-            float4 _Color;
+			float4 _Params;
+			float4 _Color;
+			sampler2D _MainTex;
 
-            sampler2D _MainTex;
-            sampler2D _EnvMap;
+			struct appdata_t
+			{
+				float4 vertex : POSITION;   // xy in [-1,1] screen space; z = intensity (0..1)
+				float2 uv : TEXCOORD0;      // -1..1 local drop coords (0 = drop centre)
+			};
 
-            struct appdata_t
-            {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-            };
+			struct v2f
+			{
+				float4 pos : SV_POSITION;
+				float2 uv : TEXCOORD0;       // screen sample coords (with refraction offset)
+				float2 local : TEXCOORD1;    // local drop coords, for the round mask
+				float intensity : TEXCOORD2;
+			};
 
-            struct v2f
-            {
-                float4 pos : SV_POSITION;
-                float2 uv : TEXCOORD0;
-                float2 uv1 : TEXCOORD1;
-                float4 color : COLOR;
-            };
+			v2f vert(appdata_t v)
+			{
+				v2f o;
+				// Lens normal from the local coords -> refraction direction.
+				float3 norm = -normalize(float3(v.uv.xy, 0.25));
+				o.pos = float4(v.vertex.x, -(v.vertex.y), 0.0, 1.0);
+				// Screen position of this vertex, plus the refraction offset (scaled by
+				// intensity so fading drops distort less).
+				float2 scr = ((v.vertex.xy * 0.5) + 0.5) + (0.5 / _ScreenParams.xy);
+				scr += norm.xy * (_Params.x * v.vertex.z);
+				o.uv = float2(scr.x, 1.0 - scr.y);
+				o.local = v.uv.xy;
+				o.intensity = v.vertex.z;
+				return o;
+			}
 
-            v2f vert(appdata_t v)
-            {
-                v2f o;
-
-                float3 norm_1;
-                float2 tmpvar_2;
-                float4 tmpvar_3;
-                float3 tmpvar_4;
-                tmpvar_4.z = 0.25;
-                tmpvar_4.xy = v.uv.xy;
-                float3 tmpvar_5;
-                tmpvar_5 = -(normalize(tmpvar_4));
-                norm_1 = tmpvar_5;
-                float4 tmpvar_6;
-                tmpvar_6.zw = float2(0.0, 1.0);
-                tmpvar_6.x = v.vertex.x;
-                tmpvar_6.y = -(v.vertex.y);
-                float2 tmpvar_7;
-                tmpvar_7 = ((((v.vertex.xy * 0.5) + 0.5) + (0.5 / _ScreenParams.xy)) + (norm_1.xy * _Params.x));
-                tmpvar_2.x = tmpvar_7.x;
-                tmpvar_2.y = (1.0 - tmpvar_7.y);
-                float4 tmpvar_8;
-                tmpvar_8 = ((v.vertex.z * 2.0) * _Color);
-                tmpvar_3 = tmpvar_8;
-                o.pos = tmpvar_6;
-                o.uv = tmpvar_2;
-                o.uv1 = norm_1.xy;
-                o.color = tmpvar_3;
-
-                return o;
-            }
-            half4 frag(v2f i) : COLOR
-            {
-                float4 tmpvar_1;
-                tmpvar_1 = ((tex2D (_MainTex, i.uv) + tex2D (_EnvMap, i.uv1)) + i.color);
-                return tmpvar_1;
-            }
-            ENDCG
-        }
-    }
+			half4 frag(v2f i) : COLOR
+			{
+				// Teardrop mask: rounded at the bottom, tapering to a point at the top
+				// (the tail trails upward as the drop slides down the screen). local.y = +1
+				// is the top of the drop on screen, so we pinch the horizontal width there.
+				// Lower pinch factor = blunter, softer tip (0.85 was a needle point).
+				float taper = 1.0 - 0.35 * saturate(i.local.y);
+				float r = length(float2(i.local.x / max(taper, 0.05), i.local.y));
+				float a = (1.0 - smoothstep(0.6, 1.0, r)) * saturate(i.intensity);
+				float3 col = tex2D(_MainTex, i.uv).rgb + (_Color.rgb * i.intensity);
+				return half4(col, a);
+			}
+			ENDCG
+		}
+	}
 }

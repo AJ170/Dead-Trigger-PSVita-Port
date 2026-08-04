@@ -23,23 +23,27 @@ public class ScreenDrops : MonoBehaviour
 		public bool m_IsDrop;
 
 		public int m_Id;
+
+		public float m_VelY;
 	}
 
 	public static ScreenDrops Instance;
 
-	public Vector2 m_DropMinSize = new Vector2(0.1f, 0.1f);
+	public Vector2 m_DropMinSize = new Vector2(0.05f, 0.05f);
 
-	public Vector2 m_DropMaxSize = new Vector2(0.2f, 0.2f);
+	public Vector2 m_DropMaxSize = new Vector2(0.26f, 0.26f);
 
-	public float m_DropsDuration = 2.5f;
+	public float m_DropsDuration = 3.5f;
 
-	public float m_DropsDurationVariation = 0.1f;
+	public float m_DropsDurationVariation = 0.6f;
 
-	public uint m_MaxVisibleDrops = 200u;
+	public uint m_MaxVisibleDrops = 24u;
 
 	protected MeshFilter m_MeshFilter;
 
 	protected MeshRenderer m_MeshRenderer;
+
+	private Material m_Material;
 
 	protected Mesh m_Mesh;
 
@@ -66,6 +70,18 @@ public class ScreenDrops : MonoBehaviour
 		}
 	}
 
+	// ScreenDrops is not placed in any scene, so create it on demand (e.g. the
+	// first time the player walks under a water-drip trigger).
+	public static ScreenDrops EnsureInstance()
+	{
+		if (Instance == null)
+		{
+			GameObject gameObject = new GameObject("ScreenDrops");
+			gameObject.AddComponent<ScreenDrops>();
+		}
+		return Instance;
+	}
+
 	private void OnDestroy()
 	{
 		Instance = null;
@@ -78,15 +94,26 @@ public class ScreenDrops : MonoBehaviour
 			return;
 		}
 		m_AspectRatio = (float)Screen.width / (float)Screen.height;
-		DbgEmitDecals();
 		KillOldDecals();
-		if (m_DecalsVersion != m_BuffersVersion)
+		if (m_Decals.Count > 0)
+		{
+			// Rebuild every frame so the per-drop fade (vertex.z) updates smoothly.
+			UpdateMeshBuffers();
+			m_BuffersVersion = m_DecalsVersion;
+		}
+		else if (m_BuffersVersion != m_DecalsVersion)
 		{
 			UpdateMeshBuffers();
 			m_BuffersVersion = m_DecalsVersion;
-			if ((bool)m_MeshRenderer)
+		}
+		// Revive the WaterDropletsMgr behaviour: the refraction image effect is only
+		// enabled while drops are actually on screen.
+		if (MFRefractionEffects.Instance != null)
+		{
+			bool wantEnabled = m_Decals.Count > 0;
+			if (MFRefractionEffects.Instance.enabled != wantEnabled)
 			{
-				m_MeshRenderer.enabled = false;
+				MFRefractionEffects.Instance.enabled = wantEnabled;
 			}
 		}
 	}
@@ -98,6 +125,10 @@ public class ScreenDrops : MonoBehaviour
 		base.gameObject.name = "ScreenDrops";
 		m_MeshFilter = (MeshFilter)GetComponent(typeof(MeshFilter));
 		m_MeshRenderer = (MeshRenderer)GetComponent(typeof(MeshRenderer));
+		// ScreenDrops only builds the droplet mesh. MFRefractionEffects draws it
+		// through the screen-space refraction image effect (so the drops distort
+		// the scene behind them, matching the original), so we don't render it here.
+		m_MeshRenderer.enabled = false;
 		m_Mesh = m_MeshFilter.mesh;
 	}
 
@@ -121,9 +152,15 @@ public class ScreenDrops : MonoBehaviour
 			array4[num4++] = 1 + num3;
 			float num5 = Mathf.Cos(decal.m_Rot);
 			float num6 = Mathf.Sin(decal.m_Rot);
-			float z = 0f - decal.m_SpawnTime;
+			// The refraction shader reads vertex.z as the drop intensity: 1 at spawn,
+			// fading to 0 at the end of its lifetime so drops fade out instead of popping.
+			float dropElapsed = Time.timeSinceLevelLoad - decal.m_SpawnTime;
+			float z = Mathf.Clamp01(1f - dropElapsed / decal.m_Duration);
 			Vector2 size = decal.m_Size;
-			Vector2 vector = decal.m_Pos - size * 0.5f;
+			// Slide the drop down the screen over its lifetime.
+			Vector2 dropPos = decal.m_Pos;
+			dropPos.y -= decal.m_VelY * dropElapsed;
+			Vector2 vector = dropPos - size * 0.5f;
 			float y = (decal.m_IsDrop ? 1 : 0);
 			float num7 = vector[0] + 0.5f * size[0];
 			float num8 = vector[1] + 0.5f * size[1];
@@ -132,8 +169,8 @@ public class ScreenDrops : MonoBehaviour
 			array[num3].x = num7 + (num9 - num7) * num5 - (num10 - num8) * num6;
 			array[num3].y = num8 + ((num9 - num7) * num6 + (num10 - num8) * num5) * m_AspectRatio;
 			array[num3].z = z;
-			array2[num3].x = decal.m_UVMin[0];
-			array2[num3].y = decal.m_UVMin[1];
+			array2[num3].x = -1f;
+			array2[num3].y = -1f;
 			array3[num3].x = decal.m_Duration;
 			array3[num3].y = y;
 			num3++;
@@ -142,8 +179,8 @@ public class ScreenDrops : MonoBehaviour
 			array[num3].x = num7 + (num9 - num7) * num5 - (num10 - num8) * num6;
 			array[num3].y = num8 + ((num9 - num7) * num6 + (num10 - num8) * num5) * m_AspectRatio;
 			array[num3].z = z;
-			array2[num3].x = decal.m_UVMax[0];
-			array2[num3].y = decal.m_UVMin[1];
+			array2[num3].x = 1f;
+			array2[num3].y = -1f;
 			array3[num3].x = decal.m_Duration;
 			array3[num3].y = y;
 			num3++;
@@ -152,8 +189,8 @@ public class ScreenDrops : MonoBehaviour
 			array[num3].x = num7 + (num9 - num7) * num5 - (num10 - num8) * num6;
 			array[num3].y = num8 + ((num9 - num7) * num6 + (num10 - num8) * num5) * m_AspectRatio;
 			array[num3].z = z;
-			array2[num3].x = decal.m_UVMax[0];
-			array2[num3].y = decal.m_UVMax[1];
+			array2[num3].x = 1f;
+			array2[num3].y = 1f;
 			array3[num3].x = decal.m_Duration;
 			array3[num3].y = 0f;
 			num3++;
@@ -162,8 +199,8 @@ public class ScreenDrops : MonoBehaviour
 			array[num3].x = num7 + (num9 - num7) * num5 - (num10 - num8) * num6;
 			array[num3].y = num8 + ((num9 - num7) * num6 + (num10 - num8) * num5) * m_AspectRatio;
 			array[num3].z = z;
-			array2[num3].x = decal.m_UVMin[0];
-			array2[num3].y = decal.m_UVMax[1];
+			array2[num3].x = -1f;
+			array2[num3].y = 1f;
 			array3[num3].x = decal.m_Duration;
 			array3[num3].y = 0f;
 			num3++;
@@ -186,7 +223,7 @@ public class ScreenDrops : MonoBehaviour
 
 	private void KillOldDecals()
 	{
-		float time = Time.time;
+		float time = Time.timeSinceLevelLoad;
 		uint num = 0u;
 		for (int num2 = m_Decals.Count - 1; num2 >= 0; num2--)
 		{
@@ -220,7 +257,7 @@ public class ScreenDrops : MonoBehaviour
 
 	public void SpawnDrops(uint cnt)
 	{
-		float time = Time.time;
+		float time = Time.timeSinceLevelLoad;
 		float num = 1f / (float)m_DropsTexNumTiles;
 		for (uint num2 = 0u; num2 < cnt; num2++)
 		{
@@ -233,7 +270,10 @@ public class ScreenDrops : MonoBehaviour
 			item.m_Pos[0] = Random.Range(-1f, 1f);
 			item.m_Pos[1] = Random.Range(-1f, 1f);
 			item.m_Size[0] = value;
-			item.m_Size[1] = value;
+			// Taller than wide -> teardrop-ish, with per-drop variation.
+			item.m_Size[1] = value * Random.Range(1.1f, 1.5f);
+			// Downward drift speed (NDC units/sec); bigger drops run faster.
+			item.m_VelY = Random.Range(0.14f, 0.3f) + value * 0.6f;
 			int num3 = Random.Range(0, m_DropsTexNumTiles);
 			int num4 = Random.Range(0, m_DropsTexNumTiles);
 			item.m_UVMin[0] = (float)num3 * num;

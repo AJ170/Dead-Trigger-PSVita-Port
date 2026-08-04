@@ -69,9 +69,11 @@ public class TriggerWaterDrops : MonoBehaviour
 		m_NumDropsToGenerate += num * m_NumDropsPerSecond;
 		int num2 = Mathf.FloorToInt(m_NumDropsToGenerate);
 		m_NumDropsToGenerate -= num2;
-		if ((bool)MFRefractionEffects.Instance && num2 > 0)
+		// The original refraction system (MFRefractionEffects + the deleted
+		// WaterDroplets sim) is gone; drive the ScreenDrops sprite overlay instead.
+		if (num2 > 0)
 		{
-			MFRefractionEffects.Instance.AddWaterDropsToScreen(num2);
+			ScreenDrops.EnsureInstance().SpawnDrops((uint)num2);
 		}
 	}
 }

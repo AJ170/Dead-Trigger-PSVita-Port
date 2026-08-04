@@ -56,25 +56,34 @@ public class MFRefractionEffects : ImageEffectBase
 
 	private void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
-		if (m_InitOK && (bool)m_WaterScreenRefractionMat)
+		// Always copy the scene first, so this effect can never black-screen even
+		// if there are no drops or the material is missing.
+		Graphics.Blit(source, destination);
+		if (!m_InitOK || !(bool)m_WaterScreenRefractionMat)
 		{
-			RenderTexture active = RenderTexture.active;
-			RenderTexture.active = destination;
-			m_WaterScreenRefractionMat.mainTexture = source;
-			if (m_WaterScreenRefractionMat.SetPass(0) && (bool)m_ScreenDropsSimMeshFilter)
-			{
-				Graphics.DrawMeshNow(m_ScreenDropsSimMeshFilter.mesh, Matrix4x4.identity);
-			}
-			else
-			{
-				Debug.LogError("Unable to set material pass");
-			}
-			RenderTexture.active = active;
+			return;
 		}
-		else
+		// Drops are produced by ScreenDrops (fed by the water-drip triggers).
+		if (ScreenDrops.Instance == null || ScreenDrops.Instance.NumDecals() <= 0)
 		{
-			Graphics.Blit(source, destination);
+			return;
 		}
+		Mesh mesh = ScreenDrops.Instance.GetMesh();
+		if (mesh == null)
+		{
+			return;
+		}
+		// Draw the droplet quads on top of the copied scene. The refraction shader
+		// samples the source screen at an offset per vertex, so each drop bends and
+		// magnifies what's behind it (the original wet-lens look).
+		RenderTexture active = RenderTexture.active;
+		RenderTexture.active = destination;
+		m_WaterScreenRefractionMat.mainTexture = source;
+		if (m_WaterScreenRefractionMat.SetPass(0))
+		{
+			Graphics.DrawMeshNow(mesh, Matrix4x4.identity);
+		}
+		RenderTexture.active = active;
 	}
 
 	private bool DoInit()
