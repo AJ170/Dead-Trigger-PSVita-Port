@@ -47322,7 +47322,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1366}
   m_LocalRotation: {x: 0.500001, y: -0.499999, z: -0.499999, w: -0.500001}
-  m_LocalPosition: {x: 3, y: 0, z: -22}
+  m_LocalPosition: {x: 3, y: 0.5, z: -22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1717}
@@ -106513,10 +106513,10 @@ AudioSource:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0.7062938, b: 1, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.03
+  m_FogMode: 2
+  m_FogDensity: 0.01
   m_LinearFogStart: 15
   m_LinearFogEnd: 50
   m_AmbientSkyColor: {r: 0.062283736, g: 0.086983904, b: 0.09803922, a: 1}

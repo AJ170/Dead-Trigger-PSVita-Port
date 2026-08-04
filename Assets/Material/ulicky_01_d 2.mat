@@ -29,7 +29,7 @@ Material:
     m_Floats:
     - _Roughness: 0.604
     - _SHLightingScale: 1
-    - _SpecularStrength: 1.55
+    - _SpecularStrength: 0.846
     m_Colors:
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
     - _EnvStrength: {r: 10, g: 0, b: 0, a: 0}

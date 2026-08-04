@@ -13,8 +13,9 @@ Shader "Vita/Environment/Unlit Transparent with Lightmap" {
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
-                #pragma target 2.0
+                #pragma target 3.0
 
+                #pragma multi_compile_fog
                 #include "UnityCG.cginc"
 
                 sampler2D _MainTex;
@@ -30,6 +31,7 @@ Shader "Vita/Environment/Unlit Transparent with Lightmap" {
                     float4 pos : SV_POSITION;
                     float2 uv : TEXCOORD0;
                     float2 uv1 : TEXCOORD1;
+                    UNITY_FOG_COORDS(4)
                 };
 
                 v2f vert(appdata v) {
@@ -37,6 +39,7 @@ Shader "Vita/Environment/Unlit Transparent with Lightmap" {
                     o.pos = UnityObjectToClipPos(v.vertex);
                     o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                     o.uv1 = v.uv1 * unity_LightmapST.xy + unity_LightmapST.zw;
+                    UNITY_TRANSFER_FOG(o, o.pos);
                     return o;
                 }
 
@@ -49,7 +52,7 @@ Shader "Vita/Environment/Unlit Transparent with Lightmap" {
 
                     // Apply lightmap with 2x multiplier
                     color.rgb *= (2.0 * lightmap);
-
+                    UNITY_APPLY_FOG(i.fogCoord, color);
                     return color;
                 }
                 ENDCG

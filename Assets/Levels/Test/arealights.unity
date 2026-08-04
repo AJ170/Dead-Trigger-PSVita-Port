@@ -7946,6 +7946,7 @@ GameObject:
   - component: {fileID: 2525}
   - component: {fileID: 6009}
   - component: {fileID: 4459}
+  - component: {fileID: 7362}
   m_Layer: 0
   m_Name: car_1
   m_TagString: Untagged
@@ -8116,6 +8117,7 @@ GameObject:
   - component: {fileID: 2535}
   - component: {fileID: 6017}
   - component: {fileID: 4467}
+  - component: {fileID: 7359}
   m_Layer: 0
   m_Name: car_sedan
   m_TagString: Untagged
@@ -11259,6 +11261,7 @@ GameObject:
   - component: {fileID: 6160}
   - component: {fileID: 4610}
   - component: {fileID: 7239}
+  - component: {fileID: 7357}
   m_Layer: 0
   m_Name: car_1
   m_TagString: Untagged
@@ -13783,6 +13786,7 @@ GameObject:
   - component: {fileID: 6274}
   - component: {fileID: 4724}
   - component: {fileID: 7246}
+  - component: {fileID: 7358}
   m_Layer: 0
   m_Name: car_1
   m_TagString: Untagged
@@ -30326,6 +30330,7 @@ GameObject:
   - component: {fileID: 3848}
   - component: {fileID: 7016}
   - component: {fileID: 5466}
+  - component: {fileID: 7361}
   m_Layer: 0
   m_Name: car_1
   m_TagString: Untagged
@@ -34196,6 +34201,7 @@ GameObject:
   - component: {fileID: 4078}
   - component: {fileID: 7188}
   - component: {fileID: 5638}
+  - component: {fileID: 7360}
   m_Layer: 0
   m_Name: car_sedan
   m_TagString: Untagged
@@ -75406,7 +75412,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d54af165d20e45b4fb201c892cb2a755, type: 2}
+  - {fileID: 1968733431}
   m_StaticBatchInfo:
     firstSubMesh: 1465
     subMeshCount: 1
@@ -75678,7 +75684,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e5fe1da5008fec4492568c4bc4015b3, type: 2}
+  - {fileID: 1250956577}
   m_StaticBatchInfo:
     firstSubMesh: 513
     subMeshCount: 1
@@ -80541,7 +80547,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2903975b95d072548ba7b017053c5e80, type: 2}
+  - {fileID: 52559694}
   m_StaticBatchInfo:
     firstSubMesh: 1447
     subMeshCount: 1
@@ -84422,7 +84428,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2903975b95d072548ba7b017053c5e80, type: 2}
+  - {fileID: 2016241239}
   m_StaticBatchInfo:
     firstSubMesh: 1448
     subMeshCount: 1
@@ -109676,7 +109682,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d54af165d20e45b4fb201c892cb2a755, type: 2}
+  - {fileID: 1716826548}
   m_StaticBatchInfo:
     firstSubMesh: 1464
     subMeshCount: 1
@@ -115533,7 +115539,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e5fe1da5008fec4492568c4bc4015b3, type: 2}
+  - {fileID: 1787029541}
   m_StaticBatchInfo:
     firstSubMesh: 514
     subMeshCount: 1
@@ -132787,9 +132793,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
   m_Fog: 1
-  m_FogColor: {r: 0.95943296, g: 1, b: 0.7835821, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.03
+  m_FogColor: {r: 0.5716006, g: 0.6102941, b: 0.4038711, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.02
   m_LinearFogStart: 15
   m_LinearFogEnd: 80
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
@@ -132847,6 +132853,138 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 4610}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials:
+  - {fileID: 52559694}
+--- !u!114 &7358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 4724}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials:
+  - {fileID: 2016241239}
+--- !u!114 &7359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 4467}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials:
+  - {fileID: 1250956577}
+--- !u!114 &7360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 5638}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials:
+  - {fileID: 1787029541}
+--- !u!114 &7361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 5466}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials:
+  - {fileID: 1716826548}
+--- !u!114 &7362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 4459}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials:
+  - {fileID: 1968733431}
 --- !u!111 &7490
 Animation:
   m_ObjectHideFlags: 0
@@ -309939,6 +310077,73 @@ MonoBehaviour:
   m_FadeOnStart: 0
   m_FadeDuration: 1
   m_UiCamera: {fileID: 0}
+--- !u!21 &52559694
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: car_1_Instance_car_1
+  m_Shader: {fileID: 4800000, guid: 5a28543172772744cb7dc49bc62dc2c0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 8900000, guid: a0cdaaa692480ac43aed17aebc8bd8bc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EnvTex:
+        m_Texture: {fileID: 8900000, guid: cb80281ffd444ac4ca5968cfad4d10a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: cfe13a70fd5c81a478d2de1a034b4414, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: c4d87d69d7c210049b3874d26e23613d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _EnvStrength: 3
+    - _LightProbesLightingAmount: 0.9
+    - _Roughness: 0.5
+    - _SHIntensity: 0.5
+    - _SHLightingScale: 1.5
+    - _SpecularIntensity: 0.27
+    - _SpecularSharpness: 3
+    - _SpecularStrength: 5
+    - _Spread: 0.5
+    m_Colors:
+    - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _EnvStrength: {r: 0, g: 0.5, b: 0, a: 0}
+    - _ReflectColor: {r: 0.16176468, g: 0.16176468, b: 0.16176468, a: 0.531}
+    - _SHAb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHC: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 0.6397059, g: 0.6397059, b: 0.6397059, a: 1}
+    - _UVScrollSpeed: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &71394354
 GameObject:
   m_ObjectHideFlags: 0
@@ -310868,6 +311073,43 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!21 &1250956577
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: m_car_sedan_LM_Instance_car_sedan
+  m_Shader: {fileID: 4800000, guid: a513bb9f12cbf4b4fba671d86d5fc4b7, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 75740761ec19b274ab1014852e2f4f51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: cb80281ffd444ac4ca5968cfad4d10a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Roughness: 0.5
+    - _SHLightingScale: 1
+    - _SpecularStrength: 1
+    - _Spread: 0.5
+    m_Colors:
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _EnvStrength: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Params: {r: 1, g: 0, b: 0, a: 0}
+    - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularStrength: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1262023831
 GameObject:
   m_ObjectHideFlags: 0
@@ -311426,6 +311668,43 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!21 &1716826548
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: m_car_van_LM_Instance_car_1
+  m_Shader: {fileID: 4800000, guid: a513bb9f12cbf4b4fba671d86d5fc4b7, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: cfe13a70fd5c81a478d2de1a034b4414, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: cb80281ffd444ac4ca5968cfad4d10a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Roughness: 0.5
+    - _SHLightingScale: 1
+    - _SpecularStrength: 1
+    - _Spread: 0.5
+    m_Colors:
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _EnvStrength: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Params: {r: 1, g: 0, b: 0, a: 0}
+    - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularStrength: {r: 0, g: 0.7, b: 0, a: 0}
 --- !u!1 &1749158453
 GameObject:
   m_ObjectHideFlags: 0
@@ -311514,6 +311793,43 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!21 &1787029541
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: m_car_sedan_LM_Instance_car_sedan
+  m_Shader: {fileID: 4800000, guid: a513bb9f12cbf4b4fba671d86d5fc4b7, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 75740761ec19b274ab1014852e2f4f51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: cb80281ffd444ac4ca5968cfad4d10a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Roughness: 0.5
+    - _SHLightingScale: 1
+    - _SpecularStrength: 1
+    - _Spread: 0.5
+    m_Colors:
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _EnvStrength: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Params: {r: 1, g: 0, b: 0, a: 0}
+    - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularStrength: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1884647884
 GameObject:
   m_ObjectHideFlags: 0
@@ -311646,6 +311962,43 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!21 &1968733431
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: m_car_van_LM_Instance_car_1
+  m_Shader: {fileID: 4800000, guid: a513bb9f12cbf4b4fba671d86d5fc4b7, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: cfe13a70fd5c81a478d2de1a034b4414, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: cb80281ffd444ac4ca5968cfad4d10a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Roughness: 0.5
+    - _SHLightingScale: 1
+    - _SpecularStrength: 1
+    - _Spread: 0.5
+    m_Colors:
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _EnvStrength: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Params: {r: 1, g: 0, b: 0, a: 0}
+    - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularStrength: {r: 0, g: 0.7, b: 0, a: 0}
 --- !u!1 &2008054564
 GameObject:
   m_ObjectHideFlags: 0
@@ -311690,6 +312043,73 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!21 &2016241239
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: car_1_Instance_car_1
+  m_Shader: {fileID: 4800000, guid: 5a28543172772744cb7dc49bc62dc2c0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 8900000, guid: a0cdaaa692480ac43aed17aebc8bd8bc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EnvTex:
+        m_Texture: {fileID: 8900000, guid: cb80281ffd444ac4ca5968cfad4d10a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: cfe13a70fd5c81a478d2de1a034b4414, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: c4d87d69d7c210049b3874d26e23613d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _EnvStrength: 3
+    - _LightProbesLightingAmount: 0.9
+    - _Roughness: 0.5
+    - _SHIntensity: 0.5
+    - _SHLightingScale: 1.5
+    - _SpecularIntensity: 0.27
+    - _SpecularSharpness: 3
+    - _SpecularStrength: 5
+    - _Spread: 0.5
+    m_Colors:
+    - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _EnvStrength: {r: 0, g: 0.5, b: 0, a: 0}
+    - _ReflectColor: {r: 0.16176468, g: 0.16176468, b: 0.16176468, a: 0.531}
+    - _SHAb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHC: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 0.6397059, g: 0.6397059, b: 0.6397059, a: 1}
+    - _UVScrollSpeed: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2082167854
 GameObject:
   m_ObjectHideFlags: 0
