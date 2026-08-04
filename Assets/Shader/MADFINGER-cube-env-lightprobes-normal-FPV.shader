@@ -24,14 +24,14 @@
     }
 
         SubShader{
-            Tags { "RenderType" = "Opaque" "LIGHTMODE" = "ForwardBase" }
+            Tags { "RenderType" = "Opaque" "LightMode" = "ForwardBase" }
             LOD 200
 
             Pass {
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
-                #pragma target 2.0
+                #pragma target 3.0
                 #pragma fragmentoption ARB_precision_hint_fastest
                 #pragma multi_compile_fog
 
@@ -194,7 +194,7 @@
                     half3 specular = cubeColor * spec * _SpecularStrength * diffuse.a;
 
                     // === FINAL ===
-                    half3 finalColor = diffuse * lighting + specular;
+                    half3 finalColor = diffuse.rgb * lighting + specular;
 
                     UNITY_APPLY_FOG(i.fogCoord, finalColor);
 

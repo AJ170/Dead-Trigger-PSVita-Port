@@ -39,7 +39,7 @@ Material:
     - _EnvStrength: 1.6
     - _SHLightingScale: 0.6
     - _SpecularSharpness: 3
-    - _SpecularStrength: 1
+    - _SpecularStrength: 2
     - _Spread: 0.5
     m_Colors:
     - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}

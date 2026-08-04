@@ -14,6 +14,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
+                #pragma multi_compile_fog
 
                 #include "UnityCG.cginc"
 
@@ -40,6 +41,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                     float4 color : COLOR;
                     half3 worldNormal : TEXCOORD2;
                     half3 worldViewDir : TEXCOORD3;
+                    UNITY_FOG_COORDS(4)
                 };
 
                 v2f vert(appdata_t v) {
@@ -58,12 +60,15 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                     // Vertex color
                     o.color = v.color;
 
-                    // World space normal for reflection
+                    // World space normal for reflection (normalized in vertex to reduce fragment cost)
                     o.worldNormal = UnityObjectToWorldNormal(v.normal);
 
                     // World space view direction for reflection
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                    o.worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
+                    o.worldViewDir = _WorldSpaceCameraPos - worldPos;
+
+                    // Transfer fog coordinates
+                    UNITY_TRANSFER_FOG(o, o.pos);
 
                     return o;
                 }
@@ -98,13 +103,17 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                     // Combine with _SpecularStrength property
                     half reflectionAmount = baseColor.a * _SpecularStrength;
 
-                    // Fresnel effect (stronger reflections at glancing angles)
+                    // Fresnel effect (cheaper approximation for mobile)
+                    // Instead of pow(1.0 - NdotV, 2.0), use Schlick's approximation
                     half NdotV = saturate(dot(worldNormal, worldViewDir));
-                    half fresnel = pow(1.0 - NdotV, 2.0);
+                    half fresnel = (1.0 - NdotV) * (1.0 - NdotV);  // x^2 instead of pow for better Vita performance
                     reflectionAmount *= fresnel;
 
                     // Blend reflection with base color
                     color = lerp(color, color + cubeColor.rgb, reflectionAmount);
+
+                    // Apply fog
+                    UNITY_APPLY_FOG(i.fogCoord, color);
 
                     return half4(color, baseColor.a);
                 }

@@ -9,13 +9,15 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
 
         SubShader{
             LOD 100
-            Tags { "LIGHTMODE" = "ForwardBase" "RenderType" = "Opaque" }
+            Tags { "LightMode" = "ForwardBase" "RenderType" = "Opaque" }
 
             Pass {
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
-                #pragma target 2.0
+                #pragma target 3.0
+
+                #pragma multi_compile_fog
 
                 #include "UnityCG.cginc"
 
@@ -42,6 +44,7 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
                     float4 color : COLOR;
                     half3 worldNormal : TEXCOORD2;
                     half3 worldViewDir : TEXCOORD3;
+                    UNITY_FOG_COORDS(4)
                 };
 
                 v2f vert(appdata_t v) {
@@ -66,6 +69,9 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
                     // World space view direction
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
                     o.worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
+
+
+                    UNITY_TRANSFER_FOG(o, o.pos);
 
                     return o;
                 }
@@ -104,6 +110,8 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
 
                     // Add reflection to color (multiplicative blend is cheaper than lerp)
                     color += cubeColor * reflectionAmount;
+
+                    UNITY_APPLY_FOG(i.fogCoord, color);
 
                     return half4(color, baseColor.a);
                 }
