@@ -2,49 +2,50 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: m_np_snow_01
   m_Shader: {fileID: 10708, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: []
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
+    - _CustomLightmap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: a45405615931e0e4e9a327db03a551f9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 3763852272f59a04aaedefe1d4444024, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecCubeTex:
+        m_Texture: {fileID: 8900000, guid: c4d87d69d7c210049b3874d26e23613d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _Shininess
-      second: 0.5228294
-    - first:
-        name: _SpecularStrength
-      second: 4
-    - first:
-        name: _SpecRange
-      second: 10
-    - first:
-        name: _SpecStrength
-      second: 1
+    - _Roughness: 0
+    - _Shininess: 0.5228294
+    - _SparkleIntensity: 1
+    - _SparkleSharpness: 6
+    - _SpecRange: 10
+    - _SpecStrength: 1
+    - _SpecularStrength: 0.5
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.588, g: 0.588, b: 0.588, a: 1}
-    - first:
-        name: _SpecColor
-      second: {r: 1, g: 0.7369794, b: 0.32835823, a: 1}
-    - first:
-        name: _SpecularStrength
-      second: {r: 0, g: 0, b: 0, a: 0}
-    - first:
-        name: _ScrollingSpeed
-      second: {r: 0, g: 0, b: 0, a: 0}
-    - first:
-        name: _SpecOffset
-      second: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
+    - _Params: {r: 2, g: 0, b: 0, a: 0}
+    - _ScrollingSpeed: {r: 0.1, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 1, g: 0.7369794, b: 0.32835823, a: 1}
+    - _SpecOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularStrength: {r: 0, g: 0, b: 0, a: 0}
