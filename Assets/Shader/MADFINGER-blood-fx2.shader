@@ -9,6 +9,7 @@ Shader "MADFINGER/FX/Blood FX - alpha blended" {
 		Tags { "QUEUE"="Overlay" "IGNOREPROJECTOR"="true" "RenderType"="Transparent" }
 		Pass {
 			Tags { "QUEUE"="Overlay" "IGNOREPROJECTOR"="true" "RenderType"="Transparent" }
+			ZTest Always
 			ZWrite Off
 			Cull Off
 			Fog {
@@ -65,9 +66,10 @@ Shader "MADFINGER/FX/Blood FX - alpha blended" {
             }
             half4 frag(v2f i) : COLOR
             {
-                float4 tmpvar_1;
-                tmpvar_1 = (tex2D (_MainTex, i.uv) * i.color);
-                return tmpvar_1;
+                // blood_fx1 has a real alpha channel (transparent background, opaque red
+                // splats), so use it directly for a clean cut-out. i.color.a is the fade.
+                fixed4 tex = tex2D(_MainTex, i.uv);
+                return fixed4(tex.rgb, tex.a * i.color.a);
             }
             ENDCG
         }

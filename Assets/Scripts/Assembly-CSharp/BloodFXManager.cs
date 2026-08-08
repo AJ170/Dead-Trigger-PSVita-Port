@@ -150,6 +150,16 @@ public class BloodFXManager : MonoBehaviour
 		base.gameObject.AddComponent<MeshRenderer>();
 		m_MeshFilter = (MeshFilter)GetComponent(typeof(MeshFilter));
 		m_MeshRenderer = (MeshRenderer)GetComponent(typeof(MeshRenderer));
+		// The scene shipped with m_Material unassigned (lost in the port), so the
+		// screen-blood mesh had no material and never rendered. Fall back to the
+		// blood_droplets material kept in Resources - it uses the "Blood FX - alpha
+		// blended" decal shader (samples the blood splat atlas, drips + fades over
+		// the decal's lifetime), which matches this mesh. (m_bloodscreen_2 was the
+		// wrong one - that's the full-screen hurt vignette, which rendered as streaks.)
+		if (m_Material == null)
+		{
+			m_Material = Resources.Load("blood_droplets", typeof(Material)) as Material;
+		}
 		m_MeshRenderer.GetComponent<Renderer>().material = m_Material;
 		m_MeshRenderer.GetComponent<Renderer>().enabled = true;
 		m_MeshRenderer.GetComponent<Renderer>().castShadows = false;
@@ -379,10 +389,9 @@ public class BloodFXManager : MonoBehaviour
 
 	public void SpawnBloodSplashes(uint cnt)
 	{
-		if (DeviceInfo.PerformanceGrade != DeviceInfo.Performance.High && DeviceInfo.PerformanceGrade != DeviceInfo.Performance.UltraHigh)
-		{
-			return;
-		}
+		// Original gate required High/UltraHigh performance grade, but the port runs
+		// at graphicDetail 0 (Low), which hid the on-screen kill-splatter on PC and
+		// Vita entirely. The splashes are cheap screen decals, so always allow them.
 		for (uint num = 0u; num < cnt; num++)
 		{
 			if (m_NumSpawnedSplashes >= m_MaxVisibleSplashes)
