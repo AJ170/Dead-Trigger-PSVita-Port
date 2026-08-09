@@ -101,7 +101,18 @@ public class DebugMenu : MonoBehaviour {
     {
         PlayerPersistantInfo ppi = Game.Instance.PlayerPersistentInfo;
         ppi.Save();
-        
+
+    }
+
+    public void DeleteSave()
+    {
+        GameSaveLoadUtl.DeletePlayerData();
+        GameSaveLoadUtl.DeleteGameData();
+        Debug.Log("restart game");
+        if (Game.Instance != null)
+        {
+            Game.Instance.PlayerPersistentInfo = PlayerPersistantInfo.GetDefaultPPI();
+        }
     }
     
     public void ForceMainMenu()
