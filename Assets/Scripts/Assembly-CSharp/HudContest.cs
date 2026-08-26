@@ -509,6 +509,10 @@ public class HudContest : HudComponent
         element.Indicator.Widget.m_FadeAlpha = num2;
         element.FailIndicator.Widget.m_FadeAlpha = num2;
         element.SuccessIndicator.Widget.m_FadeAlpha = num2;
+		if (element.Button.keyLabel != null)
+		{
+			element.Button.keyLabel.m_FadeAlpha = num2;
+		}
         if (Mathf.Approximately(num2, 0f) && flag)
         {
             element.Active = false;
@@ -521,6 +525,10 @@ public class HudContest : HudComponent
         foreach (ContestElement item in m_Contest)
         {
             item.Button.Widget.Show(false, true);
+			if (item.Button.keyLabel != null)
+			{
+				item.Button.keyLabel.Show(false, true);
+			}
         }
         m_Contest.Clear();
     }

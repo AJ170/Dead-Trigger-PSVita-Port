@@ -25,6 +25,6 @@ Material:
     m_Floats:
     - _DrippingSpeed: 0.333
     - _FadeInSpeed: 1
-    - _UsrTime: 21.007704
+    - _UsrTime: 101.40959
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

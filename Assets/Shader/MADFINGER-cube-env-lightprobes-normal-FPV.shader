@@ -7,6 +7,7 @@
 
         _CubeTex("Specular Cubemap", CUBE) = "black" {}
         _SpecularStrength("Specular Strength", Range(0, 2)) = 0.6
+        _SpecularBase("Specular Base", Range(0, 1)) = 0.05
         _SpecularSharpness("Specular Sharpness", Range(1, 8)) = 3.0
 
             //_SHIntensity("SH Intensity", Range(0, 2)) = 1.0
@@ -45,6 +46,7 @@
                 float4 _BumpMap_ST;
                 half   _BumpScale;
                 half   _SpecularStrength;
+                half   _SpecularBase;
                 half   _SpecularSharpness;
                 //half   _SHIntensity;
                 //half   _SHBias;
@@ -191,7 +193,7 @@
                     half spec4 = spec2 * spec2;
                     half spec = lerp(NdotR, spec4, _SpecularSharpness / 8.0);
 
-                    half3 specular = cubeColor * spec * _SpecularStrength * diffuse.a;
+                    half3 specular = saturate(_SpecularBase + cubeColor * spec * _SpecularStrength * diffuse.a);
 
                     // === FINAL ===
                     half3 finalColor = diffuse.rgb * lighting + specular;

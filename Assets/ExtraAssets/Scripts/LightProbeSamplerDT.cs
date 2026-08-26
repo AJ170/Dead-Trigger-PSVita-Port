@@ -105,6 +105,7 @@ public class LightProbeSamplerDT : MonoBehaviour
 	{
 		// Clean up instanced materials to avoid memory leaks
 		// Only destroy in play mode - in edit mode Unity manages them
+		/*
 		if (Application.isPlaying)
 		{
 			for (int i = 0; i < m_InstancedMaterials.Count; i++)
@@ -112,7 +113,7 @@ public class LightProbeSamplerDT : MonoBehaviour
 				if (m_InstancedMaterials[i] != null)
 					Destroy(m_InstancedMaterials[i]);
 			}
-		}
+		}*/
 		m_InstancedMaterials.Clear();
 		m_ProcessedRenderers.Clear();
 	}
