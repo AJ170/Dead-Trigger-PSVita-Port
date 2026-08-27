@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class ShapeCapsule : Shape
 {
@@ -106,7 +107,7 @@ public class ShapeCapsule : Shape
 			if (num5 > 0f)
 			{
 				float num7 = 1f / num2;
-				num8 = Mathf.Sqrt(num5);
+				num8 = sqrt(num5);
 				float num9 = (0f - num3 - num8) * num7;
 				num10 = vector.x + vector2.x * num9;
 				if (Mathf.Abs(num10) <= m_LengthHalfScaled)
@@ -144,7 +145,7 @@ public class ShapeCapsule : Shape
 			num5 = num3 * num3 - num4;
 			if (num5 > 0f)
 			{
-				num8 = Mathf.Sqrt(num5);
+				num8 = sqrt(num5);
 				float num9 = 0f - num3 - num8;
 				num10 = vector.x + vector2.x * num9;
 				if (num10 <= 0f - m_LengthHalfScaled)
@@ -208,7 +209,7 @@ public class ShapeCapsule : Shape
 			num5 = num3 * num3 - num4;
 			if (num5 > 0f)
 			{
-				num8 = Mathf.Sqrt(num5);
+				num8 = sqrt(num5);
 				float num9 = 0f - num3 - num8;
 				num10 = vector.x + vector2.x * num9;
 				if (num10 >= m_LengthHalfScaled)
@@ -274,7 +275,7 @@ public class ShapeCapsule : Shape
 		{
 			return 0;
 		}
-		num8 = Mathf.Sqrt(num5);
+		num8 = sqrt(num5);
 		num10 = num8 + m_LengthHalfScaled;
 		if (vector2.x < 0f)
 		{

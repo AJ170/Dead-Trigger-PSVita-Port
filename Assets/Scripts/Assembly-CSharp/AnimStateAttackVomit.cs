@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class AnimStateAttackVomit : AnimState
 {
@@ -137,7 +138,7 @@ public class AnimStateAttackVomit : AnimState
 		projectileInitSettings.Destination = Owner.BlackBoard.DangerousEnemy.TransformEye.position;
 		Vector3 position = Owner.TransformEye.position;
 		Vector3 inDir = projectileInitSettings.Destination - position;
-		projectileInitSettings.EffectiveRange = inDir.magnitude;
+		projectileInitSettings.EffectiveRange = length(inDir);
 		inDir.y += projectileInitSettings.EffectiveRange;
 		ProjectileManager.Instance.SpawnProjectile(ProjectileType, position, inDir, projectileInitSettings);
 	}

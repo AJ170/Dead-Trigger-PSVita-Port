@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 internal class GOAPActionCrawlToWeaponRange : GOAPAction
 {
@@ -118,7 +119,7 @@ internal class GOAPActionCrawlToWeaponRange : GOAPAction
 		{
 			return false;
 		}
-		if ((Owner.Transform.position - Position).magnitude < Owner.BlackBoard.WeaponRange * 0.75f)
+		if (length(Owner.Transform.position - Position) < Owner.BlackBoard.WeaponRange * 0.75f)
 		{
 			return true;
 		}

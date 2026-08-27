@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class AiRecon
 {
@@ -97,7 +98,7 @@ public class AiRecon
 		{
 			if (!(position.Distance < minDistanceFromMe) && !(position.DistanceToNearestEnemy < minDistanceToEnemy))
 			{
-				float magnitude = (position.Position - toPos).magnitude;
+				float magnitude = length(position.Position - toPos);
 				if (!(magnitude > num))
 				{
 					num = magnitude;
@@ -116,7 +117,7 @@ public class AiRecon
 		{
 			if (!(position.Distance < minDistanceFromMe) && !(position.DistanceToNearestEnemy < minDistanceToEnemy))
 			{
-				float magnitude = (position.Position - toPos).magnitude;
+				float magnitude = length(position.Position - toPos);
 				if (!(magnitude < num))
 				{
 					num = magnitude;

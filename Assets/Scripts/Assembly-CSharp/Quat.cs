@@ -1,14 +1,13 @@
 using UnityEngine;
-
+using static Unity.Mathematics.math;
 public class Quat
 {
 	public static Quaternion Create(Matrix4x4 Mat)
 	{
 		Quaternion result = default(Quaternion);
-		result.x = Mathf.Sqrt(Mathf.Max(0f, 1f + Mat.m00 - Mat.m11 - Mat.m22)) * 0.5f;
-		result.y = Mathf.Sqrt(Mathf.Max(0f, 1f - Mat.m00 + Mat.m11 - Mat.m22)) * 0.5f;
-		result.z = Mathf.Sqrt(Mathf.Max(0f, 1f - Mat.m00 - Mat.m11 + Mat.m22)) * 0.5f;
-		result.w = Mathf.Sqrt(Mathf.Max(0f, 1f + Mat.m00 + Mat.m11 + Mat.m22)) * 0.5f;
+		result.x = sqrt(Mathf.Max(0f, 1f - Mat.m00 + Mat.m11 - Mat.m22)) * 0.5f;
+		result.z = sqrt(Mathf.Max(0f, 1f - Mat.m00 - Mat.m11 + Mat.m22)) * 0.5f;
+		result.w = sqrt(Mathf.Max(0f, 1f + Mat.m00 + Mat.m11 + Mat.m22)) * 0.5f;
 		result.x *= Mathf.Sign(result.x * (Mat.m21 - Mat.m12));
 		result.y *= Mathf.Sign(result.y * (Mat.m02 - Mat.m20));
 		result.z *= Mathf.Sign(result.z * (Mat.m10 - Mat.m01));

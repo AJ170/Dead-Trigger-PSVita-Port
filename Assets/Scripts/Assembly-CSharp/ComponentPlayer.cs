@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(AnimSetPlayer))]
 [RequireComponent(typeof(ComponentWeaponsPlayer))]
@@ -683,7 +684,7 @@ public class ComponentPlayer : MonoBehaviour
 				continue;
 			}
 			Vector3 vector = enemy.Position - Owner.Position;
-			float magnitude = vector.magnitude;
+			float magnitude = length(vector);
 			if (magnitude > maxRange)
 			{
 				continue;

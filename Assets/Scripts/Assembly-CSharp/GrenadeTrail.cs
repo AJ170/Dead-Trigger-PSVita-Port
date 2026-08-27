@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class GrenadeTrail : MonoBehaviour
 {
@@ -94,7 +95,7 @@ public class GrenadeTrail : MonoBehaviour
 		{
 			return;
 		}
-		float num = Vector3.Magnitude(inPos - m_TrailAPos);
+		float num = length(inPos - m_TrailAPos);
 		if (num > m_SegmentLength)
 		{
 			Vector3 normalized = (inPos - m_TrailAPos).normalized;

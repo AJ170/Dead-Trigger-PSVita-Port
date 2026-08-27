@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class SquareDistance
 {
 	public static float PointRay(Vector3 P, Vector3 RayO, Vector3 RayD)

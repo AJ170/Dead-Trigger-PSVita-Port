@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using static Unity.Mathematics.math;
 public class MathUtils
 {
 	public static float SanitizeDegrees(float Angle)
@@ -59,7 +59,7 @@ public class MathUtils
 			AngleH = 0f;
 			return;
 		}
-		vector /= Mathf.Sqrt(num);
+		vector /= sqrt(num);
 		num = Vector3.Dot(vector, RefForward);
 		num = Mathf.Clamp(num, -1f, 1f);
 		Vector3 lhs = Vector3.Cross(vector, RefForward);

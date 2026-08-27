@@ -1,20 +1,114 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Jobs;
+using Unity.Collections;
+using Unity.Mathematics;
+//using UnityEngine.Physics;
+using static Unity.Mathematics.math;
+
+public struct SensorVisionJob : IJob
+{
+    [ReadOnly] public float3 zombiePos;
+    [ReadOnly] public float3 zombieEye;
+    [ReadOnly] public float3 zombieForward;
+    [ReadOnly] public float sightRange;
+    [ReadOnly] public float sightFOV;
+    [ReadOnly] public float weaponRange;
+    [ReadOnly] public float contestRange;
+    [ReadOnly] public float vomitMin;
+    [ReadOnly] public float vomitMax;
+    [ReadOnly] public float3 enemyPos;
+    [ReadOnly] public float3 enemyForward;
+
+    public NativeArray<float> outDist;
+    public NativeArray<float3> outDir;
+    public NativeArray<uint> outFlags;
+
+    public void Execute()
+    {
+        uint flags = 0;
+
+        float3 toEnemy = enemyPos - zombieEye;
+        float distSq = lengthsq(toEnemy);
+        float dist = sqrt(distSq);
+
+        float sightRangeSq = sightRange * sightRange;
+        if (distSq > sightRangeSq)
+        {
+            outDist[0] = dist;
+            outFlags[0] = flags;
+            return;
+        }
+
+        float3 toEnemyNorm = normalize(toEnemy);
+        float dot1 = dot(zombieForward, toEnemyNorm);
+        dot1 = clamp(dot1, -1f, 1f);
+        float angleToEnemy = degrees(acos(dot1));
+
+        if (angleToEnemy > sightFOV)
+        {
+            outDist[0] = dist;
+            outFlags[0] = flags;
+            return;
+        }
+
+        outDist[0] = dist;
+        outDir[0] = toEnemyNorm;
+
+        // InWeaponRange
+        if (dist < weaponRange)
+            flags |= 1u;
+
+        // InContestRange
+        if (dist < contestRange)
+            flags |= 2u;
+
+        // Enemy angles
+        float3 enemyForwardNorm = normalize(enemyForward);
+        float dot2 = dot(enemyForwardNorm, -toEnemyNorm);
+        dot2 = clamp(dot2, -1f, 1f);
+        float angleEnemyToMe = degrees(acos(dot2));
+
+        if (angleEnemyToMe < 10f)
+            flags |= 4u; // EnemyLookingAtMe
+
+        float dot3 = dot(toEnemyNorm, enemyForwardNorm);
+        dot3 = clamp(dot3, -1f, 1f);
+        float angleToEnemyForward = degrees(acos(dot3));
+
+        if (angleToEnemyForward > 135f && angleToEnemyForward < 225f)
+            flags |= 8u; // AheadOfEnemy
+
+        if (angleToEnemy < 90f)
+            flags |= 16u; // EnemyAheadOfMe
+
+        // InVomitRange
+        if (dist > vomitMin && dist < vomitMax)
+            flags |= 32u;
+
+        // SeeEnemy
+        flags |= 64u;
+
+        outFlags[0] = flags;
+    }
+}
 
 public class SensorEyesAI : SensorBase
 {
     private AgentHuman MyEnemy;
     private float NextImportantObjCheckTime;
-
-    // Cached NavMeshPath to avoid per-call allocation
-    // in IsPointReachable
     private NavMeshPath m_NavMeshPath;
-
-    // Cached Rigidbody reference for GetSqrSpeed
-    // avoids double GetComponent lookup
     private Rigidbody m_CachedRigidbody;
     private GameObject m_CachedRigidbodyOwner;
+
+    private NativeArray<float> visionDist;
+    private NativeArray<float3> visionDir;
+    private NativeArray<uint> visionFlags;
+    private NativeArray<RaycastCommand> raycastCommands;
+    private NativeArray<RaycastHit> raycastResults;
+
+    private bool jobsInitialized = false;
 
     public SensorEyesAI(AgentHuman owner)
         : base(owner)
@@ -22,8 +116,6 @@ public class SensorEyesAI : SensorBase
         base.Owner.BlackBoard.VisibleTarget = null;
         base.Owner.BlackBoard.SetImportantObject(null);
         MyEnemy = ((!Player.Instance) ? null : Player.Instance.Owner);
-
-        // Pre-allocate NavMeshPath once
         m_NavMeshPath = new NavMeshPath();
     }
 
@@ -32,8 +124,6 @@ public class SensorEyesAI : SensorBase
         if (base.Owner.BlackBoard.Stop)
             return;
 
-        // Cache WorldState and BlackBoard refs to avoid
-        // repeated property lookups throughout this method
         WorldState ws = base.Owner.WorldState;
         BlackBoard bb = base.Owner.BlackBoard;
 
@@ -49,6 +139,7 @@ public class SensorEyesAI : SensorBase
         ws.SetWSProperty(E_PropKey.DestroyObject, false);
         bb.VisibleTarget = null;
 
+        // Check important objects less frequently
         if (Time.timeSinceLevelLoad >= NextImportantObjCheckTime
             && !bb.ActionPointOn)
         {
@@ -59,8 +150,7 @@ public class SensorEyesAI : SensorBase
                     bb.SetImportantObject(importantObject);
                 ws.SetWSProperty(E_PropKey.CheckBait, true);
             }
-            else if ((importantObject =
-                CheckForDestructibleObject()) != null)
+            else if ((importantObject = CheckForDestructibleObject()) != null)
             {
                 if (importantObject != bb.ImportantObject)
                     bb.SetImportantObject(importantObject);
@@ -70,108 +160,117 @@ public class SensorEyesAI : SensorBase
             {
                 bb.SetImportantObject(null);
             }
+            NextImportantObjCheckTime = Time.timeSinceLevelLoad + 0.5f;
         }
 
         if (MyEnemy == null || !MyEnemy.IsAlive)
             return;
 
+        // Initialize job arrays once
+        if (!jobsInitialized)
+        {
+            visionDist = new NativeArray<float>(1, Allocator.Persistent);
+            visionDir = new NativeArray<float3>(1, Allocator.Persistent);
+            visionFlags = new NativeArray<uint>(1, Allocator.Persistent);
+            raycastCommands = new NativeArray<RaycastCommand>(1, Allocator.Persistent);
+            raycastResults = new NativeArray<RaycastHit>(1, Allocator.Persistent);
+            jobsInitialized = true;
+        }
+
         Vector3 eyePos = base.Owner.TransformEye.position;
         Vector3 toEnemy = MyEnemy.TransformTarget.position - eyePos;
         Vector3 forward = base.Owner.Forward;
-
-        // Use sqrMagnitude where possible to avoid sqrt
         float distSq = toEnemy.sqrMagnitude;
-        float dist = Mathf.Sqrt(distSq);
-
-        // Distance calculation for destroy object case
-        float num = ws.GetWSProperty(E_PropKey.DestroyObject).GetBool()
-            ? (bb.ImportantObject.GetGameObject().transform.position
-                - base.Owner.Transform.position).magnitude
-            : dist;
-
-        bb.DistanceToTarget = num;
-        bb.DirToTarget = toEnemy;
 
         float sightRangeSq = bb.SightRange * bb.SightRange;
 
-        if (distSq > sightRangeSq
-            || Vector3.Angle(forward, toEnemy) > bb.SightFov)
+        if (distSq > sightRangeSq || Vector3.Angle(forward, toEnemy) > bb.SightFov)
         {
             SendLostEvent(MyEnemy);
             return;
         }
 
-        if (!bb.ActionPointOn)
+        // Run vision job
+        var visionJob = new SensorVisionJob
         {
-            if (num < bb.WeaponRange)
-                ws.SetWSProperty(E_PropKey.InWeaponRange, true);
+            zombiePos = (float3)base.Owner.Position,
+            zombieEye = (float3)eyePos,
+            zombieForward = (float3)forward,
+            sightRange = bb.SightRange,
+            sightFOV = bb.SightFov,
+            weaponRange = bb.WeaponRange,
+            contestRange = bb.ContestRange,
+            vomitMin = bb.VomitRangeMin,
+            vomitMax = bb.VomitRangeMax,
+            enemyPos = (float3)MyEnemy.TransformTarget.position,
+            enemyForward = (float3)MyEnemy.Forward,
+            outDist = visionDist,
+            outDir = visionDir,
+            outFlags = visionFlags
+        };
 
-            if (num < bb.ContestRange)
-                ws.SetWSProperty(E_PropKey.InContestRange, true);
-        }
+        JobHandle visionHandle = visionJob.Schedule();
+        visionHandle.Complete();
 
-        toEnemy.Normalize();
-        SendSeeEvent(MyEnemy);
+        uint flags = visionFlags[0];
+        float dist = visionDist[0];
 
-        int layerMask = ~(ObjectLayerMask.IgnoreRaycast
-            | ObjectLayerMask.Player
-            | ObjectLayerMask.Enemy
-            | ObjectLayerMask.EnemyBox);
+        bb.DistanceToTarget = dist;
+        bb.DirToTarget = (Vector3)visionDir[0];
 
-        RaycastHit hitInfo;
-        bool hasLOS = !Physics.Raycast(
-            base.Owner.EyePosition, toEnemy, out hitInfo, num, layerMask);
-
-        if (ws.GetWSProperty(E_PropKey.SeeEnemy).GetBool())
+        // Only do raycast if we can see enemy
+        if ((flags & 64u) != 0)
         {
-            bb.VisibleTarget = MyEnemy;
+            SendSeeEvent(MyEnemy);
 
-            float angleToEnemy = Vector3.Angle(forward, toEnemy);
-            if (angleToEnemy < Mathf.Lerp(10f, 60f,
-                1f - bb.DistanceToTarget / bb.SightRange))
+            toEnemy.Normalize();
+            int layerMask = ~(ObjectLayerMask.IgnoreRaycast
+                | ObjectLayerMask.Player
+                | ObjectLayerMask.Enemy
+                | ObjectLayerMask.EnemyBox);
+
+            RaycastHit hitInfo;
+            bool hasLOS = !Physics.Raycast(
+                base.Owner.EyePosition, toEnemy, out hitInfo, dist, layerMask);
+
+            if (hasLOS)
             {
-                ws.SetWSProperty(E_PropKey.LookingAtTarget, true);
-            }
+                bb.VisibleTarget = MyEnemy;
 
-            Vector3 enemyForward = MyEnemy.Forward;
-            float angleEnemyToMe = Vector3.Angle(enemyForward, -toEnemy);
+                if ((flags & 1u) != 0 && !bb.ActionPointOn)
+                    ws.SetWSProperty(E_PropKey.InWeaponRange, true);
 
-            if (angleEnemyToMe < 10f)
-                ws.SetWSProperty(E_PropKey.EnemyLookingAtMe, true);
+                if ((flags & 2u) != 0 && !bb.ActionPointOn)
+                    ws.SetWSProperty(E_PropKey.InContestRange, true);
 
-            float angleToEnemyForward = Vector3.Angle(toEnemy, enemyForward);
-            if (angleToEnemyForward > 135f && angleToEnemyForward < 225f)
-                ws.SetWSProperty(E_PropKey.AheadOfEnemy, true);
+                if ((flags & 4u) != 0)
+                    ws.SetWSProperty(E_PropKey.EnemyLookingAtMe, true);
 
-            if (angleToEnemy < 90f)
-                ws.SetWSProperty(E_PropKey.EnemyAheadOfMe, true);
+                if ((flags & 8u) != 0)
+                    ws.SetWSProperty(E_PropKey.AheadOfEnemy, true);
 
-            if (hasLOS
-                && angleEnemyToMe < 45f
-                && num < bb.VomitRangeMax
-                && num > bb.VomitRangeMin
-                && !bb.ActionPointOn)
-            {
-                ws.SetWSProperty(E_PropKey.InVomitRange, true);
-            }
+                if ((flags & 16u) != 0)
+                    ws.SetWSProperty(E_PropKey.EnemyAheadOfMe, true);
 
-            if ((bb.MovementSkill & F_MovementSkill.Berserk) != 0
-                && num > Random.Range(7f, 8f)
-                && angleEnemyToMe < 20f
-                && hasLOS)
-            {
-                ws.SetWSProperty(E_PropKey.Berserk, true);
-            }
+                if ((flags & 32u) != 0 && !bb.ActionPointOn)
+                    ws.SetWSProperty(E_PropKey.InVomitRange, true);
 
-            if (angleToEnemy < 30f && angleEnemyToMe > 100f)
-            {
-                if (base.Owner.CanDoContest(MyEnemy, true))
-                    base.Owner.StartContest(MyEnemy);
-            }
-            else if (base.Owner.IsInContest()
-                && !MyEnemy.IsInContest())
-            {
-                base.Owner.StopContest(MyEnemy);
+                float angleToEnemy = Vector3.Angle(forward, toEnemy);
+                if (angleToEnemy < Mathf.Lerp(10f, 60f, 1f - dist / bb.SightRange))
+                    ws.SetWSProperty(E_PropKey.LookingAtTarget, true);
+
+                ws.SetWSProperty(E_PropKey.SeeEnemy, true);
+
+                // Contest logic
+                if (angleToEnemy < 30f && (flags & 4u) == 0)
+                {
+                    if (base.Owner.CanDoContest(MyEnemy, true))
+                        base.Owner.StartContest(MyEnemy);
+                }
+                else if (base.Owner.IsInContest() && !MyEnemy.IsInContest())
+                {
+                    base.Owner.StopContest(MyEnemy);
+                }
             }
         }
 
@@ -180,10 +279,8 @@ public class SensorEyesAI : SensorBase
 
     private void CheckContestValid()
     {
-        if (base.Owner.WorldState.GetWSProperty(
-                E_PropKey.Contest).GetBool()
-            && !MyEnemy.WorldState.GetWSProperty(
-                E_PropKey.Contest).GetBool()
+        if (base.Owner.WorldState.GetWSProperty(E_PropKey.Contest).GetBool()
+            && !MyEnemy.WorldState.GetWSProperty(E_PropKey.Contest).GetBool()
             && !base.Owner.CanDoContest(MyEnemy, false))
         {
             base.Owner.StopContest(MyEnemy);
@@ -222,7 +319,7 @@ public class SensorEyesAI : SensorBase
             fact.Agent = target;
             fact.Position = target.Position;
             fact.LiveTime = 180f;
-            fact.Delay = Random.Range(0.2f, 0.6f);
+            fact.Delay = UnityEngine.Random.Range(0.2f, 0.6f);
             base.Owner.AddFactToMemory(fact);
         }
     }
@@ -245,57 +342,42 @@ public class SensorEyesAI : SensorBase
     private float GetSqrSpeed(GameObject obj)
     {
         if (obj == null) return 0f;
-
-        // Cache Rigidbody lookup to avoid double GetComponent
         if (m_CachedRigidbodyOwner != obj)
         {
             m_CachedRigidbody = obj.GetComponent<Rigidbody>();
             m_CachedRigidbodyOwner = obj;
         }
-
-        return m_CachedRigidbody != null
-            ? m_CachedRigidbody.velocity.sqrMagnitude
-            : 0f;
+        return m_CachedRigidbody != null ? m_CachedRigidbody.velocity.sqrMagnitude : 0f;
     }
 
     private float GetSqrDistance(GameObject obj, Vector3 pos)
     {
-        return (obj != null)
-            ? (obj.transform.position - pos).sqrMagnitude
-            : float.PositiveInfinity;
+        return (obj != null) ? (obj.transform.position - pos).sqrMagnitude : float.PositiveInfinity;
     }
 
-    private IImportantObject CompareDistance(
-        IImportantObject first, IImportantObject second)
+    private IImportantObject CompareDistance(IImportantObject first, IImportantObject second)
     {
         Vector3 ownerPos = base.Owner.transform.position;
-        float sqrA = (first.GetGameObject().transform.position
-            - ownerPos).sqrMagnitude;
-        float sqrB = (second.GetGameObject().transform.position
-            - ownerPos).sqrMagnitude;
+        float sqrA = (first.GetGameObject().transform.position - ownerPos).sqrMagnitude;
+        float sqrB = (second.GetGameObject().transform.position - ownerPos).sqrMagnitude;
         return sqrA < sqrB ? first : second;
     }
 
     private IImportantObject CheckForBait()
     {
-        List<IImportantObject> objects =
-            Mission.Instance.CurrentGameZone.ImportantObjects;
+        List<IImportantObject> objects = Mission.Instance.CurrentGameZone.ImportantObjects;
 
-        // Use index loop to avoid enumerator allocation
         for (int i = 0; i < objects.Count; i++)
         {
             IImportantObject item = objects[i];
             if (item.GetGameObject() == null) continue;
 
             E_ImportantObjectType type = item.GetImportantObjectType();
-            if (type != E_ImportantObjectType.Bait
-                && type != E_ImportantObjectType.GrenadeBait)
+            if (type != E_ImportantObjectType.Bait && type != E_ImportantObjectType.GrenadeBait)
                 continue;
 
             if (GetSqrSpeed(item.GetGameObject()) < 2f
-                && IsPointReachable(
-                    item.GetGameObject().transform.position,
-                    base.Owner.BlackBoard.BaitRange))
+                && IsPointReachable(item.GetGameObject().transform.position, base.Owner.BlackBoard.BaitRange))
             {
                 return item;
             }
@@ -305,67 +387,50 @@ public class SensorEyesAI : SensorBase
 
     private IImportantObject CheckForDestructibleObject()
     {
-        float sqrDistToEnemy = (MyEnemy.Transform.position
-            - base.Owner.Transform.position).sqrMagnitude;
+        float sqrDistToEnemy = (MyEnemy.Transform.position - base.Owner.Transform.position).sqrMagnitude;
 
         if (sqrDistToEnemy < 25f)
         {
-            Fact fact = base.Owner.Memory
-                .GetFact(E_EventTypes.EnemyInjuredMe);
+            Fact fact = base.Owner.Memory.GetFact(E_EventTypes.EnemyInjuredMe);
             if (fact != null && fact.Belief > 0.2f)
                 return null;
         }
 
-        DestructibleObject destructibleObject =
-            base.Owner.BlackBoard.ImportantObject as DestructibleObject;
+        DestructibleObject destructibleObject = base.Owner.BlackBoard.ImportantObject as DestructibleObject;
         IImportantObject result = null;
 
-        if (destructibleObject != null
-            && destructibleObject.IsAlive
-            && destructibleObject.GetGameObject() != null)
+        if (destructibleObject != null && destructibleObject.IsAlive && destructibleObject.GetGameObject() != null)
         {
             result = destructibleObject;
         }
         else
         {
-            List<IImportantObject> objects =
-                Mission.Instance.CurrentGameZone.ImportantObjects;
+            List<IImportantObject> objects = Mission.Instance.CurrentGameZone.ImportantObjects;
 
-            // Use index loop to avoid enumerator allocation
             for (int i = 0; i < objects.Count; i++)
             {
                 IImportantObject item = objects[i];
-                if (item.GetImportantObjectType()
-                    != E_ImportantObjectType.DestructibleObject)
+                if (item.GetImportantObjectType() != E_ImportantObjectType.DestructibleObject)
                     continue;
 
                 if (item.GetGameObject() == null) continue;
 
                 destructibleObject = (DestructibleObject)item;
-                if (!destructibleObject.IsAlive
-                    || destructibleObject.GetRegisteredAgentsCount() >= 1)
+                if (!destructibleObject.IsAlive || destructibleObject.GetRegisteredAgentsCount() >= 1)
                     continue;
 
-                AttackPoint attackPoint =
-                    destructibleObject.FindAttackPoint(null);
+                AttackPoint attackPoint = destructibleObject.FindAttackPoint(null);
                 if (attackPoint != null
-                    && IsPointReachable(
-                        attackPoint.Transform.position,
-                        base.Owner.BlackBoard.DestructibleObjectRange))
+                    && IsPointReachable(attackPoint.Transform.position, base.Owner.BlackBoard.DestructibleObjectRange))
                 {
-                    result = (result != null)
-                        ? CompareDistance(result, item)
-                        : item;
+                    result = (result != null) ? CompareDistance(result, item) : item;
                 }
             }
         }
 
         if (result != null && MyEnemy != null)
         {
-            float sqrDistToObj = GetSqrDistance(
-                result.GetGameObject(),
-                base.Owner.Transform.position) * 0.4f;
-
+            float sqrDistToObj = GetSqrDistance(result.GetGameObject(), base.Owner.Transform.position) * 0.4f;
             if (sqrDistToEnemy > 4f && sqrDistToObj < sqrDistToEnemy)
                 return result;
         }
@@ -375,23 +440,27 @@ public class SensorEyesAI : SensorBase
 
     private bool IsPointReachable(Vector3 pos, float dist)
     {
-        if (base.Owner.NavMeshAgent == null
-            || !base.Owner.NavMeshAgent.enabled)
+        if (base.Owner.NavMeshAgent == null || !base.Owner.NavMeshAgent.enabled)
             return false;
 
         if ((base.Owner.Position - pos).sqrMagnitude <= dist * dist)
             return true;
 
-        // Reuse cached NavMeshPath to avoid per-call allocation
         m_NavMeshPath.ClearCorners();
-        bool flag = base.Owner.NavMeshAgent
-            .CalculatePath(pos, m_NavMeshPath);
+        bool flag = base.Owner.NavMeshAgent.CalculatePath(pos, m_NavMeshPath);
 
         if (!flag && Debug.isDebugBuild)
-            Debug.Log("IsPointReachable: result=" + flag
-                + " pos=" + pos
-                + " status=" + m_NavMeshPath.status);
+            Debug.Log("IsPointReachable: result=" + flag + " pos=" + pos + " status=" + m_NavMeshPath.status);
 
         return flag;
+    }
+
+    private void OnDestroy()
+    {
+        if (visionDist.IsCreated) visionDist.Dispose();
+        if (visionDir.IsCreated) visionDir.Dispose();
+        if (visionFlags.IsCreated) visionFlags.Dispose();
+        if (raycastCommands.IsCreated) raycastCommands.Dispose();
+        if (raycastResults.IsCreated) raycastResults.Dispose();
     }
 }

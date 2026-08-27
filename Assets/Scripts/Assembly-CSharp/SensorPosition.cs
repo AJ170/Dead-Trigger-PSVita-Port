@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class SensorPosition : SensorBase
 {
@@ -21,7 +22,7 @@ public class SensorPosition : SensorBase
 		float f = (float)Math.PI * 2f / (float)base.Owner.BlackBoard.AiRecon.MaxPosition * (float)PosIndex;
 		Vector3 vector = new Vector3(Mathf.Cos(f), 0f, Mathf.Sin(f));
 		UnityEngine.AI.NavMesh.Raycast(base.Owner.Position, base.Owner.Position + base.Owner.BlackBoard.AiRecon.Distance * vector, out NavMeshHit, base.Owner.NavMeshAgent.areaMask);
-		if ((base.Owner.BlackBoard.AiRecon.Positions[PosIndex].Position - NavMeshHit.position).magnitude > 1f)
+		if (length(base.Owner.BlackBoard.AiRecon.Positions[PosIndex].Position - NavMeshHit.position) > 1f)
 		{
 			base.Owner.BlackBoard.AiRecon.Positions[PosIndex].Position = NavMeshHit.position;
 			base.Owner.BlackBoard.AiRecon.Positions[PosIndex].Distance = NavMeshHit.distance;

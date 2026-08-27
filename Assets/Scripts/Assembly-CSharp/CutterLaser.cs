@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(AudioSource))]
 [AddComponentMenu("Items/Cutter - Laser")]
@@ -224,7 +225,7 @@ public class CutterLaser : MonoBehaviour
 				float num2 = 2f;
 				if (!(position.y + num2 < m_LayersHeightMin) && !(position.y > m_LayersHeightMax))
 				{
-					result = Mathf.Sqrt(num) - 0.3f;
+					result = sqrt(num) - 0.3f;
 					result = ((!(result < 0.2f)) ? result : 0f);
 				}
 			}

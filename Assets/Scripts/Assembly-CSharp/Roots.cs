@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using static Unity.Mathematics.math;
 public class Roots
 {
 	public const float ZeroEps = 1E-06f;
@@ -22,7 +22,7 @@ public class Roots
 			float num3 = num * num - 4f * num2;
 			if (num3 > 0f)
 			{
-				float num4 = Mathf.Sqrt(num3);
+				float num4 = sqrt(num3);
 				X[0] = (num - num4) * 0.5f;
 				X[1] = (num + num4) * 0.5f;
 				return 2;

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public abstract class Award : MonoBehaviour
 {
@@ -56,7 +57,7 @@ public abstract class Award : MonoBehaviour
 		{
 			return;
 		}
-		float num2 = Mathf.Sqrt(num + rhs.y * rhs.y);
+		float num2 = sqrt(num + rhs.y * rhs.y);
 		float f = Vector3.Dot(Camera.main.transform.forward, rhs /= num2);
 		if (!(Mathf.Acos(f) > 1.3962634f))
 		{

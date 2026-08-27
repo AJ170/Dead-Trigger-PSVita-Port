@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class AnimStateGoTo : AnimState
 {
@@ -36,7 +37,7 @@ public class AnimStateGoTo : AnimState
 
 		public float GetLength()
 		{
-			return (offMeshLinkData.endPos - offMeshLinkData.startPos).magnitude;
+			return length(offMeshLinkData.endPos - offMeshLinkData.startPos);
 		}
 
 		public bool IsStillActive(AgentHuman owner)
@@ -73,7 +74,7 @@ public class AnimStateGoTo : AnimState
 				return Vector3.zero;
 			}
 			Vector3 result = offMeshLinkData.endPos - offMeshLinkData.startPos;
-			speed = ((!actionPoint.enabled) ? GetMoveSpeed() : (result.magnitude / GetAnim().length));
+			speed = ((!actionPoint.enabled) ? GetMoveSpeed() : (length(result) / GetAnim().length));
 			return result;
 		}
 
@@ -83,7 +84,7 @@ public class AnimStateGoTo : AnimState
 			{
 				return GetAnim().length - 0.2f;
 			}
-			float magnitude = (GetStartPos() - owner.Transform.position).magnitude;
+			float magnitude = length(GetStartPos() - owner.Transform.position);
 			magnitude += GetLength();
 			float num = magnitude / moveSpeed;
 			return num - 0.1f;
@@ -261,7 +262,7 @@ public class AnimStateGoTo : AnimState
 		}
 		if (Owner.debugAnims)
 		{
-			float magnitude = Owner.NavMeshAgent.velocity.magnitude;
+			float magnitude = length(Owner.NavMeshAgent.velocity);
 			Debug.Log("Update AP: time=" + Time.timeSinceLevelLoad + ", NavMesh Speed=" + Owner.NavMeshAgent.speed + ", realSpeed=" + magnitude);
 		}
 	}

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using static Unity.Mathematics.math;
 public class Matrix
 {
 	public static Matrix4x4 CreateTranslation(Vector3 Origin)
@@ -236,22 +236,22 @@ public class Matrix
 
 	public static Vector3 GetScale(Matrix4x4 Mat)
 	{
-		return new Vector3(Mathf.Sqrt(Mat.m00 * Mat.m00 + Mat.m10 * Mat.m10 + Mat.m20 * Mat.m20), Mathf.Sqrt(Mat.m01 * Mat.m01 + Mat.m11 * Mat.m11 + Mat.m21 * Mat.m21), Mathf.Sqrt(Mat.m02 * Mat.m02 + Mat.m12 * Mat.m12 + Mat.m22 * Mat.m22));
+		return new Vector3(sqrt(Mat.m00 * Mat.m00 + Mat.m10 * Mat.m10 + Mat.m20 * Mat.m20), sqrt(Mat.m01 * Mat.m01 + Mat.m11 * Mat.m11 + Mat.m21 * Mat.m21), sqrt(Mat.m02 * Mat.m02 + Mat.m12 * Mat.m12 + Mat.m22 * Mat.m22));
 	}
 
 	public static float GetScaleX(Matrix4x4 Mat)
 	{
-		return Mathf.Sqrt(Mat.m00 * Mat.m00 + Mat.m10 * Mat.m10 + Mat.m20 * Mat.m20);
+		return sqrt(Mat.m00 * Mat.m00 + Mat.m10 * Mat.m10 + Mat.m20 * Mat.m20);
 	}
 
 	public static float GetScaleY(Matrix4x4 Mat)
 	{
-		return Mathf.Sqrt(Mat.m01 * Mat.m01 + Mat.m11 * Mat.m11 + Mat.m21 * Mat.m21);
+		return sqrt(Mat.m01 * Mat.m01 + Mat.m11 * Mat.m11 + Mat.m21 * Mat.m21);
 	}
 
 	public static float GetScaleZ(Matrix4x4 Mat)
 	{
-		return Mathf.Sqrt(Mat.m02 * Mat.m02 + Mat.m12 * Mat.m12 + Mat.m22 * Mat.m22);
+		return sqrt(Mat.m02 * Mat.m02 + Mat.m12 * Mat.m12 + Mat.m22 * Mat.m22);
 	}
 
 	public static Vector3 RemoveScale(ref Matrix4x4 Mat)

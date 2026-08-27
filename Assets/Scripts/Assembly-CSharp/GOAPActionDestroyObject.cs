@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 internal class GOAPActionDestroyObject : GOAPAction
 {
@@ -200,7 +201,7 @@ internal class GOAPActionDestroyObject : GOAPAction
 		{
 			return true;
 		}
-		if ((Owner.Transform.position - Position).magnitude < Owner.BlackBoard.DestructibleObjectRange)
+		if (length(Owner.Transform.position - Position) < Owner.BlackBoard.DestructibleObjectRange)
 		{
 			return true;
 		}

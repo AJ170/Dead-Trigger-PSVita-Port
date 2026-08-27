@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public static class Throw
 {
@@ -42,7 +43,7 @@ public static class Throw
 		float num = 0.25f * Vector3.Dot(m_Gravity, m_Gravity);
 		float num2 = 0.5f * Vector3.Dot(m_Gravity, vector);
 		float num3 = Vector3.Dot(vector, vector);
-		float num4 = Mathf.Sqrt(2f * Mathf.Sqrt(num * num3) - num2);
+		float num4 = sqrt(2f * sqrt(num * num3) - num2);
 		return num4 + 0.001f;
 	}
 
@@ -64,7 +65,7 @@ public static class Throw
 			return false;
 		}
 		int num3 = ((num2 != 1 && !PreferShorterTrajectory) ? 1 : 0);
-		float num4 = Mathf.Sqrt(Mathf.Max(1E-05f, array[num3]));
+		float num4 = sqrt(Mathf.Max(1E-05f, array[num3]));
 		Velocity = 1f / num4 * vector - 0.5f * num4 * m_Gravity;
 		return true;
 	}

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class AnimStateDeath : AnimState
 {
@@ -101,7 +102,7 @@ public class AnimStateDeath : AnimState
 		if (!Owner.BlackBoard.DontDeathAnimMove && (bool)Owner.NavMeshAgent && !Owner.IsActionPointOn)
 		{
 			Vector3 destination = Action.Impuls + Owner.Position;
-			Owner.NavMeshAgent.speed = Action.Impuls.magnitude / 0.2f;
+			Owner.NavMeshAgent.speed = length(Action.Impuls) / 0.2f;
 			Owner.NavMeshAgent.acceleration = 100f;
 			Owner.NavMeshAgent.updatePosition = true;
 			Owner.NavMeshAgent.autoRepath = false;
@@ -126,7 +127,7 @@ public class AnimStateDeath : AnimState
 		Owner.NavMeshAgent.enabled = false;
 		Owner.ToggleCollisions(false, true);
 		Owner.EnableRagdoll(true);
-		Vector3 force = ((Action.WeaponType != E_WeaponType.Explosion) ? (Action.Impuls + Vector3.up * Action.Impuls.magnitude * 0.5f) : ((Action.Impuls + Vector3.up) * 2000f));
+		Vector3 force = ((Action.WeaponType != E_WeaponType.Explosion) ? (Action.Impuls + Vector3.up * length(Action.Impuls) * 0.5f) : ((Action.Impuls + Vector3.up) * 2000f));
 		Owner.RigidBodyForce.AddForce(force);
 		Owner.BlackBoard.MotionType = E_MotionType.Death;
 	}

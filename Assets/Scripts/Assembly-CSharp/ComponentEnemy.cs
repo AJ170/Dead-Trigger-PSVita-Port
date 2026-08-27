@@ -15,19 +15,19 @@ public class ComponentEnemy : MonoBehaviour, IHitZoneOwner
 	[Serializable]
 	public class SoundInfo
 	{
-		public AudioClip[] SeeEnemy = new AudioClip[0];
+		public UnityEngine.AudioClip[] SeeEnemy;// = new UnityEngine.AudioClip[0];
 
-		public AudioClip[] Idles = new AudioClip[0];
+		public UnityEngine.AudioClip[] Idles;// = new UnityEngine.AudioClip[0];
 
-		public AudioClip[] Attacks = new AudioClip[0];
+		public UnityEngine.AudioClip[] Attacks;// = new UnityEngine.AudioClip[0];
 
-		public AudioClip[] Spits = new AudioClip[0];
+		public UnityEngine.AudioClip[] Spits;// = new UnityEngine.AudioClip[0];
 
-		public AudioClip ContestStart = new AudioClip();
+		public AudioClip ContestStart;// = new AudioClip();
 
-		public AudioClip ContestWon = new AudioClip();
+		public AudioClip ContestWon;// = new AudioClip();
 
-		public AudioClip ContestLost = new AudioClip();
+		public AudioClip ContestLost;//= new AudioClip();
 	}
 
 	[Serializable]

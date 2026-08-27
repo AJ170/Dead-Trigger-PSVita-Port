@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class Item
 {
@@ -299,7 +300,7 @@ public class Item
 			if (agent.IsAlive)
 			{
 				Vector3 dir = agent.Position - Owner.Position;
-				if (!(dir.magnitude > 8f))
+				if (!(length(dir) > 8f))
 				{
 					agent.TakeDamage(Owner, 5000f, null, dir.normalized * 10f, E_WeaponID.None, E_WeaponType.ReviveKit);
 					BloodFXManager.Instance.SpawnBloodSplashes(5u);

@@ -154,12 +154,15 @@ public class LightProbeSamplerDT : MonoBehaviour
 			m_ProcessedRenderers.Add(r);
 		}
 
+#if UNITY_EDITOR
 		if (m_ProcessedRenderers.Count > 0)
 		{
+
 			Debug.Log("LightProbeSamplerDT: Instanced "
 				+ m_ProcessedRenderers.Count
 				+ " renderers on " + gameObject.name);
 		}
+#endif
 	}
 
 	void Update()

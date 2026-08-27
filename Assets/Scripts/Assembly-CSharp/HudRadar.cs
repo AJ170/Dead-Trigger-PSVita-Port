@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static Unity.Mathematics.math;
 public class HudRadar : HudComponent
 {
 	private class SpecialObject
@@ -341,9 +341,9 @@ public class HudRadar : HudComponent
 		{
 			Vector3 position2 = enemy.transform.position;
 			Vector3 vector = position2 - position;
-			float magnitude = vector.magnitude;
+			float magnitude = length(vector);
 			vector.y = 0f;
-			float magnitude2 = vector.magnitude;
+			float magnitude2 = length(vector);
 			float num = magnitude2;
 			if (magnitude2 < RadarRange)
 			{
@@ -388,7 +388,7 @@ public class HudRadar : HudComponent
 				Vector3 position3 = specialObject.obj.transform.position;
 				Vector3 vector2 = position3 - position;
 				vector2.y = 0f;
-				float magnitude3 = vector2.magnitude;
+				float magnitude3 = length(vector2);
 				vector2.Normalize();
 				magnitude3 = Mathf.Clamp(magnitude3 / RadarRange, 0f, 1f);
 				float f2 = Mathf.Atan2(0f - vector2.z, vector2.x) - Mathf.Atan2(0f - forward.z, forward.x);

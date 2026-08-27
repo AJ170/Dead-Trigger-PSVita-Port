@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 [AddComponentMenu("Weapons/GobEffect")]
 public class GobEffect : MonoBehaviour
@@ -71,7 +72,7 @@ public class GobEffect : MonoBehaviour
 			return false;
 		}*/
 		float num = 0.08f;
-		int num2 = 1 + (int)(normDelta.magnitude / num);
+		int num2 = 1 + (int)(length(normDelta) / num);
 		Vector2 vector = normDelta / num2;
 		float num3 = -4f;
 		for (int i = 0; i < num2; i++)

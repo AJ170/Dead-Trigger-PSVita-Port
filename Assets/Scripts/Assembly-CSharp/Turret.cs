@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(AudioSource))]
 [AddComponentMenu("Items/Turret")]
@@ -432,7 +433,7 @@ public class Turret : MonoBehaviour
 				continue;
 			}
 			Vector3 vector = agentHuman2.TransformTarget.position - m_PartsSettings.m_Neck.position;
-			float num3 = Vector3.Magnitude(vector);
+			float num3 = length(vector);
 			if (num3 > m_WpnSettings.m_RangeMaximal)
 			{
 				continue;
@@ -473,7 +474,7 @@ public class Turret : MonoBehaviour
 		Vector3 position = T.TransformTarget.position;
 		Vector3 position2 = m_PartsSettings.m_Neck.position;
 		Vector3 vector = position - position2;
-		float num = Vector3.Magnitude(vector);
+		float num = length(vector);
 		List<HitInfo> list = HitDetection.RayCast(position2, vector / num, num);
 		foreach (HitInfo item in list)
 		{

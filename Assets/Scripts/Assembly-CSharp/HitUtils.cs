@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public static class HitUtils
 {
@@ -61,7 +62,7 @@ public static class HitUtils
 			{
 				direction = (ray.direction = data2.point - ray.origin);
 				HitData data3;
-				if (FirstCollisionOnRay(ray, direction.magnitude + 1f, ignoreGO, Judge, out data3) && data3.hitObj == gameObject)
+				if (FirstCollisionOnRay(ray, length(direction) + 1f, ignoreGO, Judge, out data3) && data3.hitObj == gameObject)
 				{
 					data.hitPos = data2.point;
 					data.hitObj = gameObject;

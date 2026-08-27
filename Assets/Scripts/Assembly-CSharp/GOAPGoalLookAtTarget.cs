@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 internal class GOAPGoalLookAtTarget : GOAPGoal
 {
@@ -25,7 +26,7 @@ internal class GOAPGoalLookAtTarget : GOAPGoal
 		}
 		Vector3 vector = base.Owner.BlackBoard.DangerousEnemy.Position - base.Owner.Position;
 		RaycastHit hitInfo;
-		if (!Physics.Raycast(base.Owner.EyePosition, vector, out hitInfo, vector.magnitude) || !(hitInfo.distance < base.Owner.BlackBoard.DistanceToTarget * 0.7f))
+		if (!Physics.Raycast(base.Owner.EyePosition, vector, out hitInfo, length(vector)) || !(hitInfo.distance < base.Owner.BlackBoard.DistanceToTarget * 0.7f))
 		{
 			base.GoalRelevancy = Mathf.Min(base.Owner.BlackBoard.GoapSetup.LookAtTargetRelevancy, Vector3.Angle(base.Owner.Forward, vector) * 0.1f);
 			if (base.GoalRelevancy < 0.2f)

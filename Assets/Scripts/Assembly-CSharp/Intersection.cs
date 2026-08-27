@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using static Unity.Mathematics.math;
 public static class Intersection
 {
 	public static bool RaySphere(Vector3 RayO, Vector3 RayD, float RayL, Vector3 SphereC, float SphereR)
@@ -16,7 +16,7 @@ public static class Intersection
 		{
 			return false;
 		}
-		float num4 = ((!(num3 > 1E-06f)) ? num2 : (num2 - Mathf.Sqrt(num3)));
+		float num4 = ((!(num3 > 1E-06f)) ? num2 : (num2 - sqrt(num3)));
 		return num4 >= 0f && num4 <= RayL;
 	}
 
@@ -87,7 +87,7 @@ public static class Intersection
 		}
 		if (num3 > 1E-06f)
 		{
-			float num4 = Mathf.Sqrt(num3);
+			float num4 = sqrt(num3);
 			T0 = num2 - num4;
 			T1 = num2 + num4;
 			return 2;

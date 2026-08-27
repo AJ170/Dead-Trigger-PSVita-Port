@@ -137,7 +137,9 @@ public class BreakableObject : MonoBehaviour
 	private IEnumerator ParticleStop(ParticleEmitter emitter, float delay)
 	{
 		yield return new WaitForSeconds(delay);
-		emitter.emit = false;
+		//emitter.emit = false;
+		//emitter.stop();
+		//PROBLEM: Glossed over the particle system handler stuff here, but this function doesn't seem to be referenced?
 	}
 
 	private IEnumerator SoundRun(AudioSource audio, float delay)

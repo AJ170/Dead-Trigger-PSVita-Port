@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class DebugDraw
 {
@@ -350,7 +351,7 @@ public class DebugDraw
 		Line(Col, Res, Res2);
 		float num2 = RadiusB - RadiusA;
 		float num3 = num2 / Height;
-		float num4 = Mathf.Sqrt(Height * Height + num2 * num2) / Height;
+		float num4 = sqrt(Height * Height + num2 * num2) / Height;
 		if (RadiusB > 0f)
 		{
 			int idx = SetDetails(RadiusB) - 1;

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
+using static Unity.Mathematics.math;
 
 public class LightProbeManager : MonoBehaviour
 {
@@ -283,7 +284,7 @@ public class LightProbeManager : MonoBehaviour
 
         for (int i = 0; i < nearCount; i++)
         {
-            float dist = Mathf.Sqrt(distances[i]);
+            float dist = sqrt(distances[i]);
 
             if (dist < 0.001f)
             {

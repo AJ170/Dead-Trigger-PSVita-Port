@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 internal class GOAPActionCheckBait : GOAPAction
 {
@@ -54,7 +55,7 @@ internal class GOAPActionCheckBait : GOAPAction
 			case BlackBoard.E_BaitPhase.GoTo:
 			{
 				Vector3 lookRotation = Position - Owner.Transform.position;
-				if (lookRotation.magnitude < Owner.BlackBoard.BaitRange)
+				if (length(lookRotation) < Owner.BlackBoard.BaitRange)
 				{
 					Owner.BlackBoard.Desires.Rotation.SetLookRotation(lookRotation);
 					Owner.BlackBoard.BaitPhase = BlackBoard.E_BaitPhase.ObjectReached;

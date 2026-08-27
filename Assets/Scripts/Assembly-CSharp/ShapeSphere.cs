@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using static Unity.Mathematics.math;
 public class ShapeSphere : Shape
 {
 	private Vector3 m_Center;
@@ -58,7 +58,7 @@ public class ShapeSphere : Shape
 		}
 		if (num3 >= 1E-05f)
 		{
-			float num4 = Mathf.Sqrt(num3);
+			float num4 = sqrt(num3);
 			float num5 = num2 - num4;
 			float num6 = num2 + num4;
 			if (num5 > 0f)
@@ -91,7 +91,7 @@ public class ShapeSphere : Shape
 		}
 		if (num4 >= 1E-05f)
 		{
-			float num5 = Mathf.Sqrt(num4);
+			float num5 = sqrt(num4);
 			float num6 = num3 - num5;
 			float num7 = num3 + num5;
 			if (num6 > 0f)
