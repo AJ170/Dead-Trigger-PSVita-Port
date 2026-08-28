@@ -118,6 +118,10 @@ public class GUIBase_Button : GUIBase_Callback
 
     private int m_TextID;
 
+    // OPTIMIZATION: Cache main sprite to avoid GetSprite(0) calls
+    private MFGuiSprite m_MainSprite;
+    private bool m_MainSpriteCacheDirty = true;
+
     public GUIBase_Widget Widget
     {
         get
@@ -177,13 +181,14 @@ public class GUIBase_Button : GUIBase_Callback
     {
         m_Text = string.Empty;
         m_TextID = inTextID;
-        GUIBase_Widget[] labels = m_Labels;
-        foreach (GUIBase_Widget gUIBase_Widget in labels)
+        // OPTIMIZATION: Use for loop instead of foreach to avoid enumerator allocation
+        for (int i = 0; i < m_Labels.Length; i++)
         {
-            if (!(gUIBase_Widget == null))
+            GUIBase_Widget gUIBase_Widget = m_Labels[i];
+            if (gUIBase_Widget != null)
             {
                 GUIBase_Label component = gUIBase_Widget.GetComponent<GUIBase_Label>();
-                if (!(component == null))
+                if (component != null)
                 {
                     component.SetNewText(inTextID);
                 }
@@ -195,13 +200,14 @@ public class GUIBase_Button : GUIBase_Callback
     {
         m_Text = inText;
         m_TextID = 0;
-        GUIBase_Widget[] labels = m_Labels;
-        foreach (GUIBase_Widget gUIBase_Widget in labels)
+        // OPTIMIZATION: Use for loop instead of foreach to avoid enumerator allocation
+        for (int i = 0; i < m_Labels.Length; i++)
         {
-            if (!(gUIBase_Widget == null))
+            GUIBase_Widget gUIBase_Widget = m_Labels[i];
+            if (gUIBase_Widget != null)
             {
                 GUIBase_Label component = gUIBase_Widget.GetComponent<GUIBase_Label>();
-                if (!(component == null))
+                if (component != null)
                 {
                     component.SetNewText(inText);
                 }
@@ -519,11 +525,17 @@ public class GUIBase_Button : GUIBase_Callback
     {
         if (idx >= 0 && idx < 4)
         {
-            MFGuiSprite sprite = m_Widget.GetSprite(0);
-            if (sprite != null && m_UsedSpritesUV[idx].m_IsReady)
+            // OPTIMIZATION: Cache main sprite to avoid repeated GetSprite(0) calls
+            if (m_MainSpriteCacheDirty)
             {
-                sprite.lowerLeftUV = m_UsedSpritesUV[idx].m_LowerLeftUV;
-                sprite.uvDimensions = m_UsedSpritesUV[idx].m_UvDimensions;
+                m_MainSprite = m_Widget.GetSprite(0);
+                m_MainSpriteCacheDirty = false;
+            }
+
+            if (m_MainSprite != null && m_UsedSpritesUV[idx].m_IsReady)
+            {
+                m_MainSprite.lowerLeftUV = m_UsedSpritesUV[idx].m_LowerLeftUV;
+                m_MainSprite.uvDimensions = m_UsedSpritesUV[idx].m_UvDimensions;
             }
             if (prevState >= 0 && prevState < 4 && (bool)m_Labels[prevState])
             {

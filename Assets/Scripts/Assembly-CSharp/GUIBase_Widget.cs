@@ -88,6 +88,10 @@ public class GUIBase_Widget : MonoBehaviour
 
 	private Color m_ColorCached = Color.clear;
 
+	// OPTIMIZATION: Cache GetComponentsInChildren to avoid repeated allocation
+	private GUIBase_Widget[] m_ChildWidgetsCache;
+	private bool m_ChildWidgetsCacheDirty = true;
+
 	private int ReservedSpritesSize
 	{
 		get
@@ -584,11 +588,20 @@ public class GUIBase_Widget : MonoBehaviour
 	{
 		if (recursive)
 		{
-			GUIBase_Widget[] componentsInChildren = GetComponentsInChildren<GUIBase_Widget>();
-			GUIBase_Widget[] array = componentsInChildren;
-			foreach (GUIBase_Widget gUIBase_Widget in array)
+			// OPTIMIZATION: Cache GetComponentsInChildren result to avoid repeated allocation
+			if (m_ChildWidgetsCacheDirty)
 			{
-				gUIBase_Widget.ShowImmediate(v, false);
+				m_ChildWidgetsCache = GetComponentsInChildren<GUIBase_Widget>();
+				m_ChildWidgetsCacheDirty = false;
+			}
+
+			// OPTIMIZATION: Use for loop instead of foreach to avoid enumerator allocation
+			if (m_ChildWidgetsCache != null)
+			{
+				for (int i = 0; i < m_ChildWidgetsCache.Length; i++)
+				{
+					m_ChildWidgetsCache[i].ShowImmediate(v, false);
+				}
 			}
 			return;
 		}
@@ -661,22 +674,22 @@ public class GUIBase_Widget : MonoBehaviour
 	{
 		switch (touchPhase)
 		{
-		case E_TouchPhase.E_TP_CLICK_BEGIN:
-			return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_BEGIN);
-		case E_TouchPhase.E_TP_CLICK_RELEASE:
-			if (isMouseOver)
-			{
-				return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_END);
-			}
-			return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_END_OUTSIDE);
-		case E_TouchPhase.E_TP_MOUSEOVER_BEGIN:
-			return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_MOUSEOVER_BEGIN);
-		case E_TouchPhase.E_TP_MOUSEOVER_END:
-			return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_MOUSEOVER_END);
-		case E_TouchPhase.E_TP_CLICK_RELEASE_KEYBOARD:
-			return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_END_KEYBOARD);
-		default:
-			return false;
+			case E_TouchPhase.E_TP_CLICK_BEGIN:
+				return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_BEGIN);
+			case E_TouchPhase.E_TP_CLICK_RELEASE:
+				if (isMouseOver)
+				{
+					return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_END);
+				}
+				return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_END_OUTSIDE);
+			case E_TouchPhase.E_TP_MOUSEOVER_BEGIN:
+				return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_MOUSEOVER_BEGIN);
+			case E_TouchPhase.E_TP_MOUSEOVER_END:
+				return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_MOUSEOVER_END);
+			case E_TouchPhase.E_TP_CLICK_RELEASE_KEYBOARD:
+				return m_Callback.Callback(GUIBase_Callback.E_CallbackType.E_CT_ON_TOUCH_END_KEYBOARD);
+			default:
+				return false;
 		}
 	}
 

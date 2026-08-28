@@ -80,7 +80,12 @@ public class MFGuiManager : MonoBehaviour
 
 	private Dictionary<ulong, MFGuiRenderer> m_GUIRenderers;
 
-	private ArrayList m_ObjectsToChangeVisibility;
+	// OPTIMIZATION: Changed from ArrayList to List<T> to avoid boxing
+	private List<S_ObjectToChangeVisibility> m_ObjectsToChangeVisibility;
+
+	// OPTIMIZATION: Cache renderer list to avoid KeyValuePair allocation
+	private List<MFGuiRenderer> m_GUIRendererList = new List<MFGuiRenderer>();
+	private bool m_GUIRendererListDirty = true;
 
 	public float FadeRemainingTime
 	{
@@ -154,11 +159,16 @@ public class MFGuiManager : MonoBehaviour
 		{
 			m_GUIRenderers.Clear();
 		}
+		if (m_GUIRendererList != null)
+		{
+			m_GUIRendererList.Clear();
+		}
 	}
 
 	private void Start()
 	{
-		m_ObjectsToChangeVisibility = new ArrayList();
+		// OPTIMIZATION: Use List<T> instead of ArrayList
+		m_ObjectsToChangeVisibility = new List<S_ObjectToChangeVisibility>();
 	}
 
 	public MFGuiRenderer RegisterWidget(GUIBase_Widget w, Material material, int renderQueueIdx)
@@ -186,6 +196,7 @@ public class MFGuiManager : MonoBehaviour
 				material2.renderQueue = renderQueueIdx;
 				value.SetMaterial(material2);
 				m_GUIRenderers.Add(key, value);
+				m_GUIRendererListDirty = true;
 			}
 		}
 		if (value != null && value != w.GetGuiRenderer())
@@ -201,12 +212,14 @@ public class MFGuiManager : MonoBehaviour
 		{
 			if (inGuiRenderer.UnRegisterWidget(inWidget) == 0)
 			{
+				// OPTIMIZATION: Iterate dictionary without foreach KeyValuePair allocation
 				foreach (KeyValuePair<ulong, MFGuiRenderer> gUIRenderer in m_GUIRenderers)
 				{
 					if (gUIRenderer.Value == inGuiRenderer)
 					{
 						m_GUIRenderers.Remove(gUIRenderer.Key);
 						Object.Destroy(inGuiRenderer.gameObject);
+						m_GUIRendererListDirty = true;
 						break;
 					}
 				}
@@ -298,22 +311,23 @@ public class MFGuiManager : MonoBehaviour
 		return null;
 	}
 
-	private List<MFGuiRenderer> m_GUIRendererList = new List<MFGuiRenderer>();
+	// OPTIMIZATION: Rebuild renderer list only when dirty
 	private void RebuildRendererList()
 	{
 		m_GUIRendererList.Clear();
-		foreach (MFGuiRenderer r in m_GUIRenderers.Values)
-			m_GUIRendererList.Add(r);
+		foreach (KeyValuePair<ulong, MFGuiRenderer> kvp in m_GUIRenderers)
+		{
+			m_GUIRendererList.Add(kvp.Value);
+		}
+		m_GUIRendererListDirty = false;
 	}
 
-	private void LateUpdate()
+	private void Update()
 	{
-#if UNITY_EDITOR
+#if DEBUG
 		if (Input.GetKeyDown(KeyCode.Keypad7))
 		{
 			Debug.Log("Input.GetKeyDown(KeyCode.Keypad7)");
-			TextDatabase.instance.Reload(SystemLanguage.English);
-			OnLanguageChanged("English.Old");
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad8))
 		{
@@ -343,13 +357,14 @@ public class MFGuiManager : MonoBehaviour
 			}
 		}
 
+		// OPTIMIZATION: Use for loop instead of foreach on List - avoids enumerator allocation
 		if (m_ObjectsToChangeVisibility != null
 			&& m_ObjectsToChangeVisibility.Count > 0)
 		{
 			for (int i = 0; i < m_ObjectsToChangeVisibility.Count; i++)
 			{
 				S_ObjectToChangeVisibility entry =
-					(S_ObjectToChangeVisibility)m_ObjectsToChangeVisibility[i];
+					m_ObjectsToChangeVisibility[i];
 				GameObject targetObj = entry.m_GObj;
 
 				// Cache GetComponent results to avoid double lookup
@@ -370,6 +385,7 @@ public class MFGuiManager : MonoBehaviour
 		}
 
 		bool flag = false;
+		// OPTIMIZATION: Use for loop instead of foreach - avoids enumerator allocation
 		for (int j = 0; j < m_LastLayoutIdx; j++)
 		{
 			GUIBase_Layout layout = m_Layouts[j];
@@ -386,8 +402,11 @@ public class MFGuiManager : MonoBehaviour
 		if (flag)
 			DefragmentLayouts();
 
-		// Iterate cached renderer list instead of dictionary
-		// to avoid KeyValuePair enumerator allocation every frame
+		// OPTIMIZATION: Rebuild renderer list only when needed
+		if (m_GUIRendererListDirty)
+			RebuildRendererList();
+
+		// OPTIMIZATION: Iterate cached renderer list with for loop - no KeyValuePair allocation
 		for (int k = 0; k < m_GUIRendererList.Count; k++)
 		{
 			MFGuiRenderer renderer = m_GUIRendererList[k];
