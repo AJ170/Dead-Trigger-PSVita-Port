@@ -234,6 +234,7 @@ public class SpawnManager
 		m_EnemyData = null;
 		m_SpawnZones.Clear();
 		m_SpawnPoints.Clear();
+		m_FrameSinceLastSpawn = 0;  // ADD THIS LINE
 	}
 
 	public void SetSpawnProbability(List<EnemySpawnData> Probs)
@@ -327,6 +328,10 @@ public class SpawnManager
 		m_EnemyQueue.Clear();
 	}
 
+	public int SpawnFrameThrottle = 6;	//Spawning throttle to try and prevent performance impact
+
+	private int m_FrameSinceLastSpawn = 0;
+
 	public void Update(float DeltaTime)
 	{
 		if (!m_Enabled)
@@ -339,6 +344,16 @@ public class SpawnManager
 		{
 			return;
 		}
+
+		// PERF: Throttle spawn rate based on SpawnFrameThrottle setting
+		m_FrameSinceLastSpawn++;
+		if (m_FrameSinceLastSpawn < SpawnFrameThrottle)
+		{
+			return;  // Skip spawn this frame
+		}
+		m_FrameSinceLastSpawn = 0;  // Reset counter
+
+		// Now do the actual spawn attempt
 		if (m_WasSpawnAllowed || m_Director.IsEnemySpawnAllowed())
 		{
 			if (!SpawnEnemy())
@@ -426,8 +441,22 @@ public class SpawnManager
 		{
 			return false;
 		}
-		agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
-		agentFromCache.SendMessage("Activate", Location);
+
+		AgentHuman targetAgent = agentFromCache.GetComponent<AgentHuman>();
+		AnimComponent targetAnim = agentFromCache.GetComponent<AnimComponent>();
+		ComponentEnemy targetEnemy = agentFromCache.GetComponent<ComponentEnemy>();
+		if (targetAgent && targetAnim && targetEnemy)
+		{
+			targetAgent.ApplyModifications(Data.m_Mods);
+			targetAgent.Activate(Location);
+			targetAnim.Activate(Location);
+			targetEnemy.Activate(Location);
+		}
+		else
+		{
+			agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
+			agentFromCache.SendMessage("Activate", Location);
+		}
 		if (this.OnEnemySpawn != null)
 		{
 			AgentHuman component = agentFromCache.GetComponent<AgentHuman>();

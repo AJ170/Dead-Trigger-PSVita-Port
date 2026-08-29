@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ComponentSensors : MonoBehaviour
 {
-	private SensorBase[] Sensors = new SensorBase[4];
+	public SensorBase[] Sensors = new SensorBase[4];
 
 	private AgentHuman Owner;
 

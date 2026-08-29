@@ -463,4 +463,13 @@ public class SensorEyesAI : SensorBase
         if (raycastCommands.IsCreated) raycastCommands.Dispose();
         if (raycastResults.IsCreated) raycastResults.Dispose();
     }
+
+    public void Dispose()
+    {
+        if (visionDist.IsCreated) visionDist.Dispose();
+        if (visionDir.IsCreated) visionDir.Dispose();
+        if (visionFlags.IsCreated) visionFlags.Dispose();
+        if (raycastCommands.IsCreated) raycastCommands.Dispose();
+        if (raycastResults.IsCreated) raycastResults.Dispose();
+    }
 }

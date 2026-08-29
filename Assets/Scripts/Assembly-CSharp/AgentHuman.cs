@@ -432,6 +432,17 @@ public class AgentHuman : Agent
 		SoundSetup = null;
 		BlackBoard.Reset();
 		BlackBoard = null;
+
+		if (SensorsComponent != null)
+		{
+			foreach (SensorBase thisSensor in SensorsComponent.Sensors) {
+				if (thisSensor is SensorEyesAI)
+				{
+					SensorEyesAI eyeSensor = (SensorEyesAI)thisSensor;
+					eyeSensor.Dispose();  // Or however it's exposed
+				}
+			}
+		}
 	}
 
 	private void Start()
@@ -511,7 +522,7 @@ public class AgentHuman : Agent
 		return (enemyConfig != null) ? true : false;
 	}
 
-	private void ApplyModifications(ModData Data)
+	public void ApplyModifications(ModData Data)
 	{
 		CreateEnemyConfig(Data.m_Type);
 		BlackBoard.Health = Data.m_Health;
@@ -580,7 +591,7 @@ public class AgentHuman : Agent
 		}
 	}
 
-	private void Activate(SpawnPoint spawn)
+	public void Activate(SpawnPoint spawn)
 	{
 		EnableRagdoll(false);
 		if (!IsPlayer)
