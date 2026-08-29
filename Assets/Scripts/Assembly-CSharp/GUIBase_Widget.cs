@@ -470,34 +470,44 @@ public class GUIBase_Widget : MonoBehaviour
 		if (m_IsModified || flag2)
 		{
 			float f = (0f - z) * ((float)Math.PI / 180f);
+			// PERF: Pre-calculate cos/sin once instead of per sprite
+			float cosF = Mathf.Cos(f);
+			float sinF = Mathf.Sin(f);
+
 			Vector2 vector2 = default(Vector2);
 			vector2.x = position.x - m_OrigPos.x;
 			vector2.y = position.y - m_OrigPos.y;
 			Vector2 vector3 = default(Vector2);
 			Vector2 vector4 = default(Vector2);
+
+			// PERF: Cache lossy scale components to avoid repeated property access
+			float lossyScaleX = lossyScale.x;
+			float lossyScaleY = lossyScale.y;
+			float origPosX = m_OrigPos.x;
+			float origPosY = m_OrigPos.y;
+
 			for (int i = 0; i < m_Sprite.Length; i++)
 			{
 				S_Sprite s_Sprite = m_Sprite[i];
 				if (s_Sprite.m_IsVisible && !s_Sprite.m_ProxyFlag)
 				{
-					float width = s_Sprite.m_Width * lossyScale.x;
-					float height = s_Sprite.m_Height * lossyScale.y;
+					float width = s_Sprite.m_Width * lossyScaleX;
+					float height = s_Sprite.m_Height * lossyScaleY;
 					if (!m_TextScaleFix_HACK)
 					{
-						vector3.x = s_Sprite.m_Pos.x - m_OrigPos.x;
-						vector3.y = s_Sprite.m_Pos.y - m_OrigPos.y;
+						vector3.x = s_Sprite.m_Pos.x - origPosX;
+						vector3.y = s_Sprite.m_Pos.y - origPosY;
 					}
 					else
 					{
-						vector3.x = (s_Sprite.m_Pos.x - m_OrigPos.x) * lossyScale.x;
-						vector3.y = (s_Sprite.m_Pos.y - m_OrigPos.y) * lossyScale.y;
+						vector3.x = (s_Sprite.m_Pos.x - origPosX) * lossyScaleX;
+						vector3.y = (s_Sprite.m_Pos.y - origPosY) * lossyScaleY;
 					}
-					float num = Mathf.Cos(f);
-					float num2 = Mathf.Sin(f);
-					vector4.x = vector3.x * num + vector3.y * num2;
-					vector4.y = (0f - vector3.x) * num2 + vector3.y * num;
-					float rx = m_OrigPos.x + vector2.x + vector4.x;
-					float ry = m_OrigPos.y + vector2.y + vector4.y;
+					// PERF: Use pre-calculated cos/sin
+					vector4.x = vector3.x * cosF + vector3.y * sinF;
+					vector4.y = (0f - vector3.x) * sinF + vector3.y * cosF;
+					float rx = origPosX + vector2.x + vector4.x;
+					float ry = origPosY + vector2.y + vector4.y;
 					UpdateSprite(s_Sprite.m_Sprite, rx, ry, width, height, z, 0f - (float)m_Layout.m_LayoutLayer);
 					s_Sprite.m_Sprite.SetColor(vector);
 				}

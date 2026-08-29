@@ -426,8 +426,18 @@ public class SpawnManager
 		{
 			return false;
 		}
-		agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
-		agentFromCache.SendMessage("Activate", Location);
+		AgentHuman selectedAgent = agentFromCache.GetComponent<AgentHuman>();
+		if (selectedAgent || false)
+		{
+			selectedAgent.ApplyModifications(Data.m_Mods);
+			//agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
+			selectedAgent.Activate(Location);
+			//c
+		} else
+        {
+			agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
+			agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
+		}
 		if (this.OnEnemySpawn != null)
 		{
 			AgentHuman component = agentFromCache.GetComponent<AgentHuman>();

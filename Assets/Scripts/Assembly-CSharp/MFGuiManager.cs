@@ -87,6 +87,9 @@ public class MFGuiManager : MonoBehaviour
 	private List<MFGuiRenderer> m_GUIRendererList = new List<MFGuiRenderer>();
 	private bool m_GUIRendererListDirty = true;
 
+	// PERF: Cache count to avoid property access in hot loop
+	private int m_VisibilityQueueCount = 0;
+
 	public float FadeRemainingTime
 	{
 		get
@@ -319,6 +322,8 @@ public class MFGuiManager : MonoBehaviour
 		{
 			m_GUIRendererList.Add(kvp.Value);
 		}
+		// PERF: Cache count for loop access
+		m_VisibilityQueueCount = m_GUIRendererList.Count;
 		m_GUIRendererListDirty = false;
 	}
 
@@ -358,10 +363,11 @@ public class MFGuiManager : MonoBehaviour
 		}
 
 		// OPTIMIZATION: Use for loop instead of foreach on List - avoids enumerator allocation
-		if (m_ObjectsToChangeVisibility != null
-			&& m_ObjectsToChangeVisibility.Count > 0)
+		// PERF: Cache count to avoid property access in loop
+		m_VisibilityQueueCount = m_ObjectsToChangeVisibility.Count;
+		if (m_VisibilityQueueCount > 0)
 		{
-			for (int i = 0; i < m_ObjectsToChangeVisibility.Count; i++)
+			for (int i = 0; i < m_VisibilityQueueCount; i++)
 			{
 				S_ObjectToChangeVisibility entry =
 					m_ObjectsToChangeVisibility[i];
