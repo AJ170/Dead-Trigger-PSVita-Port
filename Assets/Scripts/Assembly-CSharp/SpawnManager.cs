@@ -426,18 +426,8 @@ public class SpawnManager
 		{
 			return false;
 		}
-		AgentHuman selectedAgent = agentFromCache.GetComponent<AgentHuman>();
-		if (selectedAgent || false)
-		{
-			selectedAgent.ApplyModifications(Data.m_Mods);
-			//agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
-			selectedAgent.Activate(Location);
-			//c
-		} else
-        {
-			agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
-			agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
-		}
+		agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
+		agentFromCache.SendMessage("Activate", Location);
 		if (this.OnEnemySpawn != null)
 		{
 			AgentHuman component = agentFromCache.GetComponent<AgentHuman>();
@@ -493,18 +483,18 @@ public class SpawnManager
 	{
 		switch (m_Director.GetSpawnPointSelection())
 		{
-		case E_SpawnPointSelection.Closest:
-			EvaluateClosest();
-			break;
-		case E_SpawnPointSelection.LeastRecentlyUsed_SpawnPoints:
-			EvaluateLRU();
-			break;
-		case E_SpawnPointSelection.LeastRecentlyUsed_SpawnZones:
-			EvaluateZoneLRU();
-			break;
-		default:
-			EvaluateRandom();
-			break;
+			case E_SpawnPointSelection.Closest:
+				EvaluateClosest();
+				break;
+			case E_SpawnPointSelection.LeastRecentlyUsed_SpawnPoints:
+				EvaluateLRU();
+				break;
+			case E_SpawnPointSelection.LeastRecentlyUsed_SpawnZones:
+				EvaluateZoneLRU();
+				break;
+			default:
+				EvaluateRandom();
+				break;
 		}
 		m_SpawnPoints.Sort(CompareByEvaluation);
 		foreach (SpawnPointRec spawnPoint in m_SpawnPoints)
