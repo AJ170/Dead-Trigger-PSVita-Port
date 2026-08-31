@@ -425,6 +425,10 @@ public class AgentHuman : Agent
 		{
 			RigidBodies = RagdollRoot.GetComponentsInChildren<Rigidbody>();
 		}
+
+		//Prepare our material buffers
+		m_CachedParamsCheck = false;
+		m_FPVPropertyBlock = null;
 	}
 
 	private void OnDestroy()
@@ -443,6 +447,9 @@ public class AgentHuman : Agent
 				}
 			}
 		}
+
+		m_MaskRenderer = null;        //Clear our buffers
+		m_FPVPropertyBlock = null;
 	}
 
 	private void Start()
@@ -1601,26 +1608,61 @@ public class AgentHuman : Agent
 		}
 	}
 
+	private Renderer m_MaskRenderer;
+	private MaterialPropertyBlock m_FPVPropertyBlock;
+	private bool m_HasParamsProperty = false;
+	private bool m_CachedParamsCheck = false;
+
 	public void SetFPVLayer(bool fpvOn)
 	{
-		if (!Renderer.material.HasProperty("_Params"))
+		// PERF: Check property once and cache result
+		if (!m_CachedParamsCheck)
 		{
-			return;
+			m_HasParamsProperty = Renderer != null && Renderer.sharedMaterial != null &&
+				Renderer.sharedMaterial.HasProperty("_Params");
+			m_CachedParamsCheck = true;
 		}
-		Vector4 vector = Renderer.material.GetVector("_Params");
+
+		if (!m_HasParamsProperty)
+			return;
+
+		// PERF: Create MaterialPropertyBlock once, reuse it
+		if (m_FPVPropertyBlock == null)
+			m_FPVPropertyBlock = new MaterialPropertyBlock();
+
+		// PERF: Get current properties from main renderer
+		Renderer.GetPropertyBlock(m_FPVPropertyBlock);
+
+		Vector4 vector = m_FPVPropertyBlock.GetVector("_Params");
 		vector.y = (fpvOn ? 1 : 0);
-		Renderer.material.SetVector("_Params", vector);
+		m_FPVPropertyBlock.SetVector("_Params", vector);
+
+		// Apply to main renderer
+		Renderer.SetPropertyBlock(m_FPVPropertyBlock);
+
+		// PERF: Use for loop instead of foreach, reuse MPB for all renderers
 		if (LodRenderers != null)
 		{
-			SkinnedMeshRenderer[] lodRenderers = LodRenderers;
-			foreach (Renderer renderer in lodRenderers)
+			for (int i = 0; i < LodRenderers.Length; i++)
 			{
-				renderer.material.SetVector("_Params", vector);
+				SkinnedMeshRenderer lodRenderer = LodRenderers[i];
+				if (lodRenderer != null)
+				{
+					lodRenderer.SetPropertyBlock(m_FPVPropertyBlock);
+				}
 			}
 		}
+
+		// PERF: Cache Mask renderer to avoid repeated GetComponent
 		if (Mask != null)
 		{
-			Mask.GetComponent<Renderer>().material.SetVector("_Params", vector);
+			if (m_MaskRenderer == null)
+				m_MaskRenderer = Mask.GetComponent<Renderer>();
+
+			if (m_MaskRenderer != null)
+			{
+				m_MaskRenderer.SetPropertyBlock(m_FPVPropertyBlock);
+			}
 		}
 	}
 
