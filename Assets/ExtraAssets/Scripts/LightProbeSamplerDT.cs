@@ -6,19 +6,17 @@ public class LightProbeSamplerDT : MonoBehaviour
 {
 	[Header("Renderers")]
 	public bool populateChildRenderers = false;
-	public bool instanceMaterials = true;	//this has become something of a catch given that some objects need to be setup as prefabs, also with the new DT system for everything
+	public bool instanceMaterials = true;
 	public List<Renderer> renderers = new List<Renderer>();
 
 	[Header("Update Settings")]
 	[Tooltip("How far the object must move before resampling probes")]
 	public float updateDistance = 0.125f;
 
-	[Tooltip("Speed at which SH lighting lerps to new values after "
-		+ "a probe resample. Higher = snappier, lower = smoother.")]
+	[Tooltip("Speed at which SH lighting lerps to new values after a probe resample. Higher = snappier, lower = smoother.")]
 	public float lerpSpeed = 5.0f;
 
-	[Tooltip("How close the lerp needs to be before we stop "
-		+ "updating the property block each frame")]
+	[Tooltip("How close the lerp needs to be before we stop updating the property block each frame")]
 	[Range(0.0001f, 0.01f)]
 	public float lerpThreshold = 0.001f;
 
@@ -35,37 +33,30 @@ public class LightProbeSamplerDT : MonoBehaviour
 	private static readonly int SHC_ID = Shader.PropertyToID("_SHC");
 
 	private MaterialPropertyBlock m_PropertyBlock;
-	private bool m_MaterialsInstantiated = false;
 
-	// Current SH values being applied to renderers this frame
+	// Use Vector4 arrays for SH coefficients
 	private Vector4[] m_CurrentSH = new Vector4[7];
-
-	// Target SH values from the most recent probe sample
 	private Vector4[] m_TargetSH = new Vector4[7];
 
-	// Reusable coefficient buffer - avoids per-update allocation
+	// Reusable coefficient buffer
 	private float[] m_Coefficients = new float[27];
 
 	private Vector3 m_LastSamplePosition = Vector3.zero;
+	private Vector3 m_CachedSamplePos = Vector3.zero;
 	private float m_SquareUpdateDistance;
 
-	// True when current SH differs from target and needs lerping
 	private bool m_LerpInProgress = false;
-
-	// True when the property block needs pushing to renderers
 	private bool m_Dirty = false;
-
-	// True once we have at least one valid sample
 	private bool m_Initialised = false;
 
-	// Track instanced materials so we can clean them up on destroy
 	public List<Material> m_InstancedMaterials = new List<Material>();
-
-	// Track which renderers have already been processed to avoid re-instantiation
 	private HashSet<Renderer> m_ProcessedRenderers = new HashSet<Renderer>();
 
 	private Material[] m_SharedMaterialsCache;
 	private Material[] m_InstancedMaterialsCache;
+
+	// PERF: Track how many renderers we've processed to support dynamic spawning
+	private int m_LastProcessedRendererCount = 0;
 
 	void Start()
 	{
@@ -103,29 +94,15 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 	void OnDestroy()
 	{
-		// Clean up instanced materials to avoid memory leaks
-		// Only destroy in play mode - in edit mode Unity manages them
-		/*
-		if (Application.isPlaying)
-		{
-			for (int i = 0; i < m_InstancedMaterials.Count; i++)
-			{
-				if (m_InstancedMaterials[i] != null)
-					Destroy(m_InstancedMaterials[i]);
-			}
-		}*/
 		m_InstancedMaterials.Clear();
 		m_ProcessedRenderers.Clear();
+		m_SharedMaterialsCache = null;
+		m_InstancedMaterialsCache = null;
 	}
 
 	void InstanciateMaterials()
 	{
-		// PERF: Only run once
-		if (m_MaterialsInstantiated)
-			return;
-
-		m_MaterialsInstantiated = true;
-
+		// PERF: Process all renderers, skipping ones we've already processed
 		for (int i = 0; i < renderers.Count; i++)
 		{
 			Renderer r = renderers[i];
@@ -133,8 +110,8 @@ public class LightProbeSamplerDT : MonoBehaviour
 				continue;
 
 			// PERF: Cache to avoid repeated property access
-			Material[] sharedMats = r.sharedMaterials;
-			int matCount = sharedMats.Length;
+			m_SharedMaterialsCache = r.sharedMaterials;
+			int matCount = m_SharedMaterialsCache.Length;
 
 			// PERF: Reuse cached array instead of allocating new one
 			if (m_InstancedMaterialsCache == null || m_InstancedMaterialsCache.Length != matCount)
@@ -142,12 +119,10 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 			for (int m = 0; m < matCount; m++)
 			{
-				if (sharedMats[m] != null)
+				if (m_SharedMaterialsCache[m] != null)
 				{
-					// PERF: This allocation is unavoidable (material instance needed)
-					// But it only happens once per renderer, not per frame
-					Material instance = new Material(sharedMats[m]);
-					instance.name = sharedMats[m].name + "_Instance_" + gameObject.name;
+					Material instance = new Material(m_SharedMaterialsCache[m]);
+					instance.name = m_SharedMaterialsCache[m].name + "_Instance_" + gameObject.name;
 					m_InstancedMaterialsCache[m] = instance;
 					m_InstancedMaterials.Add(instance);
 				}
@@ -161,6 +136,9 @@ public class LightProbeSamplerDT : MonoBehaviour
 			m_ProcessedRenderers.Add(r);
 		}
 
+		// PERF: Track how many renderers we've processed
+		m_LastProcessedRendererCount = renderers.Count;
+
 		#if UNITY_EDITOR
 		if (m_ProcessedRenderers.Count > 0)
 		{
@@ -171,50 +149,51 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 	void Update()
 	{
-		if (populateChildRenderers) {
-			CollectChildRenderers (transform);
+		if (populateChildRenderers)
+		{
+			CollectChildRenderers(transform);
 			populateChildRenderers = false;
 		}
-		if (instanceMaterials && renderers.Count > 0) {
-			if (Application.isPlaying) {
-				instanceMaterials = false;
-				// Instance materials for any newly added renderers
-				// (only processes renderers not already handled)
-				InstanciateMaterials ();
-			}
+
+		// PERF: Check if we have new renderers to process (dynamic spawning support)
+		// Don't set instanceMaterials = false; keep it true to handle new spawns
+		if (instanceMaterials && Application.isPlaying && renderers.Count > m_LastProcessedRendererCount)
+		{
+			InstanciateMaterials();
 		}
 
-		//Junk out early if we don't have anything to apply the effect to
-		if (m_InstancedMaterials.Count == 0) {
+		if (m_InstancedMaterials.Count == 0)
 			return;
-		}
 
-		Vector3 samplePos = GetSamplePosition();
-		float distSq = (m_LastSamplePosition - samplePos).sqrMagnitude;
+		m_CachedSamplePos = GetSamplePosition();
+
+		// PERF: Calculate squared distance to avoid expensive sqrt
+		Vector3 positionDelta = m_LastSamplePosition - m_CachedSamplePos;
+		float distSq = positionDelta.x * positionDelta.x + 
+			positionDelta.y * positionDelta.y + 
+			positionDelta.z * positionDelta.z;
 
 		// Resample probes if we've moved past the threshold
 		if (distSq > m_SquareUpdateDistance && renderers.Count > 0)
 		{
 			if (ForceSample())
 			{
-				m_LastSamplePosition = samplePos;
+				m_LastSamplePosition = m_CachedSamplePos;
 
 				if (!m_Initialised)
 				{
-					// First sample - snap directly, no lerp
 					CopyTargetToCurrent();
 					PushToRenderers();
 					m_Initialised = true;
 				}
 				else
 				{
-					// Subsequent samples - start lerping
 					m_LerpInProgress = true;
 				}
 			}
 		}
 
-		// Lerp current SH toward target if needed
+		// Lerp lighting data
 		if (m_LerpInProgress)
 		{
 			float t = lerpSpeed * Time.deltaTime;
@@ -222,16 +201,22 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 			for (int i = 0; i < 7; i++)
 			{
-				m_CurrentSH[i] = Vector4.Lerp(
-					m_CurrentSH[i], m_TargetSH[i], t);
+				// Lerp each Vector4 component
+				m_CurrentSH[i] = Vector4.Lerp(m_CurrentSH[i], m_TargetSH[i], t);
+
+				// Check convergence
+				Vector4 diff = new Vector4(
+					Mathf.Abs(m_CurrentSH[i].x - m_TargetSH[i].x),
+					Mathf.Abs(m_CurrentSH[i].y - m_TargetSH[i].y),
+					Mathf.Abs(m_CurrentSH[i].z - m_TargetSH[i].z),
+					Mathf.Abs(m_CurrentSH[i].w - m_TargetSH[i].w)
+				);
 
 				if (!stillLerping)
 				{
-					Vector4 diff = m_CurrentSH[i] - m_TargetSH[i];
-					if (Mathf.Abs(diff.x) > lerpThreshold
-						|| Mathf.Abs(diff.y) > lerpThreshold
-						|| Mathf.Abs(diff.z) > lerpThreshold
-						|| Mathf.Abs(diff.w) > lerpThreshold)
+					// Check if ANY component exceeds threshold
+					if (diff.x > lerpThreshold || diff.y > lerpThreshold || 
+						diff.z > lerpThreshold || diff.w > lerpThreshold)
 					{
 						stillLerping = true;
 					}
@@ -254,7 +239,6 @@ public class LightProbeSamplerDT : MonoBehaviour
 		}
 	}
 
-	// Sample the LightProbeManager and update m_TargetSH
 	bool ForceSample()
 	{
 		LightProbeManager manager = LightProbeManager.Instance;
@@ -277,14 +261,12 @@ public class LightProbeSamplerDT : MonoBehaviour
 			m_CurrentSH[i] = m_TargetSH[i];
 	}
 
-	// Push current SH values to all renderers via property block
-	// MaterialPropertyBlock works correctly on instanced materials
-	// since each renderer now has its own material copy
 	void PushToRenderers()
 	{
 		if (m_PropertyBlock == null)
 			m_PropertyBlock = new MaterialPropertyBlock();
 
+		// Set SH coefficients directly from Vector4 array
 		m_PropertyBlock.SetVector(SHAr_ID, m_CurrentSH[0]);
 		m_PropertyBlock.SetVector(SHAg_ID, m_CurrentSH[1]);
 		m_PropertyBlock.SetVector(SHAb_ID, m_CurrentSH[2]);
@@ -300,37 +282,20 @@ public class LightProbeSamplerDT : MonoBehaviour
 		}
 	}
 
+	// Pack SH coefficients from float array to Vector4 array
 	void PackSHCoefficients(float[] sh, Vector4[] shArray)
 	{
-		if (sh == null || sh.Length < 27) return;
+		if (sh == null || sh.Length < 27)
+			return;
 
-		// YAML SH layout: direction-major, channel-minor
-		// sh[0]  = L0.r    sh[1]  = L0.g    sh[2]  = L0.b
-		// sh[3]  = L1x.r   sh[4]  = L1x.g   sh[5]  = L1x.b
-		// sh[6]  = L1y.r   sh[7]  = L1y.g   sh[8]  = L1y.b
-		// sh[9]  = L1z.r   sh[10] = L1z.g   sh[11] = L1z.b
-		// sh[12] = L2_0.r  sh[13] = L2_0.g  sh[14] = L2_0.b
-		// sh[15] = L2_1.r  sh[16] = L2_1.g  sh[17] = L2_1.b
-		// sh[18] = L2_2.r  sh[19] = L2_2.g  sh[20] = L2_2.b
-		// sh[21] = L2_3.r  sh[22] = L2_3.g  sh[23] = L2_3.b
-		// sh[24] = L2_4.r  sh[25] = L2_4.g  sh[26] = L2_4.b
-
-		shArray[0] = new Vector4(
-			sh[3], sh[6], sh[9], sh[0] - sh[18]); // SHAr
-		shArray[1] = new Vector4(
-			sh[4], sh[7], sh[10], sh[1] - sh[19]); // SHAg
-		shArray[2] = new Vector4(
-			sh[5], sh[8], sh[11], sh[2] - sh[20]); // SHAb
-
-		shArray[3] = new Vector4(
-			sh[12], sh[18], sh[15] * 3f, sh[21]);      // SHBr
-		shArray[4] = new Vector4(
-			sh[13], sh[19], sh[16] * 3f, sh[22]);      // SHBg
-		shArray[5] = new Vector4(
-			sh[14], sh[20], sh[17] * 3f, sh[23]);      // SHBb
-
-		shArray[6] = new Vector4(
-			sh[24], sh[25], sh[26], 1.0f);             // SHC
+		// Pack SH coefficients into Vector4s
+		shArray[0] = new Vector4(sh[3], sh[6], sh[9], sh[0] - sh[18]);
+		shArray[1] = new Vector4(sh[4], sh[7], sh[10], sh[1] - sh[19]);
+		shArray[2] = new Vector4(sh[5], sh[8], sh[11], sh[2] - sh[20]);
+		shArray[3] = new Vector4(sh[12], sh[18], sh[15] * 3f, sh[21]);
+		shArray[4] = new Vector4(sh[13], sh[19], sh[16] * 3f, sh[22]);
+		shArray[5] = new Vector4(sh[14], sh[20], sh[17] * 3f, sh[23]);
+		shArray[6] = new Vector4(sh[24], sh[25], sh[26], 1.0f);
 	}
 
 	Vector3 GetSamplePosition()
