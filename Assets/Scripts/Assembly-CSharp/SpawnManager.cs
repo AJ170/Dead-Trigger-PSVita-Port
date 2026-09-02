@@ -395,6 +395,7 @@ public class SpawnManager
 		int num = m_EnemyQueue.Peek();
 		EnemyTypeData enemyTypeData = m_EnemyData[num];
 		SpawnPointRec spawnPointRec = SelectSpawnPoint(enemyTypeData.m_Type);
+		Debug.Log ("SpawnPointRec: " + spawnPointRec);
 		if (spawnPointRec == null)
 		{
 			return false;

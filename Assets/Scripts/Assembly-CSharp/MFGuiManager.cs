@@ -14,17 +14,31 @@ public class MFGuiManager : MonoBehaviour
 		Black = 3
 	}
 
+	// PERF: Cache component references to avoid GetComponent allocations
 	public struct S_ObjectToChangeVisibility
 	{
 		public GameObject m_GObj;
-
+		public GUIBase_Layout m_Layout;      // Cache Layout component
+		public GUIBase_Widget m_Widget;      // Cache Widget component
 		public bool m_Visible;
-
 		public bool m_Recursive;
 
-		public S_ObjectToChangeVisibility(GameObject gObj, bool show, bool recursive)
+		// Constructor for Layout visibility changes
+		public S_ObjectToChangeVisibility(GameObject gObj, GUIBase_Layout layout, bool show, bool recursive)
 		{
 			m_GObj = gObj;
+			m_Layout = layout;
+			m_Widget = null;
+			m_Visible = show;
+			m_Recursive = recursive;
+		}
+
+		// Constructor for Widget visibility changes
+		public S_ObjectToChangeVisibility(GameObject gObj, GUIBase_Widget widget, bool show, bool recursive)
+		{
+			m_GObj = gObj;
+			m_Layout = null;
+			m_Widget = widget;
 			m_Visible = show;
 			m_Recursive = recursive;
 		}
@@ -80,7 +94,8 @@ public class MFGuiManager : MonoBehaviour
 
 	private Dictionary<ulong, MFGuiRenderer> m_GUIRenderers;
 
-	private ArrayList m_ObjectsToChangeVisibility;
+	// PERF: Use List<T> instead of ArrayList to eliminate boxing
+	private List<S_ObjectToChangeVisibility> m_ObjectsToChangeVisibility;
 
 	public float FadeRemainingTime
 	{
@@ -158,7 +173,7 @@ public class MFGuiManager : MonoBehaviour
 
 	private void Start()
 	{
-		m_ObjectsToChangeVisibility = new ArrayList();
+		m_ObjectsToChangeVisibility = new List<S_ObjectToChangeVisibility>();
 	}
 
 	public MFGuiRenderer RegisterWidget(GUIBase_Widget w, Material material, int renderQueueIdx)
@@ -302,13 +317,15 @@ public class MFGuiManager : MonoBehaviour
 	private void RebuildRendererList()
 	{
 		m_GUIRendererList.Clear();
-		foreach (MFGuiRenderer r in m_GUIRenderers.Values)
-			m_GUIRendererList.Add(r);
+		foreach (KeyValuePair<ulong, MFGuiRenderer> gUIRenderer in m_GUIRenderers)
+		{
+			m_GUIRendererList.Add(gUIRenderer.Value);
+		}
 	}
 
 	private void LateUpdate()
 	{
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.Keypad7))
 		{
 			Debug.Log("Input.GetKeyDown(KeyCode.Keypad7)");
@@ -327,7 +344,7 @@ public class MFGuiManager : MonoBehaviour
 			TextDatabase.instance.Reload(SystemLanguage.Korean);
 			OnLanguageChanged("Korean");
 		}
-#endif
+		#endif
 		if (m_FadeInProgress)
 		{
 			float realTime = Time.realtimeSinceStartup;
@@ -346,25 +363,23 @@ public class MFGuiManager : MonoBehaviour
 		if (m_ObjectsToChangeVisibility != null
 			&& m_ObjectsToChangeVisibility.Count > 0)
 		{
+			// PERF: No GetComponent calls - use cached component references
 			for (int i = 0; i < m_ObjectsToChangeVisibility.Count; i++)
 			{
-				S_ObjectToChangeVisibility entry =
-					(S_ObjectToChangeVisibility)m_ObjectsToChangeVisibility[i];
-				GameObject targetObj = entry.m_GObj;
+				S_ObjectToChangeVisibility entry = m_ObjectsToChangeVisibility[i];
 
-				// Cache GetComponent results to avoid double lookup
-				GUIBase_Layout layout =
-					targetObj.GetComponent<GUIBase_Layout>();
-				if (layout != null)
+				// Use cached Layout reference - NO GetComponent needed
+				if (entry.m_Layout != null)
 				{
-					layout.ShowImmediate(entry.m_Visible);
+					entry.m_Layout.ShowImmediate(entry.m_Visible);
 					continue;
 				}
 
-				GUIBase_Widget widget =
-					targetObj.GetComponent<GUIBase_Widget>();
-				if (widget != null)
-					widget.ShowImmediate(entry.m_Visible, entry.m_Recursive);
+				// Use cached Widget reference - NO GetComponent needed
+				if (entry.m_Widget != null)
+				{
+					entry.m_Widget.ShowImmediate(entry.m_Visible, entry.m_Recursive);
+				}
 			}
 			m_ObjectsToChangeVisibility.Clear();
 		}
@@ -425,15 +440,19 @@ public class MFGuiManager : MonoBehaviour
 	{
 		if ((bool)layout)
 		{
-			S_ObjectToChangeVisibility s_ObjectToChangeVisibility = new S_ObjectToChangeVisibility(layout.gameObject, show, true);
-			m_ObjectsToChangeVisibility.Add(s_ObjectToChangeVisibility);
+			// PERF: Cache the Layout component reference in the struct
+			S_ObjectToChangeVisibility entry = new S_ObjectToChangeVisibility(
+				layout.gameObject, layout, show, true);
+			m_ObjectsToChangeVisibility.Add(entry);
 		}
 	}
 
 	public void ShowWidget(GUIBase_Widget widget, bool show, bool recursive)
 	{
-		S_ObjectToChangeVisibility s_ObjectToChangeVisibility = new S_ObjectToChangeVisibility(widget.gameObject, show, recursive);
-		m_ObjectsToChangeVisibility.Add(s_ObjectToChangeVisibility);
+		// PERF: Cache the Widget component reference in the struct
+		S_ObjectToChangeVisibility entry = new S_ObjectToChangeVisibility(
+			widget.gameObject, widget, show, recursive);
+		m_ObjectsToChangeVisibility.Add(entry);
 	}
 
 	private void ShowLayout(string name, bool show)
@@ -443,8 +462,9 @@ public class MFGuiManager : MonoBehaviour
 			GUIBase_Layout gUIBase_Layout = m_Layouts[i];
 			if (gUIBase_Layout.name == name)
 			{
-				S_ObjectToChangeVisibility s_ObjectToChangeVisibility = new S_ObjectToChangeVisibility(gUIBase_Layout.gameObject, show, true);
-				m_ObjectsToChangeVisibility.Add(s_ObjectToChangeVisibility);
+				S_ObjectToChangeVisibility entry = new S_ObjectToChangeVisibility(
+					gUIBase_Layout.gameObject, gUIBase_Layout, show, true);
+				m_ObjectsToChangeVisibility.Add(entry);
 				break;
 			}
 		}

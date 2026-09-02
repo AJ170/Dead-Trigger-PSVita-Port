@@ -35,6 +35,7 @@ public class LightProbeSamplerDT : MonoBehaviour
 	private static readonly int SHC_ID = Shader.PropertyToID("_SHC");
 
 	private MaterialPropertyBlock m_PropertyBlock;
+	private bool m_MaterialsInstantiated = false;
 
 	// Current SH values being applied to renderers this frame
 	private Vector4[] m_CurrentSH = new Vector4[7];
@@ -63,6 +64,9 @@ public class LightProbeSamplerDT : MonoBehaviour
 	// Track which renderers have already been processed to avoid re-instantiation
 	private HashSet<Renderer> m_ProcessedRenderers = new HashSet<Renderer>();
 
+	private Material[] m_SharedMaterialsCache;
+	private Material[] m_InstancedMaterialsCache;
+
 	void Start()
 	{
 		m_SquareUpdateDistance = updateDistance * updateDistance;
@@ -74,15 +78,11 @@ public class LightProbeSamplerDT : MonoBehaviour
 			if (r != null) renderers.Add(r);
 		}
 
-		// Only instance materials on start if the flag is set
-		// This allows users to manually configure renderers first
 		if (instanceMaterials)
 		{
 			InstanciateMaterials();
 		}
 
-		// Force an immediate sample and apply on start
-		// bypassing the lerp so there's no fade-in from black
 		if (ForceSample())
 		{
 			CopyTargetToCurrent();
@@ -120,46 +120,53 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 	void InstanciateMaterials()
 	{
-		// Only instantiate materials for renderers that haven't been processed yet
-		// This prevents scrubbing already-setup materials
+		// PERF: Only run once
+		if (m_MaterialsInstantiated)
+			return;
+
+		m_MaterialsInstantiated = true;
+
 		for (int i = 0; i < renderers.Count; i++)
 		{
 			Renderer r = renderers[i];
 			if (r == null || m_ProcessedRenderers.Contains(r))
 				continue;
 
-			// Get the shared materials array
+			// PERF: Cache to avoid repeated property access
 			Material[] sharedMats = r.sharedMaterials;
-			Material[] instancedMats = new Material[sharedMats.Length];
+			int matCount = sharedMats.Length;
 
-			for (int m = 0; m < sharedMats.Length; m++)
+			// PERF: Reuse cached array instead of allocating new one
+			if (m_InstancedMaterialsCache == null || m_InstancedMaterialsCache.Length != matCount)
+				m_InstancedMaterialsCache = new Material[matCount];
+
+			for (int m = 0; m < matCount; m++)
 			{
 				if (sharedMats[m] != null)
 				{
-					// Create a per-object instance of each material
+					// PERF: This allocation is unavoidable (material instance needed)
+					// But it only happens once per renderer, not per frame
 					Material instance = new Material(sharedMats[m]);
-					instance.name = sharedMats[m].name + "_Instance_"
-						+ gameObject.name;
-					instancedMats[m] = instance;
+					instance.name = sharedMats[m].name + "_Instance_" + gameObject.name;
+					m_InstancedMaterialsCache[m] = instance;
 					m_InstancedMaterials.Add(instance);
 				}
 				else
 				{
-					instancedMats[m] = null;
+					m_InstancedMaterialsCache[m] = null;
 				}
 			}
 
-			// Assign instanced materials to the renderer
-			r.materials = instancedMats;
+			r.materials = m_InstancedMaterialsCache;
 			m_ProcessedRenderers.Add(r);
 		}
 
+		#if UNITY_EDITOR
 		if (m_ProcessedRenderers.Count > 0)
 		{
-			Debug.Log("LightProbeSamplerDT: Instanced "
-				+ m_ProcessedRenderers.Count
-				+ " renderers on " + gameObject.name);
+			Debug.Log("LightProbeSamplerDT: Instanced " + m_ProcessedRenderers.Count + " renderers on " + gameObject.name);
 		}
+		#endif
 	}
 
 	void Update()

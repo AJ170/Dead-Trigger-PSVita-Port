@@ -84,6 +84,7 @@ public class AnimState
 	{
 		//Important fix to stop zombies from getting stuck after an attack
 		Owner.NavMeshAgent.isStopped = false;
+		//Debug.LogError ("Navigate To: " + Owner.NavMeshAgent.SetDestination (pos));
 		return Owner.NavMeshAgent.SetDestination(pos);
 	}
 
