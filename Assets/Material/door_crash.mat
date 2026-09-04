@@ -18,6 +18,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EnvTex:
         m_Texture: {fileID: 8900000, guid: d10d0ff8b76c0e84e9b5ea4fe14de405, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -27,10 +35,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _BumpScale: 1
     - _EnvStrength: 0.125
     - _SHLightingScale: 0.25
     - _Shininess: 0.01708932
+    - _SpecularBase: 0.05
+    - _SpecularSharpness: 3
+    - _SpecularStrength: 0.6
     m_Colors:
+    - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EnvStrength: {r: 0, g: 1, b: 0, a: 0}
     - _FadeoutDist: {r: 0.5, g: 1, b: 0, a: 0}

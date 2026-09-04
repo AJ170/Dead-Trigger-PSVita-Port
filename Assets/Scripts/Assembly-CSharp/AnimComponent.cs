@@ -112,16 +112,27 @@ public class AnimComponent : MonoBehaviour
 			{
 				Owner.Transform.position += vector;
 			}
+			// Reset vertical velocity after platform movement
+			m_Velocity.y = 0f;
 		}
-		else if ((bool)Owner.CharacterController && Owner.CharacterController.enabled)
+		else if ((bool)controller && controller.enabled)
 		{
-			Owner.CharacterController.Move(s_MoveUp);
-			Owner.CharacterController.Move(s_MoveDown);
+			// Apply gravity to vertical velocity
+			m_Velocity.y -= s_Gravity * Time.deltaTime;
+
+			// Single Move() call with gravity applied
+			controller.Move(m_Velocity * Time.deltaTime);
+
+			// If grounded, stop downward velocity
+			if (controller.isGrounded)
+			{
+				m_Velocity.y = 0f;
+			}
 		}
-		if ((bool)Owner.CharacterController)
-		{
-		}
+
 		FSM.UpdateAnimStates();
+		float elapsedTime = (Time.realtimeSinceStartup - startTime) * 1000f;
+		RuntimeProfiler.Sample("AnimComponent.Update", elapsedTime);
 	}
 
 	private void LateUpdate()
