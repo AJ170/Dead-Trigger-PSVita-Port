@@ -24,6 +24,8 @@ Shader "MADFINGER/Glass/Lightmap + Cube Env + Per Vertex Alpha (Optimized)" {
 			half4 _ReflectivityMaskWeights;
 			half _FresnelStrength;
 
+			uniform vector _ScreenTint;
+
 			struct appdata_t {
 				float4 vertex : POSITION;
 				float3 normal : NORMAL;
@@ -99,7 +101,7 @@ Shader "MADFINGER/Glass/Lightmap + Cube Env + Per Vertex Alpha (Optimized)" {
 				finalColor *= (2.0 * lightmap);
 
 				// Output with per-vertex alpha
-				return half4(finalColor, baseColor.a * i.color.a);
+				return half4(finalColor, baseColor.a * i.color.a) + half4(_ScreenTint.xyz, 0.0);
 			}
 			ENDCG
 		}

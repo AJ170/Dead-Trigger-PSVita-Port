@@ -377,6 +377,18 @@ public class Game : MonoBehaviour
 		{
 			NVidiaShiledCached = false;
 		}
+		SetTints ();
+	}
+
+	private void SetTints() {
+		if (Camera.main) {
+			if (Camera.main.GetComponent<MFColorCorrectionEffectSimple> () != null) {
+				MFColorCorrectionEffectSimple MFCol = Camera.main.GetComponent<MFColorCorrectionEffectSimple> ();
+				Vector4 tintCol = new Vector4 (MFCol.R_offs, MFCol.G_offs, MFCol.B_offs, 1.0f);
+				Shader.SetGlobalVector ("_ScreenTint", tintCol);
+				//Debug.LogError ("Set Global Tint");
+			}
+		}
 	}
 
 	private void OnDestroy()

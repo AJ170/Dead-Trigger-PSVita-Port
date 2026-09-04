@@ -61,6 +61,8 @@
                 float4 _SHBb;
                 float4 _SHC;
 
+                uniform vector _ScreenTint;
+
                 struct appdata {
                     float4 vertex  : POSITION;
                     float3 normal  : NORMAL;
@@ -200,7 +202,7 @@
 
                     UNITY_APPLY_FOG(i.fogCoord, finalColor);
 
-                    return half4(finalColor, 1.0);
+                    return half4(finalColor, 1.0) + _ScreenTint;
                 }
                 ENDCG
             }

@@ -35,6 +35,8 @@ SubShader {
 	float _Scroll2X;
 	float _Scroll2Y;
 	float _AMultiplier;
+
+	uniform vector _ScreenTint;
 	
 	struct v2f {
 		float4 pos : SV_POSITION;
@@ -68,7 +70,7 @@ SubShader {
 			fixed4 tex = tex2D (_MainTex, i.uv);
 			fixed4 tex2 = tex2D (_DetailTex, i.uv2);
 			
-			o = (tex * tex2) * i.color;
+			o = (tex * tex2) * i.color + _ScreenTint;
 			
 			return o;
 		}

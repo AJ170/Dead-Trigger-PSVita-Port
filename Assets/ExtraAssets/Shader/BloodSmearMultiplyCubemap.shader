@@ -43,6 +43,8 @@ Shader "Vita/Particles/Blood Smear - Multiply Cubemap" {
                 half   _WetGloss;
                 half4  _Color;
 
+                uniform vector _ScreenTint;
+
                 struct appdata_t
                 {
                     float4 vertex : POSITION;
@@ -157,7 +159,7 @@ Shader "Vita/Particles/Blood Smear - Multiply Cubemap" {
                         bloodColor, finalAlpha);
                     blendColor += cubeColor * reflAmount * mainTex.a;
 
-                    return half4(blendColor, 1.0);
+                    return half4(blendColor, 1.0) + _ScreenTint;
                 }
                 ENDCG
             }

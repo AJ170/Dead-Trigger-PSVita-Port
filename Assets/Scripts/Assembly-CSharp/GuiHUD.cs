@@ -172,6 +172,17 @@ public class GuiHUD : MonoBehaviour
         {
             return;
         }
+		/*
+		//Disable our screenspace overlays as they're expensive!
+		// Initialize color grading overlay
+		ColorGradingOverlay gradingOverlay = GetComponent<ColorGradingOverlay>();
+		if (gradingOverlay == null)
+		{
+			gradingOverlay = gameObject.AddComponent<ColorGradingOverlay>();
+		}
+		gradingOverlay.Initialize();
+		*/
+
         m_Mission = mission;
         IsHidden = true;
         Initialised = true;

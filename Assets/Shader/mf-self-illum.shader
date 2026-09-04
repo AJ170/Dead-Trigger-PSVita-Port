@@ -21,6 +21,8 @@ Shader "MADFINGER/Self-Illumin/Diffuse" {
 
             sampler2D _MainTex;
 
+            uniform vector _ScreenTint;
+
             struct appdata_t
             {
                 float4 vertex : POSITION;
@@ -52,7 +54,7 @@ Shader "MADFINGER/Self-Illumin/Diffuse" {
             {
                 float4 tmpvar_1;
                 tmpvar_1 = (tex2D (_MainTex, i.uv) * i.uv1) * _EmissionLM;
-                return tmpvar_1;
+                return tmpvar_1 + _ScreenTint;
             }
             ENDCG
         }

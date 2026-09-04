@@ -28,6 +28,8 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap + Normal + Glossy" {
                 half _SpecularStrength;
                 half _Roughness;
 
+                uniform vector _ScreenTint;
+
                 struct appdata_t {
                     float4 vertex : POSITION;
                     float3 normal : NORMAL;
@@ -140,7 +142,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap + Normal + Glossy" {
                     // Apply fog
                     UNITY_APPLY_FOG(i.fogCoord, color);
 
-                    return half4(color, baseColor.a);
+                    return half4(color, baseColor.a) + _ScreenTint;
                 }
                 ENDCG
             }

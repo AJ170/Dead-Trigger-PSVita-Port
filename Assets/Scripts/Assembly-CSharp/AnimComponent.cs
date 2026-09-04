@@ -91,22 +91,28 @@ public class AnimComponent : MonoBehaviour
 		blackBoard.ActionHandler = (BlackBoard.AgentActionHandler)Delegate.Combine(blackBoard.ActionHandler, new BlackBoard.AgentActionHandler(HandleAction));
 	}
 
-	private static readonly Vector3 s_MoveUp = new Vector3(0f, 0.1f, 0f);
-	private static readonly Vector3 s_MoveDown = new Vector3(0f, -0.1f, 0f);
+	private static readonly float s_Gravity = 9.81f;
+	private Vector3 m_Velocity = Vector3.zero;
 
 	private void Update()
 	{
+		float startTime = Time.realtimeSinceStartup;
+
 		if (Time.timeScale == 0f)
 		{
 			return;
 		}
+
+		CharacterController controller = Owner.CharacterController;
+
+		// Handle platform movement
 		if ((bool)ContactPlatfrom)
 		{
 			Vector3 vector = ContactPlatfrom.position - ContactPoint;
 			ContactPlatfrom = null;
-			if ((bool)Owner.CharacterController)
+			if ((bool)controller)
 			{
-				Owner.CharacterController.Move(vector);
+				controller.Move(vector);
 			}
 			else
 			{
@@ -141,7 +147,7 @@ public class AnimComponent : MonoBehaviour
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		if ((bool)hit.rigidbody && hit.rigidbody.isKinematic && hit.gameObject.GetComponent<Projectile>() == null)
+		if (hit.rigidbody != null && hit.rigidbody.isKinematic && hit.gameObject.GetComponent<Projectile>() == null)
 		{
 			ContactPlatfrom = hit.transform;
 			ContactPoint = ContactPlatfrom.position;
@@ -177,6 +183,7 @@ public class AnimComponent : MonoBehaviour
 		FSM.Reset();
 		base.enabled = false;
 		ContactPlatfrom = null;
+		m_Velocity = Vector3.zero;
 		if (Owner.debugAnims)
 		{
 			Debug.Log(base.gameObject.name + "deactivated");

@@ -13,6 +13,8 @@ public class MFColorCorrectionEffectSimple : ImageEffectBase
 
 	protected void Update()
 	{
+		base.enabled = false;
+		return;
 		if (Application.isPlaying && DeviceInfo.PerformanceGrade == DeviceInfo.Performance.Low)
 		{
 			base.enabled = false;
