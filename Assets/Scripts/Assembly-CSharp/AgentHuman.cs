@@ -511,7 +511,7 @@ public class AgentHuman : Agent
 		return (enemyConfig != null) ? true : false;
 	}
 
-	private void ApplyModifications(ModData Data)
+	public void ApplyModifications(ModData Data)
 	{
 		CreateEnemyConfig(Data.m_Type);
 		BlackBoard.Health = Data.m_Health;
@@ -580,7 +580,7 @@ public class AgentHuman : Agent
 		}
 	}
 
-	private void Activate(SpawnPoint spawn)
+	public void Activate(SpawnPoint spawn)
 	{
 		EnableRagdoll(false);
 		if (!IsPlayer)

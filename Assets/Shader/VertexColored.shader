@@ -16,6 +16,7 @@ Shader "MADFINGER/Diffuse/Vertex Colored" {
             float4 _Color;
 
             sampler2D _MainTex;
+            uniform vector _ScreenTint;
 
             struct appdata_t
             {
@@ -45,7 +46,7 @@ Shader "MADFINGER/Diffuse/Vertex Colored" {
             {
                 float4 tmpvar_1;
                 tmpvar_1 = (tex2D (_MainTex, i.uv) * i.color);
-                return tmpvar_1;
+                return tmpvar_1 + _ScreenTint;
             }
             ENDCG
         }

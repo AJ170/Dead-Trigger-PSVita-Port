@@ -427,8 +427,21 @@ public class SpawnManager
 		{
 			return false;
 		}
-		agentFromCache.SendMessage("ApplyModifications", Data.m_Mods);
-		agentFromCache.SendMessage("Activate", Location);
+		//I thought I put some code in for this? - Kano!
+		AgentHuman agentHum = agentFromCache.GetComponent<AgentHuman>();
+		AnimComponent agentAnim = agentFromCache.GetComponent<AnimComponent> ();
+		ComponentEnemy agentEnemy = agentFromCache.GetComponent<ComponentEnemy> ();
+		if (agentHum && agentAnim && agentEnemy) {
+			agentHum.ApplyModifications (Data.m_Mods);
+
+			agentHum.Activate (Location);
+			agentAnim.Activate (Location); 
+			agentEnemy.Activate (Location);
+
+		} else {
+			agentFromCache.SendMessage ("ApplyModifications", Data.m_Mods);
+			agentFromCache.SendMessage ("Activate", Location);
+		}
 		if (this.OnEnemySpawn != null)
 		{
 			AgentHuman component = agentFromCache.GetComponent<AgentHuman>();

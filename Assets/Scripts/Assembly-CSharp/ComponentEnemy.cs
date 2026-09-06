@@ -352,7 +352,7 @@ public class ComponentEnemy : MonoBehaviour, IHitZoneOwner
 		LimbMgr.Init(Owner);
 	}
 
-	protected void Activate(SpawnPoint spawn)
+	public void Activate(SpawnPoint spawn)
 	{
 		LimbMgr.Init(Owner);
 		DontSpeakTimer = 0f;
