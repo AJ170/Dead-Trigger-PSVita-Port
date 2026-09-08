@@ -28,7 +28,7 @@ public class OffMeshLinkAudit : MonoBehaviour
 
 		Debug.Log("=== OFF-MESH LINK AUDIT ===");
 		Debug.Log("Scanning " + allLinks.Length + " off-mesh links...");
-		Debug.Log("");
+		//Debug.Log("");
 
 		for (int i = 0; i < allLinks.Length; i++)
 		{
@@ -65,7 +65,7 @@ public class OffMeshLinkAudit : MonoBehaviour
 
 				for (int j = 0; j < issue.issues.Count; j++)
 				{
-					Debug.LogWarning("   - " + issue.issues[j]);
+					Debug.LogWarning("   - " + issue.issues[j].ToString());
 				}
 				Debug.Log("");
 			}
