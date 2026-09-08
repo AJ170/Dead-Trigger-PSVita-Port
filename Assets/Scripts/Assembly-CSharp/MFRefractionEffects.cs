@@ -114,6 +114,10 @@ public class MFRefractionEffects : ImageEffectBase
 		m_MeshRenderer.GetComponent<Renderer>().castShadows = false;
 		m_MeshRenderer.GetComponent<Renderer>().receiveShadows = false;
 		m_Mesh = m_MeshFilter.mesh;
+
+		// Clear mesh first to reset state
+		m_Mesh.Clear();
+
 		int num = m_ScreenGridXRes * m_ScreenGridYRes;
 		int num2 = (m_ScreenGridXRes - 1) * (m_ScreenGridYRes - 1) * 2;
 		Vector3[] array = new Vector3[num];
@@ -148,10 +152,17 @@ public class MFRefractionEffects : ImageEffectBase
 				array3[num4++] = num6;
 			}
 		}
+
+		// Set all mesh data at once (one rebuild instead of three)
 		m_Mesh.vertices = array;
 		m_Mesh.uv = array2;
 		m_Mesh.triangles = array3;
 		m_Mesh.name = "screenspace grid";
+
+		// Force GPU upload immediately instead of deferring
+		// This moves the spike to startup instead of first use
+		m_Mesh.UploadMeshData(false);  // false = keep CPU data
+
 		return true;
 	}
 
