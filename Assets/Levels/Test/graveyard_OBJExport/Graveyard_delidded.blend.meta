@@ -6,11 +6,30 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: col_mall
+    100004: col_mall_001
+    100006: col_mall_002
+    100008: col_mall_003
     400000: //RootNode
+    400002: col_mall
+    400004: col_mall_001
+    400006: col_mall_002
+    400008: col_mall_003
     2100000: material_0
     2300000: //RootNode
+    2300002: col_mall
+    2300004: col_mall_001
+    2300006: col_mall_002
+    2300008: col_mall_003
     3300000: //RootNode
+    3300002: col_mall
+    3300004: col_mall_001
+    3300006: col_mall_002
+    3300008: col_mall_003
     4300000: col_mall
+    4300002: col_mall_003
+    4300004: col_mall_002
+    4300006: col_mall_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
