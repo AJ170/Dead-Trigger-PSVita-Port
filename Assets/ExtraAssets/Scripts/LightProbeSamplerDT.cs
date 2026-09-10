@@ -69,7 +69,7 @@ public class LightProbeSamplerDT : MonoBehaviour
 			if (r != null) renderers.Add(r);
 		}
 
-		if (instanceMaterials)
+		if (instanceMaterials && Application.isPlaying)
 		{
 			InstanciateMaterials();
 		}
