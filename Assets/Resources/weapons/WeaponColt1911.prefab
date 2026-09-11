@@ -648,6 +648,7 @@ MonoBehaviour:
   - {fileID: 23742785734929525}
   - {fileID: 23069664993732403}
   - {fileID: 23394756611697644}
+  - {fileID: 23203367410050222}
   updateDistance: 0.05
   lerpSpeed: 5
   lerpThreshold: 0.001
