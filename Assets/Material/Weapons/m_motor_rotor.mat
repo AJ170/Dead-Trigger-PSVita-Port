@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: m_motor_rotor
-  m_Shader: {fileID: 4800000, guid: 3db31c3cd938a4840970a343d2d089cd, type: 3}
+  m_Shader: {fileID: 4800000, guid: 086e1abedd5075248b956ec312f6a3aa, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -26,14 +26,19 @@ Material:
         m_Texture: {fileID: 8900000, guid: dbf236a49e38d3b4c8a6f5d66592c9b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EnvTex:
+        m_Texture: {fileID: 8900000, guid: cb80281ffd444ac4ca5968cfad4d10a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a8d008147a9d3384fa286fb7181be836, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _EnvStrength: 3
-    - _SHLightingScale: 1.5
+    - _EnvStrength: 0.5
+    - _SHLightingScale: 0.8
+    - _SpecularBase: 0.05
     - _SpecularSharpness: 3
     - _SpecularStrength: 1
     - _Spread: 0.5
@@ -41,6 +46,7 @@ Material:
     - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EnvStrength: {r: 0, g: 4, b: 0, a: 0}
+    - _FadeoutDist: {r: 0.5, g: 1, b: 0, a: 0}
     - _SHAb: {r: 0, g: 0, b: 0, a: 0}
     - _SHAg: {r: 0, g: 0, b: 0, a: 0}
     - _SHAr: {r: 0, g: 0, b: 0, a: 0}
@@ -49,3 +55,4 @@ Material:
     - _SHBr: {r: 0, g: 0, b: 0, a: 0}
     - _SHC: {r: 0, g: 0, b: 0, a: 0}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _UVScrollSpeed: {r: 0, g: 0, b: 0, a: 0}
