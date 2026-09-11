@@ -1924,6 +1924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1774}
   - component: {fileID: 5726}
+  - component: {fileID: 5885}
   m_Layer: 31
   m_Name: kufr_prekvapeni
   m_TagString: Untagged
@@ -16615,6 +16616,7 @@ GameObject:
   - component: {fileID: 5781}
   - component: {fileID: 7347}
   - component: {fileID: 7348}
+  - component: {fileID: 5886}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -20043,6 +20045,7 @@ GameObject:
   - component: {fileID: 5797}
   - component: {fileID: 7400}
   - component: {fileID: 7401}
+  - component: {fileID: 5887}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -106604,6 +106607,84 @@ MonoBehaviour:
   m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 65f5c2b2aa46d544a864a1ddf140a9d8, type: 2}
+--- !u!114 &5885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 4020}
+  - {fileID: 4349}
+  - {fileID: 4221}
+  - {fileID: 3634}
+  - {fileID: 4113}
+  - {fileID: 4375}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &5886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 3375}
+  - {fileID: 3773}
+  - {fileID: 3479}
+  - {fileID: 3833}
+  - {fileID: 3605}
+  - {fileID: 3865}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &5887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 4376}
+  - {fileID: 3382}
+  - {fileID: 3832}
+  - {fileID: 4022}
+  - {fileID: 3689}
+  - {fileID: 3422}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
 --- !u!111 &5896
 Animation:
   m_ObjectHideFlags: 0

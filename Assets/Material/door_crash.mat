@@ -37,7 +37,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _EnvStrength: 0.125
-    - _SHLightingScale: 0.25
+    - _SHLightingScale: 1
     - _Shininess: 0.01708932
     - _SpecularBase: 0.05
     - _SpecularSharpness: 3

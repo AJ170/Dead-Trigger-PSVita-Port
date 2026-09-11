@@ -1375,6 +1375,7 @@ GameObject:
   - component: {fileID: 9359}
   - component: {fileID: 11651}
   - component: {fileID: 11652}
+  - component: {fileID: 9604}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -5044,6 +5045,7 @@ GameObject:
   - component: {fileID: 7647}
   - component: {fileID: 5768}
   - component: {fileID: 9376}
+  - component: {fileID: 9607}
   m_Layer: 0
   m_Name: car_1
   m_TagString: Untagged
@@ -9474,6 +9476,7 @@ GameObject:
   - component: {fileID: 9391}
   - component: {fileID: 11769}
   - component: {fileID: 11770}
+  - component: {fileID: 9609}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -10311,6 +10314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3398}
   - component: {fileID: 9393}
+  - component: {fileID: 9603}
   m_Layer: 31
   m_Name: kufr_prekvapeni
   m_TagString: Untagged
@@ -13778,6 +13782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3603}
   - component: {fileID: 9402}
+  - component: {fileID: 9608}
   m_Layer: 31
   m_Name: kufr_prekvapeni
   m_TagString: Untagged
@@ -15789,6 +15794,7 @@ GameObject:
   - component: {fileID: 9538}
   - component: {fileID: 11862}
   - component: {fileID: 11861}
+  - component: {fileID: 9606}
   m_Layer: 0
   m_Name: door_van_crash
   m_TagString: Untagged
@@ -23165,6 +23171,7 @@ GameObject:
   - component: {fileID: 9422}
   - component: {fileID: 11958}
   - component: {fileID: 11957}
+  - component: {fileID: 9601}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -27235,6 +27242,7 @@ GameObject:
   - component: {fileID: 8555}
   - component: {fileID: 6676}
   - component: {fileID: 9435}
+  - component: {fileID: 9598}
   m_Layer: 0
   m_Name: car_1
   m_TagString: Untagged
@@ -27928,6 +27936,7 @@ GameObject:
   - component: {fileID: 9438}
   - component: {fileID: 12041}
   - component: {fileID: 12040}
+  - component: {fileID: 9600}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -28516,6 +28525,7 @@ GameObject:
   - component: {fileID: 9440}
   - component: {fileID: 12055}
   - component: {fileID: 12056}
+  - component: {fileID: 9602}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -28551,6 +28561,7 @@ GameObject:
   - component: {fileID: 9441}
   - component: {fileID: 12059}
   - component: {fileID: 12058}
+  - component: {fileID: 9611}
   m_Layer: 0
   m_Name: generator_crash
   m_TagString: Untagged
@@ -33397,6 +33408,7 @@ GameObject:
   - component: {fileID: 9464}
   - component: {fileID: 12130}
   - component: {fileID: 12129}
+  - component: {fileID: 9605}
   m_Layer: 0
   m_Name: door_crash
   m_TagString: Untagged
@@ -37250,6 +37262,7 @@ GameObject:
   - component: {fileID: 8945}
   - component: {fileID: 7066}
   - component: {fileID: 9479}
+  - component: {fileID: 9597}
   m_Layer: 0
   m_Name: car_1
   m_TagString: Untagged
@@ -40736,6 +40749,7 @@ GameObject:
   - component: {fileID: 9585}
   - component: {fileID: 12254}
   - component: {fileID: 12253}
+  - component: {fileID: 9596}
   m_Layer: 0
   m_Name: door_van_crash
   m_TagString: Untagged
@@ -43594,6 +43608,7 @@ GameObject:
   - component: {fileID: 9588}
   - component: {fileID: 12302}
   - component: {fileID: 12303}
+  - component: {fileID: 9599}
   m_Layer: 0
   m_Name: door_van_crash
   m_TagString: Untagged
@@ -45029,6 +45044,7 @@ GameObject:
   - component: {fileID: 9590}
   - component: {fileID: 12320}
   - component: {fileID: 12321}
+  - component: {fileID: 9610}
   m_Layer: 0
   m_Name: door_van_crash
   m_TagString: Untagged
@@ -172161,6 +172177,404 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &9596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 7135}
+  - {fileID: 5844}
+  - {fileID: 6673}
+  - {fileID: 7199}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 7066}
+  - {fileID: 5985}
+  - {fileID: 6645}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 6676}
+  - {fileID: 6875}
+  - {fileID: 7443}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 5738}
+  - {fileID: 6802}
+  - {fileID: 6135}
+  - {fileID: 5954}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 6376}
+  - {fileID: 6036}
+  - {fileID: 6469}
+  - {fileID: 6773}
+  - {fileID: 5846}
+  - {fileID: 7378}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 6075}
+  - {fileID: 7125}
+  - {fileID: 7381}
+  - {fileID: 5940}
+  - {fileID: 6373}
+  - {fileID: 6120}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 6114}
+  - {fileID: 6851}
+  - {fileID: 6381}
+  - {fileID: 7193}
+  - {fileID: 7448}
+  - {fileID: 6276}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 5859}
+  - {fileID: 6395}
+  - {fileID: 6060}
+  - {fileID: 6264}
+  - {fileID: 6164}
+  - {fileID: 6305}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 7048}
+  - {fileID: 6155}
+  - {fileID: 6955}
+  - {fileID: 6560}
+  - {fileID: 5751}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 6691}
+  - {fileID: 6396}
+  - {fileID: 6617}
+  - {fileID: 7030}
+  - {fileID: 7215}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 5705}
+  - {fileID: 5881}
+  - {fileID: 5637}
+  - {fileID: 6714}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 5768}
+  - {fileID: 6587}
+  - {fileID: 5865}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 7382}
+  - {fileID: 5769}
+  - {fileID: 7294}
+  - {fileID: 5693}
+  - {fileID: 5912}
+  - {fileID: 7425}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 7404}
+  - {fileID: 5645}
+  - {fileID: 6860}
+  - {fileID: 5841}
+  - {fileID: 6032}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 6940}
+  - {fileID: 6446}
+  - {fileID: 6711}
+  - {fileID: 6254}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
+--- !u!114 &9611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72838db4dfb1eba478cab676f7212f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populateChildRenderers: 0
+  instanceMaterials: 1
+  renderers:
+  - {fileID: 6503}
+  - {fileID: 7423}
+  - {fileID: 6652}
+  - {fileID: 6070}
+  - {fileID: 7298}
+  - {fileID: 6437}
+  - {fileID: 6329}
+  - {fileID: 6194}
+  updateDistance: 0.125
+  lerpSpeed: 5
+  lerpThreshold: 0.001
+  useCustomSamplePosition: 0
+  customSamplePosition: {fileID: 0}
+  m_InstancedMaterials: []
 --- !u!111 &9616
 Animation:
   m_ObjectHideFlags: 0
