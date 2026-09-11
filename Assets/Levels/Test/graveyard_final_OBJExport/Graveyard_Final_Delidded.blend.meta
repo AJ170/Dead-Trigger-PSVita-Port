@@ -10,24 +10,29 @@ ModelImporter:
     100004: col_grav_final_002
     100006: col_grav_final_003
     100008: //RootNode
+    100010: col_grav_final_004
     400000: col_grav_final
     400002: col_grav_final_001
     400004: col_grav_final_002
     400006: col_grav_final_003
     400008: //RootNode
+    400010: col_grav_final_004
     2100000: material_0
     2300000: col_grav_final
     2300002: col_grav_final_001
     2300004: col_grav_final_002
     2300006: col_grav_final_003
+    2300008: col_grav_final_004
     3300000: col_grav_final
     3300002: col_grav_final_001
     3300004: col_grav_final_002
     3300006: col_grav_final_003
+    3300008: col_grav_final_004
     4300000: col_grav_final_003
     4300002: col_grav_final_002
     4300004: col_grav_final_001
     4300006: col_grav_final
+    4300008: col_grav_final_004
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

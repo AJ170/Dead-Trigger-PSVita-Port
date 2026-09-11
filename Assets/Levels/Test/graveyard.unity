@@ -58919,10 +58919,10 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.13333334
+  m_OverrideVoxelSize: 1
+  m_VoxelSize: 0.07
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 9d21e967a75ffd342a7d36f1b85a78db, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 7652ade23c9b34a4ab3e248bcc51b268, type: 2}
 --- !u!111 &3474
 Animation:
   m_ObjectHideFlags: 0
