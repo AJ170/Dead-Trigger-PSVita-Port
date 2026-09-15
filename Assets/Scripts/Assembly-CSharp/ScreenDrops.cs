@@ -107,10 +107,11 @@ public class ScreenDrops : MonoBehaviour
 			m_BuffersVersion = m_DecalsVersion;
 		}
 		// Revive the WaterDropletsMgr behaviour: the refraction image effect is only
-		// enabled while drops are actually on screen.
+		// enabled while drops are actually on screen - and only on the Ultra path, so
+		// the cheap path never pays for the RenderTexture + full-screen blit.
 		if (MFRefractionEffects.Instance != null)
 		{
-			bool wantEnabled = m_Decals.Count > 0;
+			bool wantEnabled = UseRefractionPath && m_Decals.Count > 0;
 			if (MFRefractionEffects.Instance.enabled != wantEnabled)
 			{
 				MFRefractionEffects.Instance.enabled = wantEnabled;
@@ -125,11 +126,44 @@ public class ScreenDrops : MonoBehaviour
 		base.gameObject.name = "ScreenDrops";
 		m_MeshFilter = (MeshFilter)GetComponent(typeof(MeshFilter));
 		m_MeshRenderer = (MeshRenderer)GetComponent(typeof(MeshRenderer));
-		// ScreenDrops only builds the droplet mesh. MFRefractionEffects draws it
-		// through the screen-space refraction image effect (so the drops distort
-		// the scene behind them, matching the original), so we don't render it here.
-		m_MeshRenderer.enabled = false;
 		m_Mesh = m_MeshFilter.mesh;
+
+		// Two quality paths, same mesh:
+		//  Ultra  -> MFRefractionEffects draws this mesh through the screen-refraction
+		//            image effect (true distortion, but costs a RenderTexture + a
+		//            full-screen blit every frame while it rains).
+		//  Others -> render the mesh directly with a procedural specular sheen. No RT,
+		//            no blit, no grab pass; only the drop's own pixels are shaded.
+		if (UseRefractionPath)
+		{
+			m_MeshRenderer.enabled = false;
+		}
+		else
+		{
+			Shader shader = Shader.Find("MADFINGER/FX/ScreenDropsSheen");
+			if (shader != null)
+			{
+				m_Material = new Material(shader);
+				m_MeshRenderer.material = m_Material;
+				m_MeshRenderer.castShadows = false;
+				m_MeshRenderer.receiveShadows = false;
+				m_MeshRenderer.enabled = true;
+			}
+			else
+			{
+				Debug.LogError("ScreenDrops: 'MADFINGER/FX/ScreenDropsSheen' not found; falling back to refraction path.");
+				m_MeshRenderer.enabled = false;
+			}
+		}
+	}
+
+	// The expensive refraction path is reserved for the highest detail setting.
+	public static bool UseRefractionPath
+	{
+		get
+		{
+			return DeviceInfo.PerformanceGrade == DeviceInfo.Performance.UltraHigh;
+		}
 	}
 
 	private void UpdateMeshBuffers()
