@@ -661,7 +661,7 @@ public class ComponentPlayer : MonoBehaviour
 			if (on)
 			{
 				AimToBestEnemy();
-				GameCamera.Instance.SetFov(Owner.WeaponComponent.GetCurrentWeapon().GetIronSightFov(), 150f, 0.02f);
+				GameCamera.Instance.SetFov(GuiOptions.GetAimFov(Owner.WeaponComponent.GetCurrentWeapon().GetIronSightFov()), 150f, 0.02f);
 			}
 			else
 			{

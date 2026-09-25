@@ -48,7 +48,9 @@ public class GameCamera : MonoBehaviour
         Instance = this;
         Animation = base.GetComponent<Animation>();
         Transform = base.transform;
-        DesiredFov = DefaultFOV = CameraWorld.fieldOfView = 55f;
+        // DefaultFOV is the hip-fire FOV that SetDefaultFov() restores after
+        // aiming, so driving it from the option leaves iron sights untouched.
+        DesiredFov = DefaultFOV = CameraWorld.fieldOfView = GuiOptions.fov;
         DesiredNear = 0.1f;
         CameraWorld.nearClipPlane = 0.1f;
         CameraFPV.gameObject.SetActive(false);
@@ -126,6 +128,18 @@ public class GameCamera : MonoBehaviour
     public void SetDefaultFov(float speed)
     {
         SetFov(DefaultFOV, speed);
+    }
+
+    // Called when the FOV option changes so the slider previews live. Only
+    // retargets the camera if it is not currently zoomed into iron sights.
+    public void ApplyFovOption()
+    {
+        bool wasAtDefault = Mathf.Approximately(DesiredFov, DefaultFOV);
+        DefaultFOV = GuiOptions.fov;
+        if (wasAtDefault)
+        {
+            SetFov(DefaultFOV, 150f);
+        }
     }
 
     public void SetAgent(AgentHuman agent)

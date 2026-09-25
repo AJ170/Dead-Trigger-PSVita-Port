@@ -40,6 +40,18 @@ public class GuiOptions
 
 	public static float sensitivity = 1f;
 
+	// Hip-fire camera FOV, driven by FOV_Slider on the CONTROLS options page.
+	// GameCamera uses this as its DefaultFOV, so iron-sight zoom still overrides
+	// it and SetDefaultFov() returns to the player's chosen value.
+	public static float fov = 55f;
+
+	// Aim-down-sights FOV, driven by AimFOV_Slider. Each weapon carries its own
+	// WeaponSettings.AimFov (a sniper zooms further than a pistol), so this is
+	// applied as a DELTA from DefaultAimFov rather than as an absolute override -
+	// that keeps the per-weapon differences intact. Leaving the slider at 50 gives
+	// exactly the OEM behaviour.
+	public static float aimFov = 50f;
+
 	public static float musicVolume = 1f;
 
 	public static bool subtitles = true;
@@ -59,6 +71,18 @@ public class GuiOptions
 	public static bool musicOn = true;
 
 	public static bool showMogaHelp = true;
+
+	public static float DefaultFov = 55f;
+
+	public static float MinFov = 45f;
+
+	public static float MaxFov = 90f;
+
+	public static float DefaultAimFov = 50f;
+
+	public static float MinAimFov = 35f;
+
+	public static float MaxAimFov = 75f;
 
 	private static float DefaultMusicVolume = 0.7f;
 
@@ -121,6 +145,25 @@ public class GuiOptions
 		}
 	}
 
+	// Pushes the chosen FOV to the live camera. Safe to call from the menu at any
+	// time - there is no GameCamera in the main menu, so it just no-ops there.
+	public static void ApplyFov()
+	{
+		fov = Mathf.Clamp(fov, MinFov, MaxFov);
+		if (GameCamera.Instance != null)
+		{
+			GameCamera.Instance.ApplyFovOption();
+		}
+	}
+
+	// Shifts a weapon's own aim FOV by the player's chosen delta. Clamped so an
+	// extreme slider value can never invert or flatten a scope.
+	public static float GetAimFov(float weaponAimFov)
+	{
+		float delta = Mathf.Clamp(aimFov, MinAimFov, MaxAimFov) - DefaultAimFov;
+		return Mathf.Clamp(weaponAimFov + delta, 10f, 100f);
+	}
+
 	public static int GetDefaultGraphics()
 	{
 		return (int)DeviceInfo.GetDetectedPerformanceLevel();
@@ -129,6 +172,9 @@ public class GuiOptions
 	public static void ResetToDefaults()
 	{
 		sensitivity = DefaultSensitivity;
+		fov = DefaultFov;
+		aimFov = DefaultAimFov;
+		ApplyFov();
 		musicVolume = DefaultMusicVolume;
 		subtitles = DefaultSubtitles;
 		invertYAxis = DefaultInvertYAxis;
@@ -184,6 +230,8 @@ public class GuiOptions
 	public static void Save()
 	{
 		PlayerPrefs.SetFloat("OptionsSensitivity", sensitivity);
+		PlayerPrefs.SetFloat("OptionsFov", fov);
+		PlayerPrefs.SetFloat("OptionsAimFov", aimFov);
 		PlayerPrefs.SetFloat("OptionsMusicVolume", musicVolume);
 		PlayerPrefs.SetInt("OptionsSubtitles", subtitles ? 1 : 0);
 		PlayerPrefs.SetInt("OptionsInvertYAxis", invertYAxis ? 1 : 0);
@@ -215,6 +263,9 @@ public class GuiOptions
 	public static void Load()
 	{
 		sensitivity = PlayerPrefs.GetFloat("OptionsSensitivity", DefaultSensitivity);
+		fov = Mathf.Clamp(PlayerPrefs.GetFloat("OptionsFov", DefaultFov), MinFov, MaxFov);
+		aimFov = Mathf.Clamp(PlayerPrefs.GetFloat("OptionsAimFov", DefaultAimFov), MinAimFov, MaxAimFov);
+		ApplyFov();
 		musicVolume = PlayerPrefs.GetFloat("OptionsMusicVolume", DefaultMusicVolume);
 		subtitles = PlayerPrefs.GetInt("OptionsSubtitles", DefaultSubtitles ? 1 : 0) != 0;
 		invertYAxis = PlayerPrefs.GetInt("OptionsInvertYAxis", DefaultInvertYAxis ? 1 : 0) != 0;

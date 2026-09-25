@@ -35,7 +35,9 @@ public class GuiOptionsMenu : MonoBehaviour
 
 	private static string s_SwitchLefthandedName = "Lefthanded_Switch";
 
-	private static string s_ControlsSchemeName = "ControlScheme_Enum";
+	private static string s_SliderFovName = "FOV_Slider";
+
+	private static string s_SliderAimFovName = "AimFOV_Slider";
 
 	private static string s_CustomiseButtonName = "CustomiseButton";
 
@@ -63,7 +65,9 @@ public class GuiOptionsMenu : MonoBehaviour
 
 	private GUIBase_Switch m_MusicOn_Switch;
 
-	private GUIBase_Enum m_ControlSchemeEnum;
+	private GUIBase_Slider m_SliderFov;
+
+	private GUIBase_Slider m_SliderAimFov;
 
 	private GUIBase_Enum m_GraphicEnum;
 
@@ -150,8 +154,16 @@ public class GuiOptionsMenu : MonoBehaviour
 		m_SliderSensitivity = GuiBaseUtils.RegisterSliderDelegate(m_LayoutOptControls, s_SliderSensitivityName, OnSensitivitySliderChange);
 		m_SwitchYAxis = GuiBaseUtils.RegisterSwitchDelegate(m_LayoutOptControls, s_SwitchInvertYName, OnInvertYChange);
 		m_SwitchLefthanded = GuiBaseUtils.RegisterSwitchDelegate(m_LayoutOptControls, s_SwitchLefthandedName, OnLefthandedChange);
-		m_ControlSchemeEnum = GuiBaseUtils.PrepareEnum(m_LayoutOptControls, s_ControlsSchemeName, OnControlSchemeChanged);
-		m_ControlSchemeEnum.SetValue((int)GuiOptions.m_ControlScheme);
+		m_SliderFov = GuiBaseUtils.RegisterSliderDelegate(m_LayoutOptControls, s_SliderFovName, OnFovSliderChange);
+		if (m_SliderFov != null)
+		{
+			m_SliderFov.SetValue(GuiOptions.fov);
+		}
+		m_SliderAimFov = GuiBaseUtils.RegisterSliderDelegate(m_LayoutOptControls, s_SliderAimFovName, OnAimFovSliderChange);
+		if (m_SliderAimFov != null)
+		{
+			m_SliderAimFov.SetValue(GuiOptions.aimFov);
+		}
 		m_Graphic_Pivot = MFGuiManager.Instance.GetPivot("GraphicDetails_Pivot");
 		m_GraphicEnum = GuiBaseUtils.PrepareEnum(m_LayoutOptSounds, "GraphDetails_Enum", OnGraphicChanged);
 		m_GraphicEnum.SetValue(GuiOptions.graphicDetail);
@@ -174,12 +186,36 @@ public class GuiOptionsMenu : MonoBehaviour
 
 	private void ApplyOptionsToWidgets()
 	{
-		m_SliderMusic.SetValue(GuiOptions.musicVolume);
-		m_SliderSensitivity.SetValue(GuiOptions.sensitivity);
-		m_SwitchYAxis.SetValue(GuiOptions.invertYAxis);
-		m_SwitchLefthanded.SetValue(GuiOptions.leftHandAiming);
-		m_ControlSchemeEnum.SetValue((int)GuiOptions.m_ControlScheme);
-		m_GraphicEnum.SetValue(GuiOptions.graphicDetail);
+		// Every widget here is looked up by name, so any one of them can be null if
+		// its object was removed from the layout. Guard rather than crash the menu.
+		if (m_SliderMusic != null)
+		{
+			m_SliderMusic.SetValue(GuiOptions.musicVolume);
+		}
+		if (m_SliderSensitivity != null)
+		{
+			m_SliderSensitivity.SetValue(GuiOptions.sensitivity);
+		}
+		if (m_SliderFov != null)
+		{
+			m_SliderFov.SetValue(GuiOptions.fov);
+		}
+		if (m_SliderAimFov != null)
+		{
+			m_SliderAimFov.SetValue(GuiOptions.aimFov);
+		}
+		if (m_SwitchYAxis != null)
+		{
+			m_SwitchYAxis.SetValue(GuiOptions.invertYAxis);
+		}
+		if (m_SwitchLefthanded != null)
+		{
+			m_SwitchLefthanded.SetValue(GuiOptions.leftHandAiming);
+		}
+		if (m_GraphicEnum != null)
+		{
+			m_GraphicEnum.SetValue(GuiOptions.graphicDetail);
+		}
 		if (m_MusicOn_Switch != null)
 		{
 			m_MusicOn_Switch.SetValue(GuiOptions.musicOn);
@@ -298,13 +334,17 @@ public class GuiOptionsMenu : MonoBehaviour
 		}
 	}
 
-	private void OnControlSchemeChanged(int val)
+	private void OnFovSliderChange(float val)
 	{
-		GuiOptions.m_ControlScheme = (GuiOptions.E_ControlScheme)val;
-		if ((bool)Player.Instance)
-		{
-			Player.Instance.Controls.TouchControls.OnControlSchemeChange();
-		}
+		GuiOptions.fov = val;
+		GuiOptions.ApplyFov();
+	}
+
+	private void OnAimFovSliderChange(float val)
+	{
+		// No live preview here - the new value is picked up the next time the
+		// player aims, via ComponentPlayer.SetIronSight().
+		GuiOptions.aimFov = val;
 	}
 
 	private void OnGraphicChanged(int val)
