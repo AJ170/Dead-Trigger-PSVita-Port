@@ -90,6 +90,9 @@ public static class DeviceInfo
 				break;
 			}
 		}
+		// SetQualityLevel loads the level's own vSyncCount, so the player's choice
+		// has to be re-applied here or it is lost on every mission load.
+		GuiOptions.ApplyVSync();
 	}
 
 	public static void UpdatePerformanceSettings()

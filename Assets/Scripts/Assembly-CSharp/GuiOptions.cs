@@ -52,6 +52,10 @@ public class GuiOptions
 	// exactly the OEM behaviour.
 	public static float aimFov = 50f;
 
+	// When on, vSyncCount goes from 1 (every VBlank) to 2 (every second VBlank),
+	// halving the frame rate to 30 on a 60Hz display for a steadier frame time.
+	public static bool vsync30 = false;
+
 	public static float musicVolume = 1f;
 
 	public static bool subtitles = true;
@@ -93,6 +97,8 @@ public class GuiOptions
 	private static bool DefaultLeftHandAiming = false;
 
 	private static bool DefaultMusicOn = true;
+
+	private static bool DefaultVsync30 = false;
 
 	public static bool leftHandControlsNeedUpdate = false;
 
@@ -164,6 +170,14 @@ public class GuiOptions
 		return Mathf.Clamp(weaponAimFov + delta, 10f, 100f);
 	}
 
+	// Must be re-applied after every QualitySettings.SetQualityLevel() call, since
+	// loading a quality level overwrites vSyncCount with that level's own value.
+	// DeviceInfo.SetPerformanceLevel() calls this for exactly that reason.
+	public static void ApplyVSync()
+	{
+		QualitySettings.vSyncCount = (vsync30 ? 2 : 1);
+	}
+
 	public static int GetDefaultGraphics()
 	{
 		return (int)DeviceInfo.GetDetectedPerformanceLevel();
@@ -181,6 +195,8 @@ public class GuiOptions
 		m_ControlScheme = DefaultScheme;
 		SetNewLeftHandAiming(DefaultLeftHandAiming);
 		musicOn = DefaultMusicOn;
+		vsync30 = DefaultVsync30;
+		ApplyVSync();
 		graphicDetail = GetDefaultGraphics();
 		showMogaHelp = true;
 	}
@@ -256,6 +272,7 @@ public class GuiOptions
 		PlayerPrefs.SetFloat("OptionsAimButtonY", AimButton.Offset.y);
 		PlayerPrefs.SetInt("OptionsGraphicDetail", graphicDetail);
 		PlayerPrefs.SetInt("OptionsMusicOn", musicOn ? 1 : 0);
+		PlayerPrefs.SetInt("OptionsVsync30", vsync30 ? 1 : 0);
 		PlayerPrefs.SetInt("OptionsShowMogaHelp", showMogaHelp ? 1 : 0);
 		PlayerPrefs.SetInt("OptionsLeftHandControlsNeedUpdate", leftHandControlsNeedUpdate ? 1 : 0);
 	}
@@ -290,6 +307,8 @@ public class GuiOptions
 		AimButton.Offset.y = PlayerPrefs.GetFloat("OptionsAimButtonY", 0f);
 		graphicDetail = PlayerPrefs.GetInt("OptionsGraphicDetail", GetDefaultGraphics());
 		musicOn = PlayerPrefs.GetInt("OptionsMusicOn", DefaultMusicOn ? 1 : 0) != 0;
+		vsync30 = PlayerPrefs.GetInt("OptionsVsync30", DefaultVsync30 ? 1 : 0) != 0;
+		ApplyVSync();
 		if ((bool)MusicManager.Instance)
 		{
 			MusicManager.Instance.ApplyOptionsChange();

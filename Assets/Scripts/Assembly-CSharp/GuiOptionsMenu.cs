@@ -39,6 +39,8 @@ public class GuiOptionsMenu : MonoBehaviour
 
 	private static string s_SliderAimFovName = "AimFOV_Slider";
 
+	private static string s_SwitchVsyncName = "VSync_Switch";
+
 	private static string s_CustomiseButtonName = "CustomiseButton";
 
 	private static string s_GamepadButtonName = "GamepadButton";
@@ -68,6 +70,8 @@ public class GuiOptionsMenu : MonoBehaviour
 	private GUIBase_Slider m_SliderFov;
 
 	private GUIBase_Slider m_SliderAimFov;
+
+	private GUIBase_Switch m_SwitchVsync;
 
 	private GUIBase_Enum m_GraphicEnum;
 
@@ -153,7 +157,10 @@ public class GuiOptionsMenu : MonoBehaviour
 		m_SliderMusic = GuiBaseUtils.RegisterSliderDelegate(m_LayoutOptSounds, s_SliderMusicName, OnMusicSliderChange);
 		m_SliderSensitivity = GuiBaseUtils.RegisterSliderDelegate(m_LayoutOptControls, s_SliderSensitivityName, OnSensitivitySliderChange);
 		m_SwitchYAxis = GuiBaseUtils.RegisterSwitchDelegate(m_LayoutOptControls, s_SwitchInvertYName, OnInvertYChange);
-		m_SwitchLefthanded = GuiBaseUtils.RegisterSwitchDelegate(m_LayoutOptControls, s_SwitchLefthandedName, OnLefthandedChange);
+		// Optional: the LEFT HAND AIM row was removed from the controls page to make
+		// room for the FOV sliders. GuiOptions.leftHandAiming still works, it just
+		// keeps its saved value (the RESET button restores the default).
+		m_SwitchLefthanded = RegisterOptionalSwitch(m_LayoutOptControls, s_SwitchLefthandedName, OnLefthandedChange);
 		m_SliderFov = GuiBaseUtils.RegisterSliderDelegate(m_LayoutOptControls, s_SliderFovName, OnFovSliderChange);
 		if (m_SliderFov != null)
 		{
@@ -163,6 +170,18 @@ public class GuiOptionsMenu : MonoBehaviour
 		if (m_SliderAimFov != null)
 		{
 			m_SliderAimFov.SetValue(GuiOptions.aimFov);
+		}
+		// VSync fits either page, so look on the graphics page first and fall back to
+		// controls - whichever layout the widget was actually placed in wins. The
+		// false suppresses GetWidget's "can't find" error for the page it is not on.
+		m_SwitchVsync = RegisterOptionalSwitch(m_LayoutOptSounds, s_SwitchVsyncName, OnVsyncChange);
+		if (m_SwitchVsync == null)
+		{
+			m_SwitchVsync = RegisterOptionalSwitch(m_LayoutOptControls, s_SwitchVsyncName, OnVsyncChange);
+		}
+		if (m_SwitchVsync != null)
+		{
+			m_SwitchVsync.SetValue(GuiOptions.vsync30);
 		}
 		m_Graphic_Pivot = MFGuiManager.Instance.GetPivot("GraphicDetails_Pivot");
 		m_GraphicEnum = GuiBaseUtils.PrepareEnum(m_LayoutOptSounds, "GraphDetails_Enum", OnGraphicChanged);
@@ -215,6 +234,10 @@ public class GuiOptionsMenu : MonoBehaviour
 		if (m_GraphicEnum != null)
 		{
 			m_GraphicEnum.SetValue(GuiOptions.graphicDetail);
+		}
+		if (m_SwitchVsync != null)
+		{
+			m_SwitchVsync.SetValue(GuiOptions.vsync30);
 		}
 		if (m_MusicOn_Switch != null)
 		{
@@ -338,6 +361,34 @@ public class GuiOptionsMenu : MonoBehaviour
 	{
 		GuiOptions.fov = val;
 		GuiOptions.ApplyFov();
+	}
+
+	// Like GuiBaseUtils.RegisterSwitchDelegate, but silent when the widget is not in
+	// this layout. Used for switches that are deliberately absent from a page, and
+	// for probing both option pages for one widget, neither of which is an error.
+	private GUIBase_Switch RegisterOptionalSwitch(GUIBase_Layout layout, string name, GUIBase_Switch.SwitchDelegate d)
+	{
+		if (layout == null)
+		{
+			return null;
+		}
+		GUIBase_Widget widget = layout.GetWidget(name, false);
+		if (widget == null)
+		{
+			return null;
+		}
+		GUIBase_Switch sw = widget.GetComponent<GUIBase_Switch>();
+		if (sw != null)
+		{
+			sw.RegisterDelegate(d);
+		}
+		return sw;
+	}
+
+	private void OnVsyncChange(bool switchValue)
+	{
+		GuiOptions.vsync30 = switchValue;
+		GuiOptions.ApplyVSync();
 	}
 
 	private void OnAimFovSliderChange(float val)
