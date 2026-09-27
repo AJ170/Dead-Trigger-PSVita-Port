@@ -140,10 +140,27 @@ public class ScreenDrops : MonoBehaviour
 		}
 		else
 		{
-			Shader shader = Shader.Find("MADFINGER/FX/ScreenDropsSheen");
-			if (shader != null)
+			// Prefer an authored material asset, so the droplet normal map and the
+			// environment cubemap can be assigned in the inspector. A material built
+			// from the bare shader would get the property defaults instead - which
+			// still renders (flat normal + no cube = the old procedural sheen), just
+			// without the authored detail.
+			Material asset = Resources.Load("screendrops_sheen", typeof(Material)) as Material;
+			if (asset != null)
 			{
-				m_Material = new Material(shader);
+				m_Material = asset;
+			}
+			else
+			{
+				Shader shader = Shader.Find("MADFINGER/FX/ScreenDropsSheen");
+				if (shader != null)
+				{
+					m_Material = new Material(shader);
+				}
+			}
+			if (m_Material != null)
+			{
+				m_Material.SetFloat("_FlipY", ClipYSign);
 				m_MeshRenderer.material = m_Material;
 				m_MeshRenderer.castShadows = false;
 				m_MeshRenderer.receiveShadows = false;
@@ -154,6 +171,25 @@ public class ScreenDrops : MonoBehaviour
 				Debug.LogError("ScreenDrops: 'MADFINGER/FX/ScreenDropsSheen' not found; falling back to refraction path.");
 				m_MeshRenderer.enabled = false;
 			}
+		}
+	}
+
+	// Both droplet shaders write clip space by hand instead of going through the
+	// projection matrix, so they cannot infer the platform's clip-space Y convention -
+	// it has to be handed to them. The editor (D3D11) wants the built-in negation;
+	// the Vita's GXM backend uses the opposite convention, which mirrored the quads
+	// vertically and made the drops appear to fall upwards.
+	//
+	// If the drops ever rise on a platform, this is the single value to invert.
+	public static float ClipYSign
+	{
+		get
+		{
+			if (Application.platform == RuntimePlatform.PSP2)
+			{
+				return -1f;
+			}
+			return 1f;
 		}
 	}
 

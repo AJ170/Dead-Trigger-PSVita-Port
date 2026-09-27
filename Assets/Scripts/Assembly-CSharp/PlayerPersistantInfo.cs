@@ -104,11 +104,34 @@ public class PlayerPersistantInfo
 		}
 	}
 
+	// The stored GoldForGoldMission is the ladder POSITION (1..5, climbing one step
+	// per consecutive day). Scaling here rather than at the award site keeps the
+	// preview label in CityGUIDialogs and the actual payout in SpecialReward in
+	// agreement, and leaves the raw counter alone so the increment/reset rules are
+	// untouched. At x5 the ladder pays 5/10/15/20/25.
+	private const int GoldMissionMultiplier = 5;
+
+	// Gold granted on rank up. There are two award sites - the HUD banner when the
+	// rank is crossed mid-mission (HudCombatInfo) and the promotion dialog back in
+	// the city when the rank is crossed by the end-of-mission XP (CityManager).
+	// Only one of them fires per rank, so they must agree; hence one constant.
+	public const int GoldPerRankUp = 50;
+
+	// Bunker mission payouts. SpecialReward builds both the award and the dialog
+	// caption from these, so the banner cannot disagree with what is granted.
+	public const int GoldPerBunker = 50;
+
+	public const int GoldPerBunker2 = 100;
+
+	// Daily reward casino tickets. Granted in CityManager.DailyRewardClose and
+	// captioned in the DailyReward dialog - two files, hence one constant.
+	public const int TicketsPerDailyReward = 1;
+
 	public int numGoldForGoldMission
 	{
 		get
 		{
-			return PlayerData.Params.GoldForGoldMission;
+			return PlayerData.Params.GoldForGoldMission * GoldMissionMultiplier;
 		}
 	}
 

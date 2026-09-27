@@ -42,7 +42,7 @@ public class SpecialReward
 		case Type.Bunker:
 		case Type.Bunker2:
 		{
-			count = ((type != Type.Bunker) ? 15 : 10);
+			count = ((type != Type.Bunker) ? PlayerPersistantInfo.GoldPerBunker2 : PlayerPersistantInfo.GoldPerBunker);
 			E_FundID key = E_FundID.Gold099;
 			Settings<E_FundID> settings2 = FundSettingsManager.Instance.Get(key);
 			specialRewardInfo.Amount = "+ " + count;

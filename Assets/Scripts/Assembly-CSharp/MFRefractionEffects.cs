@@ -79,6 +79,8 @@ public class MFRefractionEffects : ImageEffectBase
 		RenderTexture active = RenderTexture.active;
 		RenderTexture.active = destination;
 		m_WaterScreenRefractionMat.mainTexture = source;
+		// Same clip-space Y convention the sheen path uses - see ScreenDrops.ClipYSign.
+		m_WaterScreenRefractionMat.SetFloat("_FlipY", ScreenDrops.ClipYSign);
 		if (m_WaterScreenRefractionMat.SetPass(0))
 		{
 			Graphics.DrawMeshNow(mesh, Matrix4x4.identity);

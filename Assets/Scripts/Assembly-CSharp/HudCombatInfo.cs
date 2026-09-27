@@ -252,7 +252,7 @@ public class HudCombatInfo : HudComponent
 			m_Progress = 0f;
 			IsVisible = true;
 			m_Parent.GetComponent<AudioSource>().Play();
-			Game.Instance.PlayerPersistentInfo.AddGold(1);
+			Game.Instance.PlayerPersistentInfo.AddGold(PlayerPersistantInfo.GoldPerRankUp);
 		}
 
 		public void Update()

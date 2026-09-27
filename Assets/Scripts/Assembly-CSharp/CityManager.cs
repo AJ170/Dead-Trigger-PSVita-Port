@@ -1310,7 +1310,7 @@ public class CityManager : MonoBehaviour
 		}
 		m_Casino.ActivateDailyReward();
 		Game.Instance.PlayerPersistentInfo.SetBonusReceived();
-		Game.Instance.PlayerPersistentInfo.AddTicket(1);
+		Game.Instance.PlayerPersistentInfo.AddTicket(PlayerPersistantInfo.TicketsPerDailyReward);
 		m_SiteManager.SpawnDailyRewardMission(Game.Instance.PlayerPersistentInfo.storyId, Game.Instance.PlayerPersistentInfo.experience);
 		Save();
 		EnableInputAndIndicators();
@@ -1400,7 +1400,7 @@ public class CityManager : MonoBehaviour
 	{
 		m_Promoted = false;
 		m_GuiDialogs.HidePromotion();
-		Game.Instance.PlayerPersistentInfo.AddGold(1);
+		Game.Instance.PlayerPersistentInfo.AddGold(PlayerPersistantInfo.GoldPerRankUp);
 		Save();
 		MissionFinished();
 	}

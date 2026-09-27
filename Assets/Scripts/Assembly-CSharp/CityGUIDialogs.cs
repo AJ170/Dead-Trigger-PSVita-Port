@@ -597,7 +597,7 @@ public class CityGUIDialogs
 			GUIBase_Label component3 = m_Dialog.GetWidget("Reward1_Count").GetComponent<GUIBase_Label>();
 			component3.SetNewText("+" + Game.Instance.PlayerPersistentInfo.numGoldForGoldMission);
 			GUIBase_Label component4 = m_Dialog.GetWidget("Reward3_Count").GetComponent<GUIBase_Label>();
-			component4.SetNewText("+" + 1);
+			component4.SetNewText("+" + PlayerPersistantInfo.TicketsPerDailyReward);
 			if ((bool)CityManager.Instance)
 			{
 				CityManager.Instance.PlaySound(CityManager.Sounds.GUI_Reward, false);
@@ -1043,6 +1043,19 @@ public class CityGUIDialogs
 			component.SetNewText(text);
 			GUIBase_Label component2 = m_Dialog.GetWidget("Shop").GetComponent<GUIBase_Label>();
 			component2.Widget.Show(newGoodsInShop, true);
+			// The reward count is a static "+1" baked into the Promoted layout, so it
+			// would silently disagree with GoldPerRankUp. Drive it from the constant
+			// instead. GetWidget is scoped to this layout, so the identically named
+			// label in the other reward dialogs is not affected.
+			GUIBase_Widget rewardWidget = m_Dialog.GetWidget("Reward3_Count", false);
+			if (rewardWidget != null)
+			{
+				GUIBase_Label rewardLabel = rewardWidget.GetComponent<GUIBase_Label>();
+				if (rewardLabel != null)
+				{
+					rewardLabel.SetNewText("+" + PlayerPersistantInfo.GoldPerRankUp);
+				}
+			}
 			if ((bool)CityManager.Instance)
 			{
 				CityManager.Instance.PlaySound(CityManager.Sounds.GUI_Promoted, false);
