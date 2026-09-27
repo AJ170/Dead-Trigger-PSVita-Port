@@ -5,8 +5,6 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 		_ScrollingSpeed ("xy - Layer0, zw - Layer1", Vector) = (0,0.05,0,0.01)
 		_Color ("Color", Color) = (0,0,0,0)
 		_Params ("x = refraction strength, y = Layer 0 tiling, z = Layer 1 tiling", Vector) = (0.01,1.5,2,0)
-		// +1 or -1, set per platform by MFRefractionEffects. See the vertex shader.
-		_FlipY ("Clip Y Sign", Float) = 1
 	}
 	SubShader {
 		Pass {
@@ -24,7 +22,6 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 
 			float4 _Params;
 			float4 _Color;
-			float _FlipY;
 			sampler2D _MainTex;
 
 			struct appdata_t
@@ -46,19 +43,19 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 				v2f o;
 				// Lens normal from the local coords -> refraction direction.
 				float3 norm = -normalize(float3(v.uv.xy, 0.25));
-				// Clip space is emitted directly rather than via the projection matrix,
-				// so the Y convention has to be supplied: _FlipY is +1 on D3D-style
-				// targets and -1 where the convention is inverted.
-				o.pos = float4(v.vertex.x, -(v.vertex.y) * _FlipY, 0.0, 1.0);
+				// NO platform Y flip here, unlike ScreenDropsSheen. This path is drawn
+				// by MFRefractionEffects with Graphics.DrawMeshNow into a RenderTexture,
+				// not by a MeshRenderer into the camera's buffer, and Unity already
+				// handles the render-target flip for that case - so the hardcoded
+				// negation below is correct on every platform including the Vita.
+				// Applying _FlipY here inverted the image sampled inside each drop.
+				o.pos = float4(v.vertex.x, -(v.vertex.y), 0.0, 1.0);
 				// Screen position of this vertex, plus the refraction offset (scaled by
 				// intensity so fading drops distort less).
 				float2 scr = ((v.vertex.xy * 0.5) + 0.5) + (0.5 / _ScreenParams.xy);
 				scr += norm.xy * (_Params.x * v.vertex.z);
-				// The sampled row has to mirror along with the geometry, or the drop
-				// magnifies a different part of the screen than it sits on.
-				// _FlipY = +1 gives (1 - scr.y); _FlipY = -1 gives scr.y.
-				o.uv = float2(scr.x, 0.5 + _FlipY * (0.5 - scr.y));
-				o.local = float2(v.uv.x, v.uv.y * _FlipY);
+				o.uv = float2(scr.x, 1.0 - scr.y);
+				o.local = v.uv.xy;
 				o.intensity = v.vertex.z;
 				return o;
 			}

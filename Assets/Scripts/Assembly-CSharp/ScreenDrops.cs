@@ -174,13 +174,18 @@ public class ScreenDrops : MonoBehaviour
 		}
 	}
 
-	// Both droplet shaders write clip space by hand instead of going through the
-	// projection matrix, so they cannot infer the platform's clip-space Y convention -
-	// it has to be handed to them. The editor (D3D11) wants the built-in negation;
-	// the Vita's GXM backend uses the opposite convention, which mirrored the quads
-	// vertically and made the drops appear to fall upwards.
+	// The sheen shader writes clip space by hand instead of going through the
+	// projection matrix, so it cannot infer the platform's clip-space Y convention -
+	// it has to be handed to it. The editor (D3D11) wants the built-in negation;
+	// the Vita's GXM backend uses the opposite convention, which flipped the Y axis
+	// and made the drops appear to fall upwards.
 	//
-	// If the drops ever rise on a platform, this is the single value to invert.
+	// This applies ONLY to the sheen path, which a MeshRenderer draws into the
+	// camera's buffer. The Ultra refraction path is drawn with Graphics.DrawMeshNow
+	// into a RenderTexture, where Unity already handles the flip - applying this
+	// there inverted the image refracted inside each drop.
+	//
+	// If the sheen drops ever rise on a platform, this is the single value to invert.
 	public static float ClipYSign
 	{
 		get

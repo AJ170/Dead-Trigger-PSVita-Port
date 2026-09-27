@@ -85,9 +85,11 @@ Shader "MADFINGER/FX/ScreenDropsSheen" {
 				// carries the platform's clip-space Y convention - with it inverted the
 				// whole quad mirrors vertically, which makes drops appear to rise.
 				o.pos = float4(v.vertex.x, -(v.vertex.y) * _FlipY, 0.0, 1.0);
-				// The local coords must mirror with the quad, or the teardrop's taper
-				// would end up pointing the wrong way on the flipped platform.
-				o.local = float2(v.uv.x, v.uv.y * _FlipY);
+				// The local coords are NOT flipped. _FlipY only changes which way the
+				// Y axis runs, it does not mirror the quad about its own centre - the
+				// drop keeps its orientation, so the taper stays attached to the same
+				// end of it. Flipping these as well turns the teardrop upside down.
+				o.local = v.uv.xy;
 				o.intensity = v.vertex.z;
 				return o;
 			}

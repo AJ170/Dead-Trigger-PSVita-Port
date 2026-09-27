@@ -67914,9 +67914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5e4b3cb042aefb8354209e98121809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinValue: 45
+  m_MinValue: 35
   m_MaxValue: 90
-  m_InitValue: 55
+  m_InitValue: 50
   m_BarSprite: {fileID: 1604836107}
   m_TouchableAreaWidthScale: 1
   m_TouchableAreaHeightScale: 1.5

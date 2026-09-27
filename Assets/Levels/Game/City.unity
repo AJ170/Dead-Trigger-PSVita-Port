@@ -86983,7 +86983,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -87007,7 +87007,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &5465
 AudioSource:
   m_ObjectHideFlags: 0
@@ -87063,7 +87063,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -87087,7 +87087,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &5466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -87143,7 +87143,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -87167,7 +87167,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &5467
 AudioSource:
   m_ObjectHideFlags: 0
@@ -206068,9 +206068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5e4b3cb042aefb8354209e98121809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinValue: 45
+  m_MinValue: 35
   m_MaxValue: 90
-  m_InitValue: 55
+  m_InitValue: 50
   m_BarSprite: {fileID: 1268764377}
   m_TouchableAreaWidthScale: 1
   m_TouchableAreaHeightScale: 1.5
@@ -206737,7 +206737,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: v 0.5.44
+  m_text: v 0.5.46
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}

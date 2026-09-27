@@ -76,9 +76,9 @@ public class GuiOptions
 
 	public static bool showMogaHelp = true;
 
-	public static float DefaultFov = 55f;
+	public static float DefaultFov = 50f;
 
-	public static float MinFov = 45f;
+	public static float MinFov = 35f;
 
 	public static float MaxFov = 90f;
 
