@@ -56,6 +56,10 @@ public class GuiOptions
 	// halving the frame rate to 30 on a 60Hz display for a steadier frame time.
 	public static bool vsync30 = false;
 
+	// When off, HudCrosshair keeps the crosshair scaled to zero. Uses the same
+	// mechanism the melee/iron-sight hide already uses, so it re-asserts every frame.
+	public static bool crosshair = true;
+
 	public static float musicVolume = 1f;
 
 	public static bool subtitles = true;
@@ -99,6 +103,8 @@ public class GuiOptions
 	private static bool DefaultMusicOn = true;
 
 	private static bool DefaultVsync30 = false;
+
+	private static bool DefaultCrosshair = true;
 
 	public static bool leftHandControlsNeedUpdate = false;
 
@@ -196,6 +202,7 @@ public class GuiOptions
 		SetNewLeftHandAiming(DefaultLeftHandAiming);
 		musicOn = DefaultMusicOn;
 		vsync30 = DefaultVsync30;
+		crosshair = DefaultCrosshair;
 		ApplyVSync();
 		graphicDetail = GetDefaultGraphics();
 		showMogaHelp = true;
@@ -273,6 +280,7 @@ public class GuiOptions
 		PlayerPrefs.SetInt("OptionsGraphicDetail", graphicDetail);
 		PlayerPrefs.SetInt("OptionsMusicOn", musicOn ? 1 : 0);
 		PlayerPrefs.SetInt("OptionsVsync30", vsync30 ? 1 : 0);
+		PlayerPrefs.SetInt("OptionsCrosshair", crosshair ? 1 : 0);
 		PlayerPrefs.SetInt("OptionsShowMogaHelp", showMogaHelp ? 1 : 0);
 		PlayerPrefs.SetInt("OptionsLeftHandControlsNeedUpdate", leftHandControlsNeedUpdate ? 1 : 0);
 	}
@@ -308,6 +316,7 @@ public class GuiOptions
 		graphicDetail = PlayerPrefs.GetInt("OptionsGraphicDetail", GetDefaultGraphics());
 		musicOn = PlayerPrefs.GetInt("OptionsMusicOn", DefaultMusicOn ? 1 : 0) != 0;
 		vsync30 = PlayerPrefs.GetInt("OptionsVsync30", DefaultVsync30 ? 1 : 0) != 0;
+		crosshair = PlayerPrefs.GetInt("OptionsCrosshair", DefaultCrosshair ? 1 : 0) != 0;
 		ApplyVSync();
 		if ((bool)MusicManager.Instance)
 		{

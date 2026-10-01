@@ -132,12 +132,21 @@ Shader "MADFINGER/Self-Illumin/Diffuse LightProbe"
 				// Evaluate spherical harmonics using world normal
 				float3 lightProbeLight = EvaluateSphericalHarmonics(input.worldNormal);
 
-				// Apply light probe to base color
-				baseColor.rgb *= lightProbeLight;
-
-				// ===== EMISSION & POST-PROCESS TINT =====
-				// Apply emission/lightmapper multiplier
-				baseColor.rgb *= _EmissionLM;
+				// ===== EMISSION + PROBE LIGHT =====
+				// These two are ADDED, not chained. The _SH* uniforms are custom names
+				// (Unity fills unity_SH*, not these), so they are only ever written by
+				// LightProbeSamplerDT - which lives on zombies and turrets, never on the
+				// static level light fixtures this shader is used by. On those the SH
+				// terms stay at zero, and the old "baseColor *= lightProbeLight" forced
+				// the whole surface to black, with _EmissionLM then scaling that zero.
+				//
+				// Splitting them also matches what a Self-Illumin shader should do: the
+				// emissive term glows regardless of the ambient light reaching it, so a
+				// fixture in an unlit corner stays bright, and probe light adds on top
+				// wherever a sampler is actually present.
+				half3 emissive = baseColor.rgb * _EmissionLM;
+				half3 lit = baseColor.rgb * lightProbeLight;
+				baseColor.rgb = emissive + lit;
 
 				// Apply screen tint (post-process color correction)
 				baseColor.rgb += _ScreenTint.rgb;

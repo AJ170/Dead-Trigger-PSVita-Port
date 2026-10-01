@@ -81,7 +81,9 @@ public class HudCrosshair : HudComponent
 	{
 		if (IsVisible())
 		{
-			if (Player.Instance != null && Player.Instance.Owner.WeaponComponent.CurrentWeapon != 0 && (Player.Instance.Owner.WeaponComponent.GetCurrentWeapon().WeaponType == E_WeaponType.Melee || (!Player.Instance.Owner.WeaponComponent.GetCurrentWeapon().IronSightCrosshair() && Player.Instance.Owner.BlackBoard.Desires.WeaponIronSight)))
+			// The option rides the same zero-scale hide the melee and iron-sight cases
+			// already use. Re-asserted every frame, so nothing else can turn it back on.
+			if (!GuiOptions.crosshair || (Player.Instance != null && Player.Instance.Owner.WeaponComponent.CurrentWeapon != 0 && (Player.Instance.Owner.WeaponComponent.GetCurrentWeapon().WeaponType == E_WeaponType.Melee || (!Player.Instance.Owner.WeaponComponent.GetCurrentWeapon().IronSightCrosshair() && Player.Instance.Owner.BlackBoard.Desires.WeaponIronSight))))
 			{
 				CrosshairParent.transform.localScale = Vector3.zero;
 			}

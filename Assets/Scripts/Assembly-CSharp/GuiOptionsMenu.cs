@@ -41,6 +41,8 @@ public class GuiOptionsMenu : MonoBehaviour
 
 	private static string s_SwitchVsyncName = "VSync_Switch";
 
+	private static string s_SwitchCrosshairName = "Crosshair_Switch";
+
 	private static string s_CustomiseButtonName = "CustomiseButton";
 
 	private static string s_GamepadButtonName = "GamepadButton";
@@ -72,6 +74,8 @@ public class GuiOptionsMenu : MonoBehaviour
 	private GUIBase_Slider m_SliderAimFov;
 
 	private GUIBase_Switch m_SwitchVsync;
+
+	private GUIBase_Switch m_SwitchCrosshair;
 
 	private GUIBase_Enum m_GraphicEnum;
 
@@ -183,6 +187,17 @@ public class GuiOptionsMenu : MonoBehaviour
 		{
 			m_SwitchVsync.SetValue(GuiOptions.vsync30);
 		}
+		// Crosshair reads as a controls option but is arguably a HUD one, so probe
+		// both pages the same way VSync does and bind wherever the widget was placed.
+		m_SwitchCrosshair = RegisterOptionalSwitch(m_LayoutOptControls, s_SwitchCrosshairName, OnCrosshairChange);
+		if (m_SwitchCrosshair == null)
+		{
+			m_SwitchCrosshair = RegisterOptionalSwitch(m_LayoutOptSounds, s_SwitchCrosshairName, OnCrosshairChange);
+		}
+		if (m_SwitchCrosshair != null)
+		{
+			m_SwitchCrosshair.SetValue(GuiOptions.crosshair);
+		}
 		m_Graphic_Pivot = MFGuiManager.Instance.GetPivot("GraphicDetails_Pivot");
 		m_GraphicEnum = GuiBaseUtils.PrepareEnum(m_LayoutOptSounds, "GraphDetails_Enum", OnGraphicChanged);
 		m_GraphicEnum.SetValue(GuiOptions.graphicDetail);
@@ -238,6 +253,10 @@ public class GuiOptionsMenu : MonoBehaviour
 		if (m_SwitchVsync != null)
 		{
 			m_SwitchVsync.SetValue(GuiOptions.vsync30);
+		}
+		if (m_SwitchCrosshair != null)
+		{
+			m_SwitchCrosshair.SetValue(GuiOptions.crosshair);
 		}
 		if (m_MusicOn_Switch != null)
 		{
@@ -383,6 +402,12 @@ public class GuiOptionsMenu : MonoBehaviour
 			sw.RegisterDelegate(d);
 		}
 		return sw;
+	}
+
+	private void OnCrosshairChange(bool switchValue)
+	{
+		// No explicit apply needed - HudCrosshair.LateUpdate reads this every frame.
+		GuiOptions.crosshair = switchValue;
 	}
 
 	private void OnVsyncChange(bool switchValue)
