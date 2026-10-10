@@ -2,13 +2,13 @@
 
 <livearea style="ad0" format-ver="01.00" content-rev="1"> 
 	<livearea-background>
-		<image>bg.png</image> 
+		<image>bg0.png</image> 
 	</livearea-background>
 
 	<frame id='frame1' multi='o' autoflip='1' >  
 		<liveitem> 
 			<target>psla:eboot</target>
-			<image y="35" width="560" height="316">startup.png</image>  
+			<image y="160" width="430" height="243">default_gate.png</image>  
 		</liveitem>
 	</frame>
 

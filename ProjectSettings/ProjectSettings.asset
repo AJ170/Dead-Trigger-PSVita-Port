@@ -506,8 +506,8 @@ PlayerSettings:
   psp2NPCommsSig: 
   psp2ParamSfxPath: 
   psp2ManualPath: 
-  psp2LiveAreaGatePath: Assets/livearea/contents/startup.png
-  psp2LiveAreaBackroundPath: Assets/livearea/contents/bg.png
+  psp2LiveAreaGatePath: Assets/livearea/contents/default_gate.png
+  psp2LiveAreaBackroundPath: Assets/livearea/contents/bg0.png
   psp2LiveAreaPath: 
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
