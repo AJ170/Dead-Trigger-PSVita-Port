@@ -1,6 +1,8 @@
 Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "" {}
+		_BumpMap ("Bump Map", 2D) = "" {}
+		_BumpStrength("Normal Strength", Range(0, 2)) = 1.0
 		_EnvMap ("2D EnvMap", 2D) = "black" {}
 		_ScrollingSpeed ("xy - Layer0, zw - Layer1", Vector) = (0,0.05,0,0.01)
 		_Color ("Color", Color) = (0,0,0,0)
@@ -23,6 +25,9 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 			float4 _Params;
 			float4 _Color;
 			sampler2D _MainTex;
+			sampler2D _BumpMap;
+			float4 _BumpMap_ST;
+			float _BumpStrength;
 
 			struct appdata_t
 			{
@@ -50,13 +55,21 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 				// negation below is correct on every platform including the Vita.
 				// Applying _FlipY here inverted the image sampled inside each drop.
 				o.pos = float4(v.vertex.x, -(v.vertex.y), 0.0, 1.0);
+
+				o.uv = ComputeScreenPos(o.pos);
+
+				o.local = v.uv.xy  * 0.5 + 0.5;
+				o.intensity = v.vertex.z;
+
 				// Screen position of this vertex, plus the refraction offset (scaled by
 				// intensity so fading drops distort less).
+				/*
 				float2 scr = ((v.vertex.xy * 0.5) + 0.5) + (0.5 / _ScreenParams.xy);
 				scr += norm.xy * (_Params.x * v.vertex.z);
 				o.uv = float2(scr.x, 1.0 - scr.y);
 				o.local = v.uv.xy;
 				o.intensity = v.vertex.z;
+				*/
 				return o;
 			}
 
@@ -66,11 +79,23 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 				// (the tail trails upward as the drop slides down the screen). local.y = +1
 				// is the top of the drop on screen, so we pinch the horizontal width there.
 				// Lower pinch factor = blunter, softer tip (0.85 was a needle point).
+				/*
 				float taper = 1.0 - 0.35 * saturate(i.local.y);
 				float r = length(float2(i.local.x / max(taper, 0.05), i.local.y));
 				float a = (1.0 - smoothstep(0.6, 1.0, r)) * saturate(i.intensity);
-				float3 col = tex2D(_MainTex, i.uv).rgb + (_Color.rgb * i.intensity);
-				return half4(col, a);
+				*/
+
+				//float2 normalUV = i.local * 0.5 + 0.5;
+				float4 normalSample = tex2D(_BumpMap, i.local.xy);
+
+				// Unpack normal and apply strength
+				float3 n = UnpackNormal(normalSample);
+				n.xy *= _BumpStrength;
+				n = normalize(n);
+
+				float3 col = tex2D(_MainTex, i.uv + n.xy).rgb + (_Color.rgb * i.intensity);
+				//return normalSample;
+				return half4(col, normalSample.a);
 			}
 			ENDCG
 		}
