@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 2b9e853609a9921489fb12a4253ba522, type: 3}
+        m_Texture: {fileID: 2800000, guid: cf8f685518bd6fb44be487cefc315f68, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EnvMap:
@@ -31,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BumpStrength: 0.2
+    - _BumpStrength: 0.39
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
     - _Params: {r: 0.3, g: -1, b: -1, a: 0}
