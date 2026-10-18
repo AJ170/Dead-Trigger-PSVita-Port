@@ -111,6 +111,7 @@ Shader "Vita/Environment/Cube Env Map - LightProbe SH" {
                     float3 viewDir = worldPos - _WorldSpaceCameraPos;
                     float3 refl = reflect(viewDir,
                         float3(worldNormal.x, worldNormal.y, worldNormal.z));
+                    refl = normalize(refl);
                     o.cubeUV = half3(-refl.x, refl.y, refl.z);
 
                     // SH lighting with scale and vertex colour tint

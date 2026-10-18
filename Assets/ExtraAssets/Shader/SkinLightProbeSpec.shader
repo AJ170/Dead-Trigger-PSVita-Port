@@ -127,6 +127,7 @@
                     // === SPECULAR FROM CUBEMAP ===
 
                     half3 reflectionVector = reflect(-worldViewDir, worldNormal);
+                    reflectionVector = normalize(reflectionVector);
                     half roughnessLOD = _Roughness * 7.0;
                     half4 cubeReflection = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
 

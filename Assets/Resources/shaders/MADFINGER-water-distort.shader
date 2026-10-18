@@ -33,6 +33,9 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 			{
 				float4 vertex : POSITION;   // xy in [-1,1] screen space; z = intensity (0..1)
 				float2 uv : TEXCOORD0;      // -1..1 local drop coords (0 = drop centre)
+				float2 tileOrigin : TEXCOORD2; // uv3: tile origin in the normal map (0..1)
+				float2 tileSize : TEXCOORD3;   // uv4: tile size in the normal map (0..1)
+				fixed4 color  : COLOR;
 			};
 
 			struct v2f
@@ -41,6 +44,8 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 				float2 uv : TEXCOORD0;       // screen sample coords (with refraction offset)
 				float2 local : TEXCOORD1;    // local drop coords, for the round mask
 				float intensity : TEXCOORD2;
+				float2 bumpUV : TEXCOORD3;  // Normal map UV, mapped into this drop's tile
+				fixed4 color : COLOR;
 			};
 
 			v2f vert(appdata_t v)
@@ -48,12 +53,7 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 				v2f o;
 				// Lens normal from the local coords -> refraction direction.
 				float3 norm = -normalize(float3(v.uv.xy, 0.25));
-				// NO platform Y flip here, unlike ScreenDropsSheen. This path is drawn
-				// by MFRefractionEffects with Graphics.DrawMeshNow into a RenderTexture,
-				// not by a MeshRenderer into the camera's buffer, and Unity already
-				// handles the render-target flip for that case - so the hardcoded
-				// negation below is correct on every platform including the Vita.
-				// Applying _FlipY here inverted the image sampled inside each drop.
+
 				o.pos = float4(v.vertex.x, -(v.vertex.y), 0.0, 1.0);
 
 				o.uv = ComputeScreenPos(o.pos);
@@ -61,39 +61,26 @@ Shader "MADFINGER/PostFX/WaterScreenRefraction" {
 				o.local = v.uv.xy  * 0.5 + 0.5;
 				o.intensity = v.vertex.z;
 
-				// Screen position of this vertex, plus the refraction offset (scaled by
-				// intensity so fading drops distort less).
-				/*
-				float2 scr = ((v.vertex.xy * 0.5) + 0.5) + (0.5 / _ScreenParams.xy);
-				scr += norm.xy * (_Params.x * v.vertex.z);
-				o.uv = float2(scr.x, 1.0 - scr.y);
-				o.local = v.uv.xy;
-				o.intensity = v.vertex.z;
-				*/
+				float2 tileSize =  v.tileSize;// (v.tileSize.x + v.tileSize.y) > 0.0 ? v.tileSize : float2(1.0, 1.0);
+				float2 tileOrigin =  v.tileOrigin; //(v.tileSize.x + v.tileSize.y) > 0.0 ? v.tileOrigin : float2(0.0, 0.0);
+				o.bumpUV = tileOrigin + (v.uv.xy * 0.5 + 0.5) * tileSize;
+
+				o.color = v.color;
+
 				return o;
 			}
 
 			half4 frag(v2f i) : COLOR
 			{
-				// Teardrop mask: rounded at the bottom, tapering to a point at the top
-				// (the tail trails upward as the drop slides down the screen). local.y = +1
-				// is the top of the drop on screen, so we pinch the horizontal width there.
-				// Lower pinch factor = blunter, softer tip (0.85 was a needle point).
-				/*
-				float taper = 1.0 - 0.35 * saturate(i.local.y);
-				float r = length(float2(i.local.x / max(taper, 0.05), i.local.y));
-				float a = (1.0 - smoothstep(0.6, 1.0, r)) * saturate(i.intensity);
-				*/
-
 				//float2 normalUV = i.local * 0.5 + 0.5;
-				float4 normalSample = tex2D(_BumpMap, i.local.xy);
+				float4 normalSample = tex2D(_BumpMap, i.bumpUV);
 
 				// Unpack normal and apply strength
 				float3 n = UnpackNormal(normalSample);
 				n.xy *= _BumpStrength;
 				n = normalize(n);
 
-				float3 col = tex2D(_MainTex, i.uv + n.xy).rgb + (_Color.rgb * i.intensity);
+				float3 col = tex2D(_MainTex, i.uv + n.xy * i.color.r).rgb + (_Color.rgb * i.intensity);
 				//return normalSample;
 				return half4(col, normalSample.a);
 			}

@@ -136,6 +136,7 @@ Shader "Vita/Particles/Blood Smear - Multiply Cubemap" {
                     // Reflection from correctly transformed world normal
                     half3 viewDir = normalize(i.viewDir);
                     half3 reflVec = reflect(-viewDir, worldNormal);
+                    reflVec = normalize(reflVec);
 
                     // Negate X for Unity left-handed to cubemap convention
                     reflVec.x = -reflVec.x;

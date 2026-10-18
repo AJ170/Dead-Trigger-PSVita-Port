@@ -60,6 +60,9 @@ Shader "MADFINGER/FX/ScreenDropsSheen Normal-Map Driven"
 			{
 				float4 vertex : POSITION;   // xy = screen NDC, z = intensity (0..1)
 				float2 uv : TEXCOORD0;      // -1..1 local drop coords
+				float2 tileOrigin : TEXCOORD2; // uv3: tile origin in the normal map (0..1)
+				float2 tileSize : TEXCOORD3;   // uv4: tile size in the normal map (0..1)
+				fixed4 color  : COLOR;
 			};
 
 			struct v2f
@@ -68,6 +71,8 @@ Shader "MADFINGER/FX/ScreenDropsSheen Normal-Map Driven"
 				float2 local : TEXCOORD0;   // Local drop coordinates for normal map UV
 				float3 viewDir : TEXCOORD1; // View direction (always toward camera)
 				float intensity : TEXCOORD2;
+				float2 bumpUV : TEXCOORD3;  // Normal map UV, mapped into this drop's tile
+				fixed4 color : COLOR;
 			};
 
 			v2f vert(appdata_t v)
@@ -88,6 +93,13 @@ Shader "MADFINGER/FX/ScreenDropsSheen Normal-Map Driven"
 
 				o.intensity = v.vertex.z;
 
+				// Map the 0..1 drop coordinates into this drop's tile. If no tile was supplied
+				// (uv3/uv4 empty), fall back to the full texture.
+				float2 tileSize =  v.tileSize;// (v.tileSize.x + v.tileSize.y) > 0.0 ? v.tileSize : float2(1.0, 1.0);
+				float2 tileOrigin =  v.tileOrigin; //(v.tileSize.x + v.tileSize.y) > 0.0 ? v.tileOrigin : float2(0.0, 0.0);
+				o.bumpUV = tileOrigin + (v.uv.xy * 0.5 + 0.5) * tileSize;
+				o.color = v.color;
+
 				return o;
 			}
 
@@ -96,12 +108,12 @@ Shader "MADFINGER/FX/ScreenDropsSheen Normal-Map Driven"
 				// ===== NORMAL MAP SAMPLING =====
 				// The normal map fully drives the surface appearance
 				// Local coords are -1..1, remap to 0..1 for texture fetch
-				float2 normalUV = i.local * 0.5 + 0.5;
+				float2 normalUV = i.bumpUV;
 				float4 normalSample = tex2D(_BumpMap, normalUV);
 
 				// Unpack normal and apply strength
 				float3 n = UnpackNormal(normalSample);
-				n.xy *= _BumpStrength;
+				n.xy *= _BumpStrength * i.color;
 				n = normalize(n);
 
 				// ===== ALPHA FROM NORMAL MAP =====
@@ -128,10 +140,11 @@ Shader "MADFINGER/FX/ScreenDropsSheen Normal-Map Driven"
 				// ===== FINAL COLOR =====
 				// Premultiplied: body scaled by alpha, highlights added on top
 				fixed3 body = _Color.rgb * a;
+				//return i.color;
 
 				return fixed4(specCube * normalSample.a * fade);
 
-				return fixed4(body, a);
+				//return fixed4(body, a);
 				//fixed3 add = (_SpecColor2.rgb) * fade * mapAlpha;
 
 				//return fixed4(body + add, a);

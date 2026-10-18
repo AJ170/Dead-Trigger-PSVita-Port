@@ -182,6 +182,7 @@ Shader "Vita/Character/SH Diffuse Cubemap Specular" {
                     // === CUBEMAP SPECULAR — bump normal for surface detail ===
                     half3 reflVec = reflect(-worldViewDir, worldNormal);
                     reflVec.x = -reflVec.x;
+                    reflVec = normalize(reflVec);
                     //Just use our cube as a specular as opposed to reflection
                     half3 cubeColor = texCUBE(_CubeTex, worldNormal).rgb;
 

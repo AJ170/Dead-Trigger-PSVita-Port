@@ -208,6 +208,7 @@ Shader "Vita/Character/BRDFLit Backlight - Per Pixel SH" {
                 // === CUBEMAP REFLECTION ===
                 half3 worldViewDir     = normalize(i.worldViewDir);
                 half3 reflectionVector = reflect(-worldViewDir, worldNormal);
+                reflectionVector = normalize(reflectionVector);
                 half  roughnessLOD     = _Roughness * 7.0
                     * clamp(1.0 - diffuseAlbedo.a, 0.0, 1.0);
                 half3 cubeColor = texCUBElod(

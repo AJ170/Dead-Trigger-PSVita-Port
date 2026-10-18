@@ -119,6 +119,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap + Normal" {
 
                     // Calculate reflection vector using perturbed normal from normal map
                     half3 reflectionVector = reflect(-worldViewDir, perturbedNormal);
+                    reflectionVector = normalize(reflectionVector);
 
                     // Sample cubemap with roughness LOD
                     half roughnessLOD = _Roughness * 7.0;

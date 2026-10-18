@@ -111,8 +111,9 @@
                     // Negate X to match Unity left-handed convention
                     float3 viewDir = worldPos - _WorldSpaceCameraPos;
                     float3 refl = reflect(viewDir,
-                        float3(worldNormal.x, worldNormal.y, worldNormal.z));
+                     float3(worldNormal.x, worldNormal.y, worldNormal.z));
                     o.cubeUV = half3(-refl.x, refl.y, refl.z);
+                    refl = normalize(refl);
 
                     // SH lighting with scale and vertex colour tint
                     half3 sh = EvaluateCustomSH(worldNormal);

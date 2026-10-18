@@ -132,7 +132,7 @@ Shader "Vita/Environment/Sparkling Snow" {
 
                     // Calculate reflection vector using glitter normal
                     half3 reflectionVector = reflect(-worldViewDir, glitterNormal);
-
+                    reflectionVector = normalize(reflectionVector);
                     // Sample cubemap with roughness LOD
                     half roughnessLOD = _Roughness * 7.0;
                     half4 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));

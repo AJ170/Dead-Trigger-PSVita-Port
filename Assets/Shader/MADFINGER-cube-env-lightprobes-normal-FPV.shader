@@ -184,6 +184,7 @@
                     half3 lighting = max(sh, _Ambient.rgb);
                     // === CUBEMAP SPECULAR — bump normal for surface detail ===
                     half3 reflVec = reflect(-worldViewDir, worldNormal);
+                    reflVec = normalize(reflVec);
                     reflVec.x = -reflVec.x;
 
                     half3 cubeColor = texCUBE(_CubeTex, reflVec).rgb;

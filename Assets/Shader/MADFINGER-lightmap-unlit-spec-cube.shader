@@ -96,13 +96,14 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // Calculate reflection vector
                     half3 reflectionVector = reflect(-worldViewDir, worldNormal);
+                    reflectionVector = normalize(reflectionVector);
 
                     // Sample cubemap with roughness LOD
                     half roughnessLOD = _Roughness * 7.0;
                     half4 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
-
+                    //half4 cubeColor = texCUBE(_SpecCubeTex, reflectionVector);
                     // Use alpha channel (gloss) as reflection strength
-                    // Combine with _SpecularStrength property
+                    // Combine with _SpecularStarength property
                     half reflectionAmount = baseColor.a * _SpecularStrength;
 
                     // Fresnel effect (cheaper approximation for mobile)

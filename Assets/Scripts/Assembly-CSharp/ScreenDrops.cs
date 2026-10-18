@@ -25,6 +25,9 @@ public class ScreenDrops : MonoBehaviour
 		public int m_Id;
 
 		public float m_VelY;
+
+		// Per-drop blend between m_DropColorA and m_DropColorB, picked once at spawn.
+		public float m_ColorT;
 	}
 
 	public static ScreenDrops Instance;
@@ -57,7 +60,16 @@ public class ScreenDrops : MonoBehaviour
 
 	protected uint m_NumSpawnedDrops;
 
-	public int m_DropsTexNumTiles = 2;
+	// Sliced normal map layout. Each drop is assigned one tile at spawn time and keeps it
+	// for its whole lifetime (the tile is stored in DecalInfo, never re-rolled).
+	public int m_DropsTexTilesX = 2;
+
+	public int m_DropsTexTilesY = 2;
+
+	// Each drop's vertex colour is a lerp between these two, chosen per drop at spawn.
+	Color m_DropColorA = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+	Color m_DropColorB = new Color(0.4f, 0.4f, 0.4f, 1.0f);
 
 	private List<DecalInfo> m_Decals = new List<DecalInfo>();
 
@@ -214,6 +226,11 @@ public class ScreenDrops : MonoBehaviour
 		Vector3[] array = new Vector3[num];
 		Vector2[] array2 = new Vector2[num];
 		Vector2[] array3 = new Vector2[num];
+		// uv3 = tile origin, uv4 = tile size, in the sliced normal map's UV space.
+		Vector2[] tileOrigins = new Vector2[num];
+		Vector2[] tileSizes = new Vector2[num];
+		// Vertex colour: lerp between the two drop colours, one value per drop.
+		Color[] colors = new Color[num];
 		int[] array4 = new int[num2 * 3];
 		int num3 = 0;
 		int num4 = 0;
@@ -236,6 +253,8 @@ public class ScreenDrops : MonoBehaviour
 			Vector2 dropPos = decal.m_Pos;
 			dropPos.y -= decal.m_VelY * dropElapsed;
 			Vector2 vector = dropPos - size * 0.5f;
+			Vector2 tileOrigin = decal.m_UVMin;
+			Vector2 tileSize = decal.m_UVMax - decal.m_UVMin;
 			float y = (decal.m_IsDrop ? 1 : 0);
 			float num7 = vector[0] + 0.5f * size[0];
 			float num8 = vector[1] + 0.5f * size[1];
@@ -279,6 +298,13 @@ public class ScreenDrops : MonoBehaviour
 			array3[num3].x = decal.m_Duration;
 			array3[num3].y = 0f;
 			num3++;
+			// The four vertices of this drop all share its tile.
+			for (int k = num3 - 4; k < num3; k++)
+			{
+				tileOrigins[k] = tileOrigin;
+				tileSizes[k] = tileSize;
+				colors[k] = Color.Lerp(m_DropColorA, m_DropColorB, decal.m_ColorT);
+			}
 		}
 		array[num3].x = -9999f;
 		array[num3].y = -9999f;
@@ -292,6 +318,9 @@ public class ScreenDrops : MonoBehaviour
 		m_Mesh.vertices = array;
 		m_Mesh.uv = array2;
 		m_Mesh.uv2 = array3;
+		m_Mesh.uv3 = tileOrigins;
+		m_Mesh.uv4 = tileSizes;
+		m_Mesh.colors = colors;
 		m_Mesh.triangles = array4;
 		m_Mesh.RecalculateBounds();
 	}
@@ -333,7 +362,10 @@ public class ScreenDrops : MonoBehaviour
 	public void SpawnDrops(uint cnt)
 	{
 		float time = Time.timeSinceLevelLoad;
-		float num = 1f / (float)m_DropsTexNumTiles;
+		int tilesX = Mathf.Max(1, m_DropsTexTilesX);
+		int tilesY = Mathf.Max(1, m_DropsTexTilesY);
+		float tileW = 1f / (float)tilesX;
+		float tileH = 1f / (float)tilesY;
 		for (uint num2 = 0u; num2 < cnt; num2++)
 		{
 			if (m_NumSpawnedDrops >= m_MaxVisibleDrops)
@@ -349,12 +381,12 @@ public class ScreenDrops : MonoBehaviour
 			item.m_Size[1] = value * Random.Range(1.1f, 1.5f);
 			// Downward drift speed (NDC units/sec); bigger drops run faster.
 			item.m_VelY = Random.Range(0.14f, 0.3f) + value * 0.6f;
-			int num3 = Random.Range(0, m_DropsTexNumTiles);
-			int num4 = Random.Range(0, m_DropsTexNumTiles);
-			item.m_UVMin[0] = (float)num3 * num;
-			item.m_UVMin[1] = (float)num4 * num;
-			item.m_UVMax[0] = item.m_UVMin[0] + num;
-			item.m_UVMax[1] = item.m_UVMin[1] + num;
+			item.m_ColorT = Random.value;
+			// Pick this drop's tile once, here. It is stored in the drop and never changes.
+			int col = Random.Range(0, tilesX);
+			int row = Random.Range(0, tilesY);
+			item.m_UVMin = new Vector2(col * tileW, row * tileH);
+			item.m_UVMax = new Vector2(item.m_UVMin.x + tileW, item.m_UVMin.y + tileH);
 			item.m_Rot = 0f;
 			item.m_SpawnTime = time;
 			item.m_Duration = m_DropsDuration + Random.Range(0f, m_DropsDuration * m_DropsDurationVariation);
