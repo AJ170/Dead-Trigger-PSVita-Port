@@ -516,7 +516,7 @@ public class ComponentPlayer : MonoBehaviour
 			AudioClip wipeGobSound = WipeGobSound;
 			if (wipeGobSound != null)
 			{
-				Owner.SoundUniquePlay(wipeGobSound, wipeGobSound.length + 0.2f, "WipeGob");
+				//Owner.SoundUniquePlay(wipeGobSound, wipeGobSound.length + 0.2f, "WipeGob");
 			}
 		}
 	}
