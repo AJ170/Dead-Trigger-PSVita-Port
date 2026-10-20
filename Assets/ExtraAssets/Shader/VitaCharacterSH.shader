@@ -160,7 +160,7 @@ Shader "Vita/Character/SH Diffuse Cubemap Specular" {
                     worldNormal.z = dot(i.tSpace2, tangentNormal);
                     worldNormal = normalize(worldNormal);
 
-                    half3 worldViewDir = normalize(i.worldViewDir);
+                    half3 worldViewDir = (i.worldViewDir);
 
                     // === SH LIGHTING — per pixel using bump normal ===
                     // Instead of multiplying diffuse directly by the full SH colour

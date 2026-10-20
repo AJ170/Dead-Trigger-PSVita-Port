@@ -36,9 +36,9 @@ Material:
     - _InvFade: 0.632
     - _ReflectionPerturbance: 0
     - _ReflectionStrength: 3
-    - _WetGloss: 0.77
+    - _WetGloss: 0.895
     m_Colors:
-    - _Color: {r: 0.6691177, g: 0.6691177, b: 0.6691177, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularStrength: {r: 0, g: 1.3, b: 0, a: 0}
     - _TintColor: {r: 1, g: 1, b: 1, a: 0.5019608}

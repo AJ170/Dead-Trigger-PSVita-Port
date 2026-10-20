@@ -92,7 +92,7 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
 
                     // Normalize vectors
                     half3 worldNormal = normalize(i.worldNormal);
-                    half3 worldViewDir = normalize(i.worldViewDir);
+                    half3 worldViewDir = (i.worldViewDir);
 
                     // Reflection vector
                     half3 reflectionVector = reflect(-worldViewDir, worldNormal);

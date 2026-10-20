@@ -67,7 +67,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // World space view direction for reflection
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                    o.worldViewDir = _WorldSpaceCameraPos - worldPos;
+                    o.worldViewDir = (_WorldSpaceCameraPos - worldPos);
 
                     // Transfer fog coordinates
                     UNITY_TRANSFER_FOG(o, o.pos);
@@ -92,7 +92,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // Normalize interpolated values
                     half3 worldNormal = normalize(i.worldNormal);
-                    half3 worldViewDir = normalize(i.worldViewDir);
+                    half3 worldViewDir = (i.worldViewDir);
 
                     // Calculate reflection vector
                     half3 reflectionVector = reflect(-worldViewDir, worldNormal);
@@ -100,8 +100,8 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // Sample cubemap with roughness LOD
                     half roughnessLOD = _Roughness * 7.0;
-                    half4 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
-                    //half4 cubeColor = texCUBE(_SpecCubeTex, reflectionVector);
+                    //half4 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
+                    half4 cubeColor = texCUBE(_SpecCubeTex, reflectionVector);
                     // Use alpha channel (gloss) as reflection strength
                     // Combine with _SpecularStarength property
                     half reflectionAmount = baseColor.a * _SpecularStrength;

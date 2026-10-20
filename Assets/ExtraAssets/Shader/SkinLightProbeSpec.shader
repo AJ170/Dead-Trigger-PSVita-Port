@@ -84,7 +84,7 @@
                     o.tSpace2 = half3(worldTangent.z, worldBinormal.z, worldNormal.z);
 
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                    half3 worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
+                    half3 worldViewDir = (_WorldSpaceCameraPos - worldPos);
                     o.viewDirTS.x = dot(worldViewDir, worldTangent);
                     o.viewDirTS.y = dot(worldViewDir, worldBinormal);
                     o.viewDirTS.z = dot(worldViewDir, worldNormal);

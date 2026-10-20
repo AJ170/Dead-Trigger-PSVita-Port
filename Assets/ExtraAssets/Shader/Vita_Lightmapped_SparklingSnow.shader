@@ -128,7 +128,7 @@ Shader "Vita/Environment/Sparkling Snow" {
                     );
 
                     // === CUBEMAP REFLECTION ===
-                    half3 worldViewDir = normalize(i.worldViewDir);
+                    half3 worldViewDir = (i.worldViewDir);
 
                     // Calculate reflection vector using glitter normal
                     half3 reflectionVector = reflect(-worldViewDir, glitterNormal);

@@ -117,7 +117,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap + Normal + Glossy" {
                     // === CUBEMAP REFLECTION ===
 
                     // Normalize interpolated values
-                    half3 worldViewDir = normalize(i.worldViewDir);
+                    half3 worldViewDir = (i.worldViewDir);
 
                     // Calculate reflection vector using perturbed normal from normal map
                     half3 reflectionVector = reflect(-worldViewDir, perturbedNormal);

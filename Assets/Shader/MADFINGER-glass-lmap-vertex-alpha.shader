@@ -71,7 +71,7 @@ Shader "MADFINGER/Glass/Lightmap + Cube Env + Per Vertex Alpha (Optimized)" {
 
 				// Normalize interpolated world-space values
 				half3 worldNormal = normalize(i.worldNormal);
-				half3 worldViewDir = normalize(i.worldViewDir);
+				half3 worldViewDir = (i.worldViewDir);
 
 				// Calculate reflection vector
 				half3 reflectionVector = reflect(-worldViewDir, worldNormal);

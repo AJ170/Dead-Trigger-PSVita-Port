@@ -6,7 +6,7 @@ Shader "Vita/Particles/Blood Smear - Multiply Cubemap" {
 
         _BumpScale("Normal Scale", Range(0, 2)) = 1.0
         _BumpTile("Normal Tiling", Range(0.1, 8)) = 1.0
-        _ReflectionStrength("Reflection Strength", Range(0, 3)) = 0.4
+        _ReflectionStrength("Reflection Strength", Range(0, 5)) = 0.4
         _WetGloss("Wet Gloss (sharpens reflection)", Range(0, 1)) = 0.7
         _Color("Tint Color", Color) = (1, 1, 1, 1)
     }
@@ -81,8 +81,7 @@ Shader "Vita/Particles/Blood Smear - Multiply Cubemap" {
                     // World space normal and view direction
                     half3 worldNormal = UnityObjectToWorldNormal(v.normal);
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                    half3 worldViewDir = normalize(
-                        _WorldSpaceCameraPos - worldPos);
+                    half3 worldViewDir = (_WorldSpaceCameraPos - worldPos);
 
                     // Derive tangent frame from surface normal and view dir
                     // Particles carry no tangent data so we construct one
