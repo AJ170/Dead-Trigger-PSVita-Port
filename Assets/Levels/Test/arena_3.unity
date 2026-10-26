@@ -26255,7 +26255,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000000, guid: 937d8e3c023f37d4399573ae883efef5,
+  m_LightingDataAsset: {fileID: 112000000, guid: 65b2c07e5938e56489e59db39e0bbfc7,
     type: 2}
   m_UseShadowmask: 0
 --- !u!191 &1742
@@ -39165,6 +39165,51 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &552686963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 552686965}
+  - component: {fileID: 552686964}
+  m_Layer: 0
+  m_Name: Recovered Light Probes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!220 &552686964
+LightProbeGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 552686963}
+  m_Enabled: 1
+  m_SourcePositions:
+  - {x: 28.95287, y: 0.40521526, z: 46.721367}
+  - {x: 28.95287, y: 1.9283458, z: 46.721367}
+  - {x: 28.95287, y: 1.9283458, z: 31.542528}
+  - {x: 28.95287, y: 0.40521526, z: 31.542528}
+  - {x: 45.727448, y: 0.40521526, z: 46.721367}
+  - {x: 45.727448, y: 1.9283458, z: 46.721367}
+  - {x: 45.727448, y: 1.9283458, z: 31.542528}
+  - {x: 45.727448, y: 0.40521526, z: 31.542528}
+--- !u!4 &552686965
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 552686963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &552896624
 GameObject:
   m_ObjectHideFlags: 0

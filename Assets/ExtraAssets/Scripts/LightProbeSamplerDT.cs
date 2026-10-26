@@ -60,6 +60,9 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 	void Start()
 	{
+		//This has now been removed due to lightprobes getting re-instated in the game :)
+		return;
+
 		m_SquareUpdateDistance = updateDistance * updateDistance;
 		m_PropertyBlock = new MaterialPropertyBlock();
 
@@ -84,6 +87,7 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 	void OnEnable()
 	{
+		return;
 		if (!Application.isPlaying)
 		{
 			ForceSample();
@@ -94,6 +98,7 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 	void OnDestroy()
 	{
+		return;
 		m_InstancedMaterials.Clear();
 		m_ProcessedRenderers.Clear();
 		m_SharedMaterialsCache = null;
@@ -149,6 +154,7 @@ public class LightProbeSamplerDT : MonoBehaviour
 
 	void Update()
 	{
+		return;
 		if (populateChildRenderers)
 		{
 			CollectChildRenderers(transform);
