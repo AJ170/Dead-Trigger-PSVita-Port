@@ -119,7 +119,7 @@ Shader "MADFINGER/Characters/BRDFLit (Supports Backlight) - custom glossingess m
                 return o;
             }
 
-            float4 frag(v2f i) : SV_TARGET
+            float4 frag(v2f i) : SV_Target
             {
                 float4 baseTex = tex2D(_MainTex, i.uv);
 

@@ -41,7 +41,7 @@ Material:
     - _TimeOffs: 0
     m_Colors:
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
-    - _FXColor: {r: 0.41044778, g: 0.26693454, b: 0, a: 1}
+    - _FXColor: {r: 0.8014706, g: 0.52123606, b: 0, a: 1}
     - _SHAb: {r: 0, g: 0, b: 0, a: 0}
     - _SHAg: {r: 0, g: 0, b: 0, a: 0}
     - _SHAr: {r: 0, g: 0, b: 0, a: 0}
