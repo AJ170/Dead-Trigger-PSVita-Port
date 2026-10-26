@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Zombie01_MatFX
-  m_Shader: {fileID: 4800000, guid: edadca6bf5d74ee4f8ce386f5e18d6d6, type: 3}
+  m_Shader: {fileID: 4800000, guid: 095142326ba98b147bf55aec075bfc29, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -42,3 +42,10 @@ Material:
     m_Colors:
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
     - _FXColor: {r: 0.41044778, g: 0.26693454, b: 0, a: 1}
+    - _SHAb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHC: {r: 0, g: 0, b: 0, a: 0}

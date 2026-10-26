@@ -35,6 +35,8 @@ Shader "Vita/Environment/Cube Env Map - LightProbe SH" {
 			half   _SHLightingScale;
 			half   _EnvStrength;
 
+			uniform vector _ScreenTint;
+
 			struct appdata_t
 			{
 				float4 vertex : POSITION;
@@ -97,7 +99,7 @@ Shader "Vita/Environment/Cube Env Map - LightProbe SH" {
 				half3 finalColor = (mainTex.rgb * i.shColor)
 				                 + (cubeColor * reflectAmount);
 
-				return half4(finalColor, 1.0);
+				return half4(finalColor, 1.0) + _ScreenTint;
 			}
 			ENDCG
 		}

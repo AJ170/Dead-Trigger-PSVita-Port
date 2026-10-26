@@ -10,7 +10,7 @@
 		_SpecularStrength("Specular Strength", Range(0, 2)) = 0.6
 		_SpecularBase("Specular Base", Range(0, 1)) = 0.05
 		_SpecularSharpness("Specular Sharpness", Range(1, 8)) = 3.0
-
+		_SpecularWeights ("Specular strength weights", Vector) = (0,0,0,1)
 		// Ambient floor so probe-dark areas never go fully black
 		_Ambient("Ambient Floor", Color) = (0.05, 0.05, 0.05, 1)
 	}
@@ -46,6 +46,8 @@
 			half   _SpecularBase;
 			half   _SpecularSharpness;
 			half4  _Ambient;
+
+			half4 _SpecularWeights;
 
 			uniform float4 _ScreenTint;
 
@@ -155,8 +157,12 @@
 
 				half3 specular = saturate(_SpecularBase + cubeColor * spec * _SpecularStrength * diffuse.a);
 
+				// Gloss: weighted sum of the base texture channels
+                float gloss = dot(_SpecularWeights, diffuse);
+
+
 				// === FINAL ===
-				half3 finalColor = diffuse.rgb * lighting + specular;
+				half3 finalColor = diffuse.rgb * (lighting + gloss) + specular;
 
 				UNITY_APPLY_FOG(i.fogCoord, finalColor);
 
