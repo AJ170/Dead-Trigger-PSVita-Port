@@ -158,7 +158,7 @@ Shader "MADFINGER/Environment/Cube env map (Supports LightProbes) FPV - Transpar
 
 				half glossboost = clamp((dot(half3(0.22, 0.9, 0.37), i.worldNormal) - 0.75) * 4.0, 0.0, 1.0);	//Fake pickup lighting for highlights
 
-				return half4(finalColor, mainTex.a) + glossboost * 0.75;
+				return half4(finalColor, mainTex.a) + glossboost * 0.75 * i.shColor;
 			}
 			ENDCG
 		}

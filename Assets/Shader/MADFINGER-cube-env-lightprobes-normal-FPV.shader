@@ -174,7 +174,7 @@
 
 				// === FINAL ===
 				//return half4(glossboost, glossboost, glossboost, 1.0);
-				half3 finalColor = diffuse.rgb * (lighting) + specular  + glossboost * 0.75;
+				half3 finalColor = diffuse.rgb * (lighting) + specular  + glossboost * 0.75 * lighting;
 
 				UNITY_APPLY_FOG(i.fogCoord, finalColor);
 

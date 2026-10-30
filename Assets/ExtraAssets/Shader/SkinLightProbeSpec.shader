@@ -147,7 +147,7 @@
 
 
                     half3 finalColor = diffuseAlbedo.rgb * lighting;// + glossboost * 0.25;
-                    finalColor +=  glossboost * 0.25 * _SpecColor.rgb; //specular +
+                    finalColor +=  glossboost * lerp(0.125, 0.5, diffuseAlbedo.a) * lighting; //specular +
 
                     UNITY_APPLY_FOG(i.fogCoord, finalColor);
 

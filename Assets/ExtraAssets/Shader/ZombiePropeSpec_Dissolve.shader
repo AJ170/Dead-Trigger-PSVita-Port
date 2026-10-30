@@ -169,7 +169,7 @@
 
                     //return half4(glossboost, glossboost, glossboost, 1.0);
 
-                    half3 finalColor = diffuseAlbedo.rgb * lighting + glossboost * 0.17 * _SpecColor.rgb;
+                    half3 finalColor = diffuseAlbedo.rgb * lighting + glossboost * lerp(0.17, 0.4, diffuseAlbedo.a) * lighting;
                     finalColor += specular;
                     //finalColor = glossboost * _ProbeApply;
 
