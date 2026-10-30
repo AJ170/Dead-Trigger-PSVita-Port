@@ -170,6 +170,11 @@ Shader "MADFINGER/Characters/BRDFLit (Supports Backlight) - custom glossingess m
                 result.rgb = diffuse * specularTerm;
                 result.a = baseTex.a;
 
+                /*
+                //Sadly we don't have the world normal in this shader
+                half glossboost = clamp(dot(half3(0.1, 0.9, 0.1), worldNormal), -0.5, 1.0);	//Fake pickup lighting for highlights
+                float4 result = glossboost * 0.25 * _SpecColor;
+                */
                 // FX dissolve edge — noise threshold alpha
                 half dissolveEdge = 1.0 - saturate(
                     (noiseTex.x - i.fxProgress) * 4.0);

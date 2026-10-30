@@ -122,7 +122,9 @@
                     worldViewDir.z = dot(i.tSpace2, viewDirTS);
 
                     // Clamp lighting to valid range
-                    half3 lighting = clamp(i.shLighting, 0.0, 1.0);
+                    //This is still just vertex lit :/ - Kano!
+                    //half3 lighting = clamp(i.shLighting, 0.0, 1.0);
+                    half3 lighting = clamp(ShadeSH9(half4(worldNormal, 1.0)), 0.0, 1.0);
 
                     // === SPECULAR FROM CUBEMAP ===
 
@@ -131,16 +133,21 @@
                     half roughnessLOD = _Roughness * 7.0;
                     half4 cubeReflection = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
 
-                    half NdotV = saturate(dot(worldNormal, worldViewDir));
+                    half NdotV = saturate(dot(worldNormal, normalize(worldViewDir)));
                     half fresnel = pow(1.0 - NdotV, 3.0);
 
                     half specularStrength = diffuseAlbedo.a * _SpecularIntensity;
                     half3 specular = cubeReflection.rgb * _SpecColor.rgb * specularStrength * fresnel;
 
-                    // === FINAL COLOR ===
+                    //half3 probeBright = (0.2126 * lighting.r + 0.7152 * lighting.g + 0.0722 * lighting.b);
+                	//half3 glossboost = clamp((probeBright - 0.75) * 4.0, 0.0, 1.0);
 
-                    half3 finalColor = diffuseAlbedo.rgb * lighting;
-                    finalColor += specular;
+                    // === FINAL COLOR ===
+                    half glossboost = clamp((dot(half3(0.22, 0.9, 0.37), worldNormal) - 0.5) * 1.5, 0.0, 1.0);	//Fake pickup lighting for highlights
+
+
+                    half3 finalColor = diffuseAlbedo.rgb * lighting;// + glossboost * 0.25;
+                    finalColor +=  glossboost * 0.25 * _SpecColor.rgb; //specular +
 
                     UNITY_APPLY_FOG(i.fogCoord, finalColor);
 

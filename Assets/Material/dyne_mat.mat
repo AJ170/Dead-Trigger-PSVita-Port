@@ -38,7 +38,7 @@ Material:
     - _BumpScale: 1
     - _LightProbesLightingAmount: 0.64443165
     - _SpecularSharpness: 3
-    - _SpecularStrength: 0.6
+    - _SpecularStrength: 0.4
     m_Colors:
     - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}

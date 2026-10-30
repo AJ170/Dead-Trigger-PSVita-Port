@@ -70,6 +70,7 @@ Shader "MADFINGER/Environment/Cube env map (Supports LightProbes) FPV - Transpar
 				half3  cubeUV   : TEXCOORD1; // Reflection vector
 				half3  shColor  : TEXCOORD2; // Baked SH result
 				half   gloss    : TEXCOORD3; // Alpha channel for reflection
+				half3 worldNormal : TEXCOORD4;
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
@@ -115,6 +116,7 @@ Shader "MADFINGER/Environment/Cube env map (Supports LightProbes) FPV - Transpar
 
 				// World space normal and position
 				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
+				o.worldNormal = worldNormal;
 				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 
 				// Reflection vector for cubemap
@@ -154,7 +156,9 @@ Shader "MADFINGER/Environment/Cube env map (Supports LightProbes) FPV - Transpar
 				// Use texture alpha multiplied by the global alpha slider
 				//half finalAlpha = mainTex.a;// * _Alpha * i.gloss;
 
-				return half4(finalColor, mainTex.a);
+				half glossboost = clamp((dot(half3(0.22, 0.9, 0.37), i.worldNormal) - 0.75) * 4.0, 0.0, 1.0);	//Fake pickup lighting for highlights
+
+				return half4(finalColor, mainTex.a) + glossboost * 0.75;
 			}
 			ENDCG
 		}

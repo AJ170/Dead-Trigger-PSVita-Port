@@ -1,0 +1,193 @@
+﻿Shader "Vita/Character/ZombieProbeSpec_Dissolve" {
+    Properties{
+        _MainTex("Diffuse (RGB) Specular (A)", 2D) = "white" {}
+        _BumpMap("Normal Map", 2D) = "bump" {}
+        _BumpScale("Normal Scale", Range(0, 2)) = 1.0
+
+        _SpecCubeTex("Specular Cubemap", CUBE) = "black" {}
+        _SpecColor("Specular Color", Color) = (1, 1, 1, 1)
+        _Roughness("Roughness", Range(0, 1)) = 0.5
+        _SpecularIntensity("Specular Intensity", Range(0, 2)) = 1.0
+
+        _NoiseTex("Noise Tex", 2D) = "white" {}
+		_FXColor("FX Color", Color) = (0, 0.97, 0.89, 1)
+		_TimeOffs("Time Offset", Float) = 0
+		_Duration("Duration", Float) = 2
+		_Invert("Invert", Float) = 0
+
+        _LightProbesLightingAmount("Light Probes Lighting Amount", Range(0, 1)) = 0.9
+    }
+
+        SubShader{
+            LOD 400
+        	Tags { "LightMode"="ForwardBase" "RenderType"="Transparent" "QUEUE" = "Transparent"}
+
+
+            Pass {
+                Tags { "LightMode"="ForwardBase" "RenderType"="Transparent" "QUEUE" = "Transparent"}
+
+            	Blend SrcAlpha OneMinusSrcAlpha
+                CGPROGRAM
+                #pragma vertex vert
+                #pragma fragment frag
+                //#pragma target 2.0
+
+                #pragma multi_compile_fwdbase
+                #pragma multi_compile_fog
+
+                #define UNITY_SKINNED_MESH
+
+                #include "UnityCG.cginc"
+
+                sampler2D _MainTex;
+                sampler2D _BumpMap;
+                samplerCUBE _SpecCubeTex;
+
+                float4 _MainTex_ST;
+                float4 _BumpMap_ST;
+                half _BumpScale;
+                half4 _SpecColor;
+                half _Roughness;
+                half _SpecularIntensity;
+                half _LightProbesLightingAmount;
+                uniform vector _ScreenTint;
+
+                sampler2D _NoiseTex;
+				float  _TimeOffs;
+				float  _Duration;
+				float  _Invert;
+				float  _GlobalTime;
+				half4  _FXColor;
+
+                struct appdata {
+                    float4 vertex : POSITION;
+                    float3 normal : NORMAL;
+                    float4 tangent : TANGENT;
+                    float2 uv : TEXCOORD0;
+                    UNITY_VERTEX_INPUT_INSTANCE_ID
+                };
+
+                struct v2f {
+                    float4 pos : SV_POSITION;
+                    float4 uv : TEXCOORD0;
+                    half3 tSpace0 : TEXCOORD1;
+                    half3 tSpace1 : TEXCOORD2;
+                    half3 tSpace2 : TEXCOORD3;
+                    half3 viewDirTS : TEXCOORD4;
+                    half3 shLighting : TEXCOORD5;
+                    half   fxProgress : TEXCOORD6; // FX animation progress
+                    UNITY_FOG_COORDS(6)
+                };
+
+                v2f vert(appdata v) {
+                    v2f o;
+                    UNITY_SETUP_INSTANCE_ID(v);
+
+                    o.pos = UnityObjectToClipPos(v.vertex);
+
+                    o.uv.xy = TRANSFORM_TEX(v.uv, _MainTex);
+                    o.uv.zw = TRANSFORM_TEX(v.uv, _BumpMap);
+
+                    half3 worldNormal = UnityObjectToWorldNormal(v.normal);
+                    half3 worldTangent = UnityObjectToWorldDir(v.tangent.xyz);
+
+                    worldTangent = normalize(worldTangent - worldNormal * dot(worldNormal, worldTangent));
+
+                    half tangentSign = v.tangent.w * unity_WorldTransformParams.w;
+                    half3 worldBinormal = cross(worldNormal, worldTangent) * tangentSign;
+
+                    o.tSpace0 = half3(worldTangent.x, worldBinormal.x, worldNormal.x);
+                    o.tSpace1 = half3(worldTangent.y, worldBinormal.y, worldNormal.y);
+                    o.tSpace2 = half3(worldTangent.z, worldBinormal.z, worldNormal.z);
+
+                    float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+                    half3 worldViewDir = (_WorldSpaceCameraPos - worldPos);
+                    o.viewDirTS.x = dot(worldViewDir, worldTangent);
+                    o.viewDirTS.y = dot(worldViewDir, worldBinormal);
+                    o.viewDirTS.z = dot(worldViewDir, worldNormal);
+
+                    // Sample spherical harmonics with proper bias
+                    half3 sh = ShadeSH9(half4(worldNormal, 1.0));
+
+                    // Apply the lighting amount bias (Madfinger approach)
+                    // This ensures minimum lighting when _LightProbesLightingAmount is high
+                    o.shLighting = sh + (1.0 - _LightProbesLightingAmount);
+
+                    UNITY_TRANSFER_FOG(o, o.pos);
+
+                     float progress = saturate(
+                        (_TimeOffs + _GlobalTime) / _Duration);
+                    o.fxProgress = (_Invert > 0.0)
+                        ? (1.0 - progress)
+                        : progress;
+
+
+                    return o;
+                }
+
+                half4 frag(v2f i) : SV_Target {
+                    half4 diffuseAlbedo = tex2D(_MainTex, i.uv.xy);
+                    half4 noiseTex = tex2D(_NoiseTex, i.uv.xy * 2.0);
+
+
+
+                    half3 tangentNormal = UnpackNormal(tex2D(_BumpMap, i.uv.zw));
+                    tangentNormal.xy *= _BumpScale;
+                    tangentNormal = normalize(tangentNormal);
+
+                    half3 worldNormal;
+                    worldNormal.x = dot(i.tSpace0, tangentNormal);
+                    worldNormal.y = dot(i.tSpace1, tangentNormal);
+                    worldNormal.z = dot(i.tSpace2, tangentNormal);
+                    worldNormal = normalize(worldNormal);
+
+                    half3 viewDirTS = normalize(i.viewDirTS);
+
+                    half3 worldViewDir;
+                    worldViewDir.x = dot(i.tSpace0, viewDirTS);
+                    worldViewDir.y = dot(i.tSpace1, viewDirTS);
+                    worldViewDir.z = dot(i.tSpace2, viewDirTS);
+
+                    // Clamp lighting to valid range
+                    //This is still just vertex lit :/ - Kano!
+                    //half3 lighting = clamp(i.shLighting, 0.0, 1.0);
+                    half3 lighting = clamp(ShadeSH9(half4(worldNormal, 1.0)) + 0.125, -0.5, 1.0);
+
+                    // === SPECULAR FROM CUBEMAP ===
+
+                    half3 reflectionVector = reflect(-worldViewDir, worldNormal);
+                    reflectionVector = normalize(reflectionVector);
+                    half roughnessLOD = _Roughness * 7.0;
+                    half4 cubeReflection = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
+
+                    half specularStrength = diffuseAlbedo.a * _SpecularIntensity;
+                    half3 specular = cubeReflection.rgb * _SpecColor.rgb * specularStrength;
+
+                	half glossboost = clamp(dot(half3(0.22, 0.9, 0.37), worldNormal)+0.2, -0.5, 1.0);	//Fake pickup lighting for highlights
+
+                    // === FINAL COLOR ===
+
+                    //return half4(glossboost, glossboost, glossboost, 1.0);
+
+                    half3 finalColor = diffuseAlbedo.rgb * lighting + glossboost * 0.17 * _SpecColor.rgb;
+                    finalColor += specular;
+                    //finalColor = glossboost * _ProbeApply;
+
+                    UNITY_APPLY_FOG(i.fogCoord, finalColor);
+
+                    half dissolveEdge = 1.0 - saturate((noiseTex.x - i.fxProgress) * 4.0);
+	                half dissolveAlpha = float(noiseTex.x > i.fxProgress);
+					half edgeGlow = dissolveEdge * dissolveEdge;
+	               	edgeGlow = edgeGlow * edgeGlow;
+
+	               	finalColor += (_FXColor.rgb * edgeGlow) + _ScreenTint;
+
+
+                    return half4(finalColor, dissolveAlpha);
+                }
+                ENDCG
+            }
+        }
+
+            Fallback "Mobile/Diffuse"
+}

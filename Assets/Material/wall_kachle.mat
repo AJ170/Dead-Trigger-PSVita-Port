@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: wall_kachle
-  m_Shader: {fileID: 4800000, guid: a513bb9f12cbf4b4fba671d86d5fc4b7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 5b4adf96d35325249be3762d7d3f5497, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -22,13 +22,18 @@ Material:
         m_Texture: {fileID: 2800000, guid: 52b0c9465702a2f4dbcef98db9933cc8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 8fd4a67a59ec1764aa690097668a09d4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecCubeTex:
         m_Texture: {fileID: 8900000, guid: d10d0ff8b76c0e84e9b5ea4fe14de405, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _ReflectionBase: 0.125
     - _Roughness: 0.231
-    - _SpecularStrength: 1.48
+    - _SpecularStrength: 0.76
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}

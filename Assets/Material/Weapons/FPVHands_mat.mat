@@ -75,6 +75,6 @@ Material:
     - _SHBg: {r: 0, g: 0, b: 0, a: 0}
     - _SHBr: {r: 0, g: 0, b: 0, a: 0}
     - _SHC: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 1, g: 0.75735295, b: 0.75735295, a: 1}
     - _SpecularStrength: {r: 0, g: 0, b: 0, a: 1}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}

@@ -138,10 +138,10 @@ Shader "MADFINGER/Characters/BRDFLit (Supports Backlight) - custom glossingess m
                 brdfUV.y = dot(normalTS, i.halfDirTS);
                 float4 brdf = tex2D(_BRDFTex, brdfUV);
 
-                float3 specularTerm = (brdf.rgb + gloss * brdf.a) * 2.0;
+                float3 specularTerm = (brdf.rgb + gloss * brdf.a) * 2.0;	//this is hardly accurate...
 
                 float4 result;
-                result.rgb = diffuse * specularTerm;
+                result.rgb = diffuse * specularTerm;// + glossboost;
                 result.a = baseTex.a;
                 return result + _ScreenTint;
             }

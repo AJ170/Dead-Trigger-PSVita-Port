@@ -8,6 +8,7 @@
         _SpecColor("Specular Color", Color) = (1, 1, 1, 1)
         _Roughness("Roughness", Range(0, 1)) = 0.5
         _SpecularIntensity("Specular Intensity", Range(0, 2)) = 1.0
+        _ReflectionBase("Reflection Base", Range(0, 0.75)) = 0.25
 
         _LightProbesLightingAmount("Light Probes Lighting Amount", Range(0, 1)) = 0.9
     }
@@ -42,6 +43,7 @@
                 half _Roughness;
                 half _SpecularIntensity;
                 half _LightProbesLightingAmount;
+                half _ReflectionBase;
 
                 struct appdata {
                     float4 vertex : POSITION;
@@ -105,8 +107,8 @@
                     half4 diffuseAlbedo = tex2D(_MainTex, i.uv.xy);
 
                     // Clamp lighting to valid range
-                    half3 lighting = clamp(i.shLighting, 0.0, 1.0);
-
+                    //half3 lighting = clamp(i.shLighting, 0.0, 1.0);
+                    half3 lighting = (ShadeSH9(half4(i.worldNormal, 1.0)));
                     // === SPECULAR FROM CUBEMAP ===
 
                     half3 reflectionVector = reflect(-i.worldViewDir, i.worldNormal);

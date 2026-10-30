@@ -131,12 +131,15 @@ Shader "Vita/Character/SH Diffuse Cubemap Specular" {
 
 				half3 specular = cubeColor * spec * _SpecularStrength * diffuse.a;
 
+				half glossboost = clamp(dot(half3(0.22, 0.9, 0.37), worldNormal)+0.2, -0.5, 1.0);	//Fake pickup lighting for highlights
+
+
 				// === FINAL ===
 				half3 finalColor = diffuse.rgb * lighting + specular;
 
 				UNITY_APPLY_FOG(i.fogCoord, finalColor);
 
-				return half4(finalColor, 1.0) + _ScreenTint;
+				return half4(finalColor, 1.0) + _ScreenTint  + glossboost * 0.2;
 			}
 			ENDCG
 		}

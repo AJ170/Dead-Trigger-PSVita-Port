@@ -35,8 +35,8 @@ Material:
     - _BumpTile: 1
     - _InvFade: 0.632
     - _ReflectionPerturbance: 0
-    - _ReflectionStrength: 3
-    - _WetGloss: 0.895
+    - _ReflectionStrength: 1.07
+    - _WetGloss: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ScrollingSpeed: {r: 0, g: 0, b: 0, a: 0}

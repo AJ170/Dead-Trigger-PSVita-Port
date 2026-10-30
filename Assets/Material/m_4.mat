@@ -2,46 +2,59 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: m_4
-  m_Shader: {fileID: 4800000, guid: be995cfc75178a94882954d25b2c1b01, type: 3}
-  m_ShaderKeywords: []
+  m_Shader: {fileID: 4800000, guid: 3db31c3cd938a4840970a343d2d089cd, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 2800000, guid: d3c01d176f5a6384d98a546be54ba00a, type: 3}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 3e2eb09ac853c204fa6ab24ac2e04408, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _EnvTex
-      second:
+    - _CubeTex:
         m_Texture: {fileID: 8900000, guid: dbf236a49e38d3b4c8a6f5d66592c9b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EnvTex:
+        m_Texture: {fileID: 8900000, guid: dbf236a49e38d3b4c8a6f5d66592c9b8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: d3c01d176f5a6384d98a546be54ba00a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _SpecularStrength
-      second: 6
-    - first:
-        name: _Spread
-      second: 0.5
-    - first:
-        name: _SHLightingScale
-      second: 1.3
-    - first:
-        name: _EnvStrength
-      second: 3
+    - _BumpScale: 1
+    - _EnvStrength: 3
+    - _GlossBoost: 3
+    - _GlossCap: 0.75
+    - _ReflectionBase: 0.25
+    - _SHLightingScale: 1.3
+    - _SpecularBase: 0.05
+    - _SpecularSharpness: 3
+    - _SpecularStrength: 6
+    - _Spread: 0.5
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
-    - first:
-        name: _EnvStrength
-      second: {r: 0, g: 7, b: 0, a: 0}
+    - _Ambient: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+    - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _EnvStrength: {r: 0, g: 7, b: 0, a: 0}
+    - _SHAb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHAr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBb: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBg: {r: 0, g: 0, b: 0, a: 0}
+    - _SHBr: {r: 0, g: 0, b: 0, a: 0}
+    - _SHC: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularWeights: {r: 0, g: 0, b: 0, a: 1}
+    - _UVScrollSpeed: {r: 0, g: 0, b: 0, a: 0}

@@ -8,9 +8,13 @@
 
 		_CubeTex("Specular Cubemap", CUBE) = "black" {}
 		_SpecularStrength("Specular Strength", Range(0, 2)) = 0.6
+		_ReflectionBase("Reflection Base", Range(0, 0.75)) = 0.25
 		_SpecularBase("Specular Base", Range(0, 1)) = 0.05
 		_SpecularSharpness("Specular Sharpness", Range(1, 8)) = 3.0
 		_SpecularWeights ("Specular strength weights", Vector) = (0,0,0,1)
+		//This works just like a bloom would and is used to add a gloss pickup to objects in the scene based off of surfacing
+		_GlossBoost("Gloss Boost", Range(0, 5.0)) = 3.0
+		_GlossCap("Gloss Cap", Range(0, 1.0)) = 0.75
 		// Ambient floor so probe-dark areas never go fully black
 		_Ambient("Ambient Floor", Color) = (0.05, 0.05, 0.05, 1)
 	}
@@ -47,7 +51,11 @@
 			half   _SpecularSharpness;
 			half4  _Ambient;
 
+			half _GlossBoost;
+			half _GlossCap;
+
 			half4 _SpecularWeights;
+			half _ReflectionBase;
 
 			uniform float4 _ScreenTint;
 
@@ -155,14 +163,18 @@
 				half spec4 = spec2 * spec2;
 				half spec = lerp(NdotR, spec4, _SpecularSharpness / 8.0);
 
-				half3 specular = saturate(_SpecularBase + cubeColor * spec * _SpecularStrength * diffuse.a);
+				half3 specular = saturate(_SpecularBase + cubeColor * min(spec * _SpecularStrength * diffuse.a, _ReflectionBase));
 
 				// Gloss: weighted sum of the base texture channels
-                float gloss = dot(_SpecularWeights, diffuse);
+                //float gloss = dot(_SpecularWeights, diffuse);	//I'm not sold that this is a good way of going about it...
+                half3 probeBright = (0.2126 * probeLight.r + 0.7152 * probeLight.g + 0.0722 * probeLight.b);
+                //half3 gloss = clamp((probeBright - _GlossCap) * _GlossBoost, 0.0, 2.0);
+                half glossboost = clamp((dot(half3(0.22, 0.9, 0.37), worldNormal) - 0.75) * 4.0, 0.0, 1.0);	//Fake pickup lighting for highlights
 
 
 				// === FINAL ===
-				half3 finalColor = diffuse.rgb * (lighting + gloss) + specular;
+				//return half4(glossboost, glossboost, glossboost, 1.0);
+				half3 finalColor = diffuse.rgb * (lighting) + specular  + glossboost * 0.75;
 
 				UNITY_APPLY_FOG(i.fogCoord, finalColor);
 

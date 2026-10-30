@@ -3,6 +3,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
         _MainTex("Base (RGB) Gloss (A)", 2D) = "white" {}
         _SpecCubeTex("SpecCube", CUBE) = "black" {}
         _SpecularStrength("Specular Strength", Range(0, 2)) = 1.0
+        _ReflectionBase("Reflection Base", Range(0, 0.5)) = 0.125
         _Roughness("Roughness", Range(0, 1)) = 0.5
         _ScrollingSpeed("Scrolling speed", Vector) = (0,0,0,0)
     }
@@ -24,6 +25,7 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                 samplerCUBE _SpecCubeTex;
                 half _SpecularStrength;
                 half _Roughness;
+                half _ReflectionBase;
 
                 uniform vector _ScreenTint;
 
@@ -108,9 +110,10 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // Fresnel effect (cheaper approximation for mobile)
                     // Instead of pow(1.0 - NdotV, 2.0), use Schlick's approximation
-                    half NdotV = saturate(dot(worldNormal, worldViewDir));
+                    half NdotV = saturate(dot(worldNormal, normalize(worldViewDir)));
                     half fresnel = (1.0 - NdotV) * (1.0 - NdotV);  // x^2 instead of pow for better Vita performance
                     reflectionAmount *= fresnel;
+                    reflectionAmount = min(_ReflectionBase, reflectionAmount);
 
                     // Blend reflection with base color
                     color = lerp(color, color + cubeColor.rgb, reflectionAmount);
