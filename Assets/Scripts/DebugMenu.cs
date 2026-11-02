@@ -1,19 +1,32 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DebugMenu : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
+    //public Text label;
 
+   /* private void Update()
+    {
+        string s;
+        try
+        {
+            s = "Now: " + VitaClock.Now.ToShortDateString() + " " + VitaClock.Now.ToShortTimeString() + "\n";
+            if (Game.Instance != null)
+            {
+                s += "IsHalloween: " + Game.Instance.IsHalloween + "\n";
+                s += "UsePumpkins: " + Game.Instance.UsePumpkins();
+            }
+        }
+        catch (Exception e)
+        {
+            s = "Date error: " + e.Message;
+        }
+        label.text = s;
+    }*/
+    
 	public void CurrencyHack()
 	{
 		if (Game.Instance.PlayerPersistentInfo == null)

@@ -76,7 +76,7 @@
                     half3 viewDirTS : TEXCOORD4;
                     half3 shLighting : TEXCOORD5;
                     half   fxProgress : TEXCOORD6; // FX animation progress
-                    UNITY_FOG_COORDS(6)
+                    UNITY_FOG_COORDS(7)
                 };
 
                 v2f vert(appdata v) {

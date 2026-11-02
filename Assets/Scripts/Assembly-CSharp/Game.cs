@@ -301,8 +301,14 @@ public class Game : MonoBehaviour
 		{
 			CurrentLevel = Application.loadedLevelName;
 		}
+		
+		//old seasons code from madfinger
+#if UNITY_PSP2 && !UNITY_EDITOR
+		DateTime now = VitaClock.Now;
+#else
 		DateTime now = DateTime.Now;
-		if (now.Month >= 10 && now.Month <= 11 && ((now.Day > 24 && now.Month == 10) || (now.Day < 18 && now.Month == 11)))
+#endif		
+		/*if (now.Month >= 10 && now.Month <= 11 && ((now.Day > 24 && now.Month == 10) || (now.Day < 18 && now.Month == 11)))
 		{
 			m_IsHalloween = true;
 		}
@@ -333,7 +339,14 @@ public class Game : MonoBehaviour
 		else
 		{
 			m_UseChristmasMask = false;
-		}
+		}*/
+
+		//new seasons code
+		m_IsHalloween = now.Month == 11;
+		m_TapJoyAdvertActive = false;
+		m_IsChristmas = now.Month == 12;
+		m_UseChristmasMask = now.Month == 12;
+
 		Etcetera.Init();
 		//TwitterWrapper.Init("JkUv59AgxIL79gGaezqYQ", "eme6M4IcnyDkN8btgjHTqR4aHf8ltSlwDnOe4Wewk");
 		Kontagent.StartSession();

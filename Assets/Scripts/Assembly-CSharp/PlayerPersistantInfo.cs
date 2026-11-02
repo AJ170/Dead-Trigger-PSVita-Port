@@ -880,28 +880,28 @@ public class PlayerPersistantInfo
 
 	public bool IsBonusAvailable()
 	{
-		DateTime dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+		DateTime dateTime = VitaClock.Now.Date;
 		DateTime dateTime2 = new DateTime(PlayerData.Params.LastBonusTime.Year, PlayerData.Params.LastBonusTime.Month, PlayerData.Params.LastBonusTime.Day);
 		TimeSpan timeSpan = dateTime - dateTime2;
 		if (timeSpan.Days >= 2)
-		{
-			PlayerData.Params.GoldForGoldMission = 1;
-		}
+	{
+		PlayerData.Params.GoldForGoldMission = 1;
+	}
 		if (timeSpan.Days >= 1)
-		{
-			return true;
-		}
+	{
+		return true;
+	}
 		return false;
 	}
 
 	public void SetBonusReceived()
 	{
-		PlayerData.Params.LastBonusTime = DateTime.Today;
+		PlayerData.Params.LastBonusTime = VitaClock.Now.Date;
 	}
 
 	public void Fixator_ResetBonusTime()
 	{
-		PlayerData.Params.LastBonusTime = DateTime.Today.AddDays(-1.0);
+		PlayerData.Params.LastBonusTime = VitaClock.Now.Date.AddDays(-1.0);
 	}
 
 	public void BonusMissionPlayed()
