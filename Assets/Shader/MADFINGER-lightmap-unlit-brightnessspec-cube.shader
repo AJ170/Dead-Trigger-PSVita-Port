@@ -44,8 +44,8 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
                     float2 uv : TEXCOORD0;
                     float2 uv1 : TEXCOORD1;
                     float4 color : COLOR;
-                    half3 worldNormal : TEXCOORD2;
-                    half3 worldViewDir : TEXCOORD3;
+                    float3 reflectionVector : TEXCOORD2;
+                    half fresnel : TEXCOORD3;
                     UNITY_FOG_COORDS(4)
                 };
 
@@ -65,13 +65,15 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
                     // Vertex color
                     o.color = v.color;
 
-                    // World space normal
-                    o.worldNormal = UnityObjectToWorldNormal(v.normal);
-
-                    // World space view direction
+                    // Reflection vector and fresnel per vertex
+                    half3 worldNormal = UnityObjectToWorldNormal(v.normal);
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                    o.worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
+                    half3 worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
+                    // Not normalized: stays linear across a flat polygon, so it doesn't stretch
+                    o.reflectionVector = reflect(worldPos - _WorldSpaceCameraPos, worldNormal);
 
+                    half fresnelBase = 1.0 - saturate(dot(worldNormal, worldViewDir));
+                    o.fresnel = fresnelBase * fresnelBase;
 
                     UNITY_TRANSFER_FOG(o, o.pos);
 
@@ -84,32 +86,26 @@ Shader "Vita/Environment/Cubemap Specular Optimized" {
 
                     // Sample lightmap (1 sample)
                     half3 lightmap = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv1));
+#if defined(SHADER_API_PSP2)
+    lightmap *= 0.4;
+#endif
 
                     // Combine base with lightmap
                     half3 color = baseColor.rgb * (1.0 * lightmap) * i.color.rgb;
 
                     // === CUBEMAP REFLECTION ===
 
-                    // Normalize vectors
-                    half3 worldNormal = normalize(i.worldNormal);
-                    half3 worldViewDir = (i.worldViewDir);
-
-                    // Reflection vector
-                    half3 reflectionVector = reflect(-worldViewDir, worldNormal);
-
                     // Sample cubemap with roughness LOD (1 sample)
                     half roughnessLOD = _Roughness * 7.0;
-                    half3 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD)).rgb;
-
-                    // Calculate Fresnel (cheaper: use linear approximation)
-                    half NdotV = saturate(dot(worldNormal, worldViewDir));
-                    half fresnel = 1.0 - NdotV;  // Cheap fresnel calculation
-                    fresnel = fresnel * fresnel; //Attempt to make this closer to being realistic, although most surfaces vary significantly
+                    half3 cubeColor = texCUBElod(_SpecCubeTex, float4(i.reflectionVector, roughnessLOD)).rgb;
 
                     // Use alpha as primary reflection strength
                     // Multiply by Fresnel and user property
-                    half reflectionAmount = baseColor.a * fresnel * _SpecularStrength;
-
+                    half reflectionAmount = baseColor.a * i.fresnel * _SpecularStrength;
+#if defined(SHADER_API_PSP2)
+    reflectionAmount *= 0.4;
+#endif
+                    
                     // Add reflection to color (multiplicative blend is cheaper than lerp)
                     color += cubeColor * reflectionAmount;
 

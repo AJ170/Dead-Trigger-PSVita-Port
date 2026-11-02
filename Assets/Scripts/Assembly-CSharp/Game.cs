@@ -342,7 +342,7 @@ public class Game : MonoBehaviour
 		}*/
 
 		//new seasons code
-		m_IsHalloween = now.Month == 11;
+		m_IsHalloween = now.Month == 10;
 		m_TapJoyAdvertActive = false;
 		m_IsChristmas = now.Month == 12;
 		m_UseChristmasMask = now.Month == 12;

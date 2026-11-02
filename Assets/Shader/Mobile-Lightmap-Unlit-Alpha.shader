@@ -49,6 +49,9 @@ Shader "Vita/Environment/Unlit Transparent with Lightmap" {
 
                     // Sample and decode lightmap
                     half3 lightmap = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv1));
+#if defined(SHADER_API_PSP2)
+    lightmap *= 0.4;
+#endif
 
                     // Apply lightmap with 2x multiplier
                     color.rgb *= (2.0 * lightmap);

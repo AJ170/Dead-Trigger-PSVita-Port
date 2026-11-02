@@ -43,8 +43,8 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                     float2 uv : TEXCOORD0;
                     float2 uv1 : TEXCOORD1;
                     float4 color : COLOR;
-                    half3 worldNormal : TEXCOORD2;
-                    half3 worldViewDir : TEXCOORD3;
+                    float3 reflectionVector : TEXCOORD2;
+                    half fresnel : TEXCOORD3;
                     UNITY_FOG_COORDS(4)
                 };
 
@@ -64,12 +64,16 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
                     // Vertex color
                     o.color = v.color;
 
-                    // World space normal for reflection (normalized in vertex to reduce fragment cost)
-                    o.worldNormal = UnityObjectToWorldNormal(v.normal);
-
-                    // World space view direction for reflection
+                    // Reflection vector and fresnel per vertex to reduce fragment cost
+                    half3 worldNormal = UnityObjectToWorldNormal(v.normal);
                     float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                    o.worldViewDir = (_WorldSpaceCameraPos - worldPos);
+                    half3 worldViewDir = normalize(_WorldSpaceCameraPos - worldPos);
+                    // Not normalized: stays linear across a flat polygon, so it doesn't stretch
+                    o.reflectionVector = reflect(worldPos - _WorldSpaceCameraPos, worldNormal);
+
+                    // x^2 instead of pow for better Vita performance
+                    half fresnelBase = 1.0 - saturate(dot(worldNormal, worldViewDir));
+                    o.fresnel = fresnelBase * fresnelBase;
 
                     // Transfer fog coordinates
                     UNITY_TRANSFER_FOG(o, o.pos);
@@ -83,6 +87,9 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // Decode lightmap
                     half3 lightmap = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv1));
+#if defined(SHADER_API_PSP2)
+    lightmap *= 0.4;
+#endif
 
                     // Apply lightmap to base color
                     half3 color = baseColor.rgb * (1.0 * lightmap);
@@ -92,28 +99,18 @@ Shader "MADFINGER/Environment/Cubemap specular + Lightmap" {
 
                     // === CUBEMAP REFLECTION ===
 
-                    // Normalize interpolated values
-                    half3 worldNormal = normalize(i.worldNormal);
-                    half3 worldViewDir = (i.worldViewDir);
-
-                    // Calculate reflection vector
-                    half3 reflectionVector = reflect(-worldViewDir, worldNormal);
-                    reflectionVector = normalize(reflectionVector);
-
-                    // Sample cubemap with roughness LOD
-                    half roughnessLOD = _Roughness * 7.0;
-                    //half4 cubeColor = texCUBElod(_SpecCubeTex, half4(reflectionVector, roughnessLOD));
-                    half4 cubeColor = texCUBE(_SpecCubeTex, reflectionVector);
+                    half4 cubeColor = texCUBE(_SpecCubeTex, i.reflectionVector);
                     // Use alpha channel (gloss) as reflection strength
                     // Combine with _SpecularStarength property
                     half reflectionAmount = baseColor.a * _SpecularStrength;
 
-                    // Fresnel effect (cheaper approximation for mobile)
-                    // Instead of pow(1.0 - NdotV, 2.0), use Schlick's approximation
-                    half NdotV = saturate(dot(worldNormal, normalize(worldViewDir)));
-                    half fresnel = (1.0 - NdotV) * (1.0 - NdotV);  // x^2 instead of pow for better Vita performance
-                    reflectionAmount *= fresnel;
+                    // Fresnel effect from the vertex program
+                    reflectionAmount *= i.fresnel;
                     reflectionAmount = min(_ReflectionBase, reflectionAmount);
+#if defined(SHADER_API_PSP2)
+    reflectionAmount *= 0.4;
+#endif
+                    
 
                     // Blend reflection with base color
                     color = lerp(color, color + cubeColor.rgb, reflectionAmount);

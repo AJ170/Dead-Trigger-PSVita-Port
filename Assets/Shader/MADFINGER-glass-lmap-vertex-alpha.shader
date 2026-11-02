@@ -98,6 +98,9 @@ Shader "MADFINGER/Glass/Lightmap + Cube Env + Per Vertex Alpha (Optimized)" {
 
 				// Apply lightmap
 				half3 lightmap = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv1));
+#if defined(SHADER_API_PSP2)
+    lightmap *= 0.4;
+#endif
 				finalColor *= (2.0 * lightmap);
 
 				// Output with per-vertex alpha

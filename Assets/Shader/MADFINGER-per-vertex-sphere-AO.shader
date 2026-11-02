@@ -80,7 +80,8 @@ Shader "MADFINGER/Characters/Character shadow plane - sphere AO" {
                 tmpvar_15.z = tmpvar_14;
                 tmpvar_15.w = tmpvar_14;
                 tmpvar_1 = tmpvar_15;
-                o.pos = (UnityObjectToClipPos(v.vertex));
+                // Pulled toward the camera so raised floor detail doesn't cut off the shadow
+				o.pos = mul(UNITY_MATRIX_VP, float4(tmpvar_2 + normalize(_WorldSpaceCameraPos - tmpvar_2) * 0.1, 1.0));
                 o.color = tmpvar_1;
 
                 return o;

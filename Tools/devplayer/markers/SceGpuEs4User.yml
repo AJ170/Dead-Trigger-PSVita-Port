@@ -1,0 +1,14 @@
+# libgpu_es4 (module SceGpuEs4User, loaded by SceGxm in every GXM process): the one export bolmarkers uses, which
+# VitaSDK has no stub for. NID from github.com/Grarak/psp2-tooling (razor/recorder/SceGpuEs4User.yml); it is in the
+# module's export table on firmware 3.65. build.py turns this into build/gpues4/libSceGpuEs4User_stub_weak.a.
+version: 2
+firmware: 3.60
+modules:
+  SceGpuEs4User:
+    nid: 0x00000000
+    libraries:
+      SceGpuEs4User:
+        kernel: false
+        nid: 0xFAFCA413
+        functions:
+          SGXGetMiscInfo: 0x09BB98B2
