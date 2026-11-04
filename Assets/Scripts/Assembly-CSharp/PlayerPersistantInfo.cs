@@ -117,6 +117,12 @@ public class PlayerPersistantInfo
 	// Only one of them fires per rank, so they must agree; hence one constant.
 	public const int GoldPerRankUp = 50;
 
+	// Text 1010251 is a fixed "(+1 GOLD)" in every language file; swap in the real amount
+	public static string RankUpGoldText()
+	{
+		return TextDatabase.instance[1010251].Replace("+1", "+" + GoldPerRankUp);
+	}
+
 	// Bunker mission payouts. SpecialReward builds both the award and the dialog
 	// caption from these, so the banner cannot disagree with what is granted.
 	public const int GoldPerBunker = 50;

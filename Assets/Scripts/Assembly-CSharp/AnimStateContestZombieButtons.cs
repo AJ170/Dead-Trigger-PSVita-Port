@@ -318,7 +318,7 @@ public class AnimStateContestZombieButtons : AnimState
             Release();
         }
     }
-    private static readonly KeyCode[] ContestKeys = new KeyCode[]
+    private static readonly KeyCode[] KeyboardContestKeys = new KeyCode[]
 {
     KeyCode.E,
     KeyCode.R,
@@ -326,6 +326,21 @@ public class AnimStateContestZombieButtons : AnimState
     KeyCode.Space,
     KeyCode.Q
 };
+
+    // Cross, Circle, Square, Triangle, L
+    private static readonly KeyCode[] VitaContestKeys = new KeyCode[]
+{
+    KeyCode.JoystickButton0,
+    KeyCode.JoystickButton1,
+    KeyCode.JoystickButton2,
+    KeyCode.JoystickButton3,
+    KeyCode.JoystickButton4
+};
+
+    private static KeyCode[] ContestKeys
+    {
+        get { return Application.platform == RuntimePlatform.PSP2 ? VitaContestKeys : KeyboardContestKeys; }
+    }
 
     private void StopAnims()
     {

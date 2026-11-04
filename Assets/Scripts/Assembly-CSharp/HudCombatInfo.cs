@@ -247,7 +247,7 @@ public class HudCombatInfo : HudComponent
 		public void Show(int newRank)
 		{
 			m_Parent.Show(true, true);
-			m_Text.SetNewText(TextDatabase.instance[m_Text.m_TextID] + " " + newRank + " " + TextDatabase.instance[1010251]);
+			m_Text.SetNewText(TextDatabase.instance[m_Text.m_TextID] + " " + newRank + " " + PlayerPersistantInfo.RankUpGoldText());
 			m_NewGoodsInShop.Widget.Show(Game.Instance.PlayerPersistentInfo.storyId >= 2 && ShopDataBridge.Instance.NewItemsUnlocked(newRank), true);
 			m_Progress = 0f;
 			IsVisible = true;

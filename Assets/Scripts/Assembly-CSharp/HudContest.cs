@@ -190,7 +190,20 @@ public class HudContest : HudComponent
     public override void Reset()
     {
     }
-    private static KeyCode[] ContestKeys = { KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Space, KeyCode.Q }; // Or pass this dynamically
+    // Text shown on a contest button for its key
+    private static string KeyLabel(KeyCode key)
+    {
+        switch (key)
+        {
+            case KeyCode.JoystickButton0: return "X";
+            case KeyCode.JoystickButton1: return "O";
+            // Square and triangle glyphs added to Font01.png / DefaultFont.prefab
+            case KeyCode.JoystickButton2: return "□";
+            case KeyCode.JoystickButton3: return "△";
+            case KeyCode.JoystickButton4: return "L";
+            default: return key.ToString();
+        }
+    }
 
     void Update()
     {
@@ -202,7 +215,8 @@ public class HudContest : HudComponent
             if (!element.Active || element.ContestState != ContestElement.State.InProgress || !element.ShouldBePressed)
                 continue;
 
-            if (Input.GetKeyDown(ContestKeys[i])) // or element.AssignedKey if you stored it
+            // The element's own key: m_Contest is shuffled, so index i isn't the key it shows
+            if (Input.GetKeyDown(element.AssignedKey))
             {
                 ContestButtonDelegate(element.TrueIndex);
             }
@@ -273,7 +287,7 @@ public class HudContest : HudComponent
             var labelComponent = element.Button.keyLabel.GetComponent<GUIBase_Label>();
             if (labelComponent != null)
             {
-                labelComponent.SetNewText(element.AssignedKey.ToString());
+                labelComponent.SetNewText(KeyLabel(element.AssignedKey));
                 element.Button.keyLabel.ShowImmediate(false, true);
             }
 
@@ -285,7 +299,7 @@ public class HudContest : HudComponent
                 if (keyLabel != null)
                 {
                     Debug.Log("Setting keybind label: " + keys[num]);
-                    keyLabel.text = keys[num].ToString(); // e.g. "E", "R", "F"
+                    keyLabel.text = KeyLabel(keys[num]); // e.g. "E", "R", "F"
                     keyLabel.enabled = true;
                 }
             }

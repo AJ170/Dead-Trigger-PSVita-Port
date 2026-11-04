@@ -1039,7 +1039,7 @@ public class CityGUIDialogs
 			GUIBase_Label component = m_Dialog.GetWidget("Message").GetComponent<GUIBase_Label>();
 			string text = TextDatabase.instance[1010250];
 			string text2 = text;
-			text = text2 + " " + Game.Instance.PlayerPersistentInfo.rank + " " + TextDatabase.instance[1010251];
+			text = text2 + " " + Game.Instance.PlayerPersistentInfo.rank + " " + PlayerPersistantInfo.RankUpGoldText();
 			component.SetNewText(text);
 			GUIBase_Label component2 = m_Dialog.GetWidget("Shop").GetComponent<GUIBase_Label>();
 			component2.Widget.Show(newGoodsInShop, true);
